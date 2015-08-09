@@ -1,0 +1,1 @@
+{"license":"Apache 2.0","tarball_file_size":25822,"version":"1.5.10","average_rating":null,"cookbook":"https://supermarket.chef.io/api/v1/cookbooks/runit","file":"https://supermarket.chef.io/api/v1/cookbooks/runit/versions/1.5.10/download","dependencies":{"yum":"~> 3.0","yum-epel":">= 0.0.0","build-essential":">= 0.0.0"}}

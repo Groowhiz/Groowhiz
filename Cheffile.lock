@@ -1,0 +1,97 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    7-zip (1.0.2)
+      windows (>= 1.2.2)
+    apt (1.9.0)
+    ark (0.9.0)
+      7-zip (>= 0.0.0)
+      windows (>= 0.0.0)
+    build-essential (1.3.4)
+    chef_gem (0.0.5)
+    chef_handler (1.2.0)
+    imagemagick (0.2.2)
+    locale (0.0.2)
+    runit (1.0.4)
+      build-essential (>= 0.0.0)
+    user (0.4.2)
+    windows (1.38.1)
+      chef_handler (>= 0.0.0)
+    zsh (1.0.1)
+
+GIT
+  remote: https://github.com/fnichol/chef-git
+  ref: master
+  sha: 6c19cbefcdad5ec0f62a64dae1f656d660698ea3
+  specs:
+    git (0.9.0)
+      runit (>= 0.0.0)
+
+GIT
+  remote: https://github.com/fnichol/chef-rvm
+  ref: master
+  sha: 37ae6f0d6540ebc95d22004d68dd45fe304d7255
+  specs:
+    rvm (0.9.1)
+      chef_gem (>= 0.0.0)
+
+GIT
+  remote: https://github.com/hectcastro/chef-nodejs
+  ref: master
+  sha: 222fbfd6942897a002b652de7a6b8daf13851216
+  specs:
+    nodejs (0.0.8)
+      build-essential (>= 0.0.0)
+
+GIT
+  remote: https://github.com/lxmx/chef-oh-my-zsh
+  ref: master
+  sha: 895a037c42b9b41b6b97ef7d1bfc10ab74a84dd6
+  specs:
+    oh_my_zsh (0.5.0)
+      ark (>= 0.0.0)
+      user (>= 0.0.0)
+      zsh (>= 0.0.0)
+
+GIT
+  remote: https://github.com/phlipper/chef-curl
+  ref: master
+  sha: d1f6690319eb4e5278af0060eb053937541d8d90
+  specs:
+    curl (1.0.0)
+
+GIT
+  remote: https://github.com/phlipper/chef-postgresql
+  ref: 0.5.0
+  sha: f9fb4099f0d1fc40239a7a60d3ff9e0aee06f885
+  specs:
+    postgresql (0.5.0)
+
+GIT
+  remote: https://github.com/substantial/cookbook-firefox
+  ref: master
+  sha: 09d74e7610baf72e57b538a9053e10344920e4ce
+  specs:
+    firefox (0.0.4)
+
+GIT
+  remote: https://github.com/trywildcard/chef-xvfb
+  ref: master
+  sha: 4b4428b4837ad16405746856b278b0470501632f
+  specs:
+    xvfb (0.1.4)
+
+DEPENDENCIES
+  apt (>= 0)
+  build-essential (>= 0)
+  curl (>= 0)
+  firefox (>= 0)
+  git (>= 0)
+  imagemagick (>= 0)
+  locale (>= 0)
+  nodejs (>= 0)
+  oh_my_zsh (>= 0)
+  postgresql (>= 0)
+  rvm (>= 0)
+  xvfb (>= 0)
+

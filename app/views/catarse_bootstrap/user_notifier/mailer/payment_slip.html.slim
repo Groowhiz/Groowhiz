@@ -1,0 +1,21 @@
+- contribution = @notification.contribution
+- expire_date = contribution.details.ordered.first.gateway_data["boleto_expiration_date"].to_datetime.strftime('%d/%m')
+
+p Olá, <strong>#{contribution.user.display_name}</strong> !
+p #{expire_date} é o dia do vencimento do boleto gerado para apoiar o #{contribution.project.name}.
+
+p O realizador #{contribution.project.user.display_name} está contando com o seu apoio para que o projeto seja bem-sucedido.
+
+p Se você não imprimiu seu boleto ainda, faça isso agora mesmo:
+
+p
+  center
+    = link_to contribution.details.ordered.first.decorate.display_slip_url, target: '__blank' do
+      = image_tag "#{CatarseSettings[:base_url]}/assets/catarse_bootstrap/display_slip.png"
+
+p Caso já tenha pago o boleto bancário, favor desconsiderar esse email.
+
+p
+  | Um abraço,
+p
+  | #{CatarseSettings[:company_name]}

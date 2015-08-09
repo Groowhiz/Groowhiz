@@ -1,0 +1,14 @@
+pt:
+  shared:
+    menus: 
+      user: 
+        about: 'About you'
+        access_address: 'Data and address'        
+        activity: 'Atividade'
+        banking: 'Bank Details'
+        contributions_history: 'My history'
+        contributions_history_nav: 'History de apoio'
+        logged_as: 'You are logged in as'
+        notifications: 'Notifications'
+        project_contributions: 'Projects supported'
+        projects_created: 'Projects created'
