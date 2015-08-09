@@ -1,6 +1,5 @@
 class AddsFullTextIndexToContributionDetails < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
     DROP MATERIALIZED VIEW public.contributor_numbers;
     DROP VIEW "1".contribution_details;
@@ -120,6 +119,5 @@ class AddsFullTextIndexToContributionDetails < ActiveRecord::Migration
    FROM confirmed;
    GRANT select ON ALL TABLES IN SCHEMA "1" TO admin;
     SQL
-=end
   end
 end

@@ -1,6 +1,5 @@
 class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
     CREATE OR REPLACE FUNCTION public.profile_img_thumbnail(users) RETURNS text AS $$ 
     SELECT 
@@ -125,6 +124,5 @@ class AddUserProfileImgToContributionDetails < ActiveRecord::Migration
    FROM confirmed;
    GRANT select ON ALL TABLES IN SCHEMA "1" TO admin;
     SQL
-=end
   end
 end

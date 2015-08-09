@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -159,16 +160,10 @@ CREATE TABLE contributions (
     user_id integer NOT NULL,
     reward_id integer,
     value numeric NOT NULL,
-    confirmed_at timestamp without time zone,
     created_at timestamp without time zone DEFAULT now(),
     updated_at timestamp without time zone,
     anonymous boolean DEFAULT false NOT NULL,
-    key text,
-    credits boolean DEFAULT false,
     notified_finish boolean DEFAULT false,
-    payment_method text,
-    payment_token text,
-    payment_id character varying(255),
     payer_name text,
     payer_email text NOT NULL,
     payer_document text,
@@ -182,23 +177,9 @@ CREATE TABLE contributions (
     address_phone_number text,
     payment_choice text,
     payment_service_fee numeric,
-    state character varying(255),
     referral_link text,
-    address_country text,
     country_id integer,
-    slip_url text,
-    installments integer DEFAULT 1 NOT NULL,
-    waiting_confirmation_at timestamp without time zone,
-    canceled_at timestamp without time zone,
-    refunded_at timestamp without time zone,
-    requested_refund_at timestamp without time zone,
-    refunded_and_canceled_at timestamp without time zone,
     deleted_at timestamp without time zone,
-    invalid_payment_at timestamp without time zone,
-    acquirer_name text,
-    acquirer_tid text,
-    installment_value numeric,
-    card_brand text,
     CONSTRAINT backers_value_positive CHECK ((value >= (0)::numeric))
 );
 
@@ -232,6 +213,64 @@ CREATE FUNCTION confirmed_states() RETURNS text[]
 
 
 --
+-- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE projects (
+    id integer NOT NULL,
+    name text NOT NULL,
+    user_id integer NOT NULL,
+    category_id integer NOT NULL,
+    goal numeric,
+    headline text,
+    video_url text,
+    short_url text,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone,
+    about_html text,
+    recommended boolean DEFAULT false,
+    home_page_comment text,
+    permalink text NOT NULL,
+    video_thumbnail text,
+    state character varying(255),
+    online_days integer,
+    online_date timestamp with time zone,
+    more_links text,
+    first_contributions text,
+    uploaded_image character varying(255),
+    video_embed_url character varying(255),
+    referral_link text,
+    sent_to_analysis_at timestamp without time zone,
+    audited_user_name text,
+    audited_user_cpf text,
+    audited_user_moip_login text,
+    audited_user_phone_number text,
+    sent_to_draft_at timestamp without time zone,
+    rejected_at timestamp without time zone,
+    traffic_sources text,
+    budget text,
+    full_text_index tsvector,
+    budget_html text,
+    expires_at timestamp without time zone
+);
+
+
+--
+-- Name: img_thumbnail(projects); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION img_thumbnail(projects) RETURNS text
+    LANGUAGE sql STABLE
+    AS $_$ 
+    SELECT 
+      'https://' || (SELECT value FROM settings WHERE name = 'aws_host') || 
+      '/' || (SELECT value FROM settings WHERE name = 'aws_bucket') ||
+      '/uploads/project/uploaded_image/' || $1.id::text ||
+      '/project_thumb_small_' || $1.uploaded_image
+    $_$;
+
+
+--
 -- Name: is_confirmed(contributions); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -245,6 +284,49 @@ CREATE FUNCTION is_confirmed(contributions) RETURNS boolean
         WHERE p.contribution_id = $1.id AND p.state = 'paid'
       );
     $_$;
+
+
+--
+-- Name: payments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE payments (
+    id integer NOT NULL,
+    contribution_id integer NOT NULL,
+    state text NOT NULL,
+    key text NOT NULL,
+    gateway text NOT NULL,
+    gateway_id text,
+    gateway_fee numeric,
+    gateway_data json,
+    payment_method text NOT NULL,
+    value numeric NOT NULL,
+    installments integer DEFAULT 1 NOT NULL,
+    installment_value numeric,
+    paid_at timestamp without time zone,
+    refused_at timestamp without time zone,
+    pending_refund_at timestamp without time zone,
+    refunded_at timestamp without time zone,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone,
+    full_text_index tsvector,
+    deleted_at timestamp without time zone,
+    chargeback_at timestamp without time zone
+);
+
+
+--
+-- Name: is_second_slip(payments); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION is_second_slip(payments) RETURNS boolean
+    LANGUAGE sql STABLE
+    AS $_$
+          SELECT lower($1.payment_method) = 'boletobancario' and EXISTS (select true from payments p
+               where p.contribution_id = $1.contribution_id
+               and p.id < $1.id
+               and lower(p.payment_method) = 'boletobancario')
+        $_$;
 
 
 --
@@ -277,6 +359,73 @@ CREATE FUNCTION paid_count(rewards) RETURNS bigint
       SELECT count(*) 
       FROM payments p join contributions c on c.id = p.contribution_id 
       WHERE p.state = 'paid' AND c.reward_id = $1.id
+    $_$;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email text,
+    name text,
+    newsletter boolean DEFAULT false,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone,
+    admin boolean DEFAULT false,
+    address_street text,
+    address_number text,
+    address_complement text,
+    address_neighbourhood text,
+    address_city text,
+    address_state text,
+    address_zip_code text,
+    phone_number text,
+    locale text DEFAULT 'pt'::text NOT NULL,
+    cpf text,
+    encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255),
+    twitter character varying(255),
+    facebook_link character varying(255),
+    other_link character varying(255),
+    uploaded_image text,
+    moip_login character varying(255),
+    state_inscription character varying(255),
+    channel_id integer,
+    deactivated_at timestamp without time zone,
+    reactivate_token text,
+    address_country text,
+    country_id integer,
+    authentication_token text DEFAULT md5(((random())::text || (clock_timestamp())::text)) NOT NULL,
+    zero_credits boolean DEFAULT false,
+    about_html text,
+    cover_image text,
+    permalink text,
+    subscribed_to_project_posts boolean DEFAULT true
+);
+
+
+--
+-- Name: profile_img_thumbnail(users); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION profile_img_thumbnail(users) RETURNS text
+    LANGUAGE sql STABLE
+    AS $_$ 
+    SELECT 
+      'https://' || (SELECT value FROM settings WHERE name = 'aws_host') || 
+      '/' || (SELECT value FROM settings WHERE name = 'aws_bucket') ||
+      '/uploads/user/uploaded_image/' || $1.id::text ||
+      '/thumb_avatar_' || $1.uploaded_image
+    
     $_$;
 
 
@@ -328,35 +477,6 @@ CREATE FUNCTION update_payments_full_text_index() RETURNS trigger
        RETURN NEW;
      END;
     $$;
-
-
---
--- Name: payments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE payments (
-    id integer NOT NULL,
-    contribution_id integer NOT NULL,
-    state text NOT NULL,
-    key text NOT NULL,
-    gateway text NOT NULL,
-    gateway_id text,
-    gateway_fee numeric,
-    gateway_data text,
-    payment_method text NOT NULL,
-    value numeric NOT NULL,
-    installments integer DEFAULT 1 NOT NULL,
-    installment_value numeric,
-    paid_at timestamp without time zone,
-    refused_at timestamp without time zone,
-    pending_refund_at timestamp without time zone,
-    refunded_at timestamp without time zone,
-    created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone,
-    full_text_index tsvector,
-    deleted_at timestamp without time zone,
-    chargeback_at timestamp without time zone
-);
 
 
 --
@@ -417,108 +537,107 @@ CREATE FUNCTION was_confirmed(contributions) RETURNS boolean
     $_$;
 
 
---
--- Name: projects; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE projects (
-    id integer NOT NULL,
-    name text NOT NULL,
-    user_id integer NOT NULL,
-    category_id integer NOT NULL,
-    goal numeric,
-    headline text,
-    video_url text,
-    short_url text,
-    created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone,
-    about_html text,
-    recommended boolean DEFAULT false,
-    home_page_comment text,
-    permalink text NOT NULL,
-    video_thumbnail text,
-    state character varying(255),
-    online_days integer,
-    online_date timestamp with time zone,
-    more_links text,
-    first_contributions text,
-    uploaded_image character varying(255),
-    video_embed_url character varying(255),
-    referral_link text,
-    sent_to_analysis_at timestamp without time zone,
-    audited_user_name text,
-    audited_user_cpf text,
-    audited_user_moip_login text,
-    audited_user_phone_number text,
-    sent_to_draft_at timestamp without time zone,
-    rejected_at timestamp without time zone,
-    traffic_sources text,
-    budget text,
-    full_text_index tsvector,
-    budget_html text,
-    expires_at timestamp without time zone
-);
-
-
---
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE users (
-    id integer NOT NULL,
-    email text,
-    name text,
-    newsletter boolean DEFAULT false,
-    created_at timestamp without time zone DEFAULT now(),
-    updated_at timestamp without time zone,
-    admin boolean DEFAULT false,
-    address_street text,
-    address_number text,
-    address_complement text,
-    address_neighbourhood text,
-    address_city text,
-    address_state text,
-    address_zip_code text,
-    phone_number text,
-    locale text DEFAULT 'pt'::text NOT NULL,
-    cpf text,
-    encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying(255),
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    sign_in_count integer DEFAULT 0,
-    current_sign_in_at timestamp without time zone,
-    last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
-    twitter character varying(255),
-    facebook_link character varying(255),
-    other_link character varying(255),
-    uploaded_image text,
-    moip_login character varying(255),
-    state_inscription character varying(255),
-    channel_id integer,
-    deactivated_at timestamp without time zone,
-    reactivate_token text,
-    address_country text,
-    country_id integer,
-    authentication_token text DEFAULT md5(((random())::text || (clock_timestamp())::text)) NOT NULL,
-    zero_credits boolean DEFAULT false,
-    about_html text,
-    cover_image text,
-    permalink text,
-    subscribed_to_project_posts boolean DEFAULT true
-);
-
-
 SET search_path = "1", pg_catalog;
+
+--
+-- Name: reward_details; Type: VIEW; Schema: 1; Owner: -
+--
+
+CREATE VIEW reward_details AS
+ SELECT r.id,
+    r.description,
+    r.minimum_value,
+    r.maximum_contributions,
+    r.deliver_at,
+    r.updated_at,
+    public.paid_count(r.*) AS paid_count,
+    public.waiting_payment_count(r.*) AS waiting_payment_count
+   FROM public.rewards r;
+
 
 --
 -- Name: contribution_details; Type: VIEW; Schema: 1; Owner: -
 --
 
 CREATE VIEW contribution_details AS
-    SELECT pa.id, c.id AS contribution_id, pa.id AS payment_id, c.user_id, c.project_id, c.reward_id, p.permalink, p.name AS project_name, u.name AS user_name, u.email, u.uploaded_image, pa.key, pa.value, pa.installments, pa.installment_value, pa.state, c.anonymous, c.payer_email, pa.gateway, pa.gateway_id, pa.gateway_fee, pa.gateway_data, pa.payment_method, p.state AS project_state, (EXISTS (SELECT 1 FROM public.rewards r WHERE (r.id = c.reward_id))) AS has_rewards, pa.created_at, pa.created_at AS pending_at, pa.paid_at, pa.refused_at, pa.pending_refund_at, pa.refunded_at FROM (((public.projects p JOIN public.contributions c ON ((c.project_id = p.id))) JOIN public.payments pa ON ((c.id = pa.contribution_id))) JOIN public.users u ON ((c.user_id = u.id)));
+ SELECT pa.id,
+    c.id AS contribution_id,
+    pa.id AS payment_id,
+    c.user_id,
+    c.project_id,
+    c.reward_id,
+    p.permalink,
+    p.name AS project_name,
+    public.img_thumbnail(p.*) AS project_img,
+    p.online_date AS project_online_date,
+    p.expires_at AS project_expires_at,
+    p.state AS project_state,
+    u.name AS user_name,
+    public.profile_img_thumbnail(u.*) AS user_profile_img,
+    u.email,
+    c.anonymous,
+    c.payer_email,
+    pa.key,
+    pa.value,
+    pa.installments,
+    pa.installment_value,
+    pa.state,
+    public.is_second_slip(pa.*) AS is_second_slip,
+    pa.gateway,
+    pa.gateway_id,
+    pa.gateway_fee,
+    pa.gateway_data,
+    pa.payment_method,
+    pa.created_at,
+    pa.created_at AS pending_at,
+    pa.paid_at,
+    pa.refused_at,
+    pa.pending_refund_at,
+    pa.refunded_at,
+    pa.full_text_index,
+    row_to_json(r.*) AS reward
+   FROM ((((public.projects p
+     JOIN public.contributions c ON ((c.project_id = p.id)))
+     JOIN public.payments pa ON ((c.id = pa.contribution_id)))
+     JOIN public.users u ON ((c.user_id = u.id)))
+     LEFT JOIN reward_details r ON ((r.id = c.reward_id)));
+
+
+--
+-- Name: contribution_reports; Type: VIEW; Schema: 1; Owner: -
+--
+
+CREATE VIEW contribution_reports AS
+ SELECT b.project_id,
+    u.name,
+    replace((b.value)::text, '.'::text, ','::text) AS value,
+    replace((r.minimum_value)::text, '.'::text, ','::text) AS minimum_value,
+    r.description,
+    p.gateway,
+    (p.gateway_data -> 'acquirer_name'::text) AS acquirer_name,
+    (p.gateway_data -> 'tid'::text) AS acquirer_tid,
+    p.payment_method,
+    replace((p.gateway_fee)::text, '.'::text, ','::text) AS payment_service_fee,
+    p.key,
+    (b.created_at)::date AS created_at,
+    (p.paid_at)::date AS confirmed_at,
+    u.email,
+    b.payer_email,
+    b.payer_name,
+    COALESCE(b.payer_document, u.cpf) AS cpf,
+    u.address_street,
+    u.address_complement,
+    u.address_number,
+    u.address_neighbourhood,
+    u.address_city,
+    u.address_state,
+    u.address_zip_code,
+    p.state
+   FROM (((public.contributions b
+     JOIN public.users u ON ((u.id = b.user_id)))
+     JOIN public.payments p ON ((p.contribution_id = b.id)))
+     LEFT JOIN public.rewards r ON ((r.id = b.reward_id)))
+  WHERE (p.state = ANY (ARRAY[('paid'::character varying)::text, ('refunded'::character varying)::text, ('pending_refund'::character varying)::text]));
 
 
 SET search_path = public, pg_catalog;
@@ -544,7 +663,37 @@ SET search_path = "1", pg_catalog;
 --
 
 CREATE VIEW contribution_reports_for_project_owners AS
-    SELECT b.project_id, COALESCE(r.id, 0) AS reward_id, p.user_id AS project_owner_id, r.description AS reward_description, (r.deliver_at)::date AS deliver_at, (pa.paid_at)::date AS confirmed_at, pa.value AS contribution_value, (pa.value * (SELECT (settings.value)::numeric AS value FROM public.settings WHERE (settings.name = 'catarse_fee'::text))) AS service_fee, u.email AS user_email, COALESCE(b.payer_document, u.cpf) AS cpf, u.name AS user_name, b.payer_email, pa.gateway, b.anonymous, pa.state, public.waiting_payment(pa.*) AS waiting_payment, COALESCE(u.address_street, b.address_street) AS street, COALESCE(u.address_complement, b.address_complement) AS complement, COALESCE(u.address_number, b.address_number) AS address_number, COALESCE(u.address_neighbourhood, b.address_neighbourhood) AS neighbourhood, COALESCE(u.address_city, b.address_city) AS city, COALESCE(u.address_state, b.address_state) AS address_state, COALESCE(u.address_zip_code, b.address_zip_code) AS zip_code FROM ((((public.contributions b JOIN public.users u ON ((u.id = b.user_id))) JOIN public.projects p ON ((b.project_id = p.id))) JOIN public.payments pa ON ((pa.contribution_id = b.id))) LEFT JOIN public.rewards r ON ((r.id = b.reward_id))) WHERE (pa.state = ANY (ARRAY[('paid'::character varying)::text, ('pending'::character varying)::text]));
+ SELECT b.project_id,
+    COALESCE(r.id, 0) AS reward_id,
+    p.user_id AS project_owner_id,
+    r.description AS reward_description,
+    (r.deliver_at)::date AS deliver_at,
+    (pa.paid_at)::date AS confirmed_at,
+    pa.value AS contribution_value,
+    (pa.value * ( SELECT (settings.value)::numeric AS value
+           FROM public.settings
+          WHERE (settings.name = 'catarse_fee'::text))) AS service_fee,
+    u.email AS user_email,
+    COALESCE(b.payer_document, u.cpf) AS cpf,
+    u.name AS user_name,
+    b.payer_email,
+    pa.gateway,
+    b.anonymous,
+    pa.state,
+    public.waiting_payment(pa.*) AS waiting_payment,
+    COALESCE(u.address_street, b.address_street) AS street,
+    COALESCE(u.address_complement, b.address_complement) AS complement,
+    COALESCE(u.address_number, b.address_number) AS address_number,
+    COALESCE(u.address_neighbourhood, b.address_neighbourhood) AS neighbourhood,
+    COALESCE(u.address_city, b.address_city) AS city,
+    COALESCE(u.address_state, b.address_state) AS address_state,
+    COALESCE(u.address_zip_code, b.address_zip_code) AS zip_code
+   FROM ((((public.contributions b
+     JOIN public.users u ON ((u.id = b.user_id)))
+     JOIN public.projects p ON ((b.project_id = p.id)))
+     JOIN public.payments pa ON ((pa.contribution_id = b.id)))
+     LEFT JOIN public.rewards r ON ((r.id = b.reward_id)))
+  WHERE (pa.state = ANY (ARRAY[('paid'::character varying)::text, ('pending'::character varying)::text]));
 
 
 --
@@ -559,37 +708,102 @@ CREATE TABLE project_totals (
     total_contributions bigint
 );
 
+ALTER TABLE ONLY project_totals REPLICA IDENTITY NOTHING;
+
 
 --
 -- Name: recommendations; Type: VIEW; Schema: 1; Owner: -
 --
 
 CREATE VIEW recommendations AS
-    SELECT recommendations.user_id, recommendations.project_id, (sum(recommendations.count))::bigint AS count FROM (SELECT b.user_id, recommendations_1.id AS project_id, count(DISTINCT recommenders.user_id) AS count FROM (((public.contributions b JOIN public.contributions backers_same_projects USING (project_id)) JOIN public.contributions recommenders ON ((recommenders.user_id = backers_same_projects.user_id))) JOIN public.projects recommendations_1 ON ((recommendations_1.id = recommenders.project_id))) WHERE ((((((((public.was_confirmed(b.*) AND public.was_confirmed(backers_same_projects.*)) AND public.was_confirmed(recommenders.*)) AND (b.updated_at > (now() - '6 mons'::interval))) AND (recommenders.updated_at > (now() - '2 mons'::interval))) AND ((recommendations_1.state)::text = 'online'::text)) AND (b.user_id <> backers_same_projects.user_id)) AND (recommendations_1.id <> b.project_id)) AND (NOT (EXISTS (SELECT true AS bool FROM public.contributions b2 WHERE ((public.was_confirmed(b2.*) AND (b2.user_id = b.user_id)) AND (b2.project_id = recommendations_1.id)))))) GROUP BY b.user_id, recommendations_1.id UNION SELECT b.user_id, recommendations_1.id AS project_id, 0 AS count FROM ((public.contributions b JOIN public.projects p ON ((b.project_id = p.id))) JOIN public.projects recommendations_1 ON ((recommendations_1.category_id = p.category_id))) WHERE (public.was_confirmed(b.*) AND ((recommendations_1.state)::text = 'online'::text))) recommendations WHERE (NOT (EXISTS (SELECT true AS bool FROM public.contributions b2 WHERE ((public.was_confirmed(b2.*) AND (b2.user_id = recommendations.user_id)) AND (b2.project_id = recommendations.project_id))))) GROUP BY recommendations.user_id, recommendations.project_id ORDER BY (sum(recommendations.count))::bigint DESC;
+ SELECT recommendations.user_id,
+    recommendations.project_id,
+    (sum(recommendations.count))::bigint AS count
+   FROM ( SELECT b.user_id,
+            recommendations_1.id AS project_id,
+            count(DISTINCT recommenders.user_id) AS count
+           FROM (((public.contributions b
+             JOIN public.contributions backers_same_projects USING (project_id))
+             JOIN public.contributions recommenders ON ((recommenders.user_id = backers_same_projects.user_id)))
+             JOIN public.projects recommendations_1 ON ((recommendations_1.id = recommenders.project_id)))
+          WHERE ((((((((public.was_confirmed(b.*) AND public.was_confirmed(backers_same_projects.*)) AND public.was_confirmed(recommenders.*)) AND (b.updated_at > (now() - '6 mons'::interval))) AND (recommenders.updated_at > (now() - '2 mons'::interval))) AND ((recommendations_1.state)::text = 'online'::text)) AND (b.user_id <> backers_same_projects.user_id)) AND (recommendations_1.id <> b.project_id)) AND (NOT (EXISTS ( SELECT true AS bool
+                   FROM public.contributions b2
+                  WHERE ((public.was_confirmed(b2.*) AND (b2.user_id = b.user_id)) AND (b2.project_id = recommendations_1.id))))))
+          GROUP BY b.user_id, recommendations_1.id
+        UNION
+         SELECT b.user_id,
+            recommendations_1.id AS project_id,
+            0 AS count
+           FROM ((public.contributions b
+             JOIN public.projects p ON ((b.project_id = p.id)))
+             JOIN public.projects recommendations_1 ON ((recommendations_1.category_id = p.category_id)))
+          WHERE (public.was_confirmed(b.*) AND ((recommendations_1.state)::text = 'online'::text))) recommendations
+  WHERE (NOT (EXISTS ( SELECT true AS bool
+           FROM public.contributions b2
+          WHERE ((public.was_confirmed(b2.*) AND (b2.user_id = recommendations.user_id)) AND (b2.project_id = recommendations.project_id)))))
+  GROUP BY recommendations.user_id, recommendations.project_id
+  ORDER BY (sum(recommendations.count))::bigint DESC;
 
 
 --
--- Name: reward_details; Type: VIEW; Schema: 1; Owner: -
+-- Name: statistics; Type: MATERIALIZED VIEW; Schema: 1; Owner: -; Tablespace: 
 --
 
-CREATE VIEW reward_details AS
-    SELECT r.id, r.description, r.minimum_value, r.maximum_contributions, r.deliver_at, r.updated_at, public.paid_count(r.*) AS paid_count, public.waiting_payment_count(r.*) AS waiting_payment_count FROM public.rewards r;
+CREATE MATERIALIZED VIEW statistics AS
+ SELECT ( SELECT count(*) AS count
+           FROM public.users) AS total_users,
+    contributions_totals.total_contributions,
+    contributions_totals.total_contributors,
+    contributions_totals.total_contributed,
+    projects_totals.total_projects,
+    projects_totals.total_projects_success,
+    projects_totals.total_projects_online
+   FROM ( SELECT count(DISTINCT c.id) AS total_contributions,
+            count(DISTINCT c.user_id) AS total_contributors,
+            sum(p.value) AS total_contributed
+           FROM (public.contributions c
+             JOIN public.payments p ON ((p.contribution_id = c.id)))
+          WHERE (p.state = ANY (public.confirmed_states()))) contributions_totals,
+    ( SELECT count(*) AS total_projects,
+            count(
+                CASE
+                    WHEN ((projects.state)::text = 'successful'::text) THEN 1
+                    ELSE NULL::integer
+                END) AS total_projects_success,
+            count(
+                CASE
+                    WHEN ((projects.state)::text = 'online'::text) THEN 1
+                    ELSE NULL::integer
+                END) AS total_projects_online
+           FROM public.projects
+          WHERE ((projects.state)::text <> ALL (ARRAY[('draft'::character varying)::text, ('rejected'::character varying)::text]))) projects_totals
+  WITH NO DATA;
 
 
 --
--- Name: statistics; Type: VIEW; Schema: 1; Owner: -
+-- Name: user_totals; Type: MATERIALIZED VIEW; Schema: 1; Owner: -; Tablespace: 
 --
 
-CREATE VIEW statistics AS
-    SELECT (SELECT count(*) AS count FROM public.users) AS total_users, contributions_totals.total_contributions, contributions_totals.total_contributors, contributions_totals.total_contributed, projects_totals.total_projects, projects_totals.total_projects_success, projects_totals.total_projects_online FROM (SELECT count(DISTINCT c.id) AS total_contributions, count(DISTINCT c.user_id) AS total_contributors, sum(p.value) AS total_contributed FROM (public.contributions c JOIN public.payments p ON ((p.contribution_id = c.id))) WHERE (p.state = ANY (public.confirmed_states()))) contributions_totals, (SELECT count(*) AS total_projects, count(CASE WHEN ((projects.state)::text = 'successful'::text) THEN 1 ELSE NULL::integer END) AS total_projects_success, count(CASE WHEN ((projects.state)::text = 'online'::text) THEN 1 ELSE NULL::integer END) AS total_projects_online FROM public.projects WHERE ((projects.state)::text <> ALL (ARRAY[('draft'::character varying)::text, ('rejected'::character varying)::text]))) projects_totals;
-
-
---
--- Name: user_totals; Type: VIEW; Schema: 1; Owner: -
---
-
-CREATE VIEW user_totals AS
-    SELECT b.user_id AS id, b.user_id, count(DISTINCT b.project_id) AS total_contributed_projects, sum(pa.value) AS sum, count(DISTINCT b.id) AS count, sum(CASE WHEN (((p.state)::text <> 'failed'::text) AND (NOT public.uses_credits(pa.*))) THEN (0)::numeric WHEN (((p.state)::text = 'failed'::text) AND public.uses_credits(pa.*)) THEN (0)::numeric WHEN (((p.state)::text = 'failed'::text) AND (((pa.state = ANY (ARRAY[('pending_refund'::character varying)::text, ('refunded'::character varying)::text])) AND (NOT public.uses_credits(pa.*))) OR (public.uses_credits(pa.*) AND (NOT (pa.state = ANY (ARRAY[('pending_refund'::character varying)::text, ('refunded'::character varying)::text])))))) THEN (0)::numeric WHEN ((((p.state)::text = 'failed'::text) AND (NOT public.uses_credits(pa.*))) AND (pa.state = 'paid'::text)) THEN pa.value ELSE (pa.value * ((-1))::numeric) END) AS credits FROM ((public.contributions b JOIN public.payments pa ON ((b.id = pa.contribution_id))) JOIN public.projects p ON ((b.project_id = p.id))) WHERE (pa.state = ANY (public.confirmed_states())) GROUP BY b.user_id;
+CREATE MATERIALIZED VIEW user_totals AS
+ SELECT b.user_id AS id,
+    b.user_id,
+    count(DISTINCT b.project_id) AS total_contributed_projects,
+    sum(pa.value) AS sum,
+    count(DISTINCT b.id) AS count,
+    sum(
+        CASE
+            WHEN (((p.state)::text <> 'failed'::text) AND (NOT public.uses_credits(pa.*))) THEN (0)::numeric
+            WHEN (((p.state)::text = 'failed'::text) AND public.uses_credits(pa.*)) THEN (0)::numeric
+            WHEN (((p.state)::text = 'failed'::text) AND (((pa.state = ANY (ARRAY[('pending_refund'::character varying)::text, ('refunded'::character varying)::text])) AND (NOT public.uses_credits(pa.*))) OR (public.uses_credits(pa.*) AND (NOT (pa.state = ANY (ARRAY[('pending_refund'::character varying)::text, ('refunded'::character varying)::text])))))) THEN (0)::numeric
+            WHEN ((((p.state)::text = 'failed'::text) AND (NOT public.uses_credits(pa.*))) AND (pa.state = 'paid'::text)) THEN pa.value
+            ELSE (pa.value * ((-1))::numeric)
+        END) AS credits
+   FROM ((public.contributions b
+     JOIN public.payments pa ON ((b.id = pa.contribution_id)))
+     JOIN public.projects p ON ((b.project_id = p.id)))
+  WHERE (pa.state = ANY (public.confirmed_states()))
+  GROUP BY b.user_id
+  WITH NO DATA;
 
 
 SET search_path = postgrest, pg_catalog;
@@ -1084,22 +1298,6 @@ ALTER SEQUENCE contribution_notifications_id_seq OWNED BY contribution_notificat
 
 
 --
--- Name: contribution_reports; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW contribution_reports AS
-    SELECT b.project_id, u.name, replace((b.value)::text, '.'::text, ','::text) AS value, replace((r.minimum_value)::text, '.'::text, ','::text) AS minimum_value, r.description, b.payment_method, b.acquirer_name, b.acquirer_tid, b.payment_choice, replace((b.payment_service_fee)::text, '.'::text, ','::text) AS payment_service_fee, b.key, (b.created_at)::date AS created_at, (b.confirmed_at)::date AS confirmed_at, u.email, b.payer_email, b.payer_name, COALESCE(b.payer_document, u.cpf) AS cpf, u.address_street, u.address_complement, u.address_number, u.address_neighbourhood, u.address_city, u.address_state, u.address_zip_code, b.state FROM ((contributions b JOIN users u ON ((u.id = b.user_id))) LEFT JOIN rewards r ON ((r.id = b.reward_id))) WHERE ((b.state)::text = ANY ((ARRAY['confirmed'::character varying, 'refunded'::character varying, 'requested_refund'::character varying])::text[]));
-
-
---
--- Name: contributions_by_periods; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW contributions_by_periods AS
-    WITH weeks AS (SELECT to_char(current_year.current_year, 'yyyy-mm W'::text) AS current_year, to_char(last_year.last_year, 'yyyy-mm W'::text) AS last_year, current_year.current_year AS label FROM (generate_series((now() - '49 days'::interval), now(), '7 days'::interval) current_year(current_year) JOIN generate_series((now() - '1 year 49 days'::interval), (now() - '1 year'::interval), '7 days'::interval) last_year(last_year) ON ((to_char(last_year.last_year, 'mm W'::text) = to_char(current_year.current_year, 'mm W'::text))))), current_year AS (SELECT w.label, sum(cc.value) AS current_year FROM (contributions cc JOIN weeks w ON ((w.current_year = to_char(cc.confirmed_at, 'yyyy-mm W'::text)))) WHERE ((cc.state)::text = 'confirmed'::text) GROUP BY w.label), last_year AS (SELECT w.label, sum(cc.value) AS last_year FROM (contributions cc JOIN weeks w ON ((w.last_year = to_char(cc.confirmed_at, 'yyyy-mm W'::text)))) WHERE ((cc.state)::text = 'confirmed'::text) GROUP BY w.label) SELECT current_year.label, current_year.current_year, last_year.last_year FROM (current_year JOIN last_year USING (label));
-
-
---
 -- Name: contributions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1224,7 +1422,13 @@ ALTER SEQUENCE dbhero_dataclips_id_seq OWNED BY dbhero_dataclips.id;
 --
 
 CREATE VIEW financial_reports AS
-    SELECT p.name, u.moip_login, p.goal, p.expires_at, p.state FROM (projects p JOIN users u ON ((u.id = p.user_id)));
+ SELECT p.name,
+    u.moip_login,
+    p.goal,
+    p.expires_at,
+    p.state
+   FROM (projects p
+     JOIN users u ON ((u.id = p.user_id)));
 
 
 --
@@ -1268,6 +1472,38 @@ ALTER SEQUENCE oauth_providers_id_seq OWNED BY oauth_providers.id;
 
 
 --
+-- Name: payment_logs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE payment_logs (
+    id integer NOT NULL,
+    gateway_id character varying(255) NOT NULL,
+    data json NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: payment_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE payment_logs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: payment_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE payment_logs_id_seq OWNED BY payment_logs.id;
+
+
+--
 -- Name: payment_notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1298,6 +1534,40 @@ CREATE SEQUENCE payment_notifications_id_seq
 --
 
 ALTER SEQUENCE payment_notifications_id_seq OWNED BY payment_notifications.id;
+
+
+--
+-- Name: payment_transfers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE payment_transfers (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    payment_id integer NOT NULL,
+    transfer_id text NOT NULL,
+    transfer_data json,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: payment_transfers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE payment_transfers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: payment_transfers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE payment_transfers_id_seq OWNED BY payment_transfers.id;
 
 
 --
@@ -1457,7 +1727,34 @@ ALTER SEQUENCE project_budgets_id_seq OWNED BY project_budgets.id;
 --
 
 CREATE VIEW project_financials AS
-    WITH catarse_fee_percentage AS (SELECT (c.value)::numeric AS total, ((1)::numeric - (c.value)::numeric) AS complement FROM settings c WHERE (c.name = 'catarse_fee'::text)), catarse_base_url AS (SELECT c.value FROM settings c WHERE (c.name = 'base_url'::text)) SELECT p.id AS project_id, p.name, u.moip_login AS moip, p.goal, pt.pledged AS reached, pt.total_payment_service_fee AS payment_tax, (cp.total * pt.pledged) AS catarse_fee, (pt.pledged * cp.complement) AS repass_value, to_char(timezone(COALESCE((SELECT settings.value FROM settings WHERE (settings.name = 'timezone'::text)), 'America/Sao_Paulo'::text), p.expires_at), 'dd/mm/yyyy'::text) AS expires_at, ((catarse_base_url.value || '/admin/reports/contribution_reports.csv?project_id='::text) || p.id) AS contribution_report, p.state FROM ((((projects p JOIN users u ON ((u.id = p.user_id))) LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id))) CROSS JOIN catarse_fee_percentage cp) CROSS JOIN catarse_base_url);
+ WITH catarse_fee_percentage AS (
+         SELECT (c.value)::numeric AS total,
+            ((1)::numeric - (c.value)::numeric) AS complement
+           FROM settings c
+          WHERE (c.name = 'catarse_fee'::text)
+        ), catarse_base_url AS (
+         SELECT c.value
+           FROM settings c
+          WHERE (c.name = 'base_url'::text)
+        )
+ SELECT p.id AS project_id,
+    p.name,
+    u.moip_login AS moip,
+    p.goal,
+    pt.pledged AS reached,
+    pt.total_payment_service_fee AS payment_tax,
+    (cp.total * pt.pledged) AS catarse_fee,
+    (pt.pledged * cp.complement) AS repass_value,
+    to_char(timezone(COALESCE(( SELECT settings.value
+           FROM settings
+          WHERE (settings.name = 'timezone'::text)), 'America/Sao_Paulo'::text), p.expires_at), 'dd/mm/yyyy'::text) AS expires_at,
+    ((catarse_base_url.value || '/admin/reports/contribution_reports.csv?project_id='::text) || p.id) AS contribution_report,
+    p.state
+   FROM ((((projects p
+     JOIN users u ON ((u.id = p.user_id)))
+     LEFT JOIN "1".project_totals pt ON ((pt.project_id = p.id)))
+     CROSS JOIN catarse_fee_percentage cp)
+     CROSS JOIN catarse_base_url);
 
 
 --
@@ -1557,7 +1854,182 @@ CREATE TABLE project_posts (
 --
 
 CREATE VIEW projects_for_home AS
-    WITH recommended_projects AS (SELECT 'recommended'::text AS origin, recommends.id, recommends.name, recommends.expires_at, recommends.user_id, recommends.category_id, recommends.goal, recommends.headline, recommends.video_url, recommends.short_url, recommends.created_at, recommends.updated_at, recommends.about_html, recommends.recommended, recommends.home_page_comment, recommends.permalink, recommends.video_thumbnail, recommends.state, recommends.online_days, recommends.online_date, recommends.traffic_sources, recommends.more_links, recommends.first_contributions AS first_backers, recommends.uploaded_image, recommends.video_embed_url FROM projects recommends WHERE (recommends.recommended AND ((recommends.state)::text = 'online'::text)) ORDER BY random() LIMIT 3), recents_projects AS (SELECT 'recents'::text AS origin, recents.id, recents.name, recents.expires_at, recents.user_id, recents.category_id, recents.goal, recents.headline, recents.video_url, recents.short_url, recents.created_at, recents.updated_at, recents.about_html, recents.recommended, recents.home_page_comment, recents.permalink, recents.video_thumbnail, recents.state, recents.online_days, recents.online_date, recents.traffic_sources, recents.more_links, recents.first_contributions AS first_backers, recents.uploaded_image, recents.video_embed_url FROM projects recents WHERE ((((recents.state)::text = 'online'::text) AND ((now() - recents.online_date) <= '5 days'::interval)) AND (NOT (recents.id IN (SELECT recommends.id FROM recommended_projects recommends)))) ORDER BY random() LIMIT 3), expiring_projects AS (SELECT 'expiring'::text AS origin, expiring.id, expiring.name, expiring.expires_at, expiring.user_id, expiring.category_id, expiring.goal, expiring.headline, expiring.video_url, expiring.short_url, expiring.created_at, expiring.updated_at, expiring.about_html, expiring.recommended, expiring.home_page_comment, expiring.permalink, expiring.video_thumbnail, expiring.state, expiring.online_days, expiring.online_date, expiring.traffic_sources, expiring.more_links, expiring.first_contributions AS first_backers, expiring.uploaded_image, expiring.video_embed_url FROM projects expiring WHERE ((((expiring.state)::text = 'online'::text) AND (expiring.expires_at <= (now() + '14 days'::interval))) AND (NOT (expiring.id IN (SELECT recommends.id FROM recommended_projects recommends UNION SELECT recents.id FROM recents_projects recents)))) ORDER BY random() LIMIT 3) (SELECT recommended_projects.origin, recommended_projects.id, recommended_projects.name, recommended_projects.expires_at, recommended_projects.user_id, recommended_projects.category_id, recommended_projects.goal, recommended_projects.headline, recommended_projects.video_url, recommended_projects.short_url, recommended_projects.created_at, recommended_projects.updated_at, recommended_projects.about_html, recommended_projects.recommended, recommended_projects.home_page_comment, recommended_projects.permalink, recommended_projects.video_thumbnail, recommended_projects.state, recommended_projects.online_days, recommended_projects.online_date, recommended_projects.traffic_sources, recommended_projects.more_links, recommended_projects.first_backers, recommended_projects.uploaded_image, recommended_projects.video_embed_url FROM recommended_projects UNION SELECT recents_projects.origin, recents_projects.id, recents_projects.name, recents_projects.expires_at, recents_projects.user_id, recents_projects.category_id, recents_projects.goal, recents_projects.headline, recents_projects.video_url, recents_projects.short_url, recents_projects.created_at, recents_projects.updated_at, recents_projects.about_html, recents_projects.recommended, recents_projects.home_page_comment, recents_projects.permalink, recents_projects.video_thumbnail, recents_projects.state, recents_projects.online_days, recents_projects.online_date, recents_projects.traffic_sources, recents_projects.more_links, recents_projects.first_backers, recents_projects.uploaded_image, recents_projects.video_embed_url FROM recents_projects) UNION SELECT expiring_projects.origin, expiring_projects.id, expiring_projects.name, expiring_projects.expires_at, expiring_projects.user_id, expiring_projects.category_id, expiring_projects.goal, expiring_projects.headline, expiring_projects.video_url, expiring_projects.short_url, expiring_projects.created_at, expiring_projects.updated_at, expiring_projects.about_html, expiring_projects.recommended, expiring_projects.home_page_comment, expiring_projects.permalink, expiring_projects.video_thumbnail, expiring_projects.state, expiring_projects.online_days, expiring_projects.online_date, expiring_projects.traffic_sources, expiring_projects.more_links, expiring_projects.first_backers, expiring_projects.uploaded_image, expiring_projects.video_embed_url FROM expiring_projects;
+ WITH recommended_projects AS (
+         SELECT 'recommended'::text AS origin,
+            recommends.id,
+            recommends.name,
+            recommends.expires_at,
+            recommends.user_id,
+            recommends.category_id,
+            recommends.goal,
+            recommends.headline,
+            recommends.video_url,
+            recommends.short_url,
+            recommends.created_at,
+            recommends.updated_at,
+            recommends.about_html,
+            recommends.recommended,
+            recommends.home_page_comment,
+            recommends.permalink,
+            recommends.video_thumbnail,
+            recommends.state,
+            recommends.online_days,
+            recommends.online_date,
+            recommends.traffic_sources,
+            recommends.more_links,
+            recommends.first_contributions AS first_backers,
+            recommends.uploaded_image,
+            recommends.video_embed_url
+           FROM projects recommends
+          WHERE (recommends.recommended AND ((recommends.state)::text = 'online'::text))
+          ORDER BY random()
+         LIMIT 3
+        ), recents_projects AS (
+         SELECT 'recents'::text AS origin,
+            recents.id,
+            recents.name,
+            recents.expires_at,
+            recents.user_id,
+            recents.category_id,
+            recents.goal,
+            recents.headline,
+            recents.video_url,
+            recents.short_url,
+            recents.created_at,
+            recents.updated_at,
+            recents.about_html,
+            recents.recommended,
+            recents.home_page_comment,
+            recents.permalink,
+            recents.video_thumbnail,
+            recents.state,
+            recents.online_days,
+            recents.online_date,
+            recents.traffic_sources,
+            recents.more_links,
+            recents.first_contributions AS first_backers,
+            recents.uploaded_image,
+            recents.video_embed_url
+           FROM projects recents
+          WHERE ((((recents.state)::text = 'online'::text) AND ((now() - recents.online_date) <= '5 days'::interval)) AND (NOT (recents.id IN ( SELECT recommends.id
+                   FROM recommended_projects recommends))))
+          ORDER BY random()
+         LIMIT 3
+        ), expiring_projects AS (
+         SELECT 'expiring'::text AS origin,
+            expiring.id,
+            expiring.name,
+            expiring.expires_at,
+            expiring.user_id,
+            expiring.category_id,
+            expiring.goal,
+            expiring.headline,
+            expiring.video_url,
+            expiring.short_url,
+            expiring.created_at,
+            expiring.updated_at,
+            expiring.about_html,
+            expiring.recommended,
+            expiring.home_page_comment,
+            expiring.permalink,
+            expiring.video_thumbnail,
+            expiring.state,
+            expiring.online_days,
+            expiring.online_date,
+            expiring.traffic_sources,
+            expiring.more_links,
+            expiring.first_contributions AS first_backers,
+            expiring.uploaded_image,
+            expiring.video_embed_url
+           FROM projects expiring
+          WHERE ((((expiring.state)::text = 'online'::text) AND (expiring.expires_at <= (now() + '14 days'::interval))) AND (NOT (expiring.id IN ( SELECT recommends.id
+                   FROM recommended_projects recommends
+                UNION
+                 SELECT recents.id
+                   FROM recents_projects recents))))
+          ORDER BY random()
+         LIMIT 3
+        )
+ SELECT recommended_projects.origin,
+    recommended_projects.id,
+    recommended_projects.name,
+    recommended_projects.expires_at,
+    recommended_projects.user_id,
+    recommended_projects.category_id,
+    recommended_projects.goal,
+    recommended_projects.headline,
+    recommended_projects.video_url,
+    recommended_projects.short_url,
+    recommended_projects.created_at,
+    recommended_projects.updated_at,
+    recommended_projects.about_html,
+    recommended_projects.recommended,
+    recommended_projects.home_page_comment,
+    recommended_projects.permalink,
+    recommended_projects.video_thumbnail,
+    recommended_projects.state,
+    recommended_projects.online_days,
+    recommended_projects.online_date,
+    recommended_projects.traffic_sources,
+    recommended_projects.more_links,
+    recommended_projects.first_backers,
+    recommended_projects.uploaded_image,
+    recommended_projects.video_embed_url
+   FROM recommended_projects
+UNION
+ SELECT recents_projects.origin,
+    recents_projects.id,
+    recents_projects.name,
+    recents_projects.expires_at,
+    recents_projects.user_id,
+    recents_projects.category_id,
+    recents_projects.goal,
+    recents_projects.headline,
+    recents_projects.video_url,
+    recents_projects.short_url,
+    recents_projects.created_at,
+    recents_projects.updated_at,
+    recents_projects.about_html,
+    recents_projects.recommended,
+    recents_projects.home_page_comment,
+    recents_projects.permalink,
+    recents_projects.video_thumbnail,
+    recents_projects.state,
+    recents_projects.online_days,
+    recents_projects.online_date,
+    recents_projects.traffic_sources,
+    recents_projects.more_links,
+    recents_projects.first_backers,
+    recents_projects.uploaded_image,
+    recents_projects.video_embed_url
+   FROM recents_projects
+UNION
+ SELECT expiring_projects.origin,
+    expiring_projects.id,
+    expiring_projects.name,
+    expiring_projects.expires_at,
+    expiring_projects.user_id,
+    expiring_projects.category_id,
+    expiring_projects.goal,
+    expiring_projects.headline,
+    expiring_projects.video_url,
+    expiring_projects.short_url,
+    expiring_projects.created_at,
+    expiring_projects.updated_at,
+    expiring_projects.about_html,
+    expiring_projects.recommended,
+    expiring_projects.home_page_comment,
+    expiring_projects.permalink,
+    expiring_projects.video_thumbnail,
+    expiring_projects.state,
+    expiring_projects.online_days,
+    expiring_projects.online_date,
+    expiring_projects.traffic_sources,
+    expiring_projects.more_links,
+    expiring_projects.first_backers,
+    expiring_projects.uploaded_image,
+    expiring_projects.video_embed_url
+   FROM expiring_projects;
 
 
 --
@@ -1584,7 +2056,30 @@ ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
 --
 
 CREATE VIEW projects_in_analysis_by_periods AS
-    WITH weeks AS (SELECT to_char(current_year.current_year, 'yyyy-mm W'::text) AS current_year, to_char(last_year.last_year, 'yyyy-mm W'::text) AS last_year, current_year.current_year AS label FROM (generate_series((now() - '49 days'::interval), now(), '7 days'::interval) current_year(current_year) JOIN generate_series((now() - '1 year 49 days'::interval), (now() - '1 year'::interval), '7 days'::interval) last_year(last_year) ON ((to_char(last_year.last_year, 'mm W'::text) = to_char(current_year.current_year, 'mm W'::text))))), current_year AS (SELECT w.label, count(*) AS current_year FROM (projects p JOIN weeks w ON ((w.current_year = to_char(p.sent_to_analysis_at, 'yyyy-mm W'::text)))) GROUP BY w.label), last_year AS (SELECT w.label, count(*) AS last_year FROM (projects p JOIN weeks w ON ((w.last_year = to_char(p.sent_to_analysis_at, 'yyyy-mm W'::text)))) GROUP BY w.label) SELECT current_year.label, current_year.current_year, last_year.last_year FROM (current_year JOIN last_year USING (label));
+ WITH weeks AS (
+         SELECT to_char(current_year_1.current_year, 'yyyy-mm W'::text) AS current_year,
+            to_char(last_year_1.last_year, 'yyyy-mm W'::text) AS last_year,
+            current_year_1.current_year AS label
+           FROM (generate_series((now() - '49 days'::interval), now(), '7 days'::interval) current_year_1(current_year)
+             JOIN generate_series((now() - '1 year 49 days'::interval), (now() - '1 year'::interval), '7 days'::interval) last_year_1(last_year) ON ((to_char(last_year_1.last_year, 'mm W'::text) = to_char(current_year_1.current_year, 'mm W'::text))))
+        ), current_year AS (
+         SELECT w.label,
+            count(*) AS current_year
+           FROM (projects p
+             JOIN weeks w ON ((w.current_year = to_char(p.sent_to_analysis_at, 'yyyy-mm W'::text))))
+          GROUP BY w.label
+        ), last_year AS (
+         SELECT w.label,
+            count(*) AS last_year
+           FROM (projects p
+             JOIN weeks w ON ((w.last_year = to_char(p.sent_to_analysis_at, 'yyyy-mm W'::text))))
+          GROUP BY w.label
+        )
+ SELECT current_year.label,
+    current_year.current_year,
+    last_year.last_year
+   FROM (current_year
+     JOIN last_year USING (label));
 
 
 --
@@ -1693,7 +2188,12 @@ ALTER SEQUENCE states_id_seq OWNED BY states.id;
 --
 
 CREATE VIEW subscriber_reports AS
-    SELECT u.id, cs.channel_id, u.name, u.email FROM (users u JOIN channels_subscribers cs ON ((cs.user_id = u.id)));
+ SELECT u.id,
+    cs.channel_id,
+    u.name,
+    u.email
+   FROM (users u
+     JOIN channels_subscribers cs ON ((cs.user_id = u.id)));
 
 
 --
@@ -1976,7 +2476,21 @@ ALTER TABLE ONLY oauth_providers ALTER COLUMN id SET DEFAULT nextval('oauth_prov
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY payment_logs ALTER COLUMN id SET DEFAULT nextval('payment_logs_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY payment_notifications ALTER COLUMN id SET DEFAULT nextval('payment_notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY payment_transfers ALTER COLUMN id SET DEFAULT nextval('payment_transfers_id_seq'::regclass);
 
 
 --
@@ -2265,11 +2779,27 @@ ALTER TABLE ONLY oauth_providers
 
 
 --
+-- Name: payment_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY payment_logs
+    ADD CONSTRAINT payment_logs_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: payment_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY payment_notifications
     ADD CONSTRAINT payment_notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: payment_transfers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY payment_transfers
+    ADD CONSTRAINT payment_transfers_pkey PRIMARY KEY (id);
 
 
 --
@@ -2507,6 +3037,20 @@ CREATE INDEX fk__payment_notifications_payment_id ON payment_notifications USING
 
 
 --
+-- Name: fk__payment_transfers_payment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__payment_transfers_payment_id ON payment_transfers USING btree (payment_id);
+
+
+--
+-- Name: fk__payment_transfers_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__payment_transfers_user_id ON payment_transfers USING btree (user_id);
+
+
+--
 -- Name: fk__payments_contribution_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2710,13 +3254,6 @@ CREATE INDEX index_contributions_on_created_at ON contributions USING btree (cre
 
 
 --
--- Name: index_contributions_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_contributions_on_key ON contributions USING btree (key);
-
-
---
 -- Name: index_contributions_on_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2897,7 +3434,17 @@ SET search_path = "1", pg_catalog;
 -- Name: _RETURN; Type: RULE; Schema: 1; Owner: -
 --
 
-CREATE RULE "_RETURN" AS ON SELECT TO project_totals DO INSTEAD SELECT c.project_id, sum(p.value) AS pledged, ((sum(p.value) / projects.goal) * (100)::numeric) AS progress, sum(p.gateway_fee) AS total_payment_service_fee, count(DISTINCT c.id) AS total_contributions FROM ((public.contributions c JOIN public.projects ON ((c.project_id = projects.id))) JOIN public.payments p ON ((p.contribution_id = c.id))) WHERE (p.state = ANY (public.confirmed_states())) GROUP BY c.project_id, projects.id;
+CREATE RULE "_RETURN" AS
+    ON SELECT TO project_totals DO INSTEAD  SELECT c.project_id,
+    sum(p.value) AS pledged,
+    ((sum(p.value) / projects.goal) * (100)::numeric) AS progress,
+    sum(p.gateway_fee) AS total_payment_service_fee,
+    count(DISTINCT c.id) AS total_contributions
+   FROM ((public.contributions c
+     JOIN public.projects ON ((c.project_id = projects.id)))
+     JOIN public.payments p ON ((p.contribution_id = c.id)))
+  WHERE (p.state = ANY (public.confirmed_states()))
+  GROUP BY c.project_id, projects.id;
 
 
 SET search_path = postgrest, pg_catalog;
@@ -3147,6 +3694,22 @@ ALTER TABLE ONLY payment_notifications
 
 
 --
+-- Name: fk_payment_transfers_payment_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY payment_transfers
+    ADD CONSTRAINT fk_payment_transfers_payment_id FOREIGN KEY (payment_id) REFERENCES payments(id);
+
+
+--
+-- Name: fk_payment_transfers_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY payment_transfers
+    ADD CONSTRAINT fk_payment_transfers_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- Name: fk_payments_contribution_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3318,7 +3881,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public, "1";
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 

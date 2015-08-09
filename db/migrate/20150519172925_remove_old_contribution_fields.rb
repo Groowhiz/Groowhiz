@@ -1,6 +1,5 @@
 class RemoveOldContributionFields < ActiveRecord::Migration
   def change
-=begin
     execute "DROP VIEW IF EXISTS temp.contribution_to_fix_details;"
     execute "DROP VIEW IF EXISTS user_feeds;"
     execute "DROP VIEW IF EXISTS contributions_by_periods;"
@@ -24,6 +23,5 @@ class RemoveOldContributionFields < ActiveRecord::Migration
     remove_column :contributions, :acquirer_tid
     remove_column :contributions, :installment_value
     remove_column :contributions, :card_brand
-=end
   end
 end

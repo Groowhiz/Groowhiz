@@ -1,6 +1,5 @@
 class AddRewardDescriptionToContributionDetails < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
     DROP VIEW "1".contribution_details;
     CREATE VIEW "1".contribution_details AS
@@ -97,6 +96,5 @@ class AddRewardDescriptionToContributionDetails < ActiveRecord::Migration
        LEFT JOIN rewards r ON r.id = c.reward_id;
     GRANT select ON ALL TABLES IN SCHEMA "1" TO admin;
    SQL
-=end
   end
 end

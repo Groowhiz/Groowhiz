@@ -1,6 +1,5 @@
 class RefactorContributionReports < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
     DROP VIEW contribution_reports;
     CREATE OR REPLACE VIEW "1".contribution_reports AS
@@ -36,7 +35,6 @@ class RefactorContributionReports < ActiveRecord::Migration
         LEFT JOIN rewards r ON r.id = b.reward_id
       WHERE p.state::text = ANY (ARRAY['paid'::character varying::text, 'refunded'::character varying::text, 'pending_refund'::character varying::text]);
     SQL
-=end
   end
 
   def down

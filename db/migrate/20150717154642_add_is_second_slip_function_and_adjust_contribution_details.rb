@@ -1,6 +1,5 @@
 class AddIsSecondSlipFunctionAndAdjustContributionDetails < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
       CREATE OR REPLACE FUNCTION public.is_second_slip(payments) RETURNS boolean
         LANGUAGE sql AS $_$
@@ -107,6 +106,5 @@ class AddIsSecondSlipFunctionAndAdjustContributionDetails < ActiveRecord::Migrat
            LEFT JOIN rewards r ON r.id = c.reward_id;
       DROP FUNCTION public.is_second_slip(payments);
     SQL
-=end
   end
 end

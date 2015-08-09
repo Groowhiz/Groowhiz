@@ -1,6 +1,5 @@
 class MovesUserTotalsToMaterializedViews < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
     DROP VIEW "1".user_totals;
     CREATE MATERIALIZED VIEW "1".user_totals AS
@@ -48,6 +47,5 @@ class MovesUserTotalsToMaterializedViews < ActiveRecord::Migration
       WHERE pa.state = ANY (confirmed_states())
       GROUP BY b.user_id;
     SQL
-=end
   end
 end

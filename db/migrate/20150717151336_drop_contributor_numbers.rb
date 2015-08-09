@@ -1,6 +1,5 @@
 class DropContributorNumbers < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
     DROP MATERIALIZED VIEW public.contributor_numbers;
    SQL
@@ -21,6 +20,5 @@ class DropContributorNumbers < ActiveRecord::Migration
       row_number() OVER (ORDER BY confirmed.id) AS number
      FROM confirmed;
    SQL
-=end
   end
 end

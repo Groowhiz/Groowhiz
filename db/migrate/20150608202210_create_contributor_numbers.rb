@@ -1,6 +1,5 @@
 class CreateContributorNumbers < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
       CREATE MATERIALIZED VIEW public.contributor_numbers AS
       WITH confirmed AS (
@@ -21,6 +20,5 @@ class CreateContributorNumbers < ActiveRecord::Migration
 
   def down
     execute "DROP MATERIALIZED VIEW contributor_numbers"
-=end
   end
 end

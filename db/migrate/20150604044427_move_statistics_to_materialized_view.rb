@@ -1,6 +1,5 @@
 class MoveStatisticsToMaterializedView < ActiveRecord::Migration
   def up
-=begin
     execute <<-SQL
       DROP VIEW "1".statistics;
       CREATE MATERIALIZED VIEW "1".statistics AS
@@ -79,7 +78,6 @@ class MoveStatisticsToMaterializedView < ActiveRecord::Migration
           WHERE projects.state::text <> ALL (ARRAY['draft'::character varying::text, 'rejected'::character varying::text])
         ) projects_totals;
     SQL
-=end
   end
 
 
