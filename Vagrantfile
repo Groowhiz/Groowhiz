@@ -14,8 +14,9 @@ Vagrant::Config.run do |config|
 
   # In case the Rails app runs on port 3000, make it available on the host
   config.vm.forward_port 3000, 3000
-  config.vm.forward_port 5432, 5432
-  #config.vm.forward_port 80, 8080
+#  config.vm.forward_port 5432, 5432
+#  config.vm.forward_port 80, 8080
+#config.vm.network :forwarded_port, guest: 5432, host: 1234
 
   config.vm.provision :chef_solo do |chef|
     # NOTE:
