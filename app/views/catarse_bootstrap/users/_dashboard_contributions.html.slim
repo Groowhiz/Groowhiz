@@ -2,28 +2,30 @@
   .w-container
     .w-row.u-margintop-30.u-text-center
       .w-col.w-col-3
+
+
       .w-col.w-col-6
-        .fontsize-large.u-marginbottom-30 Você ainda não apoiou nenhum projeto no&nbsp;Catarse...
+        .fontsize-large.u-marginbottom-30 You have not backed any project in &nbsp catharsis ....
         .w-row
           .w-col.w-col-3
           .w-col.w-col-6
-            = link_to 'Apoie agora!', explore_path(), class: 'btn btn-large'
+            = link_to 'Support Now!', explore_path(), class: 'btn btn-large'
           .w-col.w-col-3
       .w-col.w-col-3
 
 - else
   - if resource.contribution_details.for_online_projects.present?
     .section-one-column.u-marginbottom-30
-      .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos em andamento
+      .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Ongoing projects
       = render 'contribution_row', collection: resource.contribution_details.for_online_projects.ordered
 
   - if resource.contribution_details.for_successful_projects.present?
     .section-one-column.u-marginbottom-30
-      .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos bem-sucedidos
+      .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Successful projects
       = render 'contribution_row', collection: resource.contribution_details.for_successful_projects.ordered
 
 
   - if resource.contribution_details.for_failed_projects.present?
     .section-one-column.u-margintop-30
-      .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Projetos não-financiados
+      .fontsize-large.fontweight-semibold.u-marginbottom-30.u-text-center Non-Funded projects
       = render 'contribution_row', collection: resource.contribution_details.for_failed_projects.ordered
