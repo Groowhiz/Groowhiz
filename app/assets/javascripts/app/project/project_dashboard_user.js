@@ -13,13 +13,13 @@ App.addChild('DashboardUserSettings', {
   changeType: function () {
     var type = $( ".account_type option:selected" ).text();
     var label_text;
+    var document_label_text;
 
     if (type == 'Pessoa Física') {
       label_text = this.$("#project_account_attributes_owner_name").data('natural');
       document_label_text = this.$("#project_account_attributes_owner_document").data('natural');
       this.$inscription.hide();
       this.$(".user-document").prop('maxlength', 11);
-      this.$(".user-document").fixedMask('999.999.999-99');
     }
     else if (type == 'Pessoa Jurídica') {
       label_text = this.$("#project_account_attributes_owner_name").data('juridical');

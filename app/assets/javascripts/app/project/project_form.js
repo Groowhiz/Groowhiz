@@ -2,7 +2,7 @@ App.addChild('ProjectForm', _.extend({
   el: '.project-form',
 
   events: {
-    'blur input' : 'checkInput',
+    'blur input' : 'checkInput'
   },
 
   activate: function(){
@@ -26,10 +26,10 @@ App.views.ProjectForm.addChild('VideoUrl', {
   },
 
   activate: function(){
-    this.$el.typeWatch({
-      wait: 750,
-      callback: this.checkVideoUrl
-    });
+    //this.$el.typeWatch({
+    //  wait: 750,
+    //  callback: this.checkVideoUrl
+    //});
   }
 });
 
@@ -49,10 +49,10 @@ App.views.ProjectForm.addChild('Permalink', {
 
   activate: function(){
     this.re = new RegExp(this.$el.prop('pattern'));
-    this.$el.typeWatch({
-      wait: 750,
-      callback: this.checkPermalink
-    });
+    //this.$el.typeWatch({
+    //  wait: 750,
+    //  callback: this.checkPermalink
+    //});
   }
 });
 
