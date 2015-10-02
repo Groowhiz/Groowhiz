@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(current_user, anchor: 'notifications')
   end
 
-  # TODO: Go back here and rethink this...
   def settings
     authorize resource
     redirect_to edit_user_path(current_user, anchor: 'settings')

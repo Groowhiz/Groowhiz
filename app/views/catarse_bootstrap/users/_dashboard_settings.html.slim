@@ -6,7 +6,7 @@
         = render 'devise/shared/alert'
         .w-form.card.card-terciary.u-marginbottom-20
           .fontsize-base.fontweight-semibold Email
-          .fontsize-small.u-marginbottom-20 Mantenha esse email atualizado pois ele é o canal de comunicação entre você, a equipe do Catarse e a equipe dos projetos que você apoiou. 
+          .fontsize-small.u-marginbottom-20 Keep this updated email because it is the channel of communication between you , the catharsis of the staff and the staff of the projects that you supported.
           .w-row.u-marginbottom-20
             .w-col.w-col-6.w-sub-col
               = form.input_field :email, as: :string, class: 'w-input text-field positive'
@@ -14,48 +14,48 @@
 
           .divider.u-marginbottom-20
 
-          .fontsize-base.fontweight-semibold Endereço
-          .fontsize-small.u-marginbottom-20 Esse é o endereço que foi informado ao realizar seu último apoio. Se você mudou de endereço, altere aqui e, caso você esteja aguardando alguma recompensa, avise por email ao realizador do projeto apoiado.
+          .fontsize-base.fontweight-semibold Address
+          .fontsize-small.u-marginbottom-20 This is the address that was told to make his last support. If you change address, change here and if you wait some reward, let by email to the director of the supported project.
           .w-row  
-            = form.association :country, as: :select, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'País'
+            = form.association :country, as: :select, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'Country'
             .w-col.w-col-6
           .w-row
-            = form.input :address_street, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true
-            .w-col.w-col-6
-              .w-row
-                = form.input :address_number, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6 w-sub-col-middle'}, input_html: {class: 'w-input text-field positive'}, validation_text: true
-                = form.input :address_complement, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6'}, input_html: {class: 'w-input text-field positive'}
-          .w-row
-            = form.input :address_neighbourhood, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-sub-col'},input_html: {class: 'w-input text-field positive'}
-            = form.input :address_city, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6'},input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true
-          .w-row
-            = form.input :address_state, as: :select, label_html:{class: 'field-label fontweight-semibold'}, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: "w-select text-field positive", data: {required_in_brazil: true}}, validation_text: true
+            = form.input :address_street, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true, label: 'House No'
             .w-col.w-col-6
               .w-row
-                = form.input :address_zip_code, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6 w-sub-col-middle'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true  
-                = form.input :phone_number, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true
+                = form.input :address_number, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6 w-sub-col-middle'}, input_html: {class: 'w-input text-field positive'}, validation_text: true, label: 'Street'
+                = form.input :address_complement, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6'}, input_html: {class: 'w-input text-field positive'}, label: 'additional Information'
+          .w-row
+            = form.input :address_neighbourhood, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6 w-sub-col'},input_html: {class: 'w-input text-field positive'}, label: 'Landmark'
+            = form.input :address_city, as: :string, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html:{class: 'w-col w-col-6'},input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true}}, validation_text: true, label: 'City'
+          .w-row
+            = form.input :address_state, as: :select, label_html:{class: 'field-label fontweight-semibold'}, collection: State.array, wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: "w-select text-field positive", data: {required_in_brazil: true}}, validation_text: true, label: 'State'
+            .w-col.w-col-6
+              .w-row
+                = form.input :address_zip_code, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6 w-sub-col-middle'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true, fixed_mask: '99999-999'}}, validation_text: true, label: 'State'
+                = form.input :phone_number, as: :tel, label_html:{class: 'field-label fontweight-semibold'}, wrapper_html: {class: 'w-col w-col-6 w-col-small-6 w-col-tiny-6'}, input_html: {class: 'w-input text-field positive', data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true, label: 'Phone Number'
 
           .divider.u-maginbottom-20
 
-          .fontsize-base.fontweight-semibold Alterar minha senha
-          .fontsize-small.u-marginbottom-20 Para que a senha seja alterada você precisa confirmar a sua senha atual.
+          .fontsize-base.fontweight-semibold Change my password
+          .fontsize-small.u-marginbottom-20 For the password to be changed you need to confirm your current password.
           .w-row.u-marginbottom-20
             .w-col.w-col-6.w-sub-col
-              label.field-label.fontweight-semibold for="email-20"  Senha atual
+              label.field-label.fontweight-semibold for="email-20"  Current password
               = form.input_field :current_password, class: 'w-input text-field positive'
             .w-col.w-col-6
-              label.field-label.fontweight-semibold for="email-21"  Nova senha
+              label.field-label.fontweight-semibold for="email-21"  New password
               = form.input_field :password, class: 'w-input text-field positive'
 
           .divider.u-marginbottom-20
-          .fontweight-semibold.fontsize-smaller Desativar minha conta
-          .fontsize-smallest Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, você sairá automaticamente do sistema e sua conta será desativada permanentemente.
-          = link_to 'Desativar minha conta no Catarse', resource, method: :delete, data: { confirm: 'Você deseja desativar essa conta?' }, class: 'alt-link fontsize-smaller'
+          .fontweight-semibold.fontsize-smaller Deactivate my account.
+          .fontsize-smallest All your support will be converted into anonymous backups, your data is no longer visible , you will automatically exit the system and your account will be permanently disabled .
+          = link_to 'Disable my account Catharsis', resource, method: :delete, data: { confirm: 'You want to disable this account ?' }, class: 'alt-link fontsize-smaller'
 
     div
       .w-container
         .w-row
           .w-col.w-col-4
           .w-col.w-col-4
-            = form.button :submit, 'Salvar',  class:'btn btn-large'
+            = form.button :submit, 'Save',  class:'btn btn-large'
           .w-col.w-col-4

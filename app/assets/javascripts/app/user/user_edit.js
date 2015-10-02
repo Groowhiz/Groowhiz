@@ -14,6 +14,7 @@ App.addChild('UserEdit', _.extend({
     this.route('billing');
     this.route('notifications');
     this.route('feeds');
+    this.route('talents');
 
     this.lookAnchors();
 

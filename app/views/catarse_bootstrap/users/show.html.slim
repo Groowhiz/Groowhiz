@@ -39,30 +39,43 @@
   .hero-profile style="background-image: url('#{resource.cover_image.try(:base).try(:url) || resource.display_image}')"
 
 nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; position: relative;'
-  .w-container#default-tab data-anchor=(resource.created_projects.empty? ? 'contributed' : 'created')
+  .w-container#default-tab data-anchor=(resource.created_projects.empty? ? 'contributed' : 'mytalents')
     - if policy(resource).update?
       = link_to edit_user_path(resource), class: 'nav-tab dashboard' do
         span.fa.fa-cog
-        | &nbsp; Editar perfil
+        | &nbsp; Edit profile
+
+    = link_to '#mytalents', id: 'talent_link', class: 'nav-tab', data: {target: '#mytalents-tab'} do
+      | Talents &nbsp;
+
+
     = link_to '#contributed', id: 'contributed_link', class: 'nav-tab' , data: {target: '#contributed-tab'} do
-      | Apoiados &nbsp;
+      | Supported &nbsp;
       span.badge= projects_to_show.count
     = link_to '#created', id: 'created_link', class: 'nav-tab' , data: {target: '#created-tab'} do
-      | Criados &nbsp;
+      | Created &nbsp;
       span.badge= resource.created_projects.count
     = link_to '#about', id: 'about_link', class: 'nav-tab' , data: {target: '#about-tab'} do
-      | Sobre
+      | About
 
 
 section.section
   .w-container
     .w-row
+      #mytalents-tab.content.w-hidden
+          .w-row.u-margintop-30.u-text-center
+            .w-col.w-col-6
+              .fontsize-large.u-marginbottom-30  No talents yet..... upload your talents...
+            .w-col.w-col-2
+            .w-col.w-col-2
+              = link_to 'Upload talents', explore_path(), class: 'btn btn-large'
+
       #contributed-tab.content.w-hidden
         - if resource.contributed_projects.empty?
           .w-row.u-text-center
             .w-col.w-col-2
             .w-col.w-col-8
-              .fontsize-base #{resource.name} ainda não apoiou nenhum projeto.
+              .fontsize-base #{resource.name} Not backed any project yet .
             .w-col.w-col-2
         - else
           == render_projects projects_to_show.most_recent_first, 'profile_contributed_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
@@ -72,11 +85,13 @@ section.section
           .w-row.u-text-center
             .w-col.w-col-2
             .w-col.w-col-8
-              .fontsize-base #{resource.name} ainda não criou nenhum projeto.
+              .fontsize-base #{resource.name} Has not created any project.
             .w-col.w-col-2
         - else
           == render_projects resource.created_projects.order_status.most_recent_first, 'profile_created_projects', { wrapper_class: 'w-col w-col-4 u-marginbottom-30' }
       #about-tab.content.w-hidden
         = render 'user_about', resource: resource
+      /#talent-tab.content.w-hidden
+        = render 'talent-tab'
 
 = render 'shared/footer_big'

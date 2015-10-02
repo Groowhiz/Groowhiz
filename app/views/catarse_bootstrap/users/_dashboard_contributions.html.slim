@@ -1,17 +1,14 @@
 - if resource.contributions.empty?
   .w-container
     .w-row.u-margintop-30.u-text-center
-      .w-col.w-col-3
-
-
+      .w-col.w-col-6
+       .w-col.w-col-3
+       .w-col.w-col-3
+         = link_to 'Support Now!', explore_path(), class: 'btn btn-large'
+    .w-row
       .w-col.w-col-6
         .fontsize-large.u-marginbottom-30 You have not backed any project in &nbsp catharsis ....
-        .w-row
-          .w-col.w-col-3
-          .w-col.w-col-6
-            = link_to 'Support Now!', explore_path(), class: 'btn btn-large'
-          .w-col.w-col-3
-      .w-col.w-col-3
+
 
 - else
   - if resource.contribution_details.for_online_projects.present?
