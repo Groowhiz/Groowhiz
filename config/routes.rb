@@ -1,4 +1,5 @@
 Catarse::Application.routes.draw do
+
   mount RedactorRails::Engine => '/redactor_rails'
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for(
@@ -95,6 +96,7 @@ Catarse::Application.routes.draw do
   get "/guides" => 'high_voltage/pages#show', id: 'guides', as: :guides
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
+  get "/talent" => 'high_voltage/pages#show', id: 'talent'
 
 
   # User permalink profile
