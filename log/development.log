@@ -14022,3 +14022,756 @@ Migrating to CreateTalents (20151003180757)
   [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'email_contact' LIMIT 1
   [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'company_name' LIMIT 1[0m
   [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'aws_access_key' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.7ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'moip_uri' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.6ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'moip_token' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'moip_key' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'moip_test' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'aws_access_key' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'google_api_id' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'google_api_secret' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'secret_key_base' LIMIT 1
+  [1m[36mOauthProvider Load (0.7ms)[0m  [1mSELECT "oauth_providers".* FROM "oauth_providers"[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.6ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'mailchimp_api_key' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'mailchimp_list_id' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'mailchimp_successful_projects_list' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'mailchimp_failed_projects_list' LIMIT 1[0m
+  [1m[35mOauthProvider Load (0.5ms)[0m  SELECT "oauth_providers".* FROM "oauth_providers"
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_api_key' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_encryption_key' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_slip_tax' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_credit_card_tax' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_interest_rate' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_cents_fee' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'host' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_max_installments' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'pagarme_minimum_value_for_installment' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'cielo_tax' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.6ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'stone_tax' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'cielo_installment_diners_tax' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'cielo_installment_not_diners_tax' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'cielo_installment_amex_tax' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'cielo_installment_not_amex_tax' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'secret_token' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.4ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'secret_token' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'secret_token' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.5ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'email_system' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'email_contact' LIMIT 1
+  [1m[36mCatarseSettingsDb::Setting Load (0.5ms)[0m  [1mSELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'company_name' LIMIT 1[0m
+  [1m[35mCatarseSettingsDb::Setting Load (0.5ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'aws_access_key' LIMIT 1
+
+
+Started GET "/" for 10.0.2.2 at 2015-10-04 04:03:19 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 1  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mPayment Load (2.4ms)[0m  [1mSELECT "payments".* FROM "payments" INNER JOIN "contributions" "contributions_payments" ON "contributions_payments"."id" = "payments"."contribution_id" INNER JOIN "projects" ON "projects"."id" = "contributions_payments"."project_id" INNER JOIN "contributions" ON "payments"."contribution_id" = "contributions"."id" WHERE "contributions"."user_id" = $1 AND "projects"."state" = 'failed' AND "payments"."state" = 'paid' AND "payments"."gateway" = 'Pagarme' AND "payments"."payment_method" = 'BoletoBancario'[0m  [["user_id", 1]]
+  [1m[35mProject Load (1.0ms)[0m  SELECT DISTINCT "projects".* FROM "projects" INNER JOIN "contributions" ON "projects"."id" = "contributions"."project_id" WHERE (contributions.was_confirmed) AND "contributions"."user_id" = $1  ORDER BY projects.created_at DESC  [["user_id", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"  WHERE "projects"."user_id" = $1 AND ("projects"."state" NOT IN ('deleted'))[0m  [["user_id", 1]]
+  Rendered catarse_bootstrap/shared/_user_menu.html.slim (135.9ms)
+  Rendered catarse_bootstrap/shared/_header.html.slim (384.3ms)
+  Rendered catarse_bootstrap/shared/_header_big.html.slim (452.3ms)
+  [1m[35mProject Load (1.0ms)[0m  SELECT  "projects".* FROM "projects"  WHERE ("projects"."state" IN ('online')) AND (EXISTS(SELECT true FROM users u WHERE u.id = projects.user_id AND lower(u.address_state) = lower(NULL)))  ORDER BY random() LIMIT 3
+  [1m[36mProjectsForHome Load (2.4ms)[0m  [1mSELECT "projects_for_home".* FROM "projects_for_home"  WHERE "projects_for_home"."origin" = 'recommended'[0m
+  Rendered catarse_bootstrap/projects/_card.html.slim (0.1ms)
+  [1m[35mProjectsForHome Load (1.9ms)[0m  SELECT "projects_for_home".* FROM "projects_for_home"  WHERE "projects_for_home"."origin" = 'expiring'
+  Rendered catarse_bootstrap/projects/_card.html.slim (0.1ms)
+  [1m[36mProjectsForHome Load (1.7ms)[0m  [1mSELECT "projects_for_home".* FROM "projects_for_home"  WHERE "projects_for_home"."origin" = 'recents'[0m
+  Rendered catarse_bootstrap/projects/_card.html.slim (0.1ms)
+  Rendered catarse_bootstrap/shared/_footer_welcome.html.slim (20.3ms)
+  Rendered catarse_bootstrap/shared/_footer_about.html.slim (18.6ms)
+  Rendered catarse_bootstrap/shared/_footer_navigate.html.slim (11.0ms)
+  Rendered catarse_bootstrap/shared/_newsletter.html.slim (19.1ms)
+  Rendered layouts/_facebook_like.html.slim (6.1ms)
+  Rendered catarse_bootstrap/shared/_footer_big.html.slim (320.6ms)
+  Rendered catarse_bootstrap/projects/index.html.slim within layouts/catarse_bootstrap (7352.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "payments".* FROM "payments" INNER JOIN "contributions" "contributions_payments" ON "contributions_payments"."id" = "payments"."contribution_id" INNER JOIN "projects" ON "projects"."id" = "contributions_payments"."project_id" INNER JOIN "contributions" ON "payments"."contribution_id" = "contributions"."id" WHERE "contributions"."user_id" = $1 AND "projects"."state" = 'failed' AND "payments"."state" = 'paid' AND "payments"."gateway" = 'Pagarme' AND "payments"."payment_method" = 'BoletoBancario'  [["user_id", 1]]
+  [1m[36mUserTotal Load (0.4ms)[0m  [1mSELECT  "user_totals".* FROM "user_totals"  WHERE "user_totals"."user_id" = $1 LIMIT 1[0m  [["user_id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = $1 AND ("projects"."state" NOT IN ('deleted'))  [["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "projects"  WHERE "projects"."user_id" = $1 AND ("projects"."state" IN ('online','waiting_funds','successful','failed'))[0m  [["user_id", 1]]
+  [1m[35mProject Exists (0.4ms)[0m  SELECT  1 AS one FROM "projects"  WHERE "projects"."user_id" = $1 AND ("projects"."state" NOT IN ('deleted')) AND ("projects"."state" IN ('online')) LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "payments".* FROM "payments" INNER JOIN "contributions" "contributions_payments" ON "contributions_payments"."id" = "payments"."contribution_id" INNER JOIN "projects" ON "projects"."id" = "contributions_payments"."project_id" INNER JOIN "contributions" ON "payments"."contribution_id" = "contributions"."id" WHERE "contributions"."user_id" = $1 AND "projects"."state" = 'failed' AND "payments"."state" = 'paid' AND "payments"."gateway" = 'Pagarme' AND "payments"."payment_method" = 'BoletoBancario'[0m  [["user_id", 1]]
+  Rendered catarse_bootstrap/layouts/_new_zendesk.html.slim (6.2ms)
+  Rendered layouts/_facebook_sdk.html.slim (5.0ms)
+Completed 200 OK in 9882ms (Views: 9768.7ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/assets/catarse_bootstrap/fonts.css?body=1" for 10.0.2.2 at 2015-10-04 04:03:30 +0000
+
+
+Started GET "/assets/catarse_bootstrap/catarse.css?body=1" for 10.0.2.2 at 2015-10-04 04:03:30 +0000
+
+
+Started GET "/assets/catarse_bootstrap/logo_big.png" for 10.0.2.2 at 2015-10-04 04:03:31 +0000
+
+
+Started GET "/assets/jquery.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:32 +0000
+
+
+Started GET "/assets/underscore.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:32 +0000
+
+
+Started GET "/assets/backbone.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:33 +0000
+
+
+Started GET "/assets/jquery-ui/core.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:34 +0000
+
+
+Started GET "/assets/jquery-ui/widget.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:35 +0000
+
+
+Started GET "/assets/jquery-ui/dialog.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:35 +0000
+
+
+Started GET "/assets/jquery-ui/droppable.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:36 +0000
+
+
+Started GET "/assets/jquery-ui/effect.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:37 +0000
+
+
+Started GET "/assets/jquery-ui/effect-blind.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:37 +0000
+
+
+Started GET "/assets/jquery-ui/effect-bounce.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:38 +0000
+
+
+Started GET "/assets/jquery-ui/effect-drop.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:39 +0000
+
+
+Started GET "/assets/jquery-ui/effect-explode.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:40 +0000
+
+
+Started GET "/assets/jquery-ui/effect-fold.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:40 +0000
+
+
+Started GET "/assets/jquery-ui/effect-fade.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:41 +0000
+
+
+Started GET "/assets/jquery-ui/effect-clip.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:42 +0000
+
+
+Started GET "/assets/jquery-ui/effect-highlight.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:43 +0000
+
+
+Started GET "/assets/jquery-ui/effect-size.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:43 +0000
+
+
+Started GET "/assets/jquery-ui/effect-scale.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:44 +0000
+
+
+Started GET "/assets/jquery-ui/effect-puff.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:45 +0000
+
+
+Started GET "/assets/jquery-ui/effect-pulsate.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:45 +0000
+
+
+Started GET "/assets/jquery-ui/effect-shake.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:46 +0000
+
+
+Started GET "/assets/jquery-ui/selectmenu.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:47 +0000
+
+
+Started GET "/assets/jquery-ui/effect-transfer.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:48 +0000
+
+
+Started GET "/assets/jquery-ui/progressbar.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:48 +0000
+
+
+Started GET "/assets/jquery-ui/selectable.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:49 +0000
+
+
+Started GET "/assets/jquery-ui/effect-slide.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:50 +0000
+
+
+Started GET "/assets/jquery-ui/slider.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:50 +0000
+
+
+Started GET "/assets/jquery-ui/tooltip.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:51 +0000
+
+
+Started GET "/assets/jquery-ui/sortable.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:52 +0000
+
+
+Started GET "/assets/jquery-ui/spinner.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:53 +0000
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:53 +0000
+
+
+Started GET "/assets/jquery-ui/tabs.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:54 +0000
+
+
+Started GET "/assets/jquery.elastic.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:55 +0000
+
+
+Started GET "/assets/best_in_place.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:55 +0000
+
+
+Started GET "/assets/app/pages/registration.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:56 +0000
+
+
+Started GET "/assets/cocoon.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:57 +0000
+
+
+Started GET "/assets/app/pages/how_it_works.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:58 +0000
+
+
+Started GET "/assets/app/pages/reset_password.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:59 +0000
+
+
+Started GET "/assets/app/pages/search.js?body=1" for 10.0.2.2 at 2015-10-04 04:03:59 +0000
+
+
+Started GET "/assets/jquery-ui/menu.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:00 +0000
+
+
+Started GET "/assets/jquery-ui/accordion.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:01 +0000
+
+
+Started GET "/assets/jquery-ui/autocomplete.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:01 +0000
+
+
+Started GET "/assets/jquery-ui/position.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:02 +0000
+
+
+Started GET "/assets/jquery-ui/button.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:03 +0000
+
+
+Started GET "/assets/jquery-ui/draggable.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:03 +0000
+
+
+Started GET "/assets/jquery-ui/datepicker.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:04 +0000
+
+
+Started GET "/assets/jquery-ui/mouse.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:05 +0000
+
+
+Started GET "/assets/jquery-ui/resizable.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:06 +0000
+
+
+Started GET "/assets/lib/skull.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:06 +0000
+
+
+Started GET "/assets/lib/form.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:07 +0000
+
+
+Started GET "/assets/lib/jquery.brbanks.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:08 +0000
+
+
+Started GET "/assets/lib/jquery.headline.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:09 +0000
+
+
+Started GET "/assets/lib/jquery.payment.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:09 +0000
+
+
+Started GET "/assets/lib/modal.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:10 +0000
+
+
+Started GET "/assets/lib/pagination.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:11 +0000
+
+
+Started GET "/assets/lib/show_password_input.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:11 +0000
+
+
+Started GET "/assets/lib/tabs.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:12 +0000
+
+
+Started GET "/assets/lib/twitter.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:13 +0000
+
+
+Started GET "/assets/lib/ui_helper.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:13 +0000
+
+
+Started GET "/assets/app/app.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:14 +0000
+
+
+Started GET "/assets/app/admin/admin.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:14 +0000
+
+
+Started GET "/assets/app/admin/admin_sort.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:15 +0000
+
+
+Started GET "/assets/app/bank_accounts/bank_account_form.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:16 +0000
+
+
+Started GET "/assets/app/contribution/contribution.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:16 +0000
+
+
+Started GET "/assets/app/contribution/contribution_payment.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:17 +0000
+
+
+Started GET "/assets/app/contribution/contribution_review.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:18 +0000
+
+
+Started GET "/assets/app/pages/explore.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:19 +0000
+
+
+Started GET "/assets/app/pages/guides.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:20 +0000
+
+
+Started GET "/assets/app/pages/hello.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:20 +0000
+
+
+Started GET "/assets/app/pages/home.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:21 +0000
+
+
+Started GET "/assets/app/project/project.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:22 +0000
+
+
+Started GET "/assets/app/project/project_comments.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:23 +0000
+
+
+Started GET "/assets/app/project/project_contributions.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:23 +0000
+
+
+Started GET "/assets/app/project/project_dashboard_reward.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:24 +0000
+
+
+Started GET "/assets/app/project/project_dashboard_user.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:25 +0000
+
+
+Started GET "/assets/app/project/project_edit.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:25 +0000
+
+
+Started GET "/assets/app/project/project_form.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:26 +0000
+
+
+Started GET "/assets/app/project/project_metrics.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:27 +0000
+
+
+Started GET "/assets/app/project/project_nav.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:28 +0000
+
+
+Started GET "/assets/app/project/project_posts.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:28 +0000
+
+
+Started GET "/assets/app/project/project_sidebar.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:29 +0000
+
+
+Started GET "/assets/app/user/user.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:30 +0000
+
+
+Started GET "/assets/app/user/user_document.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:31 +0000
+
+
+Started GET "/assets/app/user/user_edit.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:32 +0000
+
+
+Started GET "/assets/app/user/user_menu.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:32 +0000
+
+
+Started GET "/assets/app/utils/mix_panel.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:33 +0000
+
+
+Started GET "/assets/application.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:34 +0000
+
+
+Started GET "/assets/backbone.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:35 +0000
+
+
+Started GET "/assets/hero-new-home.jpg" for 10.0.2.2 at 2015-10-04 04:04:36 +0000
+
+
+Started GET "/assets/catarse_bootstrap/user.jpg" for 10.0.2.2 at 2015-10-04 04:04:37 +0000
+
+
+Started GET "/assets/catarse_bootstrap/lupa.png" for 10.0.2.2 at 2015-10-04 04:04:37 +0000
+
+
+Started GET "/assets/catarse_bootstrap/loader.gif" for 10.0.2.2 at 2015-10-04 04:04:38 +0000
+
+
+Started GET "/assets/icon-blog.png" for 10.0.2.2 at 2015-10-04 04:04:39 +0000
+
+
+Started GET "/assets/catarse_bootstrap/icon-newsletter.png" for 10.0.2.2 at 2015-10-04 04:04:39 +0000
+
+
+Started GET "/assets/logo-footer.png" for 10.0.2.2 at 2015-10-04 04:04:40 +0000
+
+
+Started GET "/assets/jquery-ui/droppable.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:41 +0000
+
+
+Started GET "/assets/jquery-ui/effect.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:41 +0000
+
+
+Started GET "/assets/jquery-ui/effect-blind.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:42 +0000
+
+
+Started GET "/assets/jquery-ui/effect-explode.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:43 +0000
+
+
+Started GET "/assets/jquery-ui/effect-fold.js?body=1" for 10.0.2.2 at 2015-10-04 04:04:43 +0000
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+  [1m[36mOauthProvider Load (2.1ms)[0m  [1mSELECT "oauth_providers".* FROM "oauth_providers"[0m
+PG::UndefinedTable: ERROR:  relation "oauth_providers" does not exist
+LINE 1: SELECT "oauth_providers".* FROM "oauth_providers"
+                                        ^
+: SELECT "oauth_providers".* FROM "oauth_providers"
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+  [1m[35mCatarseSettingsDb::Setting Load (1.4ms)[0m  SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'secret_token' LIMIT 1
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 1: SELECT  "settings".* FROM "settings"  WHERE "settings"."name...
+                                  ^
+: SELECT  "settings".* FROM "settings"  WHERE "settings"."name" = 'secret_token' LIMIT 1
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
+PG::UndefinedTable: ERROR:  relation "settings" does not exist
+LINE 5:                WHERE a.attrelid = '"settings"'::regclass
+                                          ^
+:               SELECT a.attname, format_type(a.atttypid, a.atttypmod),
+                     pg_get_expr(d.adbin, d.adrelid), a.attnotnull, a.atttypid, a.atttypmod
+                FROM pg_attribute a LEFT JOIN pg_attrdef d
+                  ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+               WHERE a.attrelid = '"settings"'::regclass
+                 AND a.attnum > 0 AND NOT a.attisdropped
+               ORDER BY a.attnum
+
