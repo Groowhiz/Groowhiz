@@ -2197,6 +2197,39 @@ CREATE VIEW subscriber_reports AS
 
 
 --
+-- Name: talent_links; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE talent_links (
+    id integer NOT NULL,
+    talent_id integer,
+    video_url character varying(255),
+    uploaded_image character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: talent_links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE talent_links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: talent_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE talent_links_id_seq OWNED BY talent_links.id;
+
+
+--
 -- Name: talents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2204,11 +2237,8 @@ CREATE TABLE talents (
     id integer NOT NULL,
     name character varying(255),
     description text,
-    video_url character varying(255),
-    text character varying(255),
     category_id integer,
     user_id integer,
-    uploaded_image character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -2611,6 +2641,13 @@ ALTER TABLE ONLY states ALTER COLUMN id SET DEFAULT nextval('states_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY talent_links ALTER COLUMN id SET DEFAULT nextval('talent_links_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY talents ALTER COLUMN id SET DEFAULT nextval('talents_id_seq'::regclass);
 
 
@@ -2935,6 +2972,14 @@ ALTER TABLE ONLY states
 
 
 --
+-- Name: talent_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY talent_links
+    ADD CONSTRAINT talent_links_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: talents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3156,6 +3201,13 @@ CREATE INDEX fk__project_post_notifications_user_id ON project_post_notification
 --
 
 CREATE INDEX fk__redactor_assets_user_id ON redactor_assets USING btree (user_id);
+
+
+--
+-- Name: fk__talent_links_talent_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__talent_links_talent_id ON talent_links USING btree (talent_id);
 
 
 --
@@ -3848,6 +3900,14 @@ ALTER TABLE ONLY redactor_assets
 
 
 --
+-- Name: fk_talent_links_talent_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talent_links
+    ADD CONSTRAINT fk_talent_links_talent_id FOREIGN KEY (talent_id) REFERENCES talents(id);
+
+
+--
 -- Name: fk_talents_category_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3963,7 +4023,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public, "1";
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -4606,4 +4666,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150728150418');
 INSERT INTO schema_migrations (version) VALUES ('20150728170415');
 
 INSERT INTO schema_migrations (version) VALUES ('20151003180757');
+
+INSERT INTO schema_migrations (version) VALUES ('20151004042229');
 
