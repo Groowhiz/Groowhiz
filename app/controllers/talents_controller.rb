@@ -7,4 +7,8 @@ class TalentsController < ApplicationController
 
   def show
   end
+
+  def new
+    p "HEY YOYOYOYO"
+  end
 end

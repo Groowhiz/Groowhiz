@@ -1,0 +1,28 @@
+pt:
+  talents:
+    new:
+      page-title: "Start your project"
+
+      faq:
+        titles:
+          support: "Suporte"
+          know_more: "Know more"
+
+        links:
+          criteria: "Critérios de seleção"
+          suport_central: "Central de suporte"
+          support_contact: "Contact com us"
+          how_it_works: "Como o Catarse funciona?"
+          money: "Como receberei o dinheiro?"
+          selection: "Como os projects são selecionados?"
+          all_or_nothing: "Por que Tudo ou Nada?"
+
+      form:
+        blocks:
+          first:
+            title: "Upload your Talents!"
+            description: "Upload videos to showcase your talent."
+
+        info:
+
+        submit: "Upload"

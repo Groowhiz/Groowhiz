@@ -6,7 +6,7 @@
       .w-col.w-col-6
 
       .w-col.w-col-3
-        = link_to '+ upload talents', talent_path, class: 'btn btn-large'
+        = link_to '+ upload talents', new_talent_path, class: 'btn btn-large'
 
       - if !@user.project_owner?
          .w-col.w-col-3
@@ -16,7 +16,7 @@
               .w-col.w-col-6
               .w-col.w-col-3
               .w-col.w-col-3
-                = link_to ' upload talents', talent_path, class: 'btn btn-large'
+                = link_to ' upload talents', new_talent_path, class: 'btn btn-large'
               .w-col.w-col-3
       - else
         .w-row

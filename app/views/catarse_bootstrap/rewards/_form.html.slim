@@ -51,5 +51,5 @@
               input.w-button.btn-terciary.btn.btn-small.reward-close-button type="submit" value="Fechar" 
             - if resource.persisted? && policy(resource).destroy?
               .w-col.w-col-1.w-col-small-1.w-col-tiny-1
-                = link_to [parent, resource], method: :delete, data: {confirm: 'Tem certeza?'} do
+                = link_to [parent, resource], method: :delete, data: {confirm: 'Are you sure?'} do
                   .btn.btn-small.btn-terciary.fa.fa-lg.fa-trash.btn-no-border

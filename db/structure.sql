@@ -4023,7 +4023,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public, "1";
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 

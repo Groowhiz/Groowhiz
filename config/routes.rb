@@ -67,6 +67,37 @@ Catarse::Application.routes.draw do
       get 'publish'
     end
   end
+
+  resources :talents, only: [:index, :create, :update, :edit, :new, :show] do
+    p " YO DID I COME HERE?"
+    resources :metrics, only: [:index], controller: "projects/metrics"
+    resources :accounts, only: [:create, :update]
+    resources :posts, controller: 'projects/posts', only: [ :index, :destroy ]
+    resources :rewards, only: [ :index ] do
+      post :sort, on: :member
+    end
+    resources :contributions, {except: [:index], controller: 'projects/contributions'} do
+      collection do
+        get :details, to: 'projects/contribution_details#index'
+        get :fallback_create, to: 'projects/contributions#create'
+      end
+      put :credits_checkout, on: :member
+    end
+
+    get 'video', on: :collection
+    member do
+      get :reminder, to: 'projects/reminders#create'
+      delete :reminder, to: 'projects/reminders#destroy'
+      put 'pay'
+      get 'embed'
+      get 'video_embed'
+      get 'about_mobile'
+      get 'embed_panel'
+      get 'send_to_analysis'
+      get 'publish'
+    end
+  end
+
   resources :users do
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
@@ -96,7 +127,7 @@ Catarse::Application.routes.draw do
   get "/guides" => 'high_voltage/pages#show', id: 'guides', as: :guides
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
-  get "/talent" => 'high_voltage/pages#show', id: 'talent'
+  get "/talent" => 'high_voltage/pages#show', id: 'new_talent'
 
 
   # User permalink profile

@@ -1,14 +1,17 @@
 pt:
   pages:
     start:
-      page-title: "Como funciona o Catarse?"
-      title: "Financie seu projeto coletivamente"
+      page-title: "Start a Project"
+      title: "How To Make Your project Work!"
       submit: "Start your project"
-      learn-more: "Know more"
+
       header:
-        people: "Pessoas já apoiaram pelo menos 01 projeto no Catarse"
-        success: "Projects já foram financiados no Catarse"
-        money: "Doados para projects publicados por aqui"
+        people: "Supporters"
+        success: "Completeness"
+        collaboration: "Collaboration"
+        people_action: "Supporter to your project helps you to increase your visibility"
+        success_action: "Number of projects completed successfully"
+        collaboration_action: "Collaborating with others increases your network"
       start:
         title: "Start your project"
         content: "É importante começar de algum lugar. Um ótimo primeiro passo para transformar sua ideia em um projeto de financiamento coletivo é inscrever um rascunho no Catarse. Estaremos aqui pra ajudar."
@@ -25,4 +28,4 @@ pt:
         title: "Mobilize apoiadores"
         content: "Comunique-se bem durante sua campanha e trate bem seus apoiadores! Eles são a força do seu projeto e são quem realmente vai determinar o sucesso ou não da campanha! O Catarse é uma forma de you se aproximar das pessoas que gostam do seu trabalho, expandir essa rede e formar público."
         link: 'Saiba como nossa taxa ajuda a manter o Catarse'
-        
+

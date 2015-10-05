@@ -3,9 +3,10 @@
 = render 'shared/header'
 
 .section
+  .w-container
     .w-row
       .w-col.w-col-8.w-col-push-2
-        = simple_form_for @project, defaults: { wrapper: :input_with_error}, html: { id: 'project_form', class: 'w-form' } do |form|
+        = simple_form_for @talent, defaults: { wrapper: :input_with_error}, html: { id: 'talent_form', class: 'w-form' } do |form|
 
           fieldset
             legend.fontsize-largest.lineheight-loose.u-text-center = t('.form.blocks.first.title')
@@ -18,21 +19,33 @@
               = form.input :name, as: :string
             .u-marginbottom-40
               = form.label :category, class: 'fontsize-large', required: false
-              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
+              .fontsiz-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
               = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false, hint: ''
-            .u-marginbottom-40
+            //.u-marginbottom-40
               = form.label :permalink, class: 'fontsize-large', required: false, as: :string
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink
-              .w-row
+              //.w-row
                 .w-col.w-col-4.w-col.w-col-small-6.w-col-tiny-6.text-field.prefix.medium.prefix-permalink.no-hover
                   .fontcolor-secondary.fontsize-base.u-text-center = t('.form.info.permalink')
                 .w-col.w-col-8.w-col-small-6.w-col-tiny-6
                   = form.input :permalink, as: :string, required: false, input_html: {class: 'medium postfix'}
-            .u-marginbottom-80
+            //.u-marginbottom-80
               label.fontsize-large.field-label for="field"= t('simple_form.prompts.project.traffic_sources')
               = form.input :traffic_sources, as: :select, collection: t('simple_form.collections.project.traffic_sources').values, prompt: t('simple_form.prompts.project.select'), class: 'medium', label: '', required: false, hint: ''
+            .w-row.u-marginbottom-40
+              .w-col.w-col-5.w-sub-col
+                 label.field-label.fontweight-semibold= t('.other_link_label')
+                 label.field-label.fontsize-smallest.fontcolor-secondary= t('.other_link_hint')
+                .w-col.w-col-7
+                   = form.simple_fields_for :talent_videos do |link_form|
+                     = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
+                .w-row
+                     .w-col.w-col-6
+                     .w-col.w-col-6
+                       = link_to_add_association '+ Add More Videos', form, :talent_videos, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'
+
           .w-row
-            .w-col.w-col-6.w-col-push-3   
+            .w-col.w-col-6.w-col-push-3
               = form.button :submit, t('.form.submit'), class:'btn btn-large'
 
 = render 'shared/footer'
