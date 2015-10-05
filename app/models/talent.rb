@@ -21,7 +21,7 @@ class Talent < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
 
-  has_many :talent_videos, class_name: "TalentVideo", inverse_of: :talent, reject_if: ->(x) { x['talent_video'].blank? }
+  has_many :talent_videos, class_name: "TalentVideo", inverse_of: :talent
   # has_many :talent_images, class_name: "TalentImage", inverse_of: :talent, reject_if: ->(x) { x['image'].blank? }
 
 
@@ -57,9 +57,9 @@ class Talent < ActiveRecord::Base
 
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
-  scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
+  # scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
-  scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
+  scope :title_contains, ->(term) { where("unaccent(upper(title)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
 
   scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = talents.user_id AND lower(u.address_state) = lower(?))", address_state) }
@@ -74,10 +74,10 @@ class Talent < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   ##validation for all states
-  validates_presence_of :name, :user_id, :category_id, :permalink
+  validates_presence_of :title, :user_id, :category_id
 
-  validates_uniqueness_of :permalink, case_sensitive: false
-  validates_format_of :permalink, with: /\A(\w|-)*\Z/
+  # validates_uniqueness_of :permalink, case_sensitive: false
+  # validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
   [:between_created_at, :between_updated_at].each do |name|
     define_singleton_method name do |starts_at, ends_at|
@@ -115,7 +115,6 @@ class Talent < ActiveRecord::Base
   def to_analytics
     {
         id: self.id,
-        permalink: self.permalink,
         talent_state: self.state,
         category: self.category.name_pt,
         talent_created_date: self.created_at

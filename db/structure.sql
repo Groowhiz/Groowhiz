@@ -2218,7 +2218,7 @@ CREATE TABLE talent_images (
     id integer NOT NULL,
     talent_id integer,
     user_id integer,
-    uploaded_image text,
+    image_url text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -2284,7 +2284,7 @@ ALTER SEQUENCE talent_videos_id_seq OWNED BY talent_videos.id;
 
 CREATE TABLE talents (
     id integer NOT NULL,
-    name character varying(255),
+    title character varying(255),
     description text,
     category_id integer,
     user_id integer,
@@ -4134,7 +4134,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public, "1";
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
