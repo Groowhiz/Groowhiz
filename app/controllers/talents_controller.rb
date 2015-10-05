@@ -41,7 +41,7 @@ class TalentsController < ApplicationController
     # authorize @talent
     if @talent.save
       p "Talents Controller create  save =>   Talent is: #{@talent.inspect}"
-      redirect_to edit_talent_path(@talent, anchor: 'home')
+      redirect_to edit_user_path(@talent, anchor: 'talents')
     else
       p "Talents Controller create else =>   Talent is: #{@talent.inspect}"
       render :new
