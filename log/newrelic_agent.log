@@ -361,3 +361,216 @@
 [10/05/15 05:08:04 +0000 precise32 (2300)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
 [10/05/15 05:28:43 +0000 precise32 (2300)] ERROR : Invalid license key, please contact support@newrelic.com
 [10/05/15 05:28:43 +0000 precise32 (2300)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+=======
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Starting the New Relic agent in "development" environment.
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : New Relic Agent Developer Mode enabled.
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Environment: development
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : No known dispatcher detected.
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Application: (Development)
+[10/04/15 08:51:57 +0000 precise32 (27566)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Sidekiq instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing middleware-based Excon instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing deferred Rack instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Rack::Builder middleware instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing ActiveRecord 4 instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Rails 3+ middleware instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Net instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing HTTPClient instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Rails 4 Error instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Rails 4 Controller instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Installing Rails 4 view instrumentation
+[10/04/15 08:51:57 +0000 precise32 (27566)] INFO : Finished instrumentation
+[10/04/15 08:51:58 +0000 precise32 (27566)] INFO : Doing deferred dependency-detection before Rack startup
+[10/04/15 08:51:58 +0000 precise32 (27566)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/04/15 08:51:58 +0000 precise32 (27566)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/04/15 08:52:07 +0000 precise32 (27566)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/04/15 08:52:07 +0000 precise32 (27566)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/04/15 08:53:23 +0000 precise32 (27566)] INFO : Starting Agent shutdown
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Starting the New Relic agent in "development" environment.
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : New Relic Agent Developer Mode enabled.
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Environment: development
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : No known dispatcher detected.
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Application: (Development)
+[10/04/15 10:07:59 +0000 precise32 (27742)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Sidekiq instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing middleware-based Excon instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing deferred Rack instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Rack::Builder middleware instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing ActiveRecord 4 instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Rails 3+ middleware instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Net instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing HTTPClient instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Rails 4 Error instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Rails 4 Controller instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Installing Rails 4 view instrumentation
+[10/04/15 10:07:59 +0000 precise32 (27742)] INFO : Finished instrumentation
+[10/04/15 10:08:00 +0000 precise32 (27742)] INFO : Doing deferred dependency-detection before Rack startup
+[10/04/15 10:08:00 +0000 precise32 (27742)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/04/15 10:08:00 +0000 precise32 (27742)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/04/15 10:08:11 +0000 precise32 (27742)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/04/15 10:08:11 +0000 precise32 (27742)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/04/15 10:08:38 +0000 precise32 (27742)] INFO : Starting Agent shutdown
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Starting the New Relic agent in "development" environment.
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : New Relic Agent Developer Mode enabled.
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Environment: development
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : No known dispatcher detected.
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Application: (Development)
+[10/04/15 10:08:48 +0000 precise32 (27752)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Sidekiq instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing middleware-based Excon instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing deferred Rack instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Rack::Builder middleware instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing ActiveRecord 4 instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Rails 3+ middleware instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Net instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing HTTPClient instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Rails 4 Error instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Rails 4 Controller instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Installing Rails 4 view instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Finished instrumentation
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : Doing deferred dependency-detection before Rack startup
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/04/15 10:08:48 +0000 precise32 (27752)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/04/15 10:08:59 +0000 precise32 (27752)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/04/15 10:08:59 +0000 precise32 (27752)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/04/15 10:10:07 +0000 precise32 (27752)] INFO : Starting Agent shutdown
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Starting the New Relic agent in "development" environment.
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : New Relic Agent Developer Mode enabled.
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Environment: development
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : No known dispatcher detected.
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Application: (Development)
+[10/04/15 10:10:16 +0000 precise32 (27762)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Sidekiq instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing middleware-based Excon instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing deferred Rack instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Rack::Builder middleware instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing ActiveRecord 4 instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Rails 3+ middleware instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Net instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing HTTPClient instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Rails 4 Error instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Rails 4 Controller instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Installing Rails 4 view instrumentation
+[10/04/15 10:10:16 +0000 precise32 (27762)] INFO : Finished instrumentation
+[10/04/15 10:10:17 +0000 precise32 (27762)] INFO : Doing deferred dependency-detection before Rack startup
+[10/04/15 10:10:17 +0000 precise32 (27762)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/04/15 10:10:17 +0000 precise32 (27762)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/04/15 10:10:27 +0000 precise32 (27762)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/04/15 10:10:27 +0000 precise32 (27762)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/04/15 10:11:13 +0000 precise32 (27762)] INFO : Starting Agent shutdown
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Starting the New Relic agent in "development" environment.
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : New Relic Agent Developer Mode enabled.
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Environment: development
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : No known dispatcher detected.
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Application: (Development)
+[10/04/15 10:11:21 +0000 precise32 (27771)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Sidekiq instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing middleware-based Excon instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing deferred Rack instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Rack::Builder middleware instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing ActiveRecord 4 instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Rails 3+ middleware instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Net instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing HTTPClient instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Rails 4 Error instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Rails 4 Controller instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Installing Rails 4 view instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Finished instrumentation
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : Doing deferred dependency-detection before Rack startup
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/04/15 10:11:21 +0000 precise32 (27771)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/04/15 10:11:30 +0000 precise32 (27771)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/04/15 10:11:30 +0000 precise32 (27771)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/04/15 10:15:50 +0000 precise32 (27771)] INFO : Starting Agent shutdown
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Starting the New Relic agent in "development" environment.
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : New Relic Agent Developer Mode enabled.
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Environment: development
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : No known dispatcher detected.
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Application: (Development)
+[10/04/15 14:37:38 +0000 precise32 (28754)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Sidekiq instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing middleware-based Excon instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing deferred Rack instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Rack::Builder middleware instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing ActiveRecord 4 instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Rails 3+ middleware instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Net instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing HTTPClient instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Rails 4 Error instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Rails 4 Controller instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Installing Rails 4 view instrumentation
+[10/04/15 14:37:38 +0000 precise32 (28754)] INFO : Finished instrumentation
+[10/04/15 14:37:39 +0000 precise32 (28754)] INFO : Doing deferred dependency-detection before Rack startup
+[10/04/15 14:37:39 +0000 precise32 (28754)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/04/15 14:37:39 +0000 precise32 (28754)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/04/15 14:37:48 +0000 precise32 (28754)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/04/15 14:37:48 +0000 precise32 (28754)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/04/15 14:37:48 +0000 precise32 (28754)] INFO : Will re-attempt in 60 seconds
+[10/04/15 14:38:48 +0000 precise32 (28754)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/04/15 14:38:48 +0000 precise32 (28754)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/04/15 14:38:48 +0000 precise32 (28754)] INFO : Will re-attempt in 120 seconds
+[10/04/15 14:39:53 +0000 precise32 (28754)] INFO : Starting Agent shutdown
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : Starting the New Relic agent in "development" environment.
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : New Relic Agent Developer Mode enabled.
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : Environment: development
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : No known dispatcher detected.
+[10/05/15 05:32:23 +0000 precise32 (2679)] INFO : Application: (Development)
+[10/05/15 05:32:23 +0000 precise32 (2679)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Sidekiq instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing middleware-based Excon instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing deferred Rack instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Rack::Builder middleware instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing ActiveRecord 4 instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Rails 3+ middleware instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Net instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing HTTPClient instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Rails 4 Error instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Rails 4 Controller instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Installing Rails 4 view instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Finished instrumentation
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : Doing deferred dependency-detection before Rack startup
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/05/15 05:32:24 +0000 precise32 (2679)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/05/15 05:32:37 +0000 precise32 (2679)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/05/15 05:32:37 +0000 precise32 (2679)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/05/15 06:25:28 +0000 precise32 (2679)] INFO : Starting Agent shutdown
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Starting the New Relic agent in "development" environment.
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : New Relic Agent Developer Mode enabled.
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Environment: development
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : No known dispatcher detected.
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Application: (Development)
+[10/05/15 06:25:36 +0000 precise32 (2937)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Sidekiq instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing middleware-based Excon instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing deferred Rack instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Rack::Builder middleware instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing ActiveRecord 4 instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Rails 3+ middleware instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Net instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing HTTPClient instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Rails 4 Error instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Rails 4 Controller instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Installing Rails 4 view instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Finished instrumentation
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : Doing deferred dependency-detection before Rack startup
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/05/15 06:25:36 +0000 precise32 (2937)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/05/15 06:26:45 +0000 precise32 (2937)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/05/15 06:26:45 +0000 precise32 (2937)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/05/15 06:30:59 +0000 precise32 (2937)] INFO : Starting Agent shutdown

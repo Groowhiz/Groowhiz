@@ -79,6 +79,20 @@ CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
 COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
+--
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
 SET search_path = postgrest, pg_catalog;
 
 --
@@ -2197,24 +2211,24 @@ CREATE VIEW subscriber_reports AS
 
 
 --
--- Name: talent_links; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: talent_images; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE talent_links (
+CREATE TABLE talent_images (
     id integer NOT NULL,
     talent_id integer,
-    video_url character varying(255),
-    uploaded_image character varying(255),
+    user_id integer,
+    uploaded_image text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
 
 
 --
--- Name: talent_links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: talent_images_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE talent_links_id_seq
+CREATE SEQUENCE talent_images_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2223,10 +2237,45 @@ CREATE SEQUENCE talent_links_id_seq
 
 
 --
--- Name: talent_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: talent_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE talent_links_id_seq OWNED BY talent_links.id;
+ALTER SEQUENCE talent_images_id_seq OWNED BY talent_images.id;
+
+
+--
+-- Name: talent_videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE talent_videos (
+    id integer NOT NULL,
+    talent_id integer,
+    user_id integer,
+    video_url text,
+    video_thumbnail text,
+    video_embed_url character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: talent_videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE talent_videos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: talent_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE talent_videos_id_seq OWNED BY talent_videos.id;
 
 
 --
@@ -2239,6 +2288,8 @@ CREATE TABLE talents (
     description text,
     category_id integer,
     user_id integer,
+    recommended boolean DEFAULT false,
+    state character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -2641,7 +2692,14 @@ ALTER TABLE ONLY states ALTER COLUMN id SET DEFAULT nextval('states_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY talent_links ALTER COLUMN id SET DEFAULT nextval('talent_links_id_seq'::regclass);
+ALTER TABLE ONLY talent_images ALTER COLUMN id SET DEFAULT nextval('talent_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talent_videos ALTER COLUMN id SET DEFAULT nextval('talent_videos_id_seq'::regclass);
 
 
 --
@@ -2972,11 +3030,19 @@ ALTER TABLE ONLY states
 
 
 --
--- Name: talent_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: talent_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY talent_links
-    ADD CONSTRAINT talent_links_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY talent_images
+    ADD CONSTRAINT talent_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: talent_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY talent_videos
+    ADD CONSTRAINT talent_videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -3204,10 +3270,31 @@ CREATE INDEX fk__redactor_assets_user_id ON redactor_assets USING btree (user_id
 
 
 --
--- Name: fk__talent_links_talent_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: fk__talent_images_talent_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX fk__talent_links_talent_id ON talent_links USING btree (talent_id);
+CREATE INDEX fk__talent_images_talent_id ON talent_images USING btree (talent_id);
+
+
+--
+-- Name: fk__talent_images_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__talent_images_user_id ON talent_images USING btree (user_id);
+
+
+--
+-- Name: fk__talent_videos_talent_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__talent_videos_talent_id ON talent_videos USING btree (talent_id);
+
+
+--
+-- Name: fk__talent_videos_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__talent_videos_user_id ON talent_videos USING btree (user_id);
 
 
 --
@@ -3900,11 +3987,35 @@ ALTER TABLE ONLY redactor_assets
 
 
 --
--- Name: fk_talent_links_talent_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: fk_talent_images_talent_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY talent_links
-    ADD CONSTRAINT fk_talent_links_talent_id FOREIGN KEY (talent_id) REFERENCES talents(id);
+ALTER TABLE ONLY talent_images
+    ADD CONSTRAINT fk_talent_images_talent_id FOREIGN KEY (talent_id) REFERENCES talents(id);
+
+
+--
+-- Name: fk_talent_images_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talent_images
+    ADD CONSTRAINT fk_talent_images_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_talent_videos_talent_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talent_videos
+    ADD CONSTRAINT fk_talent_videos_talent_id FOREIGN KEY (talent_id) REFERENCES talents(id);
+
+
+--
+-- Name: fk_talent_videos_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talent_videos
+    ADD CONSTRAINT fk_talent_videos_user_id FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
@@ -4664,6 +4775,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150728150417');
 INSERT INTO schema_migrations (version) VALUES ('20150728150418');
 
 INSERT INTO schema_migrations (version) VALUES ('20150728170415');
+
+INSERT INTO schema_migrations (version) VALUES ('20151001102610');
 
 INSERT INTO schema_migrations (version) VALUES ('20151003180757');
 
