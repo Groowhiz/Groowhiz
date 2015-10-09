@@ -58,6 +58,18 @@ class TalentsController < ApplicationController
     params.require(:talent).permit(policy(resource).permitted_attributes)
   end
 
+  def talents
+    p "Did i come to talents() in controller?"
+    page = params[:page] || 1
+    p "Will apply scoping"
+    @talents ||= apply_scopes(Talent.visible).
+        most_recent_first.
+        includes(:talent_videos, :user, :category).
+        page(page).per(18)
+    p "Now the talents returning are #{@talents.inspect}"
+    @talents
+  end
+
   def resource
     p "yes came to resource"
     @talent ||=  Talent.find(params[:id])

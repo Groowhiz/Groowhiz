@@ -46,6 +46,13 @@ class User < ActiveRecord::Base
   has_many :projects, -> do
     without_state(:deleted)
   end
+  has_many :talents, -> do
+    without_state(:deleted)
+  end
+  has_many :talents, -> do
+    without_state(:deleted)
+  end
+
   has_many :published_projects, -> do
     with_states(Project::PUBLISHED_STATES)
   end, class_name: 'Project'
@@ -267,6 +274,11 @@ class User < ActiveRecord::Base
 
   def project_owner?
     projects.present?
+  end
+
+  def talent_owner?
+    p "get my talents #{talents.present?}"
+    talents.present?
   end
 
   def fix_twitter_user
