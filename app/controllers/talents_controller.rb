@@ -35,13 +35,18 @@ class TalentsController < ApplicationController
     @talent = Talent.new
     p "Talents Controller create =>   Talent is: #{@talent.inspect}"
 
-    @talent.attributes = permitted_params.merge(user: current_user)
+    @some_variable = permitted_params
+    p "Print the Some variable #{@some_variable.inspect}"
+    @new_variable = @some_variable['talent'].merge(user: current_user)
+    p "Print the Some NEW variable #{@new_variable  .inspect}"
+
+    @talent.attributes = @new_variable
     p "Talents Controller create attributes =>   Talent is: #{@talent.inspect}"
 
     # authorize @talent
     if @talent.save
       p "Talents Controller create  save =>   Talent is: #{@talent.inspect}"
-      redirect_to edit_user_path(@talent, anchor: 'talents')
+      redirect_to edit_user_path(current_user, anchor: 'talents')
     else
       p "Talents Controller create else =>   Talent is: #{@talent.inspect}"
       render :new

@@ -40,9 +40,10 @@ class TalentPolicy < ApplicationPolicy
       p_attr << user_attributes
       p "Did I come to talent policy permitted_attributes user? #{p_attr}"
 
-      p_attr << talent_videos_attributes
-      p "Did I come to talent policy permitted_attributes talent video? #{p_attr}"
-      p "Did I come to talent policy permitted_attributes flattened? #{p_attr.flatten}"
+      p_attr << talent_attributes
+      # p_attr << talent_videos_attributes
+      # p "Did I come to talent policy permitted_attributes talent video? #{p_attr}"
+      # p "Did I come to talent policy permitted_attributes flattened? #{p_attr.flatten}"
 
       p_attr.flatten
     else
@@ -82,8 +83,15 @@ class TalentPolicy < ApplicationPolicy
   end
 
   def talent_videos_attributes
-    { rewards_attributes: [:_destroy, :id, :video_url,
+    { talent_videos_attributes: [:_destroy, :id, :video_url,
                            :video_thumbnail, :video_embed_url] }
+  end
+
+  def talent_attributes
+    {
+        talent: [:title, :description, :category_id,
+        talent_videos_attributes]
+    }
   end
 
 end
