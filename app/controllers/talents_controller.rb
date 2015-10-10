@@ -36,13 +36,22 @@ class TalentsController < ApplicationController
     p "Talents Controller create =>   Talent is: #{@talent.inspect}"
 
     @some_variable = permitted_params
-    p "Print the Some variable #{@some_variable.inspect}"
+    p "Print the Some variable before thumbnail #{@some_variable.inspect}"
+
+    update_video_thumbnail
+    p "Print the Some variable after thumbnail #{@some_variable.inspect}"
     @new_variable = @some_variable['talent'].merge(user: current_user)
     p "Print the Some NEW variable #{@new_variable  .inspect}"
 
     @talent.attributes = @new_variable
     p "Talents Controller create attributes =>   Talent is: #{@talent.inspect}"
+    p "Talents Controller create attributes =>   Talent is: #{@talent.talent_videos.inspect}"
 
+    # @talent.talent_videos.each do |talent_video|
+    #   p "Parsing each video #{talent_video.inspect}"
+    #   talent_video.update_thumbnail
+    #   p "Parsed each video #{talent_video.inspect}"
+    # end
     # authorize @talent
     if @talent.save
       p "Talents Controller create  save =>   Talent is: #{@talent.inspect}"
@@ -56,6 +65,17 @@ class TalentsController < ApplicationController
   def permitted_params
     p "Yes came to permitted params"
     params.require(:talent).permit(policy(resource).permitted_attributes)
+  end
+
+  def update_video_thumbnail
+    p "Some varaible sdskmnfm #{@some_variable["talent"]["talent_videos_attributes"]}"
+    @some_variable["talent"]["talent_videos_attributes"].each do |key, value|
+      p "#{key} #{value}"
+      p "#{@some_variable["talent"]["talent_videos_attributes"][key]}"
+      video_url = @some_variable["talent"]["talent_videos_attributes"][key]["video_url"]
+      video_piece = video_url.split("=")[1]
+      @some_variable["talent"]["talent_videos_attributes"][key]["video_thumbnail"] = "https://img.youtube.com/vi/#{video_piece}/hqdefault.jpg"
+    end
   end
 
   def talents

@@ -62,13 +62,22 @@ nav.project-nav.u-text-center.u-marginbottom-30.profile style='z-index: 10; posi
 section.section
   .w-container
     .w-row
-      #mytalents-tab.content.w-hidden
+      /#mytalents-tab.content.w-hidden
           .w-row.u-margintop-30.u-text-center
             .w-col.w-col-6
               .fontsize-large.u-marginbottom-30  No talents yet..... upload your talents...
             .w-col.w-col-2
             .w-col.w-col-2
               = link_to 'Upload talents', explore_path(), class: 'btn btn-large'
+      #mytalents-tab.content.w-hidden
+        - if resource.created_talents.empty?
+          .w-row.u-text-center
+            .w-col.w-col-2
+            .w-col.w-col-8
+              .fontsize-base #{resource.name} has not uploaded any talent.
+            .w-col.w-col-2
+        - else
+          == render_talents resource.created_talents.most_recent_first, 'profile_created_talents', {wrapper_class: 'w-col w-col-4 u-marginbottom-30'}
 
       #contributed-tab.content.w-hidden
         - if resource.contributed_projects.empty?

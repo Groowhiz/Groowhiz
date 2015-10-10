@@ -13,10 +13,7 @@ class Talent < ActiveRecord::Base
 
    # has_notifications
 
-  # delegate  :display_online_date, :display_card_status, :display_status, :progress,
-  #           :display_image, :display_expires_at, :remaining_text, :time_to_go,
-  #           :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
-  #           :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
+  delegate  :display_image, :get_video_url, to: :decorator
 
   belongs_to :user
   belongs_to :category
@@ -105,12 +102,12 @@ class Talent < ActiveRecord::Base
     PUBLISHED_STATES.include? state
   end
 
-  def expires_fragments *fragments
-    base = ActionController::Base.new
-    fragments.each do |fragment|
-      base.expire_fragment([fragment, id])
-    end
-  end
+  # def expires_fragments *fragments
+  #   base = ActionController::Base.new
+  #   fragments.each do |fragment|
+  #     base.expire_fragment([fragment, id])
+  #   end
+  # end
 
   def to_analytics
     {

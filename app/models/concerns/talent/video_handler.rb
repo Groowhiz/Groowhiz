@@ -3,11 +3,13 @@ module Talent::VideoHandler
   include Shared::VideoHandler
 
   included do
-    mount_uploader :video_thumbnail, TalentUploader
+    # mount_uploader :video_thumbnail, TalentUploader
 
     def download_video_thumbnail
-      self.video_thumbnail = open(self.video.thumbnail_large)  if self.video_valid?
-      self.save
+      # p "FUCKING SHIT #{self.inspect}"
+      # self.video_thumbnail = open(self.video.thumbnail_large)  if self.video_valid?
+      # p "FUCKING SHIT AFTER #{self.inspect}"
+      # self.save
     rescue OpenURI::HTTPError, TypeError => e
       Rails.logger.info "-----> #{e.inspect}"
     end

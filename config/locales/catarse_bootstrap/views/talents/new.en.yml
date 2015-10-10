@@ -28,6 +28,6 @@ pt:
              submit: "Upload"
 
              other_link_label: "Add videos"
-             other_link_hint: "Upload videos showcasing your talent"
+             other_link_hint: "Post a link to showcase your talent (Youtube or Vimeo only)"
              description_label: "Description"
              description_hint: "Describe your talent upload"

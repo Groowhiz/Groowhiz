@@ -177,6 +177,10 @@ class User < ActiveRecord::Base
     projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end
 
+  def created_talents
+    talents.without_state(['deleted'])
+  end
+
   def following_this_category?(category_id)
     category_followers.pluck(:category_id).include?(category_id)
   end
