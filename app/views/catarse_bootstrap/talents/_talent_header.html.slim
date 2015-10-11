@@ -1,0 +1,7 @@
+#talent-header.page-header.u-text-center[data-stats=@talent.to_analytics_json]
+  .w-container
+    h1.fontsize-larger.fontweight-semibold.project-name[itemprop="name"] = @talent.title
+    h2.fontsize-base.lineheight-looser[itemprop="author"]
+      = t('projects.index.box.by')
+      |&nbsp;
+      = @talent.user.display_name

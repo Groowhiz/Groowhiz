@@ -2,9 +2,11 @@
 class TalentsController < ApplicationController
   has_scope :pg_search, :by_category_id, :near_of
   has_scope :recent, :recommended, type: :boolean
+  # after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
+  after_filter :redirect_user_back_after_login, only: %i[index show]
 
   respond_to :html
-  # respond_to :json, only: [:index, :show, :update]
+   respond_to :json, only: [:index, :show, :update]
 
   def index
   end
@@ -13,6 +15,8 @@ class TalentsController < ApplicationController
   end
 
   def show
+    p "Yes I came to show controller"
+    fb_admins_add(resource.user.facebook_id) if resource.user.facebook_id
   end
 
   def new
@@ -75,6 +79,7 @@ class TalentsController < ApplicationController
       video_url = @some_variable["talent"]["talent_videos_attributes"][key]["video_url"]
       video_piece = video_url.split("=")[1]
       @some_variable["talent"]["talent_videos_attributes"][key]["video_thumbnail"] = "https://img.youtube.com/vi/#{video_piece}/hqdefault.jpg"
+      @some_variable["talent"]["permalink"] = SecureRandom.uuid
     end
   end
 
@@ -92,7 +97,13 @@ class TalentsController < ApplicationController
 
   def resource
     p "yes came to resource"
-    @talent ||=  Talent.find(params[:id])
+    @talent ||= (params[:permalink].present? ? Talent.by_permalink(params[:permalink]).first! : Talent.find(params[:id]))
   end
+
+  # def talent_comments_canonical_url
+  #   url = project_by_slug_url(resource.id, protocol: 'http', subdomain: 'www').split('/')
+  #   url.delete_at(3) #remove language from url
+  #   url.join('/')
+  # end
 
 end

@@ -180,5 +180,7 @@ Catarse::Application.routes.draw do
   resource :api_token, only: [:show]
 
   get "/:permalink" => "projects#show", as: :project_by_slug
+  get "/talent/:permalink" => "talents#show", as: :talent_by_slug
+
 
 end

@@ -5,15 +5,19 @@
 div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ? wrapper_class : ''}"] 
   .card-project.card.u-radius
     meta[itemprop="dateCreated" content=@talent.created_at.to_date]
-    a.card-project-thumb style="background-image: url(#{@talent.display_image(:talent_thumb_large)});display:block;" iframe="#{@talent.get_video_url}" href="#{@talent.get_video_url}" target=target
+    a.card-project-thumb style="background-image: url(#{@talent.display_image(:talent_thumb_large)});display:block;" href="#{@talent.get_video_url}" target=target
     .card-talent-description
-      .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight=link_to truncate(@talent.title, length: 50, separator: ''), project_by_slug_path(@talent.id, ref: ref), title: @talent.title, target: target, class: 'link-hidden', itemprop: "title"
-      .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
-        p.card-author-name.fontsize-smaller[itemprop="category" content="#{@talent.category.name_en}"]
-          = @talent.category.name_en
+      .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight
+        = truncate(@talent.title, length: 50, separator: '')
+        /=link_to truncate(@talent.title, length: 50, separator: ''), talent_by_slug_path(@talent.permalink, ref: ref), title: @talent.title, target: target, class: 'link-hidden', itemprop: "title"
+      .fontweight-thin.fontsize-smaller
+        = truncate(@talent.description, length: 250, separator: '')
     .w-clearfix.card-project-author.w-hidden-small.w-hidden-tiny[itemprop="author" itemscope itemtype="http://schema.org/Person"]
+      .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
+        = link_to @talent.category, explore_path(anchor: "by_category_id/#{@talent.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
+        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
       .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
         .u-left
           = image_tag(@talent.user.display_image, class: 'u-round thumb small')
       p.card-author-name.fontsize-smaller[itemprop="name" content="#{@talent.user.display_name}"]
-      = @talent.user.display_name
+      = link_to @talent.user.display_name, user_path(@talent.user), class: 'link-hidden'

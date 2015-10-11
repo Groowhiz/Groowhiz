@@ -94,5 +94,13 @@ class TalentPolicy < ApplicationPolicy
     }
   end
 
+  def create?
+    done_by_owner_or_admin?
+  end
+
+  def update?
+    create?
+  end
+
 end
 

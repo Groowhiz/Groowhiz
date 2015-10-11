@@ -13,7 +13,7 @@ class Talent < ActiveRecord::Base
 
    # has_notifications
 
-  delegate  :display_image, :get_video_url, to: :decorator
+  delegate  :display_image, :get_video_url, :get_permalink, :video_url?, :display_errors, :display_video_embed_url, to: :decorator
 
   belongs_to :user
   belongs_to :category
@@ -54,7 +54,7 @@ class Talent < ActiveRecord::Base
 
   scope :by_category_id, ->(id) { where(category_id: id) }
   scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
-  # scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
+  scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
   scope :title_contains, ->(term) { where("unaccent(upper(title)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
@@ -71,9 +71,9 @@ class Talent < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   ##validation for all states
-  validates_presence_of :title, :user_id, :category_id
+  validates_presence_of :title, :user_id, :category_id, :permalink
 
-  # validates_uniqueness_of :permalink, case_sensitive: false
+  validates_uniqueness_of :permalink, case_sensitive: false
   # validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
   [:between_created_at, :between_updated_at].each do |name|
@@ -112,6 +112,7 @@ class Talent < ActiveRecord::Base
   def to_analytics
     {
         id: self.id,
+        permalink: self.permalink,
         talent_state: self.state,
         category: self.category.name_pt,
         talent_created_date: self.created_at
@@ -121,5 +122,9 @@ class Talent < ActiveRecord::Base
   def to_analytics_json
     to_analytics.to_json
   end
+
+  # def user_already_in_reminder?(user_id)
+  #   notifications.where(template_name: 'reminder', user_id: user_id).present?
+  # end
 
 end
