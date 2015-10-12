@@ -9,8 +9,6 @@
       .fontsize-small.u-text-center.u-marginbottom-10
         span.fontcolor-secondary=> t '.have_account_html'
         = link_to t('.links.login'), new_user_session_path, class: 'link alt-link fontweight-semibold'
-      .login-fb
-        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
       .separator
         .text.or = t('or')
       .w-form
@@ -27,3 +25,8 @@
           = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
       .fontsize-smallest.u-text-center.u-marginbottom-30
         = t(".form.labels.accept", terms_url: CatarseSettings[:terms_url], privacy_url: CatarseSettings[:privacy_url]).html_safe
+      .separator
+        .text.or = t('or')
+      .login-fb
+        = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
+

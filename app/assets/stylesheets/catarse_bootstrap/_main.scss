@@ -1,9 +1,9 @@
 body {
-  font-family: proxima-nova, sans-serif;
+  font-family: Lato, sans-serif;
   color: #3f4752;
   font-size: 14px;
-  line-height: 20px;
-  font-weight: 400;
+  line-height: 22px;
+  font-weight: 300;
 }
 p {
   margin-top: 0px;
@@ -11,12 +11,15 @@ p {
 }
 .btn {
   display: block;
-  width: 100%;
+  width: 70%;
   margin-right: auto;
   margin-left: auto;
-  border: 1px solid #7cc142;
+  border: 1px solid #dbb075;
   border-radius: 5px;
-  background-color: #7cc142;
+  background-color: #fed136;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
   color: white;
@@ -24,9 +27,9 @@ p {
   text-decoration: none;
 }
 .btn:hover {
-  border-color: #65bf1b;
-  background-color: #65bf1b;
-  box-shadow: rgba(63, 71, 82, 0.38) 1px 1px 3px 0px;
+  border-color: #dbb075;
+  background-color: #fec503;
+  box-shadow: none;
 }
 .btn.bt-medium {
   display: block;
@@ -48,7 +51,7 @@ p {
   background-color: #547fd6;
 }
 .btn.btno:hover {
-  background-color: #13cf42;
+  background-color: #fec503;
 }
 .section {
   padding-top: 30px;
@@ -86,7 +89,7 @@ p {
   background-color: #3f4752;
 }
 .bootstrap-color-swatch.green-button {
-  background-color: #7cc142;
+  background-color: #fed136;
 }
 .bootstrap-color-swatch.gray-one {
   background-color: #f1f4f4;

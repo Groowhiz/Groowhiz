@@ -1,12 +1,12 @@
 pt:
   activerecord:
     models:
-      channel: Canal
-      project: Projeto
-      reward: Recompensa
-      contribution: Apoiador
-      category: Categoria
-      bank_account: Dados bancários
+      channel: Channel
+      project: Project
+      reward: Reward
+      contribution: Contribution
+      category: Category
+      bank_account: Bank Account
     attributes:
       project_account:
         address_city: Cidade
@@ -90,7 +90,7 @@ pt:
         budget: 'Orçamento do projeto'
         uploaded_image: 'Imagem do projeto'
       user:
-        address_city: Cidade
+        address_city: city
         address_complement: Complemento
         address_neighbourhood: Bairro
         address_number: Número
@@ -116,20 +116,20 @@ pt:
         reset_password_token: "Link para recriar senha"
       channel:
         ga_code: Código do Analytics
-        description: Descrição
-        how_it_works: Como funciona
-        image: Imagem da novidade
-        name: Nome
-        video_url: Vídeo
+        description: Description
+        how_it_works: How it works
+        image: New image
+        name: Name
+        video_url: Video
       channel_partner:
-        name: 'Nome'
+        name: 'Name'
         url: 'Site'
-        image: 'Imagem'
+        image: 'Image'
       project_post:
-        title: 'Título'
-        comment: 'Texto'
+        title: 'Title'
+        comment: 'Comment'
       channel_post:
-        title: 'Título'
+        title: 'Title'
         body: 'Conteúdo'
         visible: 'Publicar (Marque caso queira publicar essa nóvidade)'
     errors:
@@ -228,31 +228,31 @@ pt:
         user:
           attributes:
             email:
-              not_found: "O email não está cadastrado, verifique o endereço ou faça seu cadastro"
-              taken: "O email já está cadastrado, faça seu login"
-              invalid: "Esse endereço de email é inválido"
-              blank: "O email não pode ficar em branco"
+              not_found: The email is not registered , check the address or make your register"
+              taken: "The email is already registered , login"
+              invalid: "This email address is invalid"
+              blank: "Email can not be empty"
             password:
-              too_short: "A senha que you escolheu é muito curta"
-              confirmation: "A senha e a confirmação de senha preenchidas não estão iguais"
-              blank: "A senha não pode ficar em branco"
+              too_short: "The password you chose is too short"
+              confirmation: "The password and met password confirmation are not equal"
+              blank: "The password can not be blank"
             current_password:
-              invalid: "Senha atual não é válida"
+              invalid: "Current password is not valid"
             reset_password_token:
-              invalid: 'Token expirou. Vá para <a href="/password/new" class="alt-link">redefinir senha</a> e solicite novamente a redefinição da senha.'
+              invalid: 'Token expired . Go to <a href="/password/new" class="alt-link">re-enter password</a> and request a password reset again.'
             name:
-              blank: "Nome do usuário não pode ficar em branco"
+              blank: "User name can not be blank"
             about_html:
-              blank: "About you não pode ficar em branco"
+              blank: "About you can not be blank"
             uploaded_image:
-              blank: "Imagem do usuário não pode ficar em branco"
+              blank: "User image can not be blank"
   project:
     update:
-      success: As informações foram atualizadas
-      failed: 'As informações não foram salvas, verifique se todos os campos foram preenchidos corretamente'
+      success: The information has been updated
+      failed: 'The information was not saved , verify that all fields are filled in correctly'
     delete:
-      posts: 'Novidade apagada com sucesso'
-    video_regex_validation: somente URLs do Youtube ou Vimeo são aceitas
+      posts: 'Deleted successfully'
+    video_regex_validation: Youtube or Vimeo only the URLs are accepted
   payment:
     state:
       pending: "Aguardando confirmação do pagamento"
@@ -297,11 +297,11 @@ pt:
     zip_code: CEP
     anonymous: Anônimo
   user:
-    no_name: Sem nome
+    no_name: Unnamed
     contributions_text:
-      many: "Apoiou este e mais outros %{total} projects"
-      one: "Apoiou somente este projeto até agora"
-      two: "Apoiou este e mais 1 outro projeto"
+      many: "Supported this and most other %{total} projects"
+      one: "Supported only this project so far"
+      two: "Supported this and 1 other project"
   channels_subscribers:
     created: 'Agora you segue o %{channel}'
     deleted: 'You deixou de seguir o %{channel}'

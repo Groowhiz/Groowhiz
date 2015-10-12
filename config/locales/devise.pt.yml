@@ -1,98 +1,101 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
 pt:
   devise:
     feedback_tab:
-      title: 'Feedback e Help'
-      header_html: 'You Welcome ao <br/> novo login do Catarse'
-      blog_button: 'Leia mais no blog'
-      form_feedback_link: 'Enviar feedback'
-      contact_link: 'Entrar em contato'
+      title: 'Feedback and support'
+      header_html: "Welcome to <br/> Catarse's new login"
+      blog_button: 'Read more'
+      form_feedback_link: 'Give feedback'
+      contact_link: 'Contact support'
     links:
-      forgot_password: Esqueci minha senha
+          forgot_password: I forgot my password
     confirmations:
-      confirmed: A sua conta foi confirmada com sucesso. You está autenticado.
-      send_instructions: Dentro de minutos, you receberá um email com as instruções de confirmação da sua conta.
-      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, you receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
+      confirmed: "Your account was successfully confirmed. You are now signed in."
+      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
     failure:
-      password_token: 'O link para recuperar senha expirou. Insira novamente seu email'
-      already_authenticated: ''
-      #already_authenticated: You já está autenticado.
-      inactive: Esse email pertence a uma conta desativada
-      invalid: Email ou senha inválidos
-      invalid_token: O token de autenticação não é válido.
-      locked: A sua conta está bloqueada.
-      not_found_in_database: Email ou senha inválidos
-      timeout: A sua sessão expirou, por favor, faça login novamente para continuar.
+      password_token: 'This password reset link has expired. Enter your email address again'
+      already_authenticated: ""
+      #already_authenticated: "You are already signed in."
+      inactive: "Your account was not activated yet."
+      invalid: "Invalid email or password."
+      invalid_token: "Invalid authentication token."
+      locked: "Your account is locked."
+      not_found_in_database: "Invalid email or password."
+      timeout: "Your session expired, please sign in again to continue."
       unauthenticated: ''
-      unconfirmed: Antes de continuar, confirme a sua conta.
+      #unauthenticated: "You need to sign in or sign up before continuing."
+      unconfirmed: "You have to confirm your account before continuing."
     mailer:
       confirmation_instructions:
-        subject: Instruções de confirmação
+        subject: "Confirmation instructions"
       reset_password_instructions:
-        subject: Redefina sua senha
+        subject: "Reset password instructions"
       unlock_instructions:
-        subject: Instruções de desbloqueio
+        subject: "Unlock Instructions"
     omniauth_callbacks:
-      failure: Não foi possível autorizar de uma conta de %{kind} porque "%{reason}".
+      failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: ''
-      #success: Autorizado com sucesso de uma conta de %{kind}.
+      #success: "Successfully authenticated from %{kind} account."
     passwords:
       no_token: ''
-      #no_token: You não pode acessar esta página sem estar logado. Se you veio de um email de lembre de senha, por favor certifique-se de ter  digitado a URL corretamente.
-      send_instructions: Acabamos de enviar um email com instruções para redefinir uma nova senha
-      send_paranoid_instructions: Se o seu email existir em nosso banco de dados, you receberá um email com um link para recuperação da senha.
-      updated: ''
-      #updated: Sua senha foi alterada com sucesso
-      updated_not_active: Sua senha foi alterada com sucesso.
+      #no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
+      send_instructions: "This password reset link has expired. Enter your email address again"
+      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+      updated: ""
+      #updated: "Your password has been set"
+      updated_not_active: "Your password was changed successfully."
       new:
-        site_title: 'Esqueci minha senha'
-        title: 'Confirme seu email e solicite a mudança de senha'
-        submit: 'Enviar instruções para alterar minha senha'
+        site_title: 'Forgot my password'
+        title: 'Type your email address and ask for a password reset'
+        submit: 'Send instructions to reset my password'
       edit:
-        site_title: 'Defina uma nova senha'
-        label_new_password: 'Nova senha'
-        title: 'Defina uma nova senha'
-        subtitle: 'Defina uma nova senha para usar seu email e senha quando quiser entrar no Catarse.'
-        submit: 'Definir nova senha'
+        site_title: 'Reset password'
+        label_new_password: 'Type your new password bellow'
+        title: 'Reset password'
+        subtitle: 'Reset password to use your email and password in your Catarse login'
+        submit: 'Reset password'
     registrations:
-      destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
-      signed_up: ''
-      #signed_up: Bem vindo! You realizou seu registro com sucesso.
-      signed_up_but_inactive: You se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
-      signed_up_but_locked: You se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.
-      signed_up_but_unconfirmed: Uma mensagem com um link de confirmação foi enviada para o seu e-mail. Por favor, acesse o link para ativar sua conta.
-      update_needs_confirmation: Sua conta foi atualizada com sucesso, mas nós precisamos verificar o novo endereço de email. Por favor, verifique seu email e clique no link de confirmação para finalizar confirmando o seu novo email.
-      updated: A sua conta foi atualizada com sucesso.
+      destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      signed_up: ""
+      #signed_up: "Welcome! You have signed up successfully."
+      signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
+      signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+      signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please open the link to activate your account."
+      update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and click on the confirm link to finalize confirming your new email address."
+      updated: "You updated your account successfully."
     sessions:
       new:
-        site_title: "Efetuar login"
-        submit: "Efetuar login"
-        title: "Entre utilizando o seu endereço de email"
+        site_title: "Login"
+        submit: "Login"
+        title: "Enter using your email address"
         login_title: Login
-        login_subtitle: "Caso já possua uma conta"
-        register_title: Cadastre-se
-        register_subtitle: "Utilize seu endereço de e-mail"
-        with_facebook: "Entre utilizando o facebook"
-        with_facebook_subtitle: "Uma maneira muito rápida de acessar"
-        with_another_social: "O Twitter será removido em uma semana"
-        google_warning_html: "Se you usava uma conta do <strong>Google</strong>:"
-        google_step_1: "1 - Clique em %{link}"
-        google_step_2: "2 - Sigas os próximos passos para criar uma senha nova."
-        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Leia esse post</a> para mais informações"
+        login_subtitle: "If you already have an account"
+        register_title: "Sign Up"
+        register_subtitle: "Use your email address"
+        with_facebook: "Use your facebook account"
+        with_facebook_subtitle: "A fast way to log in"
+        google_warning_html: "If you were using a <strong>Google</strong> account:"
+        google_step_1: "1 - Click in %{link}"
+        google_step_2: "2 - Follow the steps to create a new password."
+        with_another_social: "Twitter support will be removed next week"
+        with_another_social_subtitle: "<a target=\"_blank\" href=\"http://blog.catarse.me/mudanca-no-sistema-de-login/\">Read more</a> about it (in portuguese only)"
       signed_in: ''
-      #signed_in: Login efetuado com sucesso.
+      #signed_in: "Signed in successfully."
       signed_out: ''
-      #signed_out: Logout efetuado com sucesso.
+      #signed_out: "Signed out successfully."
     unlocks:
-      send_instructions: Dentro de minutos, you receberá um email com instruções de desbloqueio da sua conta.
-      send_paranoid_instructions: Se sua conta existir em nosso banco de dados, you receberá em breve um email com instruções para desbloquear ela.
-      unlocked: A sua conta foi desbloqueada com sucesso. You está autenticado.
+      send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
+      send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
+      unlocked: "Your account has been unlocked successfully. Please sign in to continue."
   errors:
     messages:
-      already_confirmed: já foi confirmado
-      confirmation_period_expired: É necessário ser confirmado detro do periodo %{period}, por favor requisite um novo usuário.
-      expired: expirou, por favor solicite uma nova
-      not_found: não encontrado
-      not_locked: não foi bloqueado
+      already_confirmed: "was already confirmed, please try signing in"
+      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      expired: "has expired, please request a new one"
+      not_found: "not found"
+      not_locked: "was not locked"
       not_saved:
-        one: ! ' '
-        other: ! ' '
+        one: "1 error prohibited this %{resource} from being saved:"
+        other: "%{count} errors prohibited this %{resource} from being saved:"

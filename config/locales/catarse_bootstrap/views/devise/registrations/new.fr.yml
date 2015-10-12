@@ -1,21 +1,23 @@
 fr:
   devise:
     registrations:
-      new:
-        have_account_html: "Vous avez déjà un compte ?"
-        titles:
-          site: 'Catarse'
-          header: 'Cadastre-se'
-        links:
-          login: "identifiez-vous:"
-        form:
-          labels:
-            show_password: 'Afficher le mot de passe'
-            name: 'Nome completo'
-            password: 'Mot de passe'
-            newsletter: "S'abonner à la newsletter"
-            accept: "J'ai lu et j'accepte <a href='%{terms_url}' class='alt-link' target='_blank'>les conditions générales d'utilisation de Catarse</a> et celles de son prestataire de paiement XXX, pour l'ouverture du compte de paiement."
-          hint:
-            password_length: 'Au minimum 6 caractères'
-          inputs:
-            submit: 'Envoyer'
+          new:
+            have_account_html: "Have an account?"
+            titles:
+              site: 'Register'
+              header: 'Register'
+            links:
+              login: "login"
+            form:
+              labels:
+                show_password: 'Show Password'
+                name: 'Nome completo'
+                password: 'Password'
+                newsletter: 'I want to subscribe to TalentOxide'
+                accept: 'When you register , you are accepting our <a href="%{terms_url}" class="alt-link" target="_blank">terms of use</a> e <a class="alt-link" href="%{privacy_url}" target="_blank">privacy policy</a>'
+              hint:
+                password_length: 'Must be at least 6 characters'
+              inputs:
+                submit: 'Register'
+                facebook: 'Register with Facebook'
+

@@ -1,18 +1,17 @@
 pt:
-  not_filled: 'Não preenchido'
-  days: dias
+  not_filled: 'Not Entered'
+  days: days
   facebook_locale: pt_BR
-  failure_title: 'Por favor, corrija os seguintes erros:'
-  i_just_contributed: Eu acabei de apoiar o projeto %{name} no @catarse
-  'no': Não
-  'yes': Sim
-  not_informed: não informado
-  or: ou
-  sending: Enviando...
-  share_my_contributions: 'Confira o projeto '
+  failure_title: 'Please fix the following errors:'
+  i_just_contributed: I just support the project %{name} in catarse
+  'no': No
+  'yes': Yes
+  not_informed: uninformed
+  or: or
+  sending: sending...
+  share_my_contributions: 'Check out the project '
   site:
-    description:  O Catarse é a primeira e maior plataforma de crowdfunding, ou financiamento coletivo, do Brasil. Venha tirar projects do papel!
-    keywords: crowdfunding, financiamento coletivo, projeto, catarse, comunidade, open source
+    description: Platform to showcase, learn, share knowledge & collaborate Artists talents - A digital talent platform.
+    keywords: Talents, project collaboration, talent oxide, Artists, showcase, talent portfolio
     meta_title: "%{title} · %{company_name}"
-    title: Crowdfunding e financiamento coletivo no Brasil é no Catarse
-
+    title: Talent Oxide - A platform for all the Artists

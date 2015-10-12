@@ -2,21 +2,22 @@ pt:
   layouts:
     header:
       blog: Blog
-      discover: Explore
+      discover_talents: Explore Talents
+      discover_projects: Explore Projects
       hello: Know more
       faq: FAQ
       help: Contact
-      profile: Mys dados
-      projects: Mys projects
+      profile: My data
+      projects: Ms projects
       signin: Login
-      signup: Cadastre-se
+      signup: Register
       submit: Start your project
       search: Search projects
     login:
-      login_with_facebook: entre com sua conta do facebook
+      login_with_facebook: Sign in with your facebook account
     user:
-      my_contributions: Mys apoios
+      my_contributions: My support
       logout: Sign out
-      my_credits: Saldo de créditos
-      refund_link: Solicitar reembolso
+      my_credits: Credit balance
+      refund_link: request reimbursement
 

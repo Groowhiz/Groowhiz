@@ -2,18 +2,19 @@ fr:
   devise:
     sessions:
       new:
-        no_account_html: "Pas encore abonné ?"
+        no_account_html: "Need an account?"
         titles:
-          site: 'Se connecter'
-          header: 'Se connecter'
+          site: 'Login'
+          header: 'Login'
         links:
-          register: "Créer un compte"
-          password: "Mot de passe"
-          forgot_password: "Mot de passe oublié"
+          register: "Sign up"
+          password: "Password"
+          forgot_password: "I forgot my password"
         form:
           labels:
-            remember_me: 'Rester connecté'
+            remember_me: 'Remember me'
           inputs:
-            submit: 'Se connecter'
-            password: 'Mot de passe'
-
+            submit: 'Log me in'
+            password: 'password'
+            facebook: 'Login with Facebook'
+            success: 'Login'

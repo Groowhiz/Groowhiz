@@ -11,8 +11,6 @@
         .fontsize-small.u-text-center.u-marginbottom-10
           span.fontcolor-secondary=>t ('.no_account_html')
           = link_to t('.links.register'), new_user_registration_path, class: 'alt-link fontweight-semibold'
-        .login-fb
-          = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
         .separator
           .text.or= t('or')
         .w-form
@@ -25,3 +23,8 @@
               = form.input_field :remember_me, as: :boolean, boolean_style: :inline, class: 'checkbox-fix', checked: true
               label.w-form-label.fontsize-smallest= t('.form.labels.remember_me')
             = form.button :submit, t('.form.inputs.submit'), class:'btn btn-medium'
+        .separator
+          .text.or= t('or')
+        .login-fb
+          = link_to t('.form.inputs.facebook'), user_omniauth_authorize_path(provider: :facebook, locale: nil), class: 'btn btn-medium btn-fb'
+

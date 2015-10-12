@@ -4,8 +4,8 @@ en:
       new:
         no_account_html: "Need an account?"
         titles:
-          site: 'Log in'
-          header: 'Log in'
+          site: 'Login'
+          header: 'Login'
         links:
           register: "Sign up"
           forgot_password: "I forgot my password"
@@ -14,4 +14,6 @@ en:
             remember_me: 'Remember me'
           inputs:
             submit: 'Log me in'
-            facebook: 'Log in with Facebook'
+            facebook: 'Login with Facebook'
+            password: 'Password'
+            success: 'Login'

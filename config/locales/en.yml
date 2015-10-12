@@ -14,10 +14,10 @@ en:
       confirmed_contributions: 'Confirmed contributions'
       created_projects: 'Created projects'
   site:
-    description: O Catarse é a primeira e maior plataforma de crowdfunding, ou financiamento coletivo, do Brasil. Venha tirar projects do papel!
-    keywords: crowdfunding, financiamento coletivo, projeto, catarse, comunidade, open source
+    description: Platform to showcase, learn, share knowledge & collaborate Artists talents - A digital talent platform
+    keywords: Talents, project collaboration, talent oxide, Artists, showcase, talent portfolio
     meta_title: "%{title} · %{company_name}"
-    title: Crowdfunding e financiamento coletivo no Brasil é no Catarse
+    title: Talent Oxide - A platform for all the Artists
     # TODO: Change these if you're building a new site!
   login:
     forgot_password:
