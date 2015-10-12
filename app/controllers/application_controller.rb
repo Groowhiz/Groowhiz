@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :referral_link, :render_projects, :should_show_beta_banner?,
-    :render_feeds, :can_display_pending_refund_alert?
+    :render_feeds, :can_display_pending_refund_alert?, :render_talents
 
   before_filter :set_locale
 
@@ -35,6 +35,11 @@ class ApplicationController < ActionController::Base
 
   def render_projects collection, ref, locals = {}
     render_to_string partial: 'projects/card', collection: collection, locals: {ref: ref}.merge!(locals)
+  end
+
+  def render_talents collection, ref, locals = {}
+    p "Hey I came here"
+    render_to_string partial: 'talents/card', collection: collection, locals: {ref: ref}.merge!(locals)
   end
 
   def render_feeds collection, locals = {}
@@ -78,9 +83,11 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_user_back_after_login
+    p "did i come here?"
     if request.env['REQUEST_URI'].present? && !request.xhr?
       session[:return_to] = request.env['REQUEST_URI']
     end
+    p "did i fail here?"
   end
 
   def configure_permitted_parameters

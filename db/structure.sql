@@ -2290,6 +2290,7 @@ CREATE TABLE talents (
     user_id integer,
     recommended boolean DEFAULT false,
     state character varying(255),
+    permalink character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );

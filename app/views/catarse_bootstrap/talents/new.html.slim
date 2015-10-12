@@ -1,58 +1,93 @@
 - content_for :title, t('.page-title')
 
 = render 'shared/header'
+= simple_form_for @talent, defaults: {wrapper: :two_columns, validation_text: false, label_wrapper_html: {class: 'w-col w-col-5 w-sub-col'}}, html: {class: 'project-form w-form'} do |f|
+  = hidden_field_tag 'talent_id', @talent.id
+  = hidden_field_tag 'anchor', 'user_about'
+  = f.simple_fields_for @talent do |form|
+    .w-section.section
+      h1.fontsize-larger.u-text-center.u-marginbottom-70.u-margintop-40 = t('.Upload your talent')
+      .w-container
+        .w-row
+          .w-col.w-col-10.w-col-push-1
+            /= @talent.display_errors(:user_about)
 
-.section
-  .w-container
-    .w-row
-      .w-col.w-col-8.w-col-push-2
-        = simple_form_for @talent, defaults: { wrapper: :input_with_error}, html: { id: 'talent_form', class: 'w-form' } do |form|
+            = form.input :title, as: :string,
+                         wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+                         text_field_wrapper_html: {class: 'w-col w-col-7'},
+                         input_html: {class: 'w-input text-field positive medium', required: true},
+                         label: t('.Title'),
+                         hint: t('.Name your talent')
 
-          fieldset
-            legend.fontsize-largest.lineheight-loose.u-text-center = t('.form.blocks.first.title')
-            p.fontsize-small.u-marginbottom-60.u-text-center = t('.form.blocks.first.description')
-            /= render 'devise/shared/alert'
+            /= form.input :description, as: :text,
+            /             wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+            /             text_field_wrapper_html: {class: 'w-col w-col-3'},
+            /             input_html: {class: 'redactor w-input text-field bottom jumbo positive', required: true},
+            /             label: t('.form.description_label'),
+            /             hint: t('.form.description_hint')
+            /.card.card-terciary.u-marginbottom-30
+            /  label.field-label.fontweight-semibold Description
+            /  label.field-label.fontsize-smallest.fontcolor-secondary.u-marginbottom-20 Describe your talent upload
+            /  .w-form
+            /    .preview-container.u-marginbottom-40
+            /      = form.input_field :description, class: 'redactor w-input text-field bottom jumbo positive'
 
-            .u-marginbottom-40
-              = form.label :title, class: 'fontsize-large', required: false, as: :string
-              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :title
-              = form.input :title, as: :string
-            .u-marginbottom-40
-              = form.label :category, class: 'fontsize-large', required: false
-              .fontsiz-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
-              = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false, hint: ''
+            = form.input :description, as: :string,
+                         wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+                         text_field_wrapper_html: {class: 'w-col w-col-7'},
+                         input_html: {class: 'w-input text-field positive medium', required: true},
+                         label: t('.Description'),
+                         hint: t('.Give a short description of your talent(upto 250 characters)')
 
-            //.u-marginbottom-40
+            /= form.label :category, class: 'fontsize-large', required: false
+            /  .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
+            /  = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.talent.category'), class: 'medium', label: '', required: false, hint: ''
 
-              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
-              = form.input :name, as: :string
+            .w-form.card.card-terciary.u-marginbottom-30
+              .w-row.u-marginbottom-10
+                .w-col.w-col-5.w-sub-col
+                  label.field-label.fontweight-semibold= t('.form.other_link_label')
+                  label.field-label.fontsize-smallest.fontcolor-secondary= t('.form.other_link_hint')
+                .w-col.w-col-7
+                  = form.simple_fields_for :talent_videos do |link_form|
+                    = render partial: 'link_fields', locals: {f: link_form, parent_form: form}
 
-            //.u-marginbottom-40
-              = form.label :permalink, class: 'fontsize-large', required: false, as: :string
-              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink
-              //.w-row
-                .w-col.w-col-4.w-col.w-col-small-6.w-col-tiny-6.text-field.prefix.medium.prefix-permalink.no-hover
-                  .fontcolor-secondary.fontsize-base.u-text-center = t('.form.info.permalink')
-                .w-col.w-col-8.w-col-small-6.w-col-tiny-6
-                  = form.input :permalink, as: :string, required: false, input_html: {class: 'medium postfix'}
-            //.u-marginbottom-40
-              label.fontsize-large.field-label for="field"= t('simple_form.prompts.project.traffic_sources')
-              = form.input :traffic_sources, as: :select, collection: t('simple_form.collections.project.traffic_sources').values, prompt: t('simple_form.prompts.project.select'), class: 'medium', label: '', required: false, hint: ''
-            //.w-row.u-marginbottom-40
-              .w-col.w-col-5.w-sub-col
-                 label.field-label.fontweight-semibold= t('.other_link_label')
-                 label.field-label.fontsize-smallest.fontcolor-secondary= t('.other_link_hint')
-              .w-col.w-col-7
-                   = form.simple_fields_for :talent_videos do |link_form|
-                     = render partial: 'link_fields', locals: { f: link_form, parent_form: form }
-              .w-row
-                     .w-col.w-col-6
-                     .w-col.w-col-6
-                       = link_to_add_association '+ Add More Videos', form, :talent_videos, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#links', class: 'btn btn-small btn-terciary'
+              /MULTI VIDEO IS FAILING
+              /.w-row
+              /  .w-col.w-col-6
+              /  .w-col.w-col-6
+              /    = link_to_add_association t('users.edit.add_link'), form, :talent_videos, :'data-association-insertion-method' => :append, :'data-association-insertion-node' => '#talent_videos', class: 'btn btn-small btn-terciary'
 
-          .w-row
-            .w-col.w-col-6.w-col-push-3
-              = form.button :submit, t('.form.submit'), class:'btn btn-large'
+            = form.label :category, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
+            = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.talent.category'), class: 'medium', label: '', required: false, hint: ''
 
-= render 'shared/footer'
+            /= form.input :uploaded_image, as: :file,
+            /             wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
+            /             text_field_wrapper_html: {class: 'w-col w-col-6 w-sub-col'},
+            /             input_html: {required: (!@talent_videos.uploaded_image.present?)},
+            /             label: t('.uploaded_image_label'),
+            /             hint: @talent_videos.uploaded_image.present? ? image_tag(form.object.uploaded_image) : t('.uploaded_image_hint')
 
+
+            /.w-form.card.card-terciary.u-marginbottom-30
+            /  = form.input :facebook_link, as: :string,
+            /               wrapper_class: 'w-row u-marginbottom-10',
+            /               text_field_wrapper_html: {class: 'w-col w-col-7'},
+            /               input_html: {class: 'positive'},
+            /               label: t('.facebook_link_label'),
+            /               hint: t('.facebook_link_hint')
+            /
+            /  = form.input :twitter, as: :string,
+            /               wrapper_class: 'w-row u-marginbottom-10',
+            /               text_field_wrapper_html: {class: 'w-col w-col-7'},
+            /               input_html: {class: 'positive'},
+            /               label: t('.twitter_label'),
+            /               hint: t('.twitter_label')
+            /
+
+    div
+      .w-container
+        .w-row
+          .w-col.w-col-4.w-col-push-4
+            = form.button :submit, t('.form.submit'), class: 'btn btn-large'

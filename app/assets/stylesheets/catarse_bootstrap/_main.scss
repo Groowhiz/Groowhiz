@@ -328,6 +328,10 @@ p {
   margin-top: 0px;
   padding-top: 18px;
 }
+.talent-share {
+  margin-top: 0px;
+  padding-top: 18px;
+}
 .project-share.div-share2 {
   margin-top: 1px;
   padding-top: 18px;
@@ -614,10 +618,20 @@ p {
 .project-about {
   margin-bottom: 40px;
 }
+.talent-about {
+  margin-bottom: 40px;
+}
 .project-video {
   height: 418px;
 }
 .project-video.mf {
+  height: 488px;
+  margin-bottom: 50px;
+}
+.talent-video {
+  height: 418px;
+}
+.talent-video.mf {
   height: 488px;
   margin-bottom: 50px;
 }
@@ -913,6 +927,10 @@ p {
 }
 .card-project-description {
   height: 165px;
+  padding: 14px 20px;
+}
+.card-talent-description {
+  height: 200px;
   padding: 14px 20px;
 }
 .card-project-description._3 {
@@ -2355,6 +2373,19 @@ p {
 .body-project.closed {
   margin-left: 0px;
 }
+.body-talent {
+  margin-left: 205px;
+}
+.body-talent.open {
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.body-talent.big {
+  margin-left: 205px;
+}
+.body-talent.closed {
+  margin-left: 0px;
+}
 .bg-people {
   height: 768px;
   padding-top: 375px;
@@ -2446,6 +2477,13 @@ p {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
+.edit-talent-div {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 45px;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
 .card-alert {
   border-color: rgba(158, 156, 32, 0.2);
   background-color: #f4f4c0;
@@ -2523,6 +2561,12 @@ p {
   opacity: 1;
 }
 .thumb-project-dashboard {
+  width: 115px;
+  height: 65px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.thumb-talent-dashboard {
   width: 115px;
   height: 65px;
   margin-bottom: 10px;

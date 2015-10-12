@@ -21,8 +21,13 @@ pt:
              blocks:
                first:
                  title: "Upload your Talents!"
-                 description: "Upload videos to showcase your talent."
+                 description: "Describe your talent upload"
 
              info:
 
              submit: "Upload"
+
+             other_link_label: "Add videos"
+             other_link_hint: "Post a link to showcase your talent (Youtube or Vimeo only)"
+             description_label: "Description"
+             description_hint: "Describe your talent upload"

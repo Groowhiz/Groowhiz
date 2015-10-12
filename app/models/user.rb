@@ -46,6 +46,13 @@ class User < ActiveRecord::Base
   has_many :projects, -> do
     without_state(:deleted)
   end
+  has_many :talents, -> do
+    without_state(:deleted)
+  end
+  has_many :talents, -> do
+    without_state(:deleted)
+  end
+
   has_many :published_projects, -> do
     with_states(Project::PUBLISHED_STATES)
   end, class_name: 'Project'
@@ -170,6 +177,10 @@ class User < ActiveRecord::Base
     projects.with_state(['online', 'waiting_funds', 'successful', 'failed'])
   end
 
+  def created_talents
+    talents.without_state(['deleted'])
+  end
+
   def following_this_category?(category_id)
     category_followers.pluck(:category_id).include?(category_id)
   end
@@ -267,6 +278,11 @@ class User < ActiveRecord::Base
 
   def project_owner?
     projects.present?
+  end
+
+  def talent_owner?
+    p "get my talents #{talents.present?}"
+    talents.present?
   end
 
   def fix_twitter_user

@@ -1,9 +1,9 @@
 module Talent::StateMachineHandler
   extend ActiveSupport::Concern
 
-  # included do
+   included do
   #   #NOTE: state machine things
-  #   state_machine :state, initial: :draft do
+     state_machine :state, initial: :draft do
   #     state :draft, value: 'draft'
   #     state :rejected, value: 'rejected'
   #
@@ -36,7 +36,7 @@ module Talent::StateMachineHandler
   #         self.account.errors.each {|error, error_message| self.errors.add('project_account.' + error.to_s, error_message)} if self.account.present?
   #       end
   #     end
-  #     state :deleted, value: 'deleted'
+        state :deleted, value: 'deleted'
   #
   #     event :push_to_draft do
   #       transition all => :draft #NOTE: when use 'all' we can't use new hash style ;(
@@ -104,7 +104,7 @@ module Talent::StateMachineHandler
   #     after_transition [:draft, :rejected] => :deleted do |project, transition|
   #       project.update_attributes({ permalink: "deleted_project_#{project.id}"})
   #     end
-  #   end
-  # end
+     end
+   end
 end
 
