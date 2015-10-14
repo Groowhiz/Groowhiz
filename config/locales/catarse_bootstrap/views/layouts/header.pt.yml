@@ -1,6 +1,7 @@
 pt:
   layouts:
     header:
+      logo: TalentOxide
       blog: Blog
       discover_talents: Explore Talents
       discover_projects: Explore Projects

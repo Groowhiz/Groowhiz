@@ -3,7 +3,7 @@
 
 section#hero-home.hero-full.hero-knowmore
   .w-container.u-text-center
-    .hero-home-words-content
+    /.hero-home-words-content
       .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
         .w-embed
           .cd-headline.letters.type
@@ -15,9 +15,13 @@ section#hero-home.hero-full.hero-knowmore
                 - else
                   b = word
             span = t('.banner_after')
-    .w-row
-      .w-col.w-col-4.w-col-push-4
-        a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Know more
+    /.w-row
+      .w-col.w-col-3.w-col-push-4
+        a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
+section#home-slider.w-container
+  .w-row.main-slider.slide-text
+
+
 
 section#projects
   - if current_user && @projects_near.present?
@@ -36,7 +40,7 @@ section#projects
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          = t('.recommended')
+          = t('.recent_talents')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
     .w-row
@@ -46,23 +50,23 @@ section#projects
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          = t('.expiring')
+          = t('.trending_talents')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
     .w-row
       == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
 
-  article.section.recent-projects.w-container
+  /article.section.recent-projects.w-container
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          = t('.recents')
+          = t('.')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
         = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
     .w-row
       == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
-section#blog.section-large.bg-gray.before-footer
+/section#blog.section-large.bg-gray.before-footer
   .w-container
     .u-text-center
       = link_to CatarseSettings[:blog_url], target: :blank do
