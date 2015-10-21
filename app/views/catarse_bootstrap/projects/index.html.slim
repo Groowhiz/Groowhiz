@@ -1,12 +1,13 @@
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-section#hero-home.hero-full.hero-knowmore
+/section#hero-home.hero-full.hero-knowmore.hom
   .w-container.u-text-center
-    /.hero-home-words-content
+    .hero-home-words-content
       .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
         .w-embed
-          .cd-headline.letters.type
+
+          /.cd-headline.letters.type
             span = t('.banner_before')     
             span.cd-words-wrapper
               - t('.banner_words').each do |index, word|
@@ -15,11 +16,16 @@ section#hero-home.hero-full.hero-knowmore
                 - else
                   b = word
             span = t('.banner_after')
-    /.w-row
+    .w-row
       .w-col.w-col-3.w-col-push-4
         a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
-section#home-slider.w-container
-  .w-row.main-slider.slide-text
+section#home-slider.hero-full.main-slider.animate-in
+    = image_tag "slider/hill.png", class: "slider-hill"
+    = image_tag "slider/house.png", class: "slider-house"
+    = image_tag "slider/sun.png", class: "slider-sun"
+    = image_tag "slider/birds1.png", class: "slider-birds1"
+    = image_tag "slider/birds2.png", class: "slider-birds2"
+
 
 
 

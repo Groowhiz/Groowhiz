@@ -111,13 +111,14 @@ p {
 *******Home Page******
 **************************/
 #home-slider {
-  background: url(../images/home/slider-bg.png) 0 100% repeat-x;
+  background: url(../images/slider/slider-bg.png);
   position: relative;
 }
 
 #home-slider .main-slider {
   position: relative;
   height: 450px;
+  background: url(../images/slider/slider-bg.png);
 }
 
 #home-slider .slide-text{
@@ -262,13 +263,13 @@ p {
   margin-bottom: 0px;
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.09);
-  background-color: transparent;
-  color: rgba(255, 255, 255, 0.61);
+  background-color: #0099ae;
+  color: black;
 }
 .text-field.negative:hover {
   border-style: solid;
-  background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 23px 0px inset;
+  background-color: #337ab7;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 23px 0px inset;
   color: #3f4752;
 }
 .text-field.negative:focus {
@@ -501,7 +502,7 @@ p {
 .main-header {
   padding: 15px 10px 8px 25px;
   border-bottom: 1px solid rgba(37, 49, 57, 0.6);
-  background-color: #3f4752;
+  background-color: #ffffff;
 }
 .main-header.overlayer {
   position: absolute;
@@ -511,9 +512,9 @@ p {
   z-index: 20;
   margin-top: 0px;
   border-bottom-style: none;
-  background-color: black;
-  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), transparent);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);
+  background-color: #ffffff;
+  /*background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.02), transparent);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);*/
 }
 .main-header.overlayer.alert {
   margin-top: 40px;
@@ -537,10 +538,10 @@ p {
   border-radius: 4px;
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
-  color: #ffffff;
+  color: black;
   font-size: 15px;
-  font-weight: 300;
-  text-decoration: none;
+  font-weight: bold;
+  text-decoration: solid;
 }
 .header-link:hover {
   position: static;
@@ -548,9 +549,10 @@ p {
   right: -73px;
   padding-top: 9px;
   padding-bottom: 9px;
-  background-color: #fed136;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #FED136;
   line-height: 20px;
+  font-weight: bold;
 }
 .header-link.help {
   left: 211px;
@@ -1414,6 +1416,7 @@ p {
   height: 40px;
   margin-bottom: 0px;
   margin-left: 20px;
+  color: black;
 }
 .u-text-center {
   text-align: center;
@@ -1531,7 +1534,7 @@ p {
   margin-right: 8px;
   margin-left: 8px;
   opacity: 1;
-  color: #ffffff;
+  color: #000;
 }
 .footer-newsletter {
   display: inline-block;
@@ -2032,8 +2035,7 @@ p {
   margin-bottom: 30px;
   padding-top: 225px;
   padding-bottom: 235px;
-  background-color: #f1f4f4;
-  background-image: url('../images/slider/slider-bg.png');
+  background-color: whitesmoke;
 }
 .hero-full.hero-knowmore {
   background-color: white;
@@ -2978,7 +2980,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
   }
   .main-header {
     padding: 12px 4px 0px 18px;
-    background-color: #000000;
+    background-color: #ffffff;
   }
   .main-header.overlayer.alert {
     margin-top: 38px;
@@ -3134,6 +3136,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
     width: 17%;
     margin-left: 0px;
     font-size: 12px;
+    color: black;
   }
   .header-logo {
     width: 100px;
@@ -3366,11 +3369,11 @@ html.w-mod-js *[data-ix="know-more-2"] {
     padding-top: 50px;
   }
   .text-field.negative {
-    background-color: rgba(241, 244, 244, 0.61);
-    color: #3f4752;
+    background-color: #0099ae;
+    color: black;
   }
   .text-field.negative:hover {
-    background-color: rgba(241, 244, 244, 0.61);
+    background-color: #337ab7;
   }
   .box-login {
     border-style: solid;
@@ -3967,7 +3970,7 @@ html.w-mod-js *[data-ix="know-more-2"] {
   }
   .main-header {
     padding-bottom: 4px;
-    background-color: black;
+    background-color: #ffffff;
   }
   .main-header.overlayer.alert {
     margin-top: 60px;

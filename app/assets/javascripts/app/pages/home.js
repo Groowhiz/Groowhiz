@@ -20,3 +20,19 @@ App.addChild('HomeNewsletter', {
   },
 
 });
+
+App.addChild('Home',{
+    el: '#home-slider',
+    load: function(){
+        $('.main-slider').addClass('animate-in');
+        $('.preloader').remove();
+    }
+})
+
+// portfolio filter
+//$(window).load(function() {
+
+   // $('.main-slider').addClass('animate-in');
+   // $('.preloader').remove();
+//});
+//End Preloader

@@ -4637,3 +4637,530 @@
 [10/13/15 13:35:54 +0000 precise32 (8635)] ERROR : Invalid license key, please contact support@newrelic.com
 [10/13/15 13:35:54 +0000 precise32 (8635)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
 [10/14/15 14:02:57 +0000 precise32 (8635)] INFO : Starting Agent shutdown
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Starting the New Relic agent in "development" environment.
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : New Relic Agent Developer Mode enabled.
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Environment: development
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : No known dispatcher detected.
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Application: (Development)
+[10/19/15 05:53:12 +0000 precise32 (10270)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Sidekiq instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing middleware-based Excon instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing deferred Rack instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Rack::Builder middleware instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing ActiveRecord 4 instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Rails 3+ middleware instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Net instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing HTTPClient instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Rails 4 Error instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Rails 4 Controller instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Installing Rails 4 view instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Finished instrumentation
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : Doing deferred dependency-detection before Rack startup
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/19/15 05:53:12 +0000 precise32 (10270)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/19/15 05:53:28 +0000 precise32 (10270)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/19/15 05:53:28 +0000 precise32 (10270)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Environment: development
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : No known dispatcher detected.
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Application: (Development)
+[10/21/15 10:40:41 +0000 precise32 (11592)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Sidekiq instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing deferred Rack instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Net instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing HTTPClient instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 10:40:41 +0000 precise32 (11592)] INFO : Finished instrumentation
+[10/21/15 10:40:42 +0000 precise32 (11592)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 10:40:42 +0000 precise32 (11592)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 10:40:42 +0000 precise32 (11592)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : Environment: development
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : No known dispatcher detected.
+[10/21/15 10:41:11 +0000 precise32 (11597)] INFO : Application: (Development)
+[10/21/15 10:41:11 +0000 precise32 (11597)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Sidekiq instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing deferred Rack instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Net instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing HTTPClient instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Finished instrumentation
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 10:41:12 +0000 precise32 (11597)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 10:41:19 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 10:41:20 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 10:41:20 +0000 precise32 (11597)] INFO : Will re-attempt in 60 seconds
+[10/21/15 10:42:21 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 10:42:21 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 10:42:21 +0000 precise32 (11597)] INFO : Will re-attempt in 120 seconds
+[10/21/15 10:44:22 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 10:44:22 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 10:44:22 +0000 precise32 (11597)] INFO : Will re-attempt in 180 seconds
+[10/21/15 10:47:22 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 10:47:22 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 10:47:22 +0000 precise32 (11597)] INFO : Will re-attempt in 240 seconds
+[10/21/15 10:51:22 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 10:51:22 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 10:51:22 +0000 precise32 (11597)] INFO : Will re-attempt in 300 seconds
+[10/21/15 10:56:23 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 10:56:23 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 10:56:23 +0000 precise32 (11597)] INFO : Will re-attempt in 360 seconds
+[10/21/15 11:02:23 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:02:23 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:02:23 +0000 precise32 (11597)] INFO : Will re-attempt in 420 seconds
+[10/21/15 11:09:23 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:09:23 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:09:23 +0000 precise32 (11597)] INFO : Will re-attempt in 480 seconds
+[10/21/15 11:17:23 +0000 precise32 (11597)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:17:23 +0000 precise32 (11597)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:17:23 +0000 precise32 (11597)] INFO : Will re-attempt in 540 seconds
+[10/21/15 11:23:54 +0000 precise32 (11597)] INFO : Starting Agent shutdown
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : Environment: development
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : No known dispatcher detected.
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : Application: (Development)
+[10/21/15 11:24:10 +0000 precise32 (11727)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 11:24:10 +0000 precise32 (11727)] INFO : Installing Sidekiq instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing deferred Rack instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing Net instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing HTTPClient instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Finished instrumentation
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 11:24:11 +0000 precise32 (11727)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 11:24:18 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:24:18 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:24:18 +0000 precise32 (11727)] INFO : Will re-attempt in 60 seconds
+[10/21/15 11:25:19 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:25:19 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:25:19 +0000 precise32 (11727)] INFO : Will re-attempt in 120 seconds
+[10/21/15 11:27:19 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:27:19 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:27:19 +0000 precise32 (11727)] INFO : Will re-attempt in 180 seconds
+[10/21/15 11:30:19 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:30:19 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:30:19 +0000 precise32 (11727)] INFO : Will re-attempt in 240 seconds
+[10/21/15 11:34:19 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:34:19 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:34:19 +0000 precise32 (11727)] INFO : Will re-attempt in 300 seconds
+[10/21/15 11:39:20 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:39:20 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:39:20 +0000 precise32 (11727)] INFO : Will re-attempt in 360 seconds
+[10/21/15 11:45:20 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:45:20 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:45:20 +0000 precise32 (11727)] INFO : Will re-attempt in 420 seconds
+[10/21/15 11:52:20 +0000 precise32 (11727)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:52:20 +0000 precise32 (11727)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:52:20 +0000 precise32 (11727)] INFO : Will re-attempt in 480 seconds
+[10/21/15 11:53:33 +0000 precise32 (11727)] INFO : Starting Agent shutdown
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : Environment: development
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : No known dispatcher detected.
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : Application: (Development)
+[10/21/15 11:53:44 +0000 precise32 (11822)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 11:53:44 +0000 precise32 (11822)] INFO : Installing Sidekiq instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing deferred Rack instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing Net instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing HTTPClient instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Finished instrumentation
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 11:53:45 +0000 precise32 (11822)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 11:53:55 +0000 precise32 (11822)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:53:55 +0000 precise32 (11822)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:53:55 +0000 precise32 (11822)] INFO : Will re-attempt in 60 seconds
+[10/21/15 11:54:56 +0000 precise32 (11822)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:54:56 +0000 precise32 (11822)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:54:56 +0000 precise32 (11822)] INFO : Will re-attempt in 120 seconds
+[10/21/15 11:56:56 +0000 precise32 (11822)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:56:56 +0000 precise32 (11822)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:56:56 +0000 precise32 (11822)] INFO : Will re-attempt in 180 seconds
+[10/21/15 11:59:57 +0000 precise32 (11822)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 11:59:57 +0000 precise32 (11822)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 11:59:57 +0000 precise32 (11822)] INFO : Will re-attempt in 240 seconds
+[10/21/15 12:03:57 +0000 precise32 (11822)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:03:57 +0000 precise32 (11822)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:03:57 +0000 precise32 (11822)] INFO : Will re-attempt in 300 seconds
+[10/21/15 12:04:58 +0000 precise32 (11822)] INFO : Starting Agent shutdown
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Environment: development
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : No known dispatcher detected.
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Application: (Development)
+[10/21/15 12:05:12 +0000 precise32 (11868)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Sidekiq instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing deferred Rack instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Net instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing HTTPClient instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 12:05:12 +0000 precise32 (11868)] INFO : Finished instrumentation
+[10/21/15 12:05:13 +0000 precise32 (11868)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 12:05:13 +0000 precise32 (11868)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 12:05:13 +0000 precise32 (11868)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 12:05:20 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:05:20 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:05:21 +0000 precise32 (11868)] INFO : Will re-attempt in 60 seconds
+[10/21/15 12:06:21 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:06:21 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:06:21 +0000 precise32 (11868)] INFO : Will re-attempt in 120 seconds
+[10/21/15 12:08:22 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:08:22 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:08:22 +0000 precise32 (11868)] INFO : Will re-attempt in 180 seconds
+[10/21/15 12:11:22 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:11:22 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:11:22 +0000 precise32 (11868)] INFO : Will re-attempt in 240 seconds
+[10/21/15 12:15:22 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:15:22 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:15:22 +0000 precise32 (11868)] INFO : Will re-attempt in 300 seconds
+[10/21/15 12:20:22 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:20:22 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:20:22 +0000 precise32 (11868)] INFO : Will re-attempt in 360 seconds
+[10/21/15 12:26:23 +0000 precise32 (11868)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:26:23 +0000 precise32 (11868)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:26:23 +0000 precise32 (11868)] INFO : Will re-attempt in 420 seconds
+[10/21/15 12:28:21 +0000 precise32 (11868)] INFO : Starting Agent shutdown
+[10/21/15 12:28:40 +0000 precise32 (11950)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 12:28:40 +0000 precise32 (11950)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 12:28:40 +0000 precise32 (11950)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 12:28:40 +0000 precise32 (11950)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Environment: development
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : No known dispatcher detected.
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Application: (Development)
+[10/21/15 12:28:41 +0000 precise32 (11950)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Sidekiq instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing deferred Rack instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Net instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing HTTPClient instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 12:28:41 +0000 precise32 (11950)] INFO : Finished instrumentation
+[10/21/15 12:28:42 +0000 precise32 (11950)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 12:28:42 +0000 precise32 (11950)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 12:28:42 +0000 precise32 (11950)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 12:28:54 +0000 precise32 (11950)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:28:54 +0000 precise32 (11950)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:28:54 +0000 precise32 (11950)] INFO : Will re-attempt in 60 seconds
+[10/21/15 12:29:54 +0000 precise32 (11950)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:29:54 +0000 precise32 (11950)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:29:54 +0000 precise32 (11950)] INFO : Will re-attempt in 120 seconds
+[10/21/15 12:31:55 +0000 precise32 (11950)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:31:55 +0000 precise32 (11950)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:31:55 +0000 precise32 (11950)] INFO : Will re-attempt in 180 seconds
+[10/21/15 12:34:55 +0000 precise32 (11950)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:34:55 +0000 precise32 (11950)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:34:55 +0000 precise32 (11950)] INFO : Will re-attempt in 240 seconds
+[10/21/15 12:38:55 +0000 precise32 (11950)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:38:55 +0000 precise32 (11950)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:38:55 +0000 precise32 (11950)] INFO : Will re-attempt in 300 seconds
+[10/21/15 12:43:55 +0000 precise32 (11950)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:43:55 +0000 precise32 (11950)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:43:55 +0000 precise32 (11950)] INFO : Will re-attempt in 360 seconds
+[10/21/15 12:47:35 +0000 precise32 (11950)] INFO : Starting Agent shutdown
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Environment: development
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : No known dispatcher detected.
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Application: (Development)
+[10/21/15 12:47:51 +0000 precise32 (12015)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Sidekiq instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing deferred Rack instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Net instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing HTTPClient instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Finished instrumentation
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 12:47:51 +0000 precise32 (12015)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 12:48:12 +0000 precise32 (12015)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:48:12 +0000 precise32 (12015)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:48:12 +0000 precise32 (12015)] INFO : Will re-attempt in 60 seconds
+[10/21/15 12:49:12 +0000 precise32 (12015)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:49:12 +0000 precise32 (12015)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:49:12 +0000 precise32 (12015)] INFO : Will re-attempt in 120 seconds
+[10/21/15 12:51:13 +0000 precise32 (12015)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:51:13 +0000 precise32 (12015)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:51:13 +0000 precise32 (12015)] INFO : Will re-attempt in 180 seconds
+[10/21/15 12:53:32 +0000 precise32 (12015)] INFO : Starting Agent shutdown
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Environment: development
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : No known dispatcher detected.
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Application: (Development)
+[10/21/15 12:53:45 +0000 precise32 (12041)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Sidekiq instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing deferred Rack instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Net instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing HTTPClient instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 12:53:45 +0000 precise32 (12041)] INFO : Finished instrumentation
+[10/21/15 12:53:46 +0000 precise32 (12041)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 12:53:46 +0000 precise32 (12041)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 12:53:46 +0000 precise32 (12041)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 12:54:19 +0000 precise32 (12041)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:54:19 +0000 precise32 (12041)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:54:19 +0000 precise32 (12041)] INFO : Will re-attempt in 60 seconds
+[10/21/15 12:55:19 +0000 precise32 (12041)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:55:19 +0000 precise32 (12041)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:55:19 +0000 precise32 (12041)] INFO : Will re-attempt in 120 seconds
+[10/21/15 12:55:21 +0000 precise32 (12041)] INFO : Starting Agent shutdown
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : Environment: development
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : No known dispatcher detected.
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : Application: (Development)
+[10/21/15 12:55:39 +0000 precise32 (12057)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : Installing Sidekiq instrumentation
+[10/21/15 12:55:39 +0000 precise32 (12057)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing deferred Rack instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing Net instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing HTTPClient instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Finished instrumentation
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 12:55:40 +0000 precise32 (12057)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 12:57:14 +0000 precise32 (12057)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:57:14 +0000 precise32 (12057)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:57:14 +0000 precise32 (12057)] INFO : Will re-attempt in 60 seconds
+[10/21/15 12:58:15 +0000 precise32 (12057)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 12:58:15 +0000 precise32 (12057)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 12:58:16 +0000 precise32 (12057)] INFO : Will re-attempt in 120 seconds
+[10/21/15 13:00:16 +0000 precise32 (12057)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:00:16 +0000 precise32 (12057)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:00:16 +0000 precise32 (12057)] INFO : Will re-attempt in 180 seconds
+[10/21/15 13:03:16 +0000 precise32 (12057)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:03:16 +0000 precise32 (12057)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:03:16 +0000 precise32 (12057)] INFO : Will re-attempt in 240 seconds
+[10/21/15 13:07:16 +0000 precise32 (12057)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:07:16 +0000 precise32 (12057)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:07:16 +0000 precise32 (12057)] INFO : Will re-attempt in 300 seconds
+[10/21/15 13:10:45 +0000 precise32 (12057)] INFO : Starting Agent shutdown
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Environment: development
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : No known dispatcher detected.
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Application: (Development)
+[10/21/15 13:10:58 +0000 precise32 (12113)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Sidekiq instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing deferred Rack instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Net instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing HTTPClient instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Finished instrumentation
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 13:10:58 +0000 precise32 (12113)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 13:11:09 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:11:09 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:11:09 +0000 precise32 (12113)] INFO : Will re-attempt in 60 seconds
+[10/21/15 13:12:10 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:12:10 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:12:10 +0000 precise32 (12113)] INFO : Will re-attempt in 120 seconds
+[10/21/15 13:14:11 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:14:11 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:14:11 +0000 precise32 (12113)] INFO : Will re-attempt in 180 seconds
+[10/21/15 13:17:12 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:17:12 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:17:12 +0000 precise32 (12113)] INFO : Will re-attempt in 240 seconds
+[10/21/15 13:21:13 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:21:13 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:21:13 +0000 precise32 (12113)] INFO : Will re-attempt in 300 seconds
+[10/21/15 13:26:14 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:26:14 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:26:14 +0000 precise32 (12113)] INFO : Will re-attempt in 360 seconds
+[10/21/15 13:32:14 +0000 precise32 (12113)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:32:14 +0000 precise32 (12113)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:32:14 +0000 precise32 (12113)] INFO : Will re-attempt in 420 seconds
+[10/21/15 13:39:00 +0000 precise32 (12113)] INFO : Starting Agent shutdown
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Environment: development
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : No known dispatcher detected.
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Application: (Development)
+[10/21/15 13:39:12 +0000 precise32 (12205)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Sidekiq instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing deferred Rack instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Net instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing HTTPClient instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Finished instrumentation
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 13:39:12 +0000 precise32 (12205)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 13:39:21 +0000 precise32 (12205)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:39:21 +0000 precise32 (12205)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:39:21 +0000 precise32 (12205)] INFO : Will re-attempt in 60 seconds
+[10/21/15 13:40:23 +0000 precise32 (12205)] ERROR : Error establishing connection with New Relic Service at collector.newrelic.com:443:
+[10/21/15 13:40:23 +0000 precise32 (12205)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error talking to collector.newrelic.com:443 after 2 attempts: getaddrinfo: Name or service not known
+[10/21/15 13:40:23 +0000 precise32 (12205)] INFO : Will re-attempt in 120 seconds
+[10/21/15 13:40:29 +0000 precise32 (12205)] INFO : Starting Agent shutdown
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Environment: development
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : No known dispatcher detected.
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Application: (Development)
+[10/21/15 17:20:24 +0000 precise32 (2288)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Sidekiq instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing deferred Rack instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Net instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing HTTPClient instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 17:20:24 +0000 precise32 (2288)] INFO : Finished instrumentation
+[10/21/15 17:20:26 +0000 precise32 (2288)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 17:20:26 +0000 precise32 (2288)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 17:20:26 +0000 precise32 (2288)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 17:20:57 +0000 precise32 (2288)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/21/15 17:20:57 +0000 precise32 (2288)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/21/15 17:29:25 +0000 precise32 (2288)] INFO : Starting Agent shutdown
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : Environment: development
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : No known dispatcher detected.
+[10/21/15 18:21:07 +0000 precise32 (2259)] INFO : Application: (Development)
+[10/21/15 18:21:07 +0000 precise32 (2259)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Sidekiq instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing deferred Rack instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Net instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing HTTPClient instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 18:21:08 +0000 precise32 (2259)] INFO : Finished instrumentation
+[10/21/15 18:21:12 +0000 precise32 (2259)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 18:21:12 +0000 precise32 (2259)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 18:21:12 +0000 precise32 (2259)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 18:21:41 +0000 precise32 (2259)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/21/15 18:21:41 +0000 precise32 (2259)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[10/21/15 18:56:06 +0000 precise32 (2259)] INFO : Starting Agent shutdown
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Starting the New Relic agent in "development" environment.
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : New Relic Agent Developer Mode enabled.
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Environment: development
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : No known dispatcher detected.
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Application: (Development)
+[10/21/15 18:56:46 +0000 precise32 (2345)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Sidekiq instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing middleware-based Excon instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing deferred Rack instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Rack::Builder middleware instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing ActiveRecord 4 instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Rails 3+ middleware instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Net instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing HTTPClient instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Rails 4 Error instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Rails 4 Controller instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Installing Rails 4 view instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Finished instrumentation
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : Doing deferred dependency-detection before Rack startup
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : We weren't able to instrument all of your Rack middlewares.
+[10/21/15 18:56:46 +0000 precise32 (2345)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[10/21/15 18:57:00 +0000 precise32 (2345)] ERROR : Invalid license key, please contact support@newrelic.com
+[10/21/15 18:57:00 +0000 precise32 (2345)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
