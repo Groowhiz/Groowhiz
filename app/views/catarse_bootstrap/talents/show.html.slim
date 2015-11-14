@@ -41,7 +41,7 @@ nav.project-nav.w-hidden-small.w-hidden-tiny
         /    |&nbsp;
 
       .w-col.w-col-3.w-hidden-small.w-hidden-tiny.w-clearfix.project-nav-category
-        = link_to @talent.category, explore_path(anchor: "by_category_id/#{@talent.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
+        = link_to @talent.category, explore_talents_path(anchor: "by_category_id/#{@talent.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
         = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
 
 = render 'talent_main'

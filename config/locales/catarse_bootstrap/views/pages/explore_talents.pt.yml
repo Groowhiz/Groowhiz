@@ -1,0 +1,21 @@
+pt:
+  pages:
+    explore_talents:
+      header_html: "Explore Talents &nbsp;"
+      success_follow: "Agora you segue a categoria e vai receber semanalmente uma lista com os novos projects de %{name}"
+      success_unfollow: "You deixou de seguir essa categoria %{name}"
+      follow: Seguir
+      unfollow: Deixar de seguir
+      following: seguidores
+      categories: Categories
+      expiring: In the end stretch
+      in_funding: No ar
+      near: Talents Near You
+      quick_explore: Busca rápida
+      recent: Recents
+      recommended: Recommendations
+      subtitle: Explore os projects, encontre aqueles que mexem com seu coração, e
+        faça acontecer!
+      successful: Bem-sucedidos
+      title: Explore Talents
+
