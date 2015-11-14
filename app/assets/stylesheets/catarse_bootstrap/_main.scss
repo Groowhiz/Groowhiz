@@ -111,14 +111,15 @@ p {
 *******Home Page******
 **************************/
 #home-slider {
-  background: url(../images/slider/slider-bg.png);
-  position: relative;
+  background-color: white;
+  bottom: 0;
 }
 
 #home-slider .main-slider {
+  background-image: url('background.png');
+  background-repeat: repeat-x;
   position: relative;
   height: 450px;
-  background: url(../images/slider/slider-bg.png);
 }
 
 #home-slider .slide-text{
@@ -219,6 +220,7 @@ p {
   top: 50%;
   margin-top: -24px;
 }
+
 /**-----------------------end of slider -------------------**/
 .text-field {
   display: block;
@@ -264,16 +266,16 @@ p {
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.09);
   background-color: #0099ae;
-  color: black;
+  color: rgba(255, 255, 255, 0.61);
 }
 .text-field.negative:hover {
   border-style: solid;
-  background-color: #337ab7;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 23px 0px inset;
+  background-color: #86D3E3;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 23px 0px inset;
   color: #3f4752;
 }
 .text-field.negative:focus {
-  background-color: #f1f4f4;
+  background-color: #B6E3EB;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 23px 0px inset;
   color: #3f4752;
 }
@@ -502,7 +504,7 @@ p {
 .main-header {
   padding: 15px 10px 8px 25px;
   border-bottom: 1px solid rgba(37, 49, 57, 0.6);
-  background-color: #ffffff;
+  background-color: white;
 }
 .main-header.overlayer {
   position: absolute;
@@ -512,7 +514,7 @@ p {
   z-index: 20;
   margin-top: 0px;
   border-bottom-style: none;
-  background-color: #ffffff;
+  background-color: white;
   /*background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.02), transparent);
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);*/
 }
@@ -549,7 +551,7 @@ p {
   right: -73px;
   padding-top: 9px;
   padding-bottom: 9px;
-  background-color: #ffffff;
+  background-color: ghostwhite;
   color: #FED136;
   line-height: 20px;
   font-weight: bold;
@@ -1809,6 +1811,17 @@ p {
 .fa.fa-clock-o:hover {
   color: #00b22d;
 }
+
+.fa.fa-search{
+  color: black;
+  padding-left: 0.5%;
+  background-color: #FED136;
+  padding-right: 0.75%;
+}
+
+.fa.fa-search:hover{
+  color: #3f4752;
+}
 .fa.fa-question-circle {
   text-decoration: none;
 }
@@ -2039,7 +2052,6 @@ p {
 }
 .hero-full.hero-knowmore {
   background-color: white;
-  background-image: url('../images/slider/slider-bg.png');
   background-size: cover;
   color: white;
 }
@@ -2057,7 +2069,6 @@ p {
   color: white;
 }
 .hero-back {
-  background: url('../images/slider/slider-bg.png') 50% 50%;
   background-size: cover;
   color: white;
 }
@@ -3369,11 +3380,11 @@ html.w-mod-js *[data-ix="know-more-2"] {
     padding-top: 50px;
   }
   .text-field.negative {
-    background-color: #0099ae;
-    color: black;
+    background-color: wheat;
+    color: #ffffff;
   }
   .text-field.negative:hover {
-    background-color: #337ab7;
+    background-color: wheat;
   }
   .box-login {
     border-style: solid;
