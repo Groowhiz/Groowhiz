@@ -8,4 +8,5 @@ App.addChild('UserMenu', {
   closeMenu: function(event) {
     this.$el.toggleClass('w--open');
   }
+
 });
