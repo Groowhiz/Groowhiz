@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
   has_notifications
   has_many :projects
+  has_many :talents
   has_many :category_followers
   has_many :users, through: :category_followers
 
@@ -14,8 +15,16 @@ class Category < ActiveRecord::Base
     joins(:projects).merge(Project.with_state('online').of_current_week).uniq
   }
 
+  scope :with_talents_on_this_week, -> {
+    joins(:talents).merge(Talent.of_current_week).uniq
+  }
+
   def self.with_projects
     where("exists(select true from projects p where p.category_id = categories.id and p.state not in('draft', 'rejected'))")
+  end
+
+  def self.with_talents
+    where("exists(select true from talents t where t.category_id = categories.id and t.state not in('draft', 'rejected'))")
   end
 
   def self.array
@@ -28,6 +37,10 @@ class Category < ActiveRecord::Base
 
   def total_online_projects
     @total_online_projects ||= self.projects.with_state('online').count
+  end
+
+  def total_online_talents
+    @total_online_talents ||= self.talents.with_state('published').count
   end
 
   def deliver_projects_of_week_notification

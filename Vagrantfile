@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant::Config.run do |config|
+#Vagrant::Config.run do |config|
+Vagrant.configure("2") do |config|
 
 
   # The OS that will run our code
@@ -9,15 +10,25 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 
   # Customizing memory. The VM will need at least 512MB
-  config.vm.customize ["modifyvm", :id, "--memory", 512]
-  config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+#  config.vm.customize ["modifyvm", :id, "--memory", 512]
+#  config.vm.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+
+ config.vm.provider "virtualbox" do |vb|
+   # Don't boot with headless mode
+   vb.gui = false
+
+   # Use VBoxManage to customize the VM. For example to change memory:
+   vb.customize ["modifyvm", :id, "--memory", "200"]
+ end
 
   # In case the Rails app runs on port 3000, make it available on the host
-  config.vm.forward_port 3000, 3000
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
+#  config.vm.forward_port 3000, 3000
 #  config.vm.forward_port 5432, 5432
 #  config.vm.forward_port 80, 8080
 #config.vm.network :forwarded_port, guest: 5432, host: 1234
 
+  config.vm.synced_folder "/Users/samudrala.srinath/repositories", "/home/vagrant/repositories"
   config.vm.provision :chef_solo do |chef|
     # NOTE:
     # This path should be created. Why? Because we want to enforce cookbooks repositories
