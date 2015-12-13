@@ -2322,11 +2322,77 @@ CREATE TABLE talents (
     category_id integer,
     user_id integer,
     recommended boolean DEFAULT false,
-    state character varying(255),
+    state character varying(255) DEFAULT 'published'::character varying,
     permalink character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
+
+
+--
+-- Name: talents_for_home; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW talents_for_home AS
+ WITH recommended_talents AS (
+         SELECT 'recommended'::text AS origin,
+            recommends.id,
+            recommends.title,
+            recommends.description,
+            recommends.category_id,
+            recommends.user_id,
+            recommends.recommended,
+            recommends.state,
+            recommends.permalink,
+            recommends.created_at,
+            recommends.updated_at
+           FROM talents recommends
+          WHERE (recommends.recommended AND ((recommends.state)::text = 'published'::text))
+          ORDER BY random()
+         LIMIT 3
+        ), recents_talents AS (
+         SELECT 'recents'::text AS origin,
+            recents.id,
+            recents.title,
+            recents.description,
+            recents.category_id,
+            recents.user_id,
+            recents.recommended,
+            recents.state,
+            recents.permalink,
+            recents.created_at,
+            recents.updated_at
+           FROM talents recents
+          WHERE ((((recents.state)::text = 'published'::text) AND ((now() - (recents.created_at)::timestamp with time zone) <= '5 days'::interval)) AND (NOT (recents.id IN ( SELECT recommends.id
+                   FROM recommended_talents recommends))))
+          ORDER BY random()
+         LIMIT 3
+        )
+ SELECT recommended_talents.origin,
+    recommended_talents.id,
+    recommended_talents.title,
+    recommended_talents.description,
+    recommended_talents.category_id,
+    recommended_talents.user_id,
+    recommended_talents.recommended,
+    recommended_talents.state,
+    recommended_talents.permalink,
+    recommended_talents.created_at,
+    recommended_talents.updated_at
+   FROM recommended_talents
+UNION
+ SELECT recents_talents.origin,
+    recents_talents.id,
+    recents_talents.title,
+    recents_talents.description,
+    recents_talents.category_id,
+    recents_talents.user_id,
+    recents_talents.recommended,
+    recents_talents.state,
+    recents_talents.permalink,
+    recents_talents.created_at,
+    recents_talents.updated_at
+   FROM recents_talents;
 
 
 --
@@ -4841,4 +4907,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151004042229');
 INSERT INTO schema_migrations (version) VALUES ('20151213114928');
 
 INSERT INTO schema_migrations (version) VALUES ('20151213183607');
+
+INSERT INTO schema_migrations (version) VALUES ('20151213205552');
 
