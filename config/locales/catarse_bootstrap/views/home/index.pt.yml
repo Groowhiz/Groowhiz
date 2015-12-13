@@ -1,0 +1,85 @@
+pt:
+  home:
+    index_header:
+      subtitle: Projects collaboratively become part of something
+                        greater. You are the missing piece in this story.
+      title: Make it happen in the projects that you believe
+    index:
+      title: 'TalentOxide'
+      back_a_project: 'Support a project'
+      banner_before: 'Take '
+      banner_words:
+        0: 'dreams'
+        1: 'discs'
+        2: 'exhibitions'
+        3: 'research'
+        4: 'carnivals'
+        5: 'photographs'
+        6: 'Theater performances'
+        7: 'documentaries'
+        8: 'books'
+        9: 'shows'
+        10: 'passions'
+        11: 'meetings'
+        12: 'music'
+        13: 'products'
+        14: 'attitudes'
+        15: 'movies'
+        16: 'comics'
+        17: 'ideas'
+      banner_after: ' paper'
+      see_all: 'See all'
+      near_you: 'Near you'
+      recents: Recents
+      blog: Blog do Catarse
+      expiring: In the end stretch
+      recommended: Recommendations
+      heading1: 'SHOWCASE YOUR TALENT'
+      desciption: 'Talent is never hidden. Here at Talent Oxide you have got chance to showcase yourself'
+      upload_button: 'Upload your Talent'
+      banner_subtitle: 'music, comics, cinema, social impact, technology and more. Showcase, Inspire and collaborate projects.'
+      box:
+        by: per
+        when: in
+      banner: "Meet the search"
+      explore: "Explore projects"
+      links:
+        channels: "Discover the Canal Wings"
+        recommended: "Discover recommended projects"
+        expiring: "Discover projects on the stretch"
+        recents: "Discover recent projects"
+        near: "Discover projects near you"
+      sidebar:
+        titles:
+          blog: blog
+          facebook: "already likes our facebook?"
+          newsletter: "Subscribe to TalentOxide"
+          faq: "FAQ"
+          schedule: agenda
+        placeholders:
+          email: "Enter your email"
+        buttons:
+          newsletter: send
+      sections:
+        near:
+          title: 'Near Me'
+        talents_near:
+          title: 'Talents Near Me'
+        recent_talents:
+          title: 'Recent Talents'
+        recommended_talents:
+          title: 'Recommended Talents'
+        projects_near:
+          title: 'Projects Near Me'
+        recent_projects:
+          title: 'Recent Projects'
+        recommended_projects:
+          title: 'Recommended Projects'
+
+        trending_talents:
+          title: "Trending Talents"
+        recents:
+          title: "Recents"
+        channels:
+          title: 'channel Wings'
+
