@@ -9,7 +9,37 @@ class TalentsController < ApplicationController
    respond_to :json, only: [:index, :show, :update]
 
   def index
+=begin
+    respond_to do |format|
+      format.html do
+        return render_index_for_xhr_request if request.xhr?
+        talents_for_home
+      end
+      format.atom do
+        return render layout: false, locals: {talents: talents}
+      end
+      format.rss { redirect_to talents_path(format: :atom), :status => :moved_permanently }
+    end
+=end
   end
+
+
+  def render_index_for_xhr_request
+    render partial: 'talents/card',
+           collection: talents,
+           layout: false,
+           locals: {ref: "explore", wrapper_class: 'w-col w-col-4 u-marginbottom-20'}
+  end
+
+  def talents_for_home
+    p "Came to talents home"
+    @talents_recommends = TalentsForHome.recommends.includes(:user)
+    @talents_near = Talent.with_state('online','published').near_of(current_user.address_state).order("random()").limit(3).includes(:user) if current_user
+    @talents_expiring = TalentsForHome.expiring.includes(:user)
+    @talents_recent   = TalentsForHome.recents.includes(:user)
+    return @talents_recommends,@talents_near,@talents_expiring,@talents_recent
+  end
+
 
   def edit
   end
