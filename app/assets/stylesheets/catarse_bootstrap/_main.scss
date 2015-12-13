@@ -2031,12 +2031,11 @@ p {
   margin-bottom: 30px;
   padding-top: 225px;
   padding-bottom: 235px;
-  background-color: whitesmoke;
 }
 .hero-full.hero-knowmore {
   background-color: white;
   background-size: cover;
-  color: white;
+
 }
 .hero-guide {
   background-image: url(../../images/slider/slider-bg.png);
@@ -2049,9 +2048,8 @@ p {
   background-image: url(../../images/slider/slider-bg.png);
   background-position: 50% 50%;
   background-size: cover;
-  color: white;
-}
-  padding-bottom: 36px;
+  color : white;
+  padding-bottom:36px;
   border: 1px solid #ddd;
   border-radius: 5px;
   font-family: proxima-nova, sans-serif;
@@ -3744,6 +3742,9 @@ html.w-mod-js *[data-ix="know-more-2"] {
     padding-bottom: 0px;
   }
   .hero-full.hero-knowmore {
+    background-color: #24494e;
+    background-image: url('/assets/images/slider/slider-bg.png');
+    background-size: cover;
     padding-top: 140px;
   }
   .card-project-meter.successful {

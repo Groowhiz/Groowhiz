@@ -2,9 +2,14 @@
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-/section#hero-home.hero-full.hero-knowmore.hom
+section#hero-home.hero-full.hero-knowmore.home-slider.main-slider.animate-in
   .w-container.u-text-center
-    .hero-home-words-content
+    = image_tag "slider/hill.png", class: "slider-hill"
+    = image_tag "slider/house.png", class: "slider-house"
+    = image_tag "slider/sun.png", class: "slider-sun"
+    = image_tag "slider/birds1.png", class: "slider-birds1"
+    = image_tag "slider/birds2.png", class: "slider-birds2"
+    /.hero-home-words-content
       .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
         .w-embed
 
@@ -17,20 +22,9 @@
                 - else
                   b = word
             span = t('.banner_after')
-    .w-row
+    /.w-row
       .w-col.w-col-3.w-col-push-4
         a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
-
-section#home-slider.hero-full.main-slider.animate-in
-
-    = image_tag "slider/hill.png", class: "slider-hill"
-    = image_tag "slider/house.png", class: "slider-house"
-    = image_tag "slider/sun.png", class: "slider-sun"
-    = image_tag "slider/birds1.png", class: "slider-birds1"
-    = image_tag "slider/birds2.png", class: "slider-birds2"
-
-
-
 
 section#projects
   - if current_user && @projects_near.present?
