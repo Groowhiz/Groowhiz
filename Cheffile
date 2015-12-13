@@ -6,7 +6,7 @@ cookbook 'apt'
 cookbook 'build-essential'
 
 
-cookbook 'git',     github: 'fnichol/chef-git'
+#cookbook 'git',     github: 'fnichol/chef-git'
 cookbook 'nodejs',  github: 'hectcastro/chef-nodejs'
 cookbook 'curl',    github: 'phlipper/chef-curl'
 cookbook 'locale'
