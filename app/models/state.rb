@@ -3,6 +3,6 @@ class State < ActiveRecord::Base
   validates_uniqueness_of :name, :acronym
 
   def self.array
-    @array ||= order(:name).pluck(:name, :acronym).push(['Outro / Other', 'outro / other'])
+    @array ||= order(:name).pluck(:name, :acronym).push(['other', 'other'])
   end
 end

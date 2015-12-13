@@ -111,14 +111,14 @@ p {
 *******Home Page******
 **************************/
 #home-slider {
-  background: url(../images/slider/slider-bg.png);
+  background: url(../../images/slider/slider-bg.png);
   position: relative;
 }
 
 #home-slider .main-slider {
   position: relative;
   height: 450px;
-  background: url(../images/slider/slider-bg.png);
+  background: url(../../images/slider/slider-bg.png);
 }
 
 #home-slider .slide-text{
@@ -264,18 +264,16 @@ p {
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.09);
   background-color: #0099ae;
-  color: black;
+  color: #fcfcfc;
 }
 .text-field.negative:hover {
   border-style: solid;
-  background-color: #337ab7;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 0px 23px 0px inset;
-  color: #3f4752;
+  color: #fcfcfc;
 }
 .text-field.negative:focus {
   background-color: #f1f4f4;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 0px 23px 0px inset;
-  color: #3f4752;
+  border: 1px solid #0099ae;
+
 }
 .text-field.medium {
   height: 60px;
@@ -2039,25 +2037,25 @@ p {
 }
 .hero-full.hero-knowmore {
   background-color: white;
-  background-image: url('../images/slider/slider-bg.png');
+  background-image: url(../../images/slider/slider-bg.png);
   background-size: cover;
   color: white;
 }
 .hero-guide {
-  background-image: url('../images/hero-guia-new.jpg');
+  background-image: url(../../images/slider/slider-bg.png);
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: scroll;
   color: white;
 }
 .hero-jobs {
-  background-image: url('../images/hero-jobs-gray.jpg');
+  background-image: url(../../images/slider/slider-bg.png);
   background-position: 50% 50%;
   background-size: cover;
   color: white;
 }
 .hero-back {
-  background: url('../images/slider/slider-bg.png') 50% 50%;
+  background: url(../../images/slider/slider-bg.png) 50% 50%;
   background-size: cover;
   color: white;
 }
@@ -2245,7 +2243,7 @@ p {
   margin-bottom: 30px;
   padding-top: 110px;
   background-color: #5b97c6;
-  background-image: url('../images/hero-explore.jpg');
+  background-image: url(../../images/hero-explore.jpg);
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: fixed;
@@ -2294,7 +2292,7 @@ p {
   color: white;
 }
 .hero-assets {
-  background-image: url('../images/hero-assets.jpg');
+  background-image: url(../../images/hero-assets.jpg);
   background-position: 50% 50%;
   background-size: cover;
   color: white;

@@ -37,7 +37,7 @@
           .fontcolor-secondary.fontsize-smaller
             = l(feed.event_date, format: :simple)
           .fontweight-semibold.fontsize-base 
-            | Categoria:&nbsp;
+            | Category:&nbsp;
             = feed.from_object.try(:category).try(:name_pt)
         .fontsize-large.fontweight-semibold.u-marginbottom-20 Novo projeto no ar!
       .w-col.w-col-5

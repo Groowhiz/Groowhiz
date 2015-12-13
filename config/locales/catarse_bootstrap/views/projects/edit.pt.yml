@@ -186,7 +186,7 @@ pt:
     dashboard_basics:
       online_date: 'Data de entrada no ar'
       user_id: 'Id do usuário'
-      name: 'Nome do projeto'
+      name: 'Project Name'
       name_label: 'Quanto mais direto melhor. Não ultrapasse 50 caracteres'
       url: 'URL do projeto'
       url_label: 'É o endereço do seu projeto, deve ser fácil de memorizar. Evite underline, hífen e símbolos'

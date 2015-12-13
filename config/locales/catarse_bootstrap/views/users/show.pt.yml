@@ -16,8 +16,8 @@ pt:
       no_reward: "Não selecionou recompensa"
       delivery_estimate: "Estimativa de entrega:"
     card:
-      twitter_profile: "Perfil no Twitter"
-      facebook_profile: "Perfil no Facebook"
+      twitter_profile: "Twitter profile"
+      facebook_profile: "Facebook Profile"
       author_website: "Site"
       contact_author: "Enviar mensagem"
     failed_reactivation: "O link para reativação é inválido, por favor entre em contato com a nossa equipe."
@@ -117,5 +117,5 @@ pt:
         unsubscribes: Notifications
       user_social:
         email: "Me envie um email"
-        facebook: "Perfil no facebook"
-        twitter: "Perfil no twitter"
+        facebook: "Facebook Profile"
+        twitter: "Twitter profile"

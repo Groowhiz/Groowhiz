@@ -36,7 +36,7 @@ App.addChild('ReviewForm', _.extend({
 
   internationalAddress: function(){
     this.$state.data('old_value', this.$state.val());
-    this.$state.val('outro / other');
+    this.$state.val('other');
     this.makeFieldsOptional();
   },
 
