@@ -1446,6 +1446,39 @@ CREATE VIEW financial_reports AS
 
 
 --
+-- Name: genres; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE genres (
+    id integer NOT NULL,
+    name_pt text NOT NULL,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone,
+    name_en character varying(255),
+    name_fr character varying(255)
+);
+
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE genres_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
+
+
+--
 -- Name: oauth_providers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2588,6 +2621,13 @@ ALTER TABLE ONLY dbhero_dataclips ALTER COLUMN id SET DEFAULT nextval('dbhero_da
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY oauth_providers ALTER COLUMN id SET DEFAULT nextval('oauth_providers_id_seq'::regclass);
 
 
@@ -2900,6 +2940,14 @@ ALTER TABLE ONLY credit_cards
 
 ALTER TABLE ONLY dbhero_dataclips
     ADD CONSTRAINT dbhero_dataclips_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: genres_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY genres
+    ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
 
 
 --
@@ -3499,6 +3547,13 @@ CREATE UNIQUE INDEX index_dbhero_dataclips_on_token ON dbhero_dataclips USING bt
 --
 
 CREATE INDEX index_dbhero_dataclips_on_user ON dbhero_dataclips USING btree ("user");
+
+
+--
+-- Name: index_genres_on_name_pt; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_genres_on_name_pt ON genres USING btree (name_pt);
 
 
 --
@@ -4135,7 +4190,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public, "1";
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -4782,4 +4837,8 @@ INSERT INTO schema_migrations (version) VALUES ('20151001102610');
 INSERT INTO schema_migrations (version) VALUES ('20151003180757');
 
 INSERT INTO schema_migrations (version) VALUES ('20151004042229');
+
+INSERT INTO schema_migrations (version) VALUES ('20151213114928');
+
+INSERT INTO schema_migrations (version) VALUES ('20151213183607');
 
