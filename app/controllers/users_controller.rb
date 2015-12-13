@@ -8,9 +8,12 @@ class UsersController < ApplicationController
   respond_to :json, only: [:contributions, :projects]
 
   def destroy
+    p "Hello Destroy me bruh"
     authorize resource
     resource.deactivate
     sign_out(current_user) if current_user == resource
+    p "I am destroyed Bruh"
+    p "Flash Starts"
     flash[:notice] = t('users.current_user_fields.deactivate_notice', name: resource.name)
     redirect_to root_path
   end

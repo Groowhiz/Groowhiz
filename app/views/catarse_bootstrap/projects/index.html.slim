@@ -1,3 +1,4 @@
+
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
@@ -8,10 +9,10 @@
         .w-embed
 
           /.cd-headline.letters.type
-            span = t('.banner_before')     
+            span = t('.banner_before')
             span.cd-words-wrapper
               - t('.banner_words').each do |index, word|
-                - if index == 0 
+                - if index == 0
                   b.is-visible = word
                 - else
                   b = word
@@ -19,7 +20,9 @@
     .w-row
       .w-col.w-col-3.w-col-push-4
         a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
+
 section#home-slider.hero-full.main-slider.animate-in
+
     = image_tag "slider/hill.png", class: "slider-hill"
     = image_tag "slider/house.png", class: "slider-house"
     = image_tag "slider/sun.png", class: "slider-sun"
