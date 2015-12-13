@@ -50,10 +50,6 @@ class ApplicationController < ActionController::Base
     current_user.nil? || current_user.projects.empty?
   end
 
-  def should_show_beta_banner?
-    current_user.nil? || current_user.projects.empty?
-  end
-
   def referral_it!
     session[:referral_link] ||= params[:ref] if params[:ref].present?
   end
@@ -61,12 +57,12 @@ class ApplicationController < ActionController::Base
   private
   def force_www
     if request.subdomain.blank? && Rails.env.production?
-      return redirect_to url_for(params.merge(subdomain: 'www'))
+       redirect_to url_for(params.merge(subdomain: 'www'))
     end
   end
 
   def detect_old_browsers
-    return redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
+     redirect_to page_path("bad_browser") if (!browser.modern? || browser.ie9?) && controller_name != 'pages'
   end
 
   def set_locale
