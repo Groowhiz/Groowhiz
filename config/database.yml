@@ -12,10 +12,10 @@ development:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: talentoxide_development
+  database: whiz_development
   pool: 5
-  username: talentoxide # <== Change me!!
-  password: TO2TalentOxide # <== Change me too!
+  username: whiz # <== Change me!!
+  password: whiz@321 # <== Change me too!
   encoding: utf8
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -42,8 +42,8 @@ test:
   encoding: unicode
   host: localhost
   port: 5432
-  database: talentoxide_test
+  database: whiz_test
   pool: 5
-  username: talentoxide # <== Change me!
-  password: TO2TalentOxide # <== Same here!
+  username: whiz # <== Change me!
+  password: whiz@321 # <== Same here!
   encoding: utf8
