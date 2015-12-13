@@ -111,14 +111,12 @@ p {
 *******Home Page******
 **************************/
 #home-slider {
-  background: url(../images/slider/slider-bg.png);
   position: relative;
 }
 
 #home-slider .main-slider {
   position: relative;
   height: 450px;
-  background: url(../images/slider/slider-bg.png);
 }
 
 #home-slider .slide-text{
@@ -2039,7 +2037,6 @@ p {
 }
 .hero-full.hero-knowmore {
   background-color: white;
-  background-image: url('../images/slider/slider-bg.png');
   background-size: cover;
   color: white;
 }
@@ -2057,7 +2054,6 @@ p {
   color: white;
 }
 .hero-back {
-  background: url('../images/slider/slider-bg.png') 50% 50%;
   background-size: cover;
   color: white;
 }

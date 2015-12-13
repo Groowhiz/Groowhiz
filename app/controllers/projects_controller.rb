@@ -15,12 +15,16 @@ class ProjectsController < ApplicationController
   def index
     respond_to do |format|
       format.html do
+        p "I am HTML"
         return render_index_for_xhr_request if request.xhr?
+        p "Not xhr it is from home"
         projects_for_home
       end
-      format.atom do 
+      format.atom do
+        p "I am Atom"
         return render layout: false, locals: {projects: projects}
       end
+      p "It is a new rss format"
       format.rss { redirect_to projects_path(format: :atom), :status => :moved_permanently }
     end
   end
@@ -158,6 +162,7 @@ class ProjectsController < ApplicationController
   end
 
   def projects_for_home
+    p "Came to projects home"
     @recommends = ProjectsForHome.recommends.includes(:project_total, :user)
     @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total, :user) if current_user
     @expiring = ProjectsForHome.expiring.includes(:project_total, :user)
