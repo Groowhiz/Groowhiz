@@ -20,14 +20,16 @@
       .w-col.w-col-3.w-col-push-4
         a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
 
-section#home-slider.hero-full.main-slider.animate-in
+/section#home-slider.hero-full.main-slider.animate-in
 
-    = image_tag "slider/hill.png", class: "slider-hill"
-    = image_tag "slider/house.png", class: "slider-house"
-    = image_tag "slider/sun.png", class: "slider-sun"
-    = image_tag "slider/birds1.png", class: "slider-birds1"
-    = image_tag "slider/birds2.png", class: "slider-birds2"
+    /= image_tag "slider/hill.png", class: "slider-hill"
+    /= image_tag "slider/house.png", class: "slider-house"
+    /= image_tag "slider/sun.png", class: "slider-sun"
+    /= image_tag "slider/birds1.png", class: "slider-birds1"
+    /= image_tag "slider/birds2.png", class: "slider-birds2"
 
+div.bg-image
+= image_tag "slider/slider-new.png", class: "bg-image"
 
 section#talents
   - if current_user && @talents_near.present?
