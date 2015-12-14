@@ -1,21 +1,21 @@
 pt:
   pages:
     explore:
-      header_html: "Explore projects incríveis &nbsp;"
+      header_html: " Explore amazing projects &nbsp;"
       success_follow: "Agora you segue a categoria e vai receber semanalmente uma lista com os novos projects de %{name}"
       success_unfollow: "You deixou de seguir essa categoria %{name}"
       follow: Seguir
       unfollow: Deixar de seguir
       following: seguidores
-      categories: Categorias
+      categories: Categories
       expiring: In the end stretch
       in_funding: No ar
-      near: Próximos a mim
+      near: Near Mes
       quick_explore: Busca rápida
       recent: Recents
       recommended: Recommendations
       subtitle: Explore os projects, encontre aqueles que mexem com seu coração, e
         faça acontecer!
-      successful: Bem-sucedidos
+      successful: Successful
       title: Encontre projects incríveis
 

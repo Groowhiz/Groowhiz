@@ -1,6 +1,6 @@
 - project = @notification.project
 p
-  | Categoria: #{link_to project.category, explore_url(anchor: "by_category/#{project.category_id}", ref: 'notificacao_draft_project')}
+  | Category: #{link_to project.category, explore_url(anchor: "by_category/#{project.category_id}", ref: 'notificacao_draft_project')}
 p
   | Tempo de preparo: #{distance_of_time_in_words(project.created_at, project.sent_to_analysis_at)}
 p

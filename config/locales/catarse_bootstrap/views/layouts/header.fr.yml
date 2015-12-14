@@ -4,17 +4,17 @@ fr:
       blog: Blog
       discover: Explore
       faq: FAQ
-      help: Aide
-      profile: Mes données
-      projects: Mes projets
+      help: Contact
+      profile: My profiles
+      projects: My projects
       signin: Login
-      signup: S’enregistré
-      submit: Commencé son projet
-      search: Chercher un projet
+      signup: Register
+      submit: Start your project
+      search: Search projects
     login:
-      login_with_facebook: Se connecter avec son compte facebook
+      login_with_facebook: Sign in with your facebook account
     user:
-      my_contributions: Mes contributions
-      logout: Sortir
-      my_credits: Mon crédit
-      refund_link: Demande de remboursement
+      my_contributions: my contributions
+      logout: Sign out
+      my_credits: Credit balance
+      refund_link: request reimbursements

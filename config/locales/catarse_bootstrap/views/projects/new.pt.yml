@@ -20,12 +20,12 @@ pt:
       form:
         blocks:
           first:
-            title: "Bem Vindo!"
-            description: "Preencha as informações abaixo para iniciar o rascunho do seu projeto."
+            title: "Welcome!"
+            description: "Complete the information below to start the draft of your project."
 
         info:
           permalink: http://catarse.me/
           goal: R$
           online_days: dias
 
-        submit: "Salvar e continuar"
+        submit: "Save and Continue"

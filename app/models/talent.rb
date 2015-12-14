@@ -63,7 +63,7 @@ class Talent < ActiveRecord::Base
   scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
 
   scope :ordered, -> { order(created_at: :desc)}
-
+  scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
   scope :most_recent_first, ->{ order("talents.created_at DESC") }
 
   attr_accessor :accepted_terms

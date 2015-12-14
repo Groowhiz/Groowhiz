@@ -3,7 +3,7 @@ module Talent::StateMachineHandler
 
    included do
   #   #NOTE: state machine things
-     state_machine :state, initial: :draft do
+     state_machine :state, initial: :published do
   #     state :draft, value: 'draft'
   #     state :rejected, value: 'rejected'
   #

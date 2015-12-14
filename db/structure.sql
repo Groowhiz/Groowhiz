@@ -1446,6 +1446,39 @@ CREATE VIEW financial_reports AS
 
 
 --
+-- Name: genres; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE genres (
+    id integer NOT NULL,
+    name_pt text NOT NULL,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone,
+    name_en character varying(255),
+    name_fr character varying(255)
+);
+
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE genres_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: genres_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
+
+
+--
 -- Name: oauth_providers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2297,6 +2330,72 @@ CREATE TABLE talents (
 
 
 --
+-- Name: talents_for_home; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW talents_for_home AS
+ WITH recommended_talents AS (
+         SELECT 'recommended'::text AS origin,
+            recommends.id,
+            recommends.title,
+            recommends.description,
+            recommends.category_id,
+            recommends.user_id,
+            recommends.recommended,
+            recommends.state,
+            recommends.permalink,
+            recommends.created_at,
+            recommends.updated_at
+           FROM talents recommends
+          WHERE (recommends.recommended AND ((recommends.state)::text = 'published'::text))
+          ORDER BY random()
+         LIMIT 3
+        ), recents_talents AS (
+         SELECT 'recents'::text AS origin,
+            recents.id,
+            recents.title,
+            recents.description,
+            recents.category_id,
+            recents.user_id,
+            recents.recommended,
+            recents.state,
+            recents.permalink,
+            recents.created_at,
+            recents.updated_at
+           FROM talents recents
+          WHERE ((((recents.state)::text = 'published'::text) AND ((now() - (recents.created_at)::timestamp with time zone) <= '5 days'::interval)) AND (NOT (recents.id IN ( SELECT recommends.id
+                   FROM recommended_talents recommends))))
+          ORDER BY random()
+         LIMIT 3
+        )
+ SELECT recommended_talents.origin,
+    recommended_talents.id,
+    recommended_talents.title,
+    recommended_talents.description,
+    recommended_talents.category_id,
+    recommended_talents.user_id,
+    recommended_talents.recommended,
+    recommended_talents.state,
+    recommended_talents.permalink,
+    recommended_talents.created_at,
+    recommended_talents.updated_at
+   FROM recommended_talents
+UNION
+ SELECT recents_talents.origin,
+    recents_talents.id,
+    recents_talents.title,
+    recents_talents.description,
+    recents_talents.category_id,
+    recents_talents.user_id,
+    recents_talents.recommended,
+    recents_talents.state,
+    recents_talents.permalink,
+    recents_talents.created_at,
+    recents_talents.updated_at
+   FROM recents_talents;
+
+
+--
 -- Name: talents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -2582,6 +2681,13 @@ ALTER TABLE ONLY credit_cards ALTER COLUMN id SET DEFAULT nextval('credit_cards_
 --
 
 ALTER TABLE ONLY dbhero_dataclips ALTER COLUMN id SET DEFAULT nextval('dbhero_dataclips_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
 
 
 --
@@ -2900,6 +3006,14 @@ ALTER TABLE ONLY credit_cards
 
 ALTER TABLE ONLY dbhero_dataclips
     ADD CONSTRAINT dbhero_dataclips_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: genres_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY genres
+    ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
 
 
 --
@@ -3499,6 +3613,13 @@ CREATE UNIQUE INDEX index_dbhero_dataclips_on_token ON dbhero_dataclips USING bt
 --
 
 CREATE INDEX index_dbhero_dataclips_on_user ON dbhero_dataclips USING btree ("user");
+
+
+--
+-- Name: index_genres_on_name_pt; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_genres_on_name_pt ON genres USING btree (name_pt);
 
 
 --
@@ -4135,7 +4256,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public, "1";
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -4782,4 +4903,8 @@ INSERT INTO schema_migrations (version) VALUES ('20151001102610');
 INSERT INTO schema_migrations (version) VALUES ('20151003180757');
 
 INSERT INTO schema_migrations (version) VALUES ('20151004042229');
+
+INSERT INTO schema_migrations (version) VALUES ('20151213114928');
+
+INSERT INTO schema_migrations (version) VALUES ('20151213183607');
 

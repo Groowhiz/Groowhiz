@@ -72,7 +72,7 @@ pt:
     posts_menu: Gerenciar novidades
     table:
       approve: Aprovar
-      category: Categoria
+      category: Category
       confirmation: Tem certeza que deseja deletar esse projeto?
       contributed_projects: Projects supported
       created_projects: Projeto created

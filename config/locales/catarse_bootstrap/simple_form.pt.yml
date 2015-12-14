@@ -3,15 +3,15 @@ pt:
     collections:
       project:
         traffic_sources:
-          one: "eu já tive outro projeto no Catarse"
-          two: "indicação de uma pessoa que já teve um projeto no Catarse"
-          three: "indicação de amigo/colega/contato profissional"
-          four: "a partir de um projeto que estava captando na plataforma"
-          five: "artigo em um blog"
-          six: "uma matéria na imprensa (portal de notícias na internet, TV, jornal, revista)"
-          seven: "em uma aula/curso/palestra/evento"
-          eight: "fiz uma busca na internet sobre financiamento coletivo / formas alternativas de captação"
-          nine: "Outro"
+          one: "I've had another project in TalentOxide"
+          two: "indication of a person who has had a project in Catarsea"
+          three: "indication friend / colleague / professional contact"
+          four: "from a project that was singing on the platform"
+          five: "article in a blog"
+          six: "an article in the press (news portal on the internet, TV, newspaper, magazine)"
+          seven: "in a class / course / lecture / event"
+          eight: "I did an internet search about crowdfunding / alternative forms of funding"
+          nine: "Other"
     validation_texts:
       reward:
         minimum_value: "Informe um valor mínimo maior ou igual a 10"
@@ -38,15 +38,15 @@ pt:
     prompts:
       project:
         category: "Selecione uma categoria"
-        select: "Selecione uma opção"
-        traffic_sources: "Como you conheceu o Catarse?"
+        select: "Select an option"
+        traffic_sources: "How did you know about TalentOxide?"
     hints:
       project:
-        select: "Selecione uma opção"
-        traffic_sources: "Como you conheceu o Catarse?"
-        name: "Dê um nome que as pessoas se lembrem facilmente. Não ultrapasse 50 caracteres."
-        permalink: "Prefira algo simples, direto e que identifique bem seu projeto. Tente não usar hífen, underline etc."
-        category: "Escolha a mais adequada ao seu projeto."
+        select: "Select an option"
+        traffic_sources: "How did you know about TalentOxide?"
+        name: "Give a name that people can remember easily. Do not exceed 50 characters."
+        permalink: "I prefer something simple, straightforward and well identify your project. Try not to use hyphen, underscore etc."
+        category: "Choose the most appropriate to your project."
         goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
         online_days: "You pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
         video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."

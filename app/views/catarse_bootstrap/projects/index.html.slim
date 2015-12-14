@@ -1,17 +1,19 @@
+
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-/section#hero-home.hero-full.hero-knowmore.hom
+section#hero-home.hero-full.hero-knowmore.hom
   .w-container.u-text-center
     .hero-home-words-content
-      .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
+      .fontsize-megajum
+      .u-marginbottom-60.fontweight-semibold
         .w-embed
 
           /.cd-headline.letters.type
-            span = t('.banner_before')     
+            span = t('.banner_before')
             span.cd-words-wrapper
               - t('.banner_words').each do |index, word|
-                - if index == 0 
+                - if index == 0
                   b.is-visible = word
                 - else
                   b = word
@@ -19,15 +21,17 @@
     .w-row
       .w-col.w-col-3.w-col-push-4
         a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
-section#home-slider.hero-full.main-slider.animate-in
+
+/section#home-slider.hero-full.main-slider.animate-in
+
     = image_tag "slider/hill.png", class: "slider-hill"
     = image_tag "slider/house.png", class: "slider-house"
     = image_tag "slider/sun.png", class: "slider-sun"
     = image_tag "slider/birds1.png", class: "slider-birds1"
     = image_tag "slider/birds2.png", class: "slider-birds2"
 
-
-
+div.bg-image
+= image_tag "slider/slider-new.png", class: "bg-image"
 
 section#projects
   - if current_user && @projects_near.present?
@@ -72,7 +76,7 @@ section#projects
     .w-row
       == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
-/section#blog.section-large.bg-gray.before-footer
+section#blog.section-large.bg-gray.before-footer
   .w-container
     .u-text-center
       = link_to CatarseSettings[:blog_url], target: :blank do

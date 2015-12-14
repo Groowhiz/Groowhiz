@@ -6,7 +6,7 @@ class CreateTalent < ActiveRecord::Migration
       t.integer :category_id
       t.integer :user_id
       t.boolean :recommended, :default => false
-      t.string :state
+      t.string :state, :default => 'published'
       t.string :permalink
 
       t.timestamps

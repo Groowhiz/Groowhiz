@@ -8,8 +8,8 @@ pt:
       hello: Know more
       faq: FAQ
       help: Contact
-      profile: My data
-      projects: Ms projects
+      profile: My profile
+      projects: My projects
       signin: Login
       signup: Register
       submit: Start your project
@@ -17,8 +17,8 @@ pt:
     login:
       login_with_facebook: Sign in with your facebook account
     user:
-      my_contributions: My support
+      my_contributions: my contributions
       logout: Sign out
       my_credits: Credit balance
-      refund_link: request reimbursement
+      refund_link: request reimbursements
 
