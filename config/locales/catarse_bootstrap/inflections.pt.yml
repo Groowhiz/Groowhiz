@@ -8,11 +8,11 @@ pt:
   remaining_singular: restante
   remaining_plural: restantes
   created_project: 
-    zero: "ainda não criou projects"
+    zero: "has not created projects"
     one: "%{count} projeto criado"
     other: "%{count} projects created"
   contributed_project:
-    zero: "ainda não apoiou projects"
+    zero: "not yet supported projects"
     one: "apoiou %{count} projeto"
     other: "apoiou %{count} projects"
 

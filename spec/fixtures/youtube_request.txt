@@ -443,7 +443,7 @@ Carregando...
     <ul class="watch-extras-section">
       <li>
         <h4 class="title">
-Categoria
+Category
         </h4>
         <div class="content">
               <p id="eow-category"><a class="yt-uix-sessionlink" data-sessionlink="ei=7-iMUrSCJ4j18wbK1oGQAw&amp;ved=CAQQxS4" href="/music">Música</a></p>

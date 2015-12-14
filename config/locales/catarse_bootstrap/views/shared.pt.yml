@@ -1,6 +1,6 @@
 pt:
   shared:
-    no_bank_label: 'Outro'
+    no_bank_label: 'Other'
     alerts:
       pending_payment_text: "You possui reembolsos pendentes de %{value}."
       pending_payment_link_text: "Pegue seu dinheiro de volta!"

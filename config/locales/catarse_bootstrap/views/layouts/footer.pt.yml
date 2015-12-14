@@ -7,7 +7,7 @@ pt:
         contact: Contact
         press: Press
         discover: Explore projects
-        start: 'Como funciona'
+        start: How it works
         expiring: In the end stretch
         facebook: Facebook
         crowdfunding_stats: "Retrato FC Brasil 2013/2014"
@@ -16,7 +16,7 @@ pt:
         feedback: Feedback
         github: Github
         instagram: Instagram
-        near: Próximos a mim
+        near: Near Me
         press: Press
         privacy: Private policy
         recents: Recents
@@ -25,11 +25,11 @@ pt:
         terms: Terms of use
         twitter: Twitter
       texts:
-        copyleft: Feito com amor.
+        copyleft: Made with love
       titles:
         about: Help
         contact: You Welcome
-        newsletter: Assine nossa news
+        newsletter: Subscribe to our news
         sitemap: Navigate
         social: Social Networks
 

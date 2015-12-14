@@ -73,19 +73,19 @@ pt:
         deliver_at: Previsão de entrega
       project:
         channels: Canais
-        category: Categoria
+        category: Category
         expires_at: Prazo
         online_days: "Prazo para arrecadação"
         headline: "Frase de efeito"
         image_url: "URL da imagem"
-        name: "Nome do projeto"
+        name: "Project Name"
         goal: "Valor a ser arrecadado"
         about_html: "Descrição do projeto"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
-        permalink: 'Link do seu projeto'
+        permalink: 'Link your project'
         more_links: 'Indique links para as pessoas conhecerem mais sobre o seu projeto e sua trajetória.'
-        traffic_sources: 'Como you conheceu o Catarse?'
+        traffic_sources: 'How did you know about TalentOxide?'
         first_contributions: "Quem são as primeiras pessoas que you vai pedir para apoiar o seu projeto?"
         budget: 'Orçamento do projeto'
         uploaded_image: 'Imagem do projeto'
@@ -204,7 +204,7 @@ pt:
             uploaded_image:
               blank: 'A imagem do projeto não pode ficar em branco'
             name:
-              blank: "O nome do projeto não pode ficar em branco"
+              blank: "The project name can not be blank"
             permalink:
               blank: "A URL do projeto não pode ficar em branco"
               invalid: "A URL do projeto é inválida"
