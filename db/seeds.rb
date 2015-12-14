@@ -79,13 +79,13 @@ puts 'Seeding the database...'
   { pt: 'Uttarakhand', en: 'Uttarakhand', fr: 'Uttarakhand' },
   { pt: 'West Bengal', en: 'West Bengal', fr: 'West Bengal' },
  ].each do |name|
-   state = State.find_or_initialize_by(name_pt: name[:pt])
-   state.update_attributes({
-     name_en: name[:en]
-   })
-   state.update_attributes({
-     name_fr: name[:fr]
-   })
+   state = State.find_or_initialize_by(name: name[:pt])
+#   state.update_attributes({
+ #    name_en: name[:en]
+ #  })
+  # state.update_attributes({
+  #   name_fr: name[:fr]
+  # })
  end
 
 {

@@ -2322,7 +2322,7 @@ CREATE TABLE talents (
     category_id integer,
     user_id integer,
     recommended boolean DEFAULT false,
-    state character varying(255),
+    state character varying(255) DEFAULT 'published'::character varying,
     permalink character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -4256,7 +4256,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public, "1";
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
