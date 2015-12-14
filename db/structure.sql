@@ -2322,7 +2322,7 @@ CREATE TABLE talents (
     category_id integer,
     user_id integer,
     recommended boolean DEFAULT false,
-    state character varying(255) DEFAULT 'published'::character varying,
+    state character varying(255),
     permalink character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -4907,6 +4907,4 @@ INSERT INTO schema_migrations (version) VALUES ('20151004042229');
 INSERT INTO schema_migrations (version) VALUES ('20151213114928');
 
 INSERT INTO schema_migrations (version) VALUES ('20151213183607');
-
-INSERT INTO schema_migrations (version) VALUES ('20151213205552');
 
