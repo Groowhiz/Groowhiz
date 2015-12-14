@@ -167,6 +167,7 @@ class ProjectsController < ApplicationController
     @projects_near = Project.with_state('online').near_of(current_user.address_state).order("random()").limit(3).includes(:project_total, :user) if current_user
     @expiring = ProjectsForHome.expiring.includes(:project_total, :user)
     @recent   = ProjectsForHome.recents.includes(:project_total, :user)
+    return @recommends,@projects_near,@expiring,@recent
   end
 
   def should_use_validate

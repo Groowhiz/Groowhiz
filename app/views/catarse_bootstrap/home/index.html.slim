@@ -1,12 +1,10 @@
-
 - content_for :title, t('site.title')
 = render 'shared/header_big', overlayer: true
 
-section#hero-home.hero-full.hero-knowmore.hom
+/section#hero-home.hero-full.hero-knowmore.hom
   .w-container.u-text-center
     .hero-home-words-content
-      .fontsize-megajum
-      .u-marginbottom-60.fontweight-semibold
+      .fontsize-megajumbo.u-marginbottom-60.fontweight-semibold
         .w-embed
 
           /.cd-headline.letters.type
@@ -22,7 +20,7 @@ section#hero-home.hero-full.hero-knowmore.hom
       .w-col.w-col-3.w-col-push-4
         a.btn.btn-large.u-marginbottom-10 href="#{hello_path(ref: 'home_banner')}" Upload Talents
 
-/section#home-slider.hero-full.main-slider.animate-in
+section#home-slider.hero-full.main-slider.animate-in
 
     = image_tag "slider/hill.png", class: "slider-hill"
     = image_tag "slider/house.png", class: "slider-house"
@@ -30,8 +28,39 @@ section#hero-home.hero-full.hero-knowmore.hom
     = image_tag "slider/birds1.png", class: "slider-birds1"
     = image_tag "slider/birds2.png", class: "slider-birds2"
 
-div.bg-image
-= image_tag "slider/slider-new.png", class: "bg-image"
+
+section#talents
+  - if current_user && @talents_near.present?
+    article.section.u-marginbottom-40
+      .w-container
+        .w-row.u-marginbottom-30
+          .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+            .fontsize-large.lineheight-looser
+              = t('.talents_near')
+          .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+            = link_to t('.see_all'), explore_path(ref: 'home_talents_near', anchor: "talents_near_of/" ) + current_user.address_state, class: 'btn btn-small btn-terciary'
+        .w-row
+          == render_talents @talents_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
+
+  article.section.w-container
+    .w-row.u-marginbottom-30
+      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        .fontsize-large.lineheight-looser
+          = t('.recent_talents')
+      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        = link_to t('.see_all'), explore_path(ref: :home_talents_recent, anchor: :talents_recent), class: 'btn btn-small btn-terciary'
+    .w-row
+      == render_talents @talents_recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
+
+  article.section.w-container
+    .w-row.u-marginbottom-30
+      .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+        .fontsize-large.lineheight-looser
+          = t('.recommended_talents')
+      .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+        = link_to t('.see_all'), explore_path(ref: :home_talents_recommended, anchor: :talents_recommended), class: 'btn btn-small btn-terciary'
+    .w-row
+      == render_talents @talents_recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
 
 section#projects
   - if current_user && @projects_near.present?
@@ -46,25 +75,35 @@ section#projects
         .w-row
           == render_projects @projects_near, 'home_near', { wrapper_class: 'w-col w-col-4' }
 
-  article.section.w-container
+  article.section.recent-projects.w-container
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          = t('.recent_talents')
+          = t('.recent_projects')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
+        = link_to t('.see_all'), explore_path(ref: :home_recent, anchor: :recent), class: 'btn btn-small btn-terciary'
     .w-row
-      == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
+      == render_projects @recent, 'home_recent', { wrapper_class: 'w-col w-col-4' }
 
   article.section.w-container
     .w-row.u-marginbottom-30
       .w-col.w-col-10.w-col-small-6.w-col-tiny-6
         .fontsize-large.lineheight-looser
-          = t('.trending_talents')
+          = t('.recommended_projects')
       .w-col.w-col-2.w-col-small-6.w-col-tiny-6
-        = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
+        = link_to t('.see_all'), explore_path(ref: :home_recommended, anchor: :recommended), class: 'btn btn-small btn-terciary'
     .w-row
-      == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
+      == render_projects @recommends, 'home_recommended', { wrapper_class: 'w-col w-col-4' }
+
+  /article.section.w-container
+  /  .w-row.u-marginbottom-30
+  /    .w-col.w-col-10.w-col-small-6.w-col-tiny-6
+  /      .fontsize-large.lineheight-looser
+  /        = t('.trending_talents')
+  /    .w-col.w-col-2.w-col-small-6.w-col-tiny-6
+  /      = link_to t('.see_all'), explore_path(ref: :home_expiring, anchor: :expiring), class: 'btn btn-small btn-terciary'
+  /  .w-row
+  /    == render_projects @expiring, 'home_expiring', { wrapper_class: 'w-col w-col-4' }
 
   /article.section.recent-projects.w-container
     .w-row.u-marginbottom-30
