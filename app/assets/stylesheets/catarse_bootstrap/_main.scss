@@ -54,7 +54,7 @@ p {
   background-color: #fec503;
 }
 .section {
-  padding-top: 30px;
+  padding-top: 50px;
   padding-bottom: 30px;
   background-color: white;
 }
@@ -110,6 +110,14 @@ p {
 /*************************
 *******Home Page******
 **************************/
+
+
+.bg-image{
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
 #home-slider {
   position: relative;
 }
@@ -119,7 +127,8 @@ p {
   height: 450px;
 }
 
-#home-slider .slide-text{
+#home-slider .slide-text
+{
   position: absolute;
   top: 50px;
   left: 0;
@@ -508,7 +517,7 @@ p {
   z-index: 20;
   margin-top: 0px;
   border-bottom-style: none;
-  background-color: #ffffff;
+  background-color: #f1f2f3;
   /*background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.02), transparent);
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), transparent);*/
 }
@@ -2038,14 +2047,12 @@ p {
 
 }
 .hero-guide {
-  background-image: url(../../images/slider/slider-bg.png);
   background-position: 50% 50%;
   background-size: cover;
   background-attachment: scroll;
   color: white;
 }
 .hero-jobs {
-  background-image: url(../../images/slider/slider-bg.png);
   background-position: 50% 50%;
   background-size: cover;
   color : white;
@@ -3741,9 +3748,8 @@ html.w-mod-js *[data-ix="know-more-2"] {
     padding-top: 100px;
     padding-bottom: 0px;
   }
-  .hero-full.hero-knowmore {
+  .hero-full .hero-knowmore {
     background-color: #24494e;
-    background-image: url('/assets/images/slider/slider-bg.png');
     background-size: cover;
     padding-top: 140px;
   }
