@@ -10,7 +10,6 @@ nav#user-menu-dropdown.w-dropdown-list.dropdown-list.user-menu
         /li.lineheight-looser
           = link_to  t('shared.menus.user.activity'), edit_user_path(current_user, anchor: :feeds), class: 'alt-link fontsize-smaller'
       .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Settings
-      ul.w-list-unstyled
       li.lineheight-looser
           = link_to t('shared.menus.user.about'), edit_user_path(current_user, anchor: :about_me), class: 'alt-link fontsize-smaller'
       li.lineheight-looser
