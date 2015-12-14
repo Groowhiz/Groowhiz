@@ -15,7 +15,7 @@ pt:
       selected_reward:
         review_without_reward_html: You irá apoiar com <strong>%{value}</strong>
           e não quer nenhuma recompensa por seu apoio.
-        value: 'Valor do apoio'
+        value: 'Value do apoio'
         reward: 'Recompensa selecionada'
         edit: 'Editar'
       existing_payment:
@@ -29,7 +29,7 @@ pt:
       faq:
         common_questions: 'Perguntas Frequentes'
         how_contribute: 'Como eu apoio este projeto?'
-        how_contribute_answer: 'Escolha o valor e a recompensa desejados. Em seguida, preencha os dados e detalhes do seu pagamento para finalizar o apoio.'
+        how_contribute_answer: 'Escolha o Value e a recompensa desejados. Em seguida, preencha os dados e detalhes do seu pagamento para finalizar o apoio.'
         when_made_payment: 'Quando o pagamento é efetivado?'
         when_made_payment_answer: 'Se you pagou com cartão de crédito, a confirmação deverá ser no mesmo dia. Se foi com boleto, em até 4 dias úteis.'
         when_project_fails: 'E se o projeto não atingir a meta?'
@@ -48,7 +48,7 @@ pt:
         review_errors_title: "Verifique os dados informados"
         review_errors: "Alguma informação está faltando ou não foi informada corretamente, corrija todos os campos marcados em vermelho e tesnte novamente"
         anonymous_confirmation_title: "You tem certeza que quer que seu apoio seja anônimo?"
-        anonymous_confirmation: "O valor do seu apoio não será divulgado para ninguém além do dono do projeto. Somente o proponente terá acesso a essa informação, independente se o seu investimento seja público ou anônimo."
+        anonymous_confirmation: "O Value do seu apoio não será divulgado para ninguém além do dono do projeto. Somente o proponente terá acesso a essa informação, independente se o seu investimento seja público ou anônimo."
         anonymous_contribution: "Quero que my apoio seja anônimo"
         form_labels:
           user_another_card: "Usar outro cartão de crédito"
@@ -57,18 +57,18 @@ pt:
           payment_card_source: 'Cód. Segurança'
           payment_card_source_short: 'CVC'
           payment_card_date: 'Expiração (mm/aaaa)'
-          payment_card_name: 'Nome impresso no cartão de crédito'
+          payment_card_name: 'Name impresso no cartão de crédito'
           payment_card_installments: 'Parcelas'
         installment_with_tax: 'sem juros'
         transaction_error: 'Transação recusada, por favor verifique novamente seus dados ou entre em contato com o banco/emissor do cartão para maiores informações.'
-        pagarme_warning_html: "O Catarse está em fase de teste de um novo meio de pagamento que facilitará o apoio financeiro e o eventual reembolso dos valores aos apoiadores. Dessa forma, alertamos que poderão ser exigidos dados extras, além daqueles mencionados nos Termos de Uso para apoiar este projeto. Qualquer dúvida ou dificuldade, entre em contato conosco pelo e-mail %{mailto} . Obrigado."
-        payment_save_card: 'Quero salvar my cartão de crédito para facilitar apoios futuros.'
+        pagarme_warning_html: "O Catarse está em fase de teste de um novo meio de pagamento que facilitará o apoio financeiro e o eventual reembolso dos Valuees aos apoiadores. Dessa forma, alertamos que poderão ser exigidos dados extras, além daqueles mencionados nos Termos de Uso para apoiar este projeto. Qualquer dúvida ou dificuldade, entre em contato conosco pelo e-mail %{mailto} . Obrigado."
+        payment_save_card: 'Quero Save my cartão de crédito para facilitar support futuros.'
         reward_sold_out: Essa recompensa está esgotada. Inicie um novo apoio.
         page-title: Apoie o %{name}
         credits_preview_html: "You possui <strong>%{credits}</strong> em créditos para realizar esse apoio <strong>até o dia 10/11</strong>, conforme <a href='http://blog.catarse.me/simplificacao-dos-reembolsos-e-o-fim-dos-creditos/' target='__blank'>novas regras</a> divulgadas pelo Catarse."
         credits_submit: 'Efetuar pagamento'
         credits_title: 'Pagamento com créditos'
-        insufficient_credits: "You possui %{credits} em créditos. Esse valor não é suficiente para realizar o apoio, por favor escolha outro meio de pagamento."
+        insufficient_credits: "You possui %{credits} em créditos. Esse Value não é suficiente para realizar o apoio, por favor escolha outro meio de pagamento."
         choose_payment: "Escolha o meio de pagamento"
         choose_payment_subtitle: "PAGAMENTO SEGURO"
         cpf: 'Para prosseguir, por favor informe:'
@@ -97,8 +97,8 @@ pt:
         page-title: Apoie o %{name}
         title: Oohh yeah!
         you_have_credits: "You tem <strong>%{credits}</strong> em créditos para realizar este apoio."
-        choose_reward: Escolha a recompensa e em seguida o valor do apoio
-        choose_value: Digite o valor do seu apoio.
+        choose_reward: Escolha a recompensa e em seguida o Value do apoio
+        choose_value: Digite o Value do seu apoio.
         minimum_disclaimer: 'A partir de R$ <span id="minimum-value">10</span> está ótimo ;)'
         next_step: "Revisar e realizar pagamento"
         no_reward: Obrigado. Eu só quero ajudar o projeto.
@@ -115,7 +115,7 @@ pt:
         tweet: Tuíte
         thank_you: 'Valeu!'
         profile_link: 'através do seu perfil'
-        thank_you_text_html: 'You acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Enviaremos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
+        thank_you_text_html: 'You acaba de dar um passo importante na campanha para tirar o %{link1} do papel! Submitemos a confirmação do pagamento por email assim que ele for processado. Você também pode acompanhar o status do apoio %{link2}.'
         share_back: 'Compartilhe o seu apoio e aumente as chances do projeto bater a meta!'
         header_subtitle: Sem you talvez este projeto não tivesse uma chance. You Welcome
           ao time!

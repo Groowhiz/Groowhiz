@@ -10,7 +10,7 @@ pt:
           register: "Cadastre-se"
         form:
           labels:
-            email: 'Após inserir seu email, iremos enviar uma notificação com instruções de como redefinir sua senha'
+            email: 'Após inserir seu email, iremos Submit uma notificação com instruções de como redefinir sua senha'
           inputs:
             submit: 'Redefinir'
 

@@ -12,7 +12,7 @@ class Reward < ActiveRecord::Base
   ranks :row_order, with_same: :project_id
 
   validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
-  validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Valor deve ser maior ou igual a R$ 10'
+  validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Value deve ser maior ou igual a R$ 10'
   validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
   validate :deliver_at_cannot_be_in_the_past
   scope :remaining, -> { where("
@@ -38,7 +38,7 @@ class Reward < ActiveRecord::Base
   after_save :expires_project_cache
 
   def deliver_at_cannot_be_in_the_past
-    self.errors.add(:deliver_at, "Previsão de entrega deve ser superior a data em que o projeto entra no ar") if
+    self.errors.add(:deliver_at, "Delivery forecast deve ser superior a data em que o projeto entra no ar") if
       self.project.expires_at.present? ? self.deliver_at < self.project.expires_at.beginning_of_month : self.deliver_at < Time.current.beginning_of_month
   end
 

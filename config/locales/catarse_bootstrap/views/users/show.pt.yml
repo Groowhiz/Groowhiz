@@ -9,17 +9,17 @@ pt:
       multiple_project_created: " e já criou %{n_projects} projects"
     contribution_row:
       contributed_projects: "Projects que apoiei"
-      contribution_value: "Valor do apoio"
+      contribution_value: "Value do apoio"
       contribution_status: "Status do apoio"
       request_refund: 'Solicitar reembolso'
-      reward: Recompensa
+      reward: Reward
       no_reward: "Não selecionou recompensa"
       delivery_estimate: "Estimativa de entrega:"
     card:
       twitter_profile: "Twitter profile"
       facebook_profile: "Facebook Profile"
       author_website: "Site"
-      contact_author: "Enviar mensagem"
+      contact_author: "Submit mensagem"
     failed_reactivation: "O link para reativação é inválido, por favor entre em contato com a nossa equipe."
     reactivated: "Seja bem vindo de volta, sua conta foi reativada."
     project:
@@ -48,12 +48,12 @@ pt:
         project: Projeto
         refunded: "Solicitação confirmada. Entraremos em contato em até 4 dias uteís."
         insufficient_credits: "You não tem créditos suficientes para realizar este estorno."
-        refunds_title: "Apoios que podem ter estorno realizado"
+        refunds_title: "support que podem ter estorno realizado"
         request_refund: "Solicitar estorno"
         requested_refund: "Solicitado estorno"
         status: Status
         title: "Mys créditos"
-        value: Valor
+        value: Value
       refund:
         cannot_refund: "Este apoio não pode ser estornado."
         error: "Oops. Ocorreu um erro ao solicitar seu estorno."
@@ -70,23 +70,23 @@ pt:
       update_social_info: "Atualizar informações"
       social_info: "Informações para contato"
       twitter: "twitter ( usuário )"
-      facebook_link: "perfil do facebook (link completo)"
+      facebook_link: "Facebook profile (link completo)"
       other_link: "link da sua página na internet"
       change_password: "Alterar minha senha"
       current_password_hint: "<i>Para que a senha seja alterada you precisa confirmar a sua senha atual.</i>"
-      email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projects que you apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as recompensas."
+      email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projects que you apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as Rewards."
       email_tooltip: "Clique aqui para preencher seu email..."
-      gravatar_hint_html: "You também pode mudar a sua foto usando o %{link} com seu email. <br>É tão simples quanto enviar uma imagem e já funciona para outros sites também ;)"
+      gravatar_hint_html: "You também pode mudar a sua foto usando o %{link} com seu email. <br>É tão simples quanto Submit uma imagem e já funciona para outros sites também ;)"
       local_avatar: "My avatar"
       submit_text: "Escolha sua imagem"
-      submit: "Enviar"
+      submit: "Submit"
       my_data: "Mys dados"
       newsletter: "Quero receber novidades do Catarse por email"
       password_hint: "<i>Deixe em branco caso you não queira trocar sua senha.</i>"
       deactivate: "Desativar a minha conta"
       deactivate_notice: "A conta de %{name} foi desativada."
       deactivate_confirm: "You deseja desativar essa conta?"
-      deactivate_hint: "Todos os seus apoios serão convertidos em apoios anônimos, seus dados não serão mais visíveis, you sairá automaticamente do sistema e sua conta será desativada permanentemente."
+      deactivate_hint: "Todos os seus support serão convertidos em support anônimos, seus dados não serão mais visíveis, you sairá automaticamente do sistema e sua conta será desativada permanentemente."
     unsubscribes:
       projects_in_reminder: "Projects com lembrete ativo:"
       title: "Escolha de quais projects you deseja receber notifications:"

@@ -659,11 +659,11 @@ CREATE TABLE paypal_payments (
     data text,
     hora text,
     fusohorario text,
-    nome text,
+    Name text,
     tipo text,
     status text,
     moeda text,
-    valorbruto text,
+    Valuebruto text,
     tarifa text,
     liquido text,
     doe_mail text,
@@ -673,13 +673,13 @@ CREATE TABLE paypal_payments (
     statusdoendereco text,
     titulodoitem text,
     iddoitem text,
-    valordoenvioemanuseio text,
-    valordoseguro text,
+    Valuedoenvioemanuseio text,
+    Valuedoseguro text,
     impostosobrevendas text,
-    opcao1nome text,
-    opcao1valor text,
-    opcao2nome text,
-    opcao2valor text,
+    opcao1Name text,
+    opcao1Value text,
+    opcao2Name text,
+    opcao2Value text,
     sitedoleilao text,
     iddocomprador text,
     urldoitem text,
@@ -707,7 +707,7 @@ CREATE TABLE paypal_payments (
 --
 
 CREATE VIEW paypal_pending AS
-    SELECT string_agg((b.id)::text, ','::text) AS string_agg FROM (backers b JOIN paypal_payments p ON ((lower(p.doe_mail) = b.payer_email))) WHERE ((((b.payment_method = 'PayPal'::text) AND (p.status = 'Concluído'::text)) AND (NOT b.confirmed)) AND (to_number(p.valorbruto, '9,99'::text) = b.value));
+    SELECT string_agg((b.id)::text, ','::text) AS string_agg FROM (backers b JOIN paypal_payments p ON ((lower(p.doe_mail) = b.payer_email))) WHERE ((((b.payment_method = 'PayPal'::text) AND (p.status = 'Concluído'::text)) AND (NOT b.confirmed)) AND (to_number(p.Valuebruto, '9,99'::text) = b.value));
 
 
 --
