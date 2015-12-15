@@ -1,0 +1,17 @@
+#dashboard-jobs-tab
+  .w-section.section
+    .w-container
+      .w-row
+        .w-col.w-col-10.w-col-push-1
+          = @project.display_errors(:job)
+          = simple_form_for @project, html: { class: 'project-form w-form' } do |f|
+            =  hidden_field_tag 'project_id', @project.id
+            =  hidden_field_tag 'anchor', 'job'
+            #dashboard-jobs
+              /#jobs
+              /  = f.simple_fields_for :jobs, @jobs do |form|
+              /    = render 'job_fields', f: form
+              /= link_to_add_association "+ #{t('.add_job')}", f, :jobs, :'data-association-insertion-node' => '#jobs', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_job_form new_job_button'
+
+            .w-col.w-col-4.w-col-push-4.u-margintop-40
+              = f.button :submit, t('.submit'),  class:'btn btn-large'
