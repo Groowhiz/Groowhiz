@@ -22,6 +22,9 @@ class Project < ActiveRecord::Base
             :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
 
+  belongs_to :country
+  belongs_to :city
+  belongs_to :state
   belongs_to :genre
   belongs_to :user
   belongs_to :category

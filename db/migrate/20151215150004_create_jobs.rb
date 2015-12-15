@@ -1,6 +1,6 @@
 class CreateJobs < ActiveRecord::Migration
   def change
-    create_table :jobs, force true do |t|
+    create_table :jobs, force:  true do |t|
       t.string "job_name"
       t.integer "project_id"
       t.integer "category_id"

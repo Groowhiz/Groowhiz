@@ -265,7 +265,13 @@ CREATE TABLE projects (
     budget text,
     full_text_index tsvector,
     budget_html text,
-    expires_at timestamp without time zone
+    expires_at timestamp without time zone,
+    tagline text,
+    project_start_date timestamp without time zone,
+    project_end_date timestamp without time zone,
+    city_id integer,
+    country_id integer,
+    state_id integer
 );
 
 
@@ -1255,6 +1261,38 @@ ALTER SEQUENCE channels_subscribers_id_seq OWNED BY channels_subscribers.id;
 
 
 --
+-- Name: cities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cities (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    acronym character varying(255) NOT NULL,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cities_id_seq OWNED BY cities.id;
+
+
+--
 -- Name: configurations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1476,6 +1514,74 @@ CREATE SEQUENCE genres_id_seq
 --
 
 ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
+
+
+--
+-- Name: job_perks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE job_perks (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: job_perks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE job_perks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_perks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE job_perks_id_seq OWNED BY job_perks.id;
+
+
+--
+-- Name: jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE jobs (
+    id integer NOT NULL,
+    job_name character varying(255),
+    project_id integer,
+    category_id integer,
+    job_description character varying(255),
+    gender character varying(255),
+    job_count integer,
+    duration integer,
+    status character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE jobs_id_seq OWNED BY jobs.id;
 
 
 --
@@ -2652,6 +2758,13 @@ ALTER TABLE ONLY channels_subscribers ALTER COLUMN id SET DEFAULT nextval('chann
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY cities ALTER COLUMN id SET DEFAULT nextval('cities_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY contribution_notifications ALTER COLUMN id SET DEFAULT nextval('contribution_notifications_id_seq'::regclass);
 
 
@@ -2688,6 +2801,20 @@ ALTER TABLE ONLY dbhero_dataclips ALTER COLUMN id SET DEFAULT nextval('dbhero_da
 --
 
 ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_perks ALTER COLUMN id SET DEFAULT nextval('job_perks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs ALTER COLUMN id SET DEFAULT nextval('jobs_id_seq'::regclass);
 
 
 --
@@ -2961,6 +3088,14 @@ ALTER TABLE ONLY channels_subscribers
 
 
 --
+-- Name: cities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY cities
+    ADD CONSTRAINT cities_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: configurations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3014,6 +3149,22 @@ ALTER TABLE ONLY dbhero_dataclips
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: job_perks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY job_perks
+    ADD CONSTRAINT job_perks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT jobs_pkey PRIMARY KEY (id);
 
 
 --
@@ -3217,6 +3368,20 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: cities_acronym_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX cities_acronym_unique ON cities USING btree (acronym);
+
+
+--
+-- Name: cities_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX cities_name_unique ON cities USING btree (name);
+
+
+--
 -- Name: fk__authorizations_oauth_provider_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3308,6 +3473,20 @@ CREATE INDEX fk__contributions_country_id ON contributions USING btree (country_
 
 
 --
+-- Name: fk__jobs_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__jobs_category_id ON jobs USING btree (category_id);
+
+
+--
+-- Name: fk__jobs_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__jobs_project_id ON jobs USING btree (project_id);
+
+
+--
 -- Name: fk__payment_notifications_payment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3375,6 +3554,27 @@ CREATE INDEX fk__project_post_notifications_project_post_id ON project_post_noti
 --
 
 CREATE INDEX fk__project_post_notifications_user_id ON project_post_notifications USING btree (user_id);
+
+
+--
+-- Name: fk__projects_city_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_city_id ON projects USING btree (city_id);
+
+
+--
+-- Name: fk__projects_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_country_id ON projects USING btree (country_id);
+
+
+--
+-- Name: fk__projects_state_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_state_id ON projects USING btree (state_id);
 
 
 --
@@ -4013,6 +4213,22 @@ ALTER TABLE ONLY credit_cards
 
 
 --
+-- Name: fk_jobs_category_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT fk_jobs_category_id FOREIGN KEY (category_id) REFERENCES categories(id);
+
+
+--
+-- Name: fk_jobs_project_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT fk_jobs_project_id FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
 -- Name: fk_payment_notifications_payment_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4098,6 +4314,30 @@ ALTER TABLE ONLY project_post_notifications
 
 ALTER TABLE ONLY project_post_notifications
     ADD CONSTRAINT fk_project_post_notifications_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_projects_city_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_city_id FOREIGN KEY (city_id) REFERENCES cities(id);
+
+
+--
+-- Name: fk_projects_country_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_country_id FOREIGN KEY (country_id) REFERENCES countries(id);
+
+
+--
+-- Name: fk_projects_state_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_state_id FOREIGN KEY (state_id) REFERENCES states(id);
 
 
 --
@@ -4256,7 +4496,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public, "1";
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -4909,4 +5149,16 @@ INSERT INTO schema_migrations (version) VALUES ('20151213114928');
 INSERT INTO schema_migrations (version) VALUES ('20151213183607');
 
 INSERT INTO schema_migrations (version) VALUES ('20151213205552');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215134713');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215145045');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215145134');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215150004');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215151212');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215151228');
 
