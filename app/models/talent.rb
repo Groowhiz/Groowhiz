@@ -11,12 +11,13 @@ class Talent < ActiveRecord::Base
   include Talent::CustomValidators
   include Talent::ErrorGroups
 
-   # has_notifications
+  # has_notifications
 
   delegate  :display_image, :get_video_url, :get_permalink, :video_url?, :display_errors, :display_video_embed_url, to: :decorator
 
   belongs_to :user
   belongs_to :category
+  belongs_to :genre
 
   has_many :talent_videos, class_name: "TalentVideo", inverse_of: :talent
   # has_many :talent_images, class_name: "TalentImage", inverse_of: :talent, reject_if: ->(x) { x['image'].blank? }
@@ -71,8 +72,7 @@ class Talent < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   ##validation for all states
-  validates_presence_of :title, :user_id, :category_id, :talent_videos
-
+  validates_presence_of :title, :user_id, :category_id, :permalink
 
   validates_uniqueness_of :permalink, case_sensitive: false
   # validates_format_of :permalink, with: /\A(\w|-)*\Z/
