@@ -52,13 +52,13 @@
                 = form.input :address_phone_number, as: :tel, wrapper_html: {class: 'w-col w-col-small-6 w-col-tiny-6 w-col-3'}, input_html: {data: {required_in_brazil: true, fixed_mask: '(99) 9999-99999'}}, validation_text: true
           .w-row.u-marginbottom-40
             .w-col.w-col-push-3.w-col-6
-              a#next-step.btn.btn-large href="#payment-engines"= t('.next_step') 
+              a#next-step.btn.btn-large href="#payment-engines"= t('.next_step')
         #payment-engines.w-hidden
           .u-marginbottom-30.u-text-center-small-only
             .fontsize-large.fontweight-semibold.text-success-small-only= t('.choose_payment')
             .fontcolor-secondary.fontweight-semibold.fontsize-smallest.fontcolor-secondary
               span.fa.fa-lock
-              |&nbsp;&nbsp;&nbsp;  
+              |&nbsp;&nbsp;&nbsp;
               = t('.choose_payment_subtitle')
           #engine[class="payments_type" data-path=engine.review_path(@contribution) ]
             .tab-loader.loader.u-text-center.w-col.w-col-12.u-marginbottom-30 = image_tag "catarse_bootstrap/loader.gif"
@@ -67,5 +67,11 @@
           = render 'selected_reward'
         .w-hidden-small.w-hidden-tiny
           = render 'faq_box'
-
+/p
+//saiteja
+/
+//javascript:
+//  $("#user_country_id").select2();
 = render 'shared/footer'
+
+

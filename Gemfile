@@ -9,6 +9,7 @@ gem 'catarse_api', :git => "git://github.com/catarse/catarse_api"
 gem 'protected_attributes'
 gem 'rails-observers'
 gem 'rb-readline'
+gem "select2-rails"
 
 gem 'sidekiq',  '~> 3.1.3'
 
