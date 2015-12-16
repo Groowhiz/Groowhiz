@@ -53,6 +53,27 @@
               input_html: { class: 'w-select text-field positive medium', required: true },
               validation_text: false
 
+          .w-row
+            .w-col.w-col-12
+              .w-row.card-terciary.card
+                = form.association :category, as: :select, label_html: {class: 'field-label fontweight-semibold'},
+                wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'City'
+                = form.input :category, as: :string, label_html: {class: 'field-label fontweight-semibold'},
+                wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field positive', required: true}, required: true, validation_text: true, label: 'Specify'
+          .w-row
+            .w-col.w-col-12
+              .w-row.card-terciary.card
+                = form.association :category, as: :select, label_html: {class: 'field-label fontweight-semibold'},
+                wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'State'
+
+          .w-row
+            .w-col.w-col-12
+              .w-row.card-terciary.card
+                = form.association :category, as: :select, label_html: {class: 'field-label fontweight-semibold'},
+                wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-select positive', required: true}, required: true, label: 'Country'
+                = form.input :category, as: :string, label_html: {class: 'field-label fontweight-semibold'},
+                wrapper_html: {class: 'w-col w-col-6 w-sub-col'}, input_html: {class: 'w-input text-field positive',required: true}, required: true, validation_text: true, label: 'Specify'
+
     .section
       .w-container
         .w-row

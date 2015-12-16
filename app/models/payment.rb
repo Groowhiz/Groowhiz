@@ -11,10 +11,10 @@ class Payment < ActiveRecord::Base
   has_many :payment_notifications # to keep compatibility with catarse_pagarme
   has_many :payment_transfers
 
-  validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
-  validate :value_should_be_equal_or_greater_than_pledge
-  validate :project_should_be_online, on: :create
-  validate :is_unique_within_period, on: :create
+  # validates_presence_of :state, :key, :gateway, :payment_method, :value, :installments
+  # validate :value_should_be_equal_or_greater_than_pledge
+  # validate :project_should_be_online, on: :create
+  # validate :is_unique_within_period, on: :create
 
   def is_unique_within_period
     errors.add(:payment, I18n.t('activerecord.errors.models.payment.duplicate')) if exists_duplicate?
@@ -25,10 +25,10 @@ class Payment < ActiveRecord::Base
     errors.add(:project, I18n.t('contribution.project_should_be_online'))
   end
 
-  before_validation do
-    generate_key
-    self.value ||= self.contribution.try(:value)
-  end
+  # before_validation do
+  #   generate_key
+  #   self.value ||= self.contribution.try(:value)
+  # end
 
   scope :waiting_payment, -> { where('payments.waiting_payment') }
 

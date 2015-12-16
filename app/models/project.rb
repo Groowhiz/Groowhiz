@@ -144,6 +144,10 @@ class Project < ActiveRecord::Base
     notifications.where(template_name: 'reminder', user_id: user_id).present?
   end
 
+  def send_to_analysis
+
+  end
+
   def has_blank_service_fee?
     payments.with_state(:paid).where("NULLIF(gateway_fee, 0) IS NULL").present?
   end
