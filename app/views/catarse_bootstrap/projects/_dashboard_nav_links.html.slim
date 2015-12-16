@@ -23,7 +23,7 @@
   = link_to (edit ? '#card' : edit_project_path(@project, anchor: 'card')), id: 'card_link', class: link_class , data: {target: '#dashboard_card', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('card', params[:action])
     = t('.card_tab')
-  = link_to (edit ? '#job' : edit_project_path(@project, anchor: 'jobs')), id: 'dashboard_job_link', class: link_class, data: {target: '#dashboard_job', tab_group: 'edit'} do
+  = link_to (edit ? '#job' : edit_project_path(@project, anchor: 'job')), id: 'dashboard_job_link', class: link_class, data: {target: '#dashboard_job', tab_group: 'edit'} do
     = @project.decorate.status_icon_for('job', params[:action])
     = t('.jobs_tab')
   /= link_to (edit ? '#reward' : edit_project_path(@project, anchor: 'reward')), id: 'dashboard_reward_link', class: link_class , data: {target: '#dashboard_reward', tab_group: 'edit'} do
