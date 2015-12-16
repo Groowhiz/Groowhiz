@@ -271,7 +271,8 @@ CREATE TABLE projects (
     project_end_date timestamp without time zone,
     city_id integer,
     country_id integer,
-    state_id integer
+    state_id integer,
+    genre_id integer
 );
 
 
@@ -1547,6 +1548,37 @@ ALTER SEQUENCE job_perks_id_seq OWNED BY job_perks.id;
 
 
 --
+-- Name: job_rewards; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE job_rewards (
+    id integer NOT NULL,
+    job_reward_name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: job_rewards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE job_rewards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_rewards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE job_rewards_id_seq OWNED BY job_rewards.id;
+
+
+--
 -- Name: jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1561,7 +1593,11 @@ CREATE TABLE jobs (
     duration integer,
     status character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    permalink text,
+    job_start_date timestamp without time zone,
+    job_end_date timestamp without time zone,
+    job_reward_id integer
 );
 
 
@@ -2814,6 +2850,13 @@ ALTER TABLE ONLY job_perks ALTER COLUMN id SET DEFAULT nextval('job_perks_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY job_rewards ALTER COLUMN id SET DEFAULT nextval('job_rewards_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY jobs ALTER COLUMN id SET DEFAULT nextval('jobs_id_seq'::regclass);
 
 
@@ -3160,6 +3203,14 @@ ALTER TABLE ONLY job_perks
 
 
 --
+-- Name: job_rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY job_rewards
+    ADD CONSTRAINT job_rewards_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3480,6 +3531,13 @@ CREATE INDEX fk__jobs_category_id ON jobs USING btree (category_id);
 
 
 --
+-- Name: fk__jobs_job_reward_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__jobs_job_reward_id ON jobs USING btree (job_reward_id);
+
+
+--
 -- Name: fk__jobs_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3568,6 +3626,13 @@ CREATE INDEX fk__projects_city_id ON projects USING btree (city_id);
 --
 
 CREATE INDEX fk__projects_country_id ON projects USING btree (country_id);
+
+
+--
+-- Name: fk__projects_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_genre_id ON projects USING btree (genre_id);
 
 
 --
@@ -3820,6 +3885,13 @@ CREATE INDEX index_dbhero_dataclips_on_user ON dbhero_dataclips USING btree ("us
 --
 
 CREATE INDEX index_genres_on_name_pt ON genres USING btree (name_pt);
+
+
+--
+-- Name: index_jobs_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_jobs_on_permalink ON jobs USING btree (permalink);
 
 
 --
@@ -4221,6 +4293,14 @@ ALTER TABLE ONLY jobs
 
 
 --
+-- Name: fk_jobs_job_reward_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT fk_jobs_job_reward_id FOREIGN KEY (job_reward_id) REFERENCES job_rewards(id);
+
+
+--
 -- Name: fk_jobs_project_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4330,6 +4410,14 @@ ALTER TABLE ONLY projects
 
 ALTER TABLE ONLY projects
     ADD CONSTRAINT fk_projects_country_id FOREIGN KEY (country_id) REFERENCES countries(id);
+
+
+--
+-- Name: fk_projects_genre_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id);
 
 
 --
@@ -5161,4 +5249,14 @@ INSERT INTO schema_migrations (version) VALUES ('20151215150004');
 INSERT INTO schema_migrations (version) VALUES ('20151215151212');
 
 INSERT INTO schema_migrations (version) VALUES ('20151215151228');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216070000');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216070855');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216073621');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216073747');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216073949');
 
