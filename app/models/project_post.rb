@@ -6,13 +6,13 @@ class ProjectPost < ActiveRecord::Base
   belongs_to :user
   delegate :email_comment_html, to: :decorator
 
-  before_save do
-    reference_user
-  end
+  # before_save do
+  #   reference_user
+  # end
 
-  validates_presence_of :user_id, :project_id, :comment_html, :title
+  # validates_presence_of :user_id, :project_id, :comment_html, :title
 
-  before_validation :reference_user
+  # before_validation :reference_user
 
   scope :ordered, ->() { order("created_at desc") }
 

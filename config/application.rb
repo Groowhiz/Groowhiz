@@ -40,6 +40,8 @@ module Catarse
       :mixpanel_observer, '::CatarseMonkeymail::MonkeyProjectObserver',
     ]
 
+    config.i18n.available_locales=[:en,:pt]
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
