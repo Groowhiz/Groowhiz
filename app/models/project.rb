@@ -22,10 +22,10 @@ class Project < ActiveRecord::Base
             :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
 
-  belongs_to :country
-  belongs_to :city
-  belongs_to :state
-  belongs_to :genre
+  # belongs_to :country
+  # belongs_to :city
+  # belongs_to :state
+  # belongs_to :genre
   belongs_to :user
   belongs_to :category
   has_one :project_total
@@ -119,8 +119,8 @@ class Project < ActiveRecord::Base
 
   validates_acceptance_of :accepted_terms, on: :create
   ##validation for all states
-  validates_presence_of :name, :user, :category, :permalink, :tagline
-  validates_length_of :tagline, :minimum => 5, :maximum => 100, :allow_blank => false
+  validates_presence_of :name, :user, :category, :permalink #, :tagline
+  #validates_length_of :tagline, :minimum => 5, :maximum => 100, :allow_blank => false
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0,
                             if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
