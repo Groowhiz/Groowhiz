@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216070855) do
+ActiveRecord::Schema.define(version: 20151216073949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -473,6 +473,12 @@ ActiveRecord::Schema.define(version: 20151216070855) do
     t.datetime "updated_at"
   end
 
+  create_table "job_rewards", force: true do |t|
+    t.string   "job_reward_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", force: true do |t|
     t.string   "job_name"
     t.integer  "project_id"
@@ -485,10 +491,15 @@ ActiveRecord::Schema.define(version: 20151216070855) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "permalink"
+    t.datetime "job_start_date"
+    t.datetime "job_end_date"
+    t.integer  "job_reward_id"
     t.index ["category_id"], :name => "fk__jobs_category_id"
+    t.index ["job_reward_id"], :name => "fk__jobs_job_reward_id"
     t.index ["permalink"], :name => "index_jobs_on_permalink", :unique => true
     t.index ["project_id"], :name => "fk__jobs_project_id"
     t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_category_id"
+    t.foreign_key ["job_reward_id"], "job_rewards", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_job_reward_id"
     t.foreign_key ["project_id"], "projects", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_project_id"
   end
 

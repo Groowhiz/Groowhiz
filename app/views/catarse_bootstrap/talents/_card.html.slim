@@ -16,6 +16,9 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
       .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
         = link_to @talent.category, explore_path(anchor: "by_category_id/#{@talent.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
         = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
+
+        = link_to @talent.genre, explore_path(anchor: "by_genre_id/#{@talent.genre_id}"), class: 'link-hidden-light u-left', itemprop: 'genre'
+        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon u-left', width: "22"
       .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
         .u-left
           = image_tag(@talent.user.display_image, class: 'u-round thumb small')
