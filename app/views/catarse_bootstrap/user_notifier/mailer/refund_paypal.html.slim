@@ -5,7 +5,7 @@ br
 br
 |Para muitos casos, não tínhamos uma solução simples para fazer o reembolso. Agora estamos em um processo para otimizar essa etapa. Como você fez o seu apoio via Paypal, a maneira mais simples é fazermos uma transferência direto para a sua conta Paypal, cadastrada no nosso sistema através do e-mail #{user.contributions.last.payer_email}.
 br
-|O valor do apoio que você fez e que será reembolsado é de: R$#{user.contributions.where(state:'requested_refund').sum(:value)}.
+|O Value do apoio que você fez e que será reembolsado é de: R$#{user.contributions.where(state:'requested_refund').sum(:value)}.
 br
 |Infelizmente, como seu apoio foi feito há mais de 120 dias, não conseguiremos reembolsar a taxa do meio de pagamento (cartão ou boleto) e a descontaremos na hora de efetuar o depósito. Esta taxa é diferente de acordo com a forma de pagamento utilizada, sendo que pode variar entre 2% e 6% do seu apoio.
 br

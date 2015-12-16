@@ -12,20 +12,20 @@ window.init_redactor = function(){
         formattingAdd: [
           {
               tag: 'blockquote',
-              title: 'Citar',
+              title: 'Cite',
               class: 'fontsize-base quote',
               clear: true
           },
 
           {
               tag: 'p',
-              title: 'Cabeçalho 1',
+              title: 'Heading 1',
               class: 'fontsize-larger fontweight-semibold',
               clear: true
           },
           {
               tag: 'p',
-              title: 'Cabeçalho 2',
+              title: 'Heading 2',
               class: 'fontsize-large',
               clear: true
           }],

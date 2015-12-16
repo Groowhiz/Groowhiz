@@ -57,7 +57,7 @@ pt:
         approve: 'Aprovar!'
         user_id: 'User ID'
         goal: 'Meta'
-        total_contributions: 'Apoios'
+        total_contributions: 'support'
         online_date: 'Entrou no ar'
         pledged: 'Alcançado'
         recommended: 'Recomendado?'
@@ -87,14 +87,14 @@ pt:
         key: Chave
         submit: Pesquisar
         has_credits_difference: Discrepância nos créditos
-        total_contributed: Total de apoios
+        total_contributed: Total de support
         total_contributions: apoiadores
-        total_contributions: apoios
+        total_contributions: support
         total_users: usuários
         total_credits: créditos
         total_credits_view: créditos calculados
         user: Usuário
-        value: Valor
+        value: Value
         payer_email: Email do pagamento
         provider: Provedor
     contributions:
@@ -133,19 +133,19 @@ pt:
         placeholders:
           project: 'Permalink ou Project Name'
           acquirer: 'Nome da operadora de cartão'
-          user: 'ID, Nome, Email ou Email de pagamento'
+          user: 'ID, Name, Email ou Email de pagamento'
           payment_id: Chave, ID do meio de pagamento ou TID da operadora'
         last_state: 'Estado anterior'
         acquirer: 'Operadora'
         payment_tax: 'Taxa meio de pagamento'
         project_state: 'Estado do projeto'
-        send_refund_request_contribution: 'Enviar solicitação de reembolso'
+        send_refund_request_contribution: 'Submit solicitação de reembolso'
         payer_email: 'Email do meio de pagamento'
         payment_id: 'Id de pagamento'
         user_email: 'Email utilizado no catarse'
         push_to_trash: 'Deletar apoio'
         cancel: 'Cancelar apoio'
-        between_values: 'Valores entre'
+        between_values: 'Valuees entre'
         by_state: 'Estado'
         refund_and_hide: 'Fazer estorno e não exibir apoio.'
         pending_to_refund: 'Estornos pendentes'
@@ -154,10 +154,10 @@ pt:
         refund_contribution: 'Estornar apoio'
         request_refund: 'Pedir Reembolso'
         direct_refund: 'Reembolso Direto'
-        title: "Gerenciamento de apoios"
+        title: "Gerenciamento de support"
         state: 'Estado atual'
-        menu: "Apoios"
-        new_menu: "Apoios - Beta"
+        menu: "support"
+        new_menu: "support - Beta"
         anonymous: Anônimo?
         contribution: Apoio
         confirmed: Confirmado?
@@ -168,21 +168,21 @@ pt:
         project: Projeto
         refunded: "Estorno realizado?"
         requested_refund: "Solicitou estorno?"
-        reward: Recompensa
+        reward: Reward
         no_reward: "Sem recompensa"
         submit: Pesquisar
         total_contributed: arrecadados
         total_contributions: apoiadores
-        total_contribution: apoios
+        total_contribution: support
         total_users: usuários
         user: Usuário
-        value: Valor
+        value: Value
     statistics:
       index:
         menu: "Estatísticas"
         title: "Estatísticas"
         total_users: "Usuários"
-        total_contributions: "Apoios"
+        total_contributions: "support"
         total_contributors: "Apoiadores"
         total_contributed: "Arrecadação"
         total_projects: "Projects"
@@ -193,7 +193,7 @@ pt:
       projects_by_week:
         title: "Rascunhos created por semana"
       contributions_by_week:
-        title: "Valor de apoios confirmados por semana"
+        title: "Value de support confirmados por semana"
       charts:
         current_period: "Últimas 8 sem."
         last_year: "Ano anterior"

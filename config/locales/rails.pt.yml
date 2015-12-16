@@ -1,35 +1,35 @@
 pt:
   date:
     abbr_day_names:
-      - Dom
-      - Seg
-      - Ter
-      - Qua
-      - Qui
-      - Sex
-      - Sáb
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
       - ~
       - Jan
-      - Fev
+      - Feb
       - Mar
-      - Abr
-      - Mai
+      - Apr
+      - May
       - Jun
       - Jul
-      - Ago
-      - Set
-      - Out
+      - Aug
+      - Sep
+      - Oct
       - Nov
-      - Dez
+      - Dec
     day_names:
-      - Domingo
-      - Segunda
-      - Terça
-      - Quarta
-      - Quinta
-      - Sexta
-      - Sábado
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
       default: "%d/%m/%Y"
       with_time: "%d/%m/%Y às %Hh%Mmin"
@@ -37,18 +37,18 @@ pt:
       short: "%d de %B"
     month_names:
       -
-      - Janeiro
-      - Fevereiro
-      - Março
-      - Abril
-      - Maio
-      - Junho
-      - Julho
-      - Agosto
-      - Setembro
-      - Outubro
-      - Novembro
-      - Dezembro
+      - January
+      - February
+      - March
+      - April
+      - March
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
       - :day
       - :month
@@ -90,12 +90,12 @@ pt:
         one: "1 segundo"
         other: "%{count} segundos"
     prompts:
-      day: Dia
-      hour: Hora
-      minute: Minuto
-      month: Mês
-      second: Segundo
-      year: Ano
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Second
+      year: Year
   errors: &errors
     format: "%{attribute} %{message}"
     messages:
@@ -130,7 +130,7 @@ pt:
       prompt: "Por favor selecione"
     submit:
       create: "Criar %{model}"
-      submit: "Salvar %{model}"
+      submit: "Save %{model}"
       update: "Atualizar %{model}"
   number:
     currency:
