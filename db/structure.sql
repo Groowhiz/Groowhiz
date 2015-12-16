@@ -2467,7 +2467,8 @@ CREATE TABLE talents (
     state character varying(255) DEFAULT 'published'::character varying,
     permalink character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    genre_id integer
 );
 
 
@@ -3685,6 +3686,13 @@ CREATE INDEX fk__talents_category_id ON talents USING btree (category_id);
 
 
 --
+-- Name: fk__talents_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__talents_genre_id ON talents USING btree (genre_id);
+
+
+--
 -- Name: fk__talents_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -4477,6 +4485,14 @@ ALTER TABLE ONLY talents
 
 
 --
+-- Name: fk_talents_genre_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talents
+    ADD CONSTRAINT fk_talents_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id);
+
+
+--
 -- Name: fk_talents_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -5259,4 +5275,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151216073621');
 INSERT INTO schema_migrations (version) VALUES ('20151216073747');
 
 INSERT INTO schema_migrations (version) VALUES ('20151216073949');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216085249');
 
