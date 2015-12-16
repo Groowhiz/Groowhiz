@@ -12,7 +12,7 @@ pt:
       contribution_value: "Support value"
       contribution_status: "Support status"
       request_refund: 'refund request'
-      reward: Reward
+      reward: "Reward"
       no_reward: "I have not selected reward"
       delivery_estimate: "Delivery Estimates:"
     card:
@@ -27,7 +27,7 @@ pt:
       refunded: "Refunded"
       requested_refund: "Requested reimbursement"
       waiting_confirmation: "Waiting confirmation"
-      tell_about_this_contribution: Tell the world about your support!
+      tell_about_this_contribution: "Tell the world about your support!"
     credit_cards:
       index:
         last_digits: 'Card'
@@ -42,18 +42,19 @@ pt:
         reject_btn: "No, I want to keep my credits"
         accept_btn: "Yes, I request a refund of my support"
       index:
+
         contribution_date: "Support Date"
         current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> credits."
         important_html: "For all reimbursement rules and procedures, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Rules-and-run-of-reimbursement-chargebacks' target='_blank'>click here</a>. Any questions, please visit our <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
-        project: Project
+        project: "Project"
         refunded: "Confirmed request. We will contact you within 4 business days."
         insufficient_credits: "You do not have enough credits to achieve this reversal."
         refunds_title: "Supports that may have made reversal"
         request_refund: "Request reversal"
         requested_refund: "Asked reversal"
-        status: Status
+        status: "Status"
         title: "My credits"
-        value: Value
+        value: "Value"
       refund:
         cannot_refund: "This support can not be reversed."
         error: "Oops. An error occurred when requesting the reversal."
@@ -111,10 +112,10 @@ pt:
         credit_cards: 'Credit cards'
         contributed_projects: "Projects supported"
         created_projects: "Projects created"
-        comments: Comments
-        credits: credits
-        settings: preferences
-        unsubscribes: Notifications
+        comments: "Comments"
+        credits: "credits"
+        settings: "preferences"
+        unsubscribes: "Notifications"
       user_social:
         email: "Send me an email"
         facebook: "Facebook profile"

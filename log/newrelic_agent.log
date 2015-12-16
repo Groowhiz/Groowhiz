@@ -5291,3 +5291,71 @@
 [12/14/15 07:31:33 +0000 precise32 (2389)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
 [12/14/15 07:31:45 +0000 precise32 (2389)] ERROR : Invalid license key, please contact support@newrelic.com
 [12/14/15 07:31:45 +0000 precise32 (2389)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : Starting the New Relic agent in "development" environment.
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : New Relic Agent Developer Mode enabled.
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : Environment: development
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : No known dispatcher detected.
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : Application: (Development)
+[12/14/15 10:22:12 +0000 precise32 (2794)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[12/14/15 10:22:12 +0000 precise32 (2794)] INFO : Installing Sidekiq instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing middleware-based Excon instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing deferred Rack instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing Rack::Builder middleware instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing ActiveRecord 4 instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing Rails 3+ middleware instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing Net instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing HTTPClient instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing Rails 4 Error instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing Rails 4 Controller instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Installing Rails 4 view instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Finished instrumentation
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : Doing deferred dependency-detection before Rack startup
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : We weren't able to instrument all of your Rack middlewares.
+[12/14/15 10:22:13 +0000 precise32 (2794)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[12/14/15 10:23:16 +0000 precise32 (2794)] ERROR : Invalid license key, please contact support@newrelic.com
+[12/14/15 10:23:16 +0000 precise32 (2794)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[12/14/15 11:05:14 +0000 precise32 (2794)] INFO : Starting Agent shutdown
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : Starting the New Relic agent in "development" environment.
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : Reading configuration from config/newrelic.yml (/vagrant)
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : New Relic Agent Developer Mode enabled.
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : Environment: development
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : No known dispatcher detected.
+[12/14/15 11:05:26 +0000 precise32 (2898)] INFO : Application: (Development)
+[12/14/15 11:05:26 +0000 precise32 (2898)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Sidekiq instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing middleware-based Excon instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing deferred Rack instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Rack::Builder middleware instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing ActiveRecord 4 instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Rails 3+ middleware instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Net instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing HTTPClient instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Rails 4 Error instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Rails 4 Controller instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Installing Rails 4 view instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Finished instrumentation
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : Doing deferred dependency-detection before Rack startup
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : We weren't able to instrument all of your Rack middlewares.
+[12/14/15 11:05:27 +0000 precise32 (2898)] INFO : To correct this, ensure you 'require "newrelic_rpm"' before setting up your middleware stack.
+[12/14/15 11:05:38 +0000 precise32 (2898)] ERROR : Invalid license key, please contact support@newrelic.com
+[12/14/15 11:05:38 +0000 precise32 (2898)] ERROR : Visit NewRelic.com to obtain a valid license key, or to upgrade your account.
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::Reloader/call has negative duration: -0.6391861438751221 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::Reloader/call has negative exclusive time: duration = -0.6391861438751221 s, child_time = 0.2594897747039795
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::RemoteIp/call has negative duration: -0.6379117965698242 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/BetterErrors::Middleware/call has negative duration: -0.6371955871582031 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::DebugExceptions/call has negative duration: -0.6367027759552002 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::ShowExceptions/call has negative duration: -0.6353685855865479 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/Rails::Rack::Logger/call has negative duration: -0.6292331218719482 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/RequestStore::Middleware/call has negative duration: -0.628727912902832 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::RequestId/call has negative duration: -0.6280958652496338 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/Rack::MethodOverride/call has negative duration: -0.6276850700378418 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/Rack::Runtime/call has negative duration: -0.6271805763244629 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActiveSupport::Cache::Strategy::LocalCache::Middleware/call has negative duration: -0.626777172088623 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/Rack::Lock/call has negative duration: -0.6262149810791016 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/ActionDispatch::Static/call has negative duration: -0.6244769096374512 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/Rack::Sendfile/call has negative duration: -0.6240313053131104 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Nested/Controller/Rack/Catarse::Application/call has negative duration: -0.6234712600708008 s
+[12/15/15 05:58:56 +0000 precise32 (2898)] WARN : Metric Middleware/Rack/NewRelic::Rack::DeveloperMode/call has negative duration: -0.6227941513061523 s

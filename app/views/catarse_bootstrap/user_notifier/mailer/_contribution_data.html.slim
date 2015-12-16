@@ -10,12 +10,12 @@ p
   br/
   | Opção de pagamento: #{detail.gateway}
   br/
-  | Valor da contribuição: #{number_to_currency contribution.value}
+  | Value da contribuição: #{number_to_currency contribution.value}
   - if detail.installments > 1
     br/
     | Número de parcelas: #{detail.installments}
     br/
-    | Valor da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
+    | Value da parcela: #{number_to_currency(detail.installment_value, precision: 2)}
   br/
   -if contribution.reward.present?
     | Recompensa selecionada: #{contribution.reward.description}
