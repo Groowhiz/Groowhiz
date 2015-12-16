@@ -12,18 +12,25 @@ div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ?
         = link_to project_by_slug_path(@project.permalink, ref: ref), title: @project.headline, target: target, class: 'link-hidden' do
           = truncate(@project.headline, length: 140)
     .w-clearfix.card-project-author.w-hidden-small.w-hidden-tiny[itemprop="author" itemscope itemtype="http://schema.org/Person"]
+      .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
+        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right', itemprop: 'category'
+        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
+        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right', itemprop: 'category'
+        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
+        = link_to @project.category, explore_path(anchor: "by_category_id/#{@project.category_id}"), class: 'link-hidden-light u-right', itemprop: 'category'
+        = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: "22"
       .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
         .u-left
           = image_tag(@project.user.display_image, class: 'u-round thumb small')
       p.card-author-name.fontsize-smaller[itemprop="name" content="#{@project.user.display_name}"]
           = @project.user.display_name
-    .card-project-meter class=@project.state
+    /.card-project-meter class=@project.state
       -if ['successful', 'failed', 'waiting_funds'].include? @project.state
         div= t("projects.card.display_status.#{@project.display_status}")
       -else
         .meter
           = @project.progress_bar
-    .card-project-stats
+    /.card-project-stats
       .w-row
         .w-col.w-col-4.w-col-small-4.w-col-tiny-4
           .fontsize-base.fontweight-semibold 

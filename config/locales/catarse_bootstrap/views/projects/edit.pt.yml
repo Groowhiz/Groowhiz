@@ -188,6 +188,7 @@ pt:
       user_id: 'Id do usuário'
       name: 'Project Name'
       name_label: 'Quanto mais direto melhor. Não ultrapasse 50 caracteres'
+      project_tagline: 'Project Tagline'
       url: 'URL do projeto'
       url_label: 'É o endereço do seu projeto, deve ser fácil de memorizar. Evite underline, hífen e símbolos'
       category: 'Categoria'

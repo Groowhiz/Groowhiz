@@ -54,7 +54,7 @@ pt:
         expires_at: Qual o prazo para atingir o mínimo? *
         first_contributions: Lista com os primeiros apoiadores *
         goal: Quanto you pretende arrecadar? (apenas números)*
-        headline: Catch phrase *
+        #headline: Catch phrase *
         traffic_sources: How did you know about TalentOxide? *
         more_links: Lista de Links relacionados a seu projeto *
         name: Project Name *
