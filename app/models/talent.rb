@@ -72,7 +72,9 @@ class Talent < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   ##validation for all states
-  validates_presence_of :title, :user_id, :category_id, :permalink
+  validates_presence_of :title, :user_id, :category_id, :permalink, :description
+
+  validates_length_of :description, :minimum=>5, :maximum=>150, :allow_blank=>false
 
   validates_uniqueness_of :permalink, case_sensitive: false
   # validates_format_of :permalink, with: /\A(\w|-)*\Z/
