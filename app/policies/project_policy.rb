@@ -72,7 +72,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def job_attributes
-    { jobs_attributes: [:id, :description, :job_start_date, :job_end_date] }
+    { jobs_attributes: [:_destroy,:id, :job_description, :job_start_date, :job_end_date] }
   end
 
   def account_attributes

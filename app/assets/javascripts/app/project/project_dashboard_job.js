@@ -44,8 +44,7 @@ App.addChild('DashboardJobs', {
         });
       }
     });
-  },
-
+  }
 });
 
 App.views.DashboardJobs.addChild('JobForm', _.extend({

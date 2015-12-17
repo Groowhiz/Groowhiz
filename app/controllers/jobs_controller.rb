@@ -2,20 +2,14 @@ class JobsController < ApplicationController
   respond_to :html, :json
   helper_method :resource, :parent
 
-  def new
-
+  def index
+    render layout: false
   end
 
-  def create
-
-  end
-
-  def delete
-
-  end
-
-  def destroy
-
+  def sort
+    authorize resource
+    resource.update_attribute :row_order_position, params[:job][:row_order_position]
+    render nothing: true
   end
 
   def resource
@@ -25,7 +19,5 @@ class JobsController < ApplicationController
   def parent
     @project ||= Project.find params[:project_id]
   end
-
-
 
 end

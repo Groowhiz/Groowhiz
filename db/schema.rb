@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216085249) do
+ActiveRecord::Schema.define(version: 20151216194826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -494,6 +494,7 @@ ActiveRecord::Schema.define(version: 20151216085249) do
     t.datetime "job_start_date"
     t.datetime "job_end_date"
     t.integer  "job_reward_id"
+    t.integer  "row_order"
     t.index ["category_id"], :name => "fk__jobs_category_id"
     t.index ["job_reward_id"], :name => "fk__jobs_job_reward_id"
     t.index ["permalink"], :name => "index_jobs_on_permalink", :unique => true
@@ -543,7 +544,7 @@ ActiveRecord::Schema.define(version: 20151216085249) do
     t.text "tipo"
     t.text "status"
     t.text "moeda"
-    t.text "Valuebruto"
+    t.text "valorbruto"
     t.text "tarifa"
     t.text "liquido"
     t.text "doe_mail"
@@ -553,13 +554,13 @@ ActiveRecord::Schema.define(version: 20151216085249) do
     t.text "statusdoendereco"
     t.text "titulodoitem"
     t.text "iddoitem"
-    t.text "Valuedoenvioemanuseio"
-    t.text "Valuedoseguro"
+    t.text "valordoenvioemanuseio"
+    t.text "valordoseguro"
     t.text "impostosobrevendas"
     t.text "opcao1nome"
-    t.text "opcao1Value"
+    t.text "opcao1valor"
     t.text "opcao2nome"
-    t.text "opcao2Value"
+    t.text "opcao2valor"
     t.text "sitedoleilao"
     t.text "iddocomprador"
     t.text "urldoitem"

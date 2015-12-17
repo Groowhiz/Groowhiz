@@ -33,6 +33,7 @@ class ProjectsController < ApplicationController
     @project = Project.new user: current_user
     authorize @project
     @project.rewards.build
+    @project.jobs.build
   end
 
   def create
@@ -122,6 +123,7 @@ class ProjectsController < ApplicationController
     @post =  (params[:project_post_id].present? ? resource.posts.where(id: params[:project_post_id]).first : resource.posts.build)
     @rewards = @project.rewards.rank(:row_order)
     @rewards = @project.rewards.build unless @rewards.present?
+    @jobs = @project.jobs.rank(:row_order)
     @jobs = @project.jobs.build unless @jobs.present?
     @budget = resource.budgets.build
 

@@ -1597,7 +1597,9 @@ CREATE TABLE jobs (
     permalink text,
     job_start_date timestamp without time zone,
     job_end_date timestamp without time zone,
-    job_reward_id integer
+    job_reward_id integer,
+    row_order integer,
+    last_changes text
 );
 
 
@@ -5277,4 +5279,10 @@ INSERT INTO schema_migrations (version) VALUES ('20151216073747');
 INSERT INTO schema_migrations (version) VALUES ('20151216073949');
 
 INSERT INTO schema_migrations (version) VALUES ('20151216085249');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216194826');
+
+INSERT INTO schema_migrations (version) VALUES ('20151217070609');
+
+INSERT INTO schema_migrations (version) VALUES ('20151217070642');
 

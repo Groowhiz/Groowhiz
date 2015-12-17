@@ -2,7 +2,7 @@
 .nested-fields
   .job-card
     -if job.persisted?
-      .w-row.card-persisted.card.card-terciary.u-marginbottom-20.medium[id="job_#{job.id}" data-update_url=sort_project_reward_path(@project, job) class="sortable"]
+      .w-row.card-persisted.card.card-terciary.u-marginbottom-20.medium[id="job_#{job.id}" data-update_url=sort_project_job_path(@project, job) class="sortable"]
         .w-col.w-col-5.w-sub-col
           .fontweight-semibold.fontsize-smallest.u-marginbottom-10
             = t('projects.dashboard_reward.reward')
@@ -10,13 +10,13 @@
           .card
             .w-row
               .w-col.w-col-11.w-col-small-11.w-col-tiny-11
-                .fontsize-base.fontweight-semibold= t('rewards.index.reward_title', minimum: job.display_minimum).html_safe
+                /.fontsize-base.fontweight-semibold= t('rewards.index.reward_title', minimum: job.display_minimum).html_safe
               .w-col.w-col-1.w-col-small-1.w-col-tiny-1
-                = link_to "javascript:void(0);", data: {target: ".edit_job_content_#{job.id}", parent: "#job_#{job.id}"}, class: 'show_reward_form' do
+                = link_to "javascript:void(0);", data: {target: ".edit_job_content_#{job.id}", parent: "#job_#{job.id}"}, class: 'show_job_form' do
                   .btn.btn-small.btn-terciary.fa.fa-lg.fa-edit.btn-no-border
-            .fontsize-smaller.u-marginbottom-20.fontweight-semibold= pluralize(job.payments.with_state('paid').count(:all), t('contribution_singular'), t('contribution_plural'))
+            /.fontsize-smaller.u-marginbottom-20.fontweight-semibold= pluralize(job.payments.with_state('paid').count(:all), t('contribution_singular'), t('contribution_plural'))
             p.fontsize-small
-              br= job.display_description
+              br= job.job_description
             /- if job.maximum_contributions
               - in_time_to_confirm = job.in_time_to_confirm
               - if in_time_to_confirm > 0
@@ -32,7 +32,7 @@
                     span.fontweight-bold
                       => t('rewards.index.limited')
                     = " (" + job.display_remaining + ")"
-            .fontsize-smallest
+            /.fontsize-smallest
               =t('projects.jobs_fields.index.select_job_deliver_time', estimate: job.display_deliver_estimate).html_safe
   
     .w-row.card.card-terciary.u-marginbottom-20.card-edition.medium class=(job.new_record? ? '' : "w-hidden edit_job_content_#{job.id}")
