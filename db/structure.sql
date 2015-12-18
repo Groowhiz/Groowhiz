@@ -265,7 +265,14 @@ CREATE TABLE projects (
     budget text,
     full_text_index tsvector,
     budget_html text,
-    expires_at timestamp without time zone
+    expires_at timestamp without time zone,
+    tagline text,
+    project_start_date timestamp without time zone,
+    project_end_date timestamp without time zone,
+    city_id integer,
+    country_id integer,
+    state_id integer,
+    genre_id integer
 );
 
 
@@ -1255,6 +1262,38 @@ ALTER SEQUENCE channels_subscribers_id_seq OWNED BY channels_subscribers.id;
 
 
 --
+-- Name: cities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE cities (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    acronym character varying(255) NOT NULL,
+    created_at timestamp without time zone DEFAULT now(),
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE cities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE cities_id_seq OWNED BY cities.id;
+
+
+--
 -- Name: configurations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1476,6 +1515,111 @@ CREATE SEQUENCE genres_id_seq
 --
 
 ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
+
+
+--
+-- Name: job_perks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE job_perks (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: job_perks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE job_perks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_perks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE job_perks_id_seq OWNED BY job_perks.id;
+
+
+--
+-- Name: job_rewards; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE job_rewards (
+    id integer NOT NULL,
+    job_reward_name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: job_rewards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE job_rewards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_rewards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE job_rewards_id_seq OWNED BY job_rewards.id;
+
+
+--
+-- Name: jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE jobs (
+    id integer NOT NULL,
+    job_name character varying(255),
+    project_id integer,
+    category_id integer,
+    job_description character varying(255),
+    gender character varying(255),
+    job_count integer,
+    duration integer,
+    status character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    permalink text,
+    job_start_date timestamp without time zone,
+    job_end_date timestamp without time zone,
+    job_reward_id integer,
+    row_order integer,
+    last_changes text
+);
+
+
+--
+-- Name: jobs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: jobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE jobs_id_seq OWNED BY jobs.id;
 
 
 --
@@ -2325,7 +2469,8 @@ CREATE TABLE talents (
     state character varying(255) DEFAULT 'published'::character varying,
     permalink character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    genre_id integer
 );
 
 
@@ -2652,6 +2797,13 @@ ALTER TABLE ONLY channels_subscribers ALTER COLUMN id SET DEFAULT nextval('chann
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY cities ALTER COLUMN id SET DEFAULT nextval('cities_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY contribution_notifications ALTER COLUMN id SET DEFAULT nextval('contribution_notifications_id_seq'::regclass);
 
 
@@ -2688,6 +2840,27 @@ ALTER TABLE ONLY dbhero_dataclips ALTER COLUMN id SET DEFAULT nextval('dbhero_da
 --
 
 ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_perks ALTER COLUMN id SET DEFAULT nextval('job_perks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_rewards ALTER COLUMN id SET DEFAULT nextval('job_rewards_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs ALTER COLUMN id SET DEFAULT nextval('jobs_id_seq'::regclass);
 
 
 --
@@ -2961,6 +3134,14 @@ ALTER TABLE ONLY channels_subscribers
 
 
 --
+-- Name: cities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY cities
+    ADD CONSTRAINT cities_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: configurations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3014,6 +3195,30 @@ ALTER TABLE ONLY dbhero_dataclips
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: job_perks_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY job_perks
+    ADD CONSTRAINT job_perks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: job_rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY job_rewards
+    ADD CONSTRAINT job_rewards_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT jobs_pkey PRIMARY KEY (id);
 
 
 --
@@ -3217,6 +3422,20 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: cities_acronym_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX cities_acronym_unique ON cities USING btree (acronym);
+
+
+--
+-- Name: cities_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX cities_name_unique ON cities USING btree (name);
+
+
+--
 -- Name: fk__authorizations_oauth_provider_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3308,6 +3527,27 @@ CREATE INDEX fk__contributions_country_id ON contributions USING btree (country_
 
 
 --
+-- Name: fk__jobs_category_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__jobs_category_id ON jobs USING btree (category_id);
+
+
+--
+-- Name: fk__jobs_job_reward_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__jobs_job_reward_id ON jobs USING btree (job_reward_id);
+
+
+--
+-- Name: fk__jobs_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__jobs_project_id ON jobs USING btree (project_id);
+
+
+--
 -- Name: fk__payment_notifications_payment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3378,6 +3618,34 @@ CREATE INDEX fk__project_post_notifications_user_id ON project_post_notification
 
 
 --
+-- Name: fk__projects_city_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_city_id ON projects USING btree (city_id);
+
+
+--
+-- Name: fk__projects_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_country_id ON projects USING btree (country_id);
+
+
+--
+-- Name: fk__projects_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_genre_id ON projects USING btree (genre_id);
+
+
+--
+-- Name: fk__projects_state_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_state_id ON projects USING btree (state_id);
+
+
+--
 -- Name: fk__redactor_assets_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3417,6 +3685,13 @@ CREATE INDEX fk__talent_videos_user_id ON talent_videos USING btree (user_id);
 --
 
 CREATE INDEX fk__talents_category_id ON talents USING btree (category_id);
+
+
+--
+-- Name: fk__talents_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__talents_genre_id ON talents USING btree (genre_id);
 
 
 --
@@ -3620,6 +3895,13 @@ CREATE INDEX index_dbhero_dataclips_on_user ON dbhero_dataclips USING btree ("us
 --
 
 CREATE INDEX index_genres_on_name_pt ON genres USING btree (name_pt);
+
+
+--
+-- Name: index_jobs_on_permalink; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_jobs_on_permalink ON jobs USING btree (permalink);
 
 
 --
@@ -4013,6 +4295,30 @@ ALTER TABLE ONLY credit_cards
 
 
 --
+-- Name: fk_jobs_category_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT fk_jobs_category_id FOREIGN KEY (category_id) REFERENCES categories(id);
+
+
+--
+-- Name: fk_jobs_job_reward_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT fk_jobs_job_reward_id FOREIGN KEY (job_reward_id) REFERENCES job_rewards(id);
+
+
+--
+-- Name: fk_jobs_project_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY jobs
+    ADD CONSTRAINT fk_jobs_project_id FOREIGN KEY (project_id) REFERENCES projects(id);
+
+
+--
 -- Name: fk_payment_notifications_payment_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4101,6 +4407,38 @@ ALTER TABLE ONLY project_post_notifications
 
 
 --
+-- Name: fk_projects_city_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_city_id FOREIGN KEY (city_id) REFERENCES cities(id);
+
+
+--
+-- Name: fk_projects_country_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_country_id FOREIGN KEY (country_id) REFERENCES countries(id);
+
+
+--
+-- Name: fk_projects_genre_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id);
+
+
+--
+-- Name: fk_projects_state_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_state_id FOREIGN KEY (state_id) REFERENCES states(id);
+
+
+--
 -- Name: fk_redactor_assets_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4146,6 +4484,14 @@ ALTER TABLE ONLY talent_videos
 
 ALTER TABLE ONLY talents
     ADD CONSTRAINT fk_talents_category_id FOREIGN KEY (category_id) REFERENCES categories(id);
+
+
+--
+-- Name: fk_talents_genre_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY talents
+    ADD CONSTRAINT fk_talents_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id);
 
 
 --
@@ -4256,7 +4602,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public, "1";
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -4907,4 +5253,36 @@ INSERT INTO schema_migrations (version) VALUES ('20151004042229');
 INSERT INTO schema_migrations (version) VALUES ('20151213114928');
 
 INSERT INTO schema_migrations (version) VALUES ('20151213183607');
+
+INSERT INTO schema_migrations (version) VALUES ('20151213205552');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215134713');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215145045');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215145134');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215150004');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215151212');
+
+INSERT INTO schema_migrations (version) VALUES ('20151215151228');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216070000');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216070855');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216073621');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216073747');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216073949');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216085249');
+
+INSERT INTO schema_migrations (version) VALUES ('20151216194826');
+
+INSERT INTO schema_migrations (version) VALUES ('20151217070609');
+
+INSERT INTO schema_migrations (version) VALUES ('20151217070642');
 

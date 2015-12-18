@@ -8,6 +8,7 @@ App.addChild('Guides', _.extend({
     this.route('you_history');
     this.route('goals');
     this.route('rewards');
+    this.route('jobs');
     this.route('social');
     this.route('after_project');
 

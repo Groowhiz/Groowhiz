@@ -23,6 +23,7 @@ App.addChild('ProjectEdit', _.extend({
     this.route('video');
     this.route('posts');
     this.route('reward');
+    this.route('job');
     this.route('user_about');
     this.route('preview');
     this.route('analysis_success');

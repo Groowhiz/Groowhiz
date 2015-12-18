@@ -93,15 +93,15 @@ fr:
     edit:
       leave_link_html: "&nbsp; Sortir du panneau de control "
       start_tab: Início
-      basics_tab: Básico
+      basics_tab: Basic
       project_tab: Projeto
       posts_tab: Novidades
-      rewards_tab: Recompensas
+      rewards_tab: Reward
       about_you_tab: About you
       reports_tab: Relatórios
       account_tab: Conta
       preview_tab: Preview
-      send: Enviar
+      send: Submit
       publish: Publier
     dashboard_user_about:
       submit: "Sauvegarde"

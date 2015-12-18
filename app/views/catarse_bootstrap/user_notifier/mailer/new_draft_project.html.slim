@@ -4,15 +4,15 @@ p
 p
   | Tempo de preparo: #{distance_of_time_in_words(project.created_at, project.sent_to_analysis_at)}
 p
-  | Frase de efeito: #{project.headline}
+  | Catch phrase: #{project.headline}
 p
-  | Valor da meta: #{number_to_currency project.goal}
+  | Value da meta: #{number_to_currency project.goal}
 p
   | Link: #{link_to project_by_slug_url(project.permalink), project_by_slug_url(project.permalink, ref: 'notificacao_draft_project')}
 p
   strong SOBRE O REALIZADOR
 p
-  | Nome: #{project.user.name}
+  | Name: #{project.user.name}
 p
   | Email: #{project.user.email}
 p

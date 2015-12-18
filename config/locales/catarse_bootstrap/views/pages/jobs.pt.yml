@@ -1,5 +1,28 @@
 pt:
-  pages:
-    jobs:
-      title: 'Work with us'
-
+  projects:
+     jobs_fields:
+          edit: "Edit Job"
+          job: Job
+          info_box: "Job info description comes here"
+          minimum_value: "Value"
+          job_start_date: "Start Date"
+          job_end_date: "End Date"
+          deliver_at: "Delivery forecast:"
+          description: "Description"
+          limit_reward: "limit reward"
+          available: "Available"
+          submit: "Save"
+          index:
+            select_job: "Select this reward"
+            display_remaining: "%{remaining} in %{maximum} available"
+            dont_want: "Não quero recompensa"
+            limited: Limitada
+            sold_out: Esgotada
+            contributions_to_confirm:
+              one: 1 support in term confirmation.
+              other: "%{count} support em prazo de confirmação."
+            edit_job: Edit Reward
+            new_job: New Reward
+            job_deliver_time: "<b>Estimated Delivery:</b> %{estimate}"
+            job_title: For %{minimum} or more
+            add_job: Add Job

@@ -17,16 +17,16 @@ pt:
         subtitle: "No Catarse, isso é possível. Realizadores de projects de várias categorias se conectam a apoiadores interessados em contribuir com pequenas doações."
       campaign:
         title: "Campanhas de arrecadação"
-        subtitle: "Realizadores têm até 60 dias para captar a meta financeira que determinaram para o projeto acontecer. Em troca dos apoios, oferecem recompensas criativas."
+        subtitle: "Realizadores têm até 60 dias para captar a meta financeira que determinaram para o projeto acontecer. Em troca dos support, oferecem Rewards criativas."
       allornothing:
         title: "Tudo ou nada!"
-        subtitle: "O objetivo é bater a meta no prazo para receber o valor arrecadado ou todos apoiadores recebem o dinheiro de volta. Planejar a campanha é o segredo!"
+        subtitle: "O objetivo é bater a meta no prazo para receber o Value arrecadado ou todos apoiadores recebem o dinheiro de volta. Planejar a campanha é o segredo!"
       success:
         title: "O projeto sai do papel"
-        subtitle: "Apoiadores querem ver o projeto acontecer. Com o sucesso da campanha, realizadores produzem o projeto e preparam a entrega das recompensas aos apoiadores!"
+        subtitle: "Apoiadores querem ver o projeto acontecer. Com o sucesso da campanha, realizadores produzem o projeto e preparam a entrega das Rewards aos apoiadores!"
       cta:
         title: "Conheça o Catarse na prática"
-        backer-cta: "Torne-se um apoiador, ajude pessoas e receba recompensas exclusivas"
+        backer-cta: "Torne-se um apoiador, ajude pessoas e receba Rewards exclusivas"
         backer-link: "Apoie um projeto"
         maker-cta: "Seja um realizador, mostre seu projeto ao mundo e arrecade dinheiro"
         maker-link: "Start your project"
@@ -38,7 +38,7 @@ pt:
       details:
         fund:
           title: "Financiamento Coletivo ou Crowdfunding?"
-          text: "Dois nomes para a mesma prática em que pessoas contribuem com pequenas quantias para juntas viabilizarem projects. Crowd é multidão em inglês, funding, financiamento. Crowdfunding é financiamento pela multidão."
+          text: "Dois Names para a mesma prática em que pessoas contribuem com pequenas quantias para juntas viabilizarem projects. Crowd é multidão em inglês, funding, financiamento. Crowdfunding é financiamento pela multidão."
         allornothing:
           title: "Por que Tudo ou nada?"
           text_html: "Acreditamos no modelo &#8220;tudo ou nada&#8221; pois além das campanhas arrecadarem mais, essa é uma das formas de asseguramos que um projeto só acontecerá se ele puder ser entregue como foi descrito e prometido aos apoiadores."
@@ -47,7 +47,7 @@ pt:
           text: "O Catarse fornece suporte aos usuários do site e torna possível que projects captem recursos de forma ágil e direta utilizando a internet. Qualquer pessoa acima de 18 anos (ou menor, mas com um representante legal) pode utilizar nossos serviços e fazer uma campanha de crowdfunding desde que o projeto esteja de acordo com nossos critérios de seleção."
         fees:
           title: "Como nos sustentamos"
-          text: "Cobramos 13% sobre o valor total de projects que atingiram ou ultrapassaram a meta de arrecadação. Ficamos com cerca de 9% e 4% é repassado ao Pagar.me, meio de pagamento utilizado no Catarse. Projects que não atingiram a meta não têm qualquer custo e todos os apoiadores recebem o dinheiro de volta."
+          text: "Cobramos 13% sobre o Value total de projects que atingiram ou ultrapassaram a meta de arrecadação. Ficamos com cerca de 9% e 4% é repassado ao Pagar.me, meio de pagamento utilizado no Catarse. Projects que não atingiram a meta não têm qualquer custo e todos os apoiadores recebem o dinheiro de volta."
         work:
           title: "Trabalhamos com propósito e amor"
           text: "O Catarse é independente, sem investidores, de código aberto e construído com amor. Nossa paixão é construir um ambiente onde cada vez mais projects possam ganhar vida. Hoje somos uma equipe de 23 pessoas com muita vontade de ajudar a distribuir mais recursos para projetos espalhados pelo Brasil."

@@ -13,6 +13,16 @@ App.addChild('ProjectSidebar', {
       that.$rewards.html(data);
     
     });
+
+
+
+    this.$jobs = this.$('#jobs');
+
+    $.get(that.$jobs.data('index_path')).success(function(data){
+
+      that.$jobs.html(data);
+
+    });
   
   }
 

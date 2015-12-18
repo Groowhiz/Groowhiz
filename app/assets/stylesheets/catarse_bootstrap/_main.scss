@@ -274,17 +274,19 @@ p {
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.09);
   background-color: #0099ae;
-  color: #fcfcfc;
+  color: #313131;
 }
+
 .text-field.negative:hover {
   border-style: solid;
-  color: #fcfcfc;
 }
+
 .text-field.negative:focus {
   background-color: #f1f4f4;
   border: 1px solid #0099ae;
-
 }
+
+
 .text-field.medium {
   height: 60px;
   font-size: 22px;
