@@ -6,7 +6,7 @@ class TalentsController < ApplicationController
   after_filter :redirect_user_back_after_login, only: %i[index show]
 
   respond_to :html
-   respond_to :json, only: [:index, :show, :update]
+  respond_to :json, only: [:index, :show, :update]
 
   def index
 =begin
