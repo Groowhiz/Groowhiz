@@ -11,10 +11,10 @@ class Reward < ActiveRecord::Base
 
   ranks :row_order, with_same: :project_id
 
-  validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
-  validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Value deve ser maior ou igual a R$ 10'
-  validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
-  validate :deliver_at_cannot_be_in_the_past
+  # validates_presence_of :minimum_value, :description, :deliver_at #, :days_to_delivery
+  # validates_numericality_of :minimum_value, greater_than_or_equal_to: 10.00, message: 'Value deve ser maior ou igual a R$ 10'
+  # validates_numericality_of :maximum_contributions, only_integer: true, greater_than: 0, allow_nil: true
+  # validate :deliver_at_cannot_be_in_the_past
   scope :remaining, -> { where("
                                rewards.maximum_contributions IS NULL
                                OR (
@@ -34,8 +34,8 @@ class Reward < ActiveRecord::Base
   delegate :display_deliver_estimate, :display_remaining, :name, :display_minimum, :short_description,
            :medium_description, :last_description, :display_description, to: :decorator
 
-  before_save :log_changes
-  after_save :expires_project_cache
+   before_save :log_changes
+   after_save :expires_project_cache
 
   def deliver_at_cannot_be_in_the_past
     self.errors.add(:deliver_at, "Delivery forecast deve ser superior a data em que o projeto entra no ar") if

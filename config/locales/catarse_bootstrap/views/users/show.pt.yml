@@ -1,121 +1,122 @@
 pt:
   users:
     profile:
-      user_since: "Chegou junto em %{date}"
-      no_project_contribution: "Ainda não apoiou projects"
-      single_project_contribution: "Apoiou 1 projeto"
-      multiple_project_contribution: "Apoiou %{n_projects} projects"
-      single_project_created: " e já criou 1 projeto"
-      multiple_project_created: " e já criou %{n_projects} projects"
+      user_since: "We came together in %{date}"
+      no_project_contribution: "Not yet supported projects"
+      single_project_contribution: "1 supported project"
+      multiple_project_contribution: "supported %{n_projects} projects"
+      single_project_created: " and has created 1 project"
+      multiple_project_created: " and has created %{n_projects} projects"
     contribution_row:
-      contributed_projects: "Projects que apoiei"
-      contribution_value: "Value do apoio"
-      contribution_status: "Status do apoio"
-      request_refund: 'Solicitar reembolso'
-      reward: Reward
-      no_reward: "Não selecionou recompensa"
-      delivery_estimate: "Estimativa de entrega:"
+      contributed_projects: "Projects I supported"
+      contribution_value: "Support value"
+      contribution_status: "Support status"
+      request_refund: 'refund request'
+      reward: "Reward"
+      no_reward: "I have not selected reward"
+      delivery_estimate: "Delivery Estimates:"
     card:
-      twitter_profile: "Twitter profile"
+      twitter_profile: "Twitter Profile"
       facebook_profile: "Facebook Profile"
-      author_website: "Site"
-      contact_author: "Submit mensagem"
-    failed_reactivation: "O link para reativação é inválido, por favor entre em contato com a nossa equipe."
-    reactivated: "Seja bem vindo de volta, sua conta foi reativada."
+      author_website: "Website"
+      contact_author: "Send message"
+    failed_reactivation: "The link activation is invalid, please contact our team."
+    reactivated: "Welcome back, your account has been reactivated."
     project:
-      confirmed: "Confirmado"
-      refunded: "Reembolsado"
-      requested_refund: "Reembolso solicitado"
-      waiting_confirmation: "Aguardando confirmação"
-      tell_about_this_contribution: Conte para o mundo sobre o seu apoio!
+      confirmed: "Confirmed"
+      refunded: "Refunded"
+      requested_refund: "Requested reimbursement"
+      waiting_confirmation: "Waiting confirmation"
+      tell_about_this_contribution: "Tell the world about your support!"
     credit_cards:
       index:
-        last_digits: 'Cartão'
-        brand: 'Operadora'
-        title: 'Cartões de credito'
-        remove: 'Remover'
+        last_digits: 'Card'
+        brand: 'carrier'
+        title: 'Credit cards'
+        remove: 'To remove'
     credits:
       modal:
-        title: 'Quer mesmo solicitar o reembolso do seu apoio?'
-        text: "Saiba como funciona o processo de reembolso no Catarse:"
-        link: "Regras e Funcionamento dos reembolsos / estornos"
-        reject_btn: "Não, desejo manter mys créditos"
-        accept_btn: "Sim, desejo solicitar o reembolso do my apoio"
+        title: 'You really want to apply for a refund of your support?'
+        text: "Learn how the refund process Catharsis:"
+        link: "Rules and operation of refunds / rebates"
+        reject_btn: "No, I want to keep my credits"
+        accept_btn: "Yes, I request a refund of my support"
       index:
-        contribution_date: "Data do apoio"
-        current_credits_html: "Seu saldo atual é de <span id=\"current_credits\">%{credits}</span> em créditos."
-        important_html: "Para saber todas as regras de funcionamento de reembolso, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Regras-e-funcionamento-dos-reembolsos-estornos' target='_blank'>clique aqui</a>. Qualquer dúvida, acesse nosso <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
-        project: Projeto
-        refunded: "Solicitação confirmada. Entraremos em contato em até 4 dias uteís."
-        insufficient_credits: "You não tem créditos suficientes para realizar este estorno."
-        refunds_title: "support que podem ter estorno realizado"
-        request_refund: "Solicitar estorno"
-        requested_refund: "Solicitado estorno"
-        status: Status
-        title: "Mys créditos"
-        value: Value
+
+        contribution_date: "Support Date"
+        current_credits_html: "Your current balance is <span id=\"current_credits\">%{credits}</span> credits."
+        important_html: "For all reimbursement rules and procedures, <a href='http://suporte.catarse.me/hc/pt-br/articles/202365507-Rules-and-run-of-reimbursement-chargebacks' target='_blank'>click here</a>. Any questions, please visit our <a href='http://suporte.catarse.me' target='_blank'>suporte</a>."
+        project: "Project"
+        refunded: "Confirmed request. We will contact you within 4 business days."
+        insufficient_credits: "You do not have enough credits to achieve this reversal."
+        refunds_title: "Supports that may have made reversal"
+        request_refund: "Request reversal"
+        requested_refund: "Asked reversal"
+        status: "Status"
+        title: "My credits"
+        value: "Value"
       refund:
-        cannot_refund: "Este apoio não pode ser estornado."
-        error: "Oops. Ocorreu um erro ao solicitar seu estorno."
-        no_credits: "You não possui créditos suficientes para realizar este estorno."
-        refunded: "Este apoio já foi estornado."
-        requested_refund: "You já solicitou estorno para este apoio."
-      title: "Mys créditos"
+        cannot_refund: "This support can not be reversed."
+        error: "Oops. An error occurred when requesting the reversal."
+        no_credits: "You do not have enough credits to make this reversal."
+        refunded: "This support has been reversed."
+        requested_refund: "You've asked for this chargeback support."
+      title: "My credits"
     current_user_fields:
-      bank_account_title: "Dados bancários"
-      bank_account_hint: "Seus dados bancários serão utilizados para realizar o reembolso integral do seu apoio, caso o projeto não atinja 100% da meta estabelecida."
-      my_facebook: 'Integração com o facebook'
-      bio_limit: 'até 140 caracteres'
-      updated: "As suas informações foram atualizadas"
-      update_social_info: "Atualizar informações"
-      social_info: "Informações para contato"
-      twitter: "twitter ( usuário )"
-      facebook_link: "Facebook profile (link completo)"
-      other_link: "link da sua página na internet"
-      change_password: "Alterar minha senha"
-      current_password_hint: "<i>Para que a senha seja alterada you precisa confirmar a sua senha atual.</i>"
-      email_hint: "Seu email será utilizado apenas para envio de comunicações do Catarse e dos projects que you apoiar. Ele não estará visível em seu perfil. Quando você apoiar um projeto, nós daremos seu email para o dono do projeto para que ele possa providenciar as Rewards."
-      email_tooltip: "Clique aqui para preencher seu email..."
-      gravatar_hint_html: "You também pode mudar a sua foto usando o %{link} com seu email. <br>É tão simples quanto Submit uma imagem e já funciona para outros sites também ;)"
+      bank_account_title: "Bank data"
+      bank_account_hint: "Your bank data will be used to carry out the full repayment of its support, if the project does not reach 100% of the target."
+      my_facebook: 'Integration with facebook'
+      bio_limit: '140 characters'
+      updated: "Your information has been updated"
+      update_social_info: "Update information"
+      social_info: "Contact Information"
+      twitter: "twitter (user)"
+      facebook_link: "facebook profile (full link)"
+      other_link: "link from its website"
+      change_password: "Change my password"
+      current_password_hint: "<i>So that the password is changed you must confirm your current password.</i>"
+      email_hint: "Your email is used only to send Catharsis of communications and projects that you support. He will not be visible in your profile. When you support a project, we will give your email to the project owner so it can provide the rewards."
+      email_tooltip: "Click here to fill in your email ..."
+      gravatar_hint_html: "You can also change your photo using the %{link} with your email. Filmography is as simple as sending an image and already works for other sites as well ;)"
       local_avatar: "My avatar"
-      submit_text: "Escolha sua imagem"
+      submit_text: "Choose your image"
       submit: "Submit"
-      my_data: "Mys dados"
-      newsletter: "Quero receber novidades do Catarse por email"
-      password_hint: "<i>Deixe em branco caso you não queira trocar sua senha.</i>"
-      deactivate: "Desativar a minha conta"
-      deactivate_notice: "A conta de %{name} foi desativada."
-      deactivate_confirm: "You deseja desativar essa conta?"
-      deactivate_hint: "Todos os seus support serão convertidos em support anônimos, seus dados não serão mais visíveis, you sairá automaticamente do sistema e sua conta será desativada permanentemente."
+      my_data: "My data"
+      newsletter: "I want to receive news of TalentoArtista by email"
+      password_hint: "<i>Leave blank if or unwilling to change your password.</i>"
+      deactivate: "Disable my account"
+      deactivate_notice: "The account %{name} has been disabled."
+      deactivate_confirm: "You want to disable this account?"
+      deactivate_hint: "All your support will be converted into anonymous backups, your data is no longer visible, you will automatically exit the system and your account will be permanently disabled."
     unsubscribes:
-      projects_in_reminder: "Projects com lembrete ativo:"
-      title: "Escolha de quais projects you deseja receber notifications:"
-      posts: "Eu quero receber atualizações dos projects"
+      projects_in_reminder: "Projects with active reminder:"
+      title: "Choosing which projects you want to receive notifications:"
+      posts: "I want to receive updates of projects"
     show:
       projects:
-        here: 'aqui'
-        no_projects: "%{name} ainda não realizou nenhum projeto no Catarse. Será que a inspiração vai bater uma hora dessas?"
-        no_projects_current_user_html: "You ainda não realizou nenhum projeto no Catarse. Deixe a inspiração bater e clique %{link} para começar!"
-        title: "Projects de %{name}"
-        title_current_user: "Mys projects"
+        here: 'in here'
+        no_projects: "%{name} not yet any project on Catharsis. Does the inspiration will hit one of these?"
+        no_projects_current_user_html: "You not yet any project on Catharsis. Let the inspiration hit and click %{link} to start!"
+        title: "Projects of %{name}"
+        title_current_user: "My projects"
       contributions:
-        anonymous: "Apoio anônimo."
-        no_contributions: "%{name} ainda não apoiou nenhum projeto. Mas us sabe que é só questão de tempo! :D"
-        no_contributions_current_user_html: "You ainda não apoiou nenhum projeto. Que tal <a href=\"/\">começar agora</a>?"
-        no_reward: "You não selecionou nenhuma recompensa"
-        title: "Projects que %{name} já apoiou"
-        title_current_user: "Projects que já apoiei"
-        your_reward: "Sua recompensa"
-      attention: "Atenção"
+        anonymous: "Anonymous support."
+        no_contributions: "%{name} not endorse any project. More is known it is only a matter of time! :D"
+        no_contributions_current_user_html: "You not endorse any project. How about <a href=\"/\"> start now</a>?"
+        no_reward: "You did not select any reward"
+        title: "Projects %{name} has supported"
+        title_current_user: "Projects already supported"
+        your_reward: "his reward"
+      attention: "Attention"
       tabs:
-        credit_cards: 'Cartões de credito'
+        credit_cards: 'Credit cards'
         contributed_projects: "Projects supported"
         created_projects: "Projects created"
-        comments: Comentários
-        credits: Créditos
-        settings: Preferências
-        unsubscribes: Notifications
+        comments: "Comments"
+        credits: "credits"
+        settings: "preferences"
+        unsubscribes: "Notifications"
       user_social:
-        email: "Me envie um email"
-        facebook: "Facebook Profile"
+        email: "Send me an email"
+        facebook: "Facebook profile"
         twitter: "Twitter profile"

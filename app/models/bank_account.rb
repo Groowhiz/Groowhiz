@@ -4,15 +4,15 @@ class BankAccount < ActiveRecord::Base
   belongs_to :user
   belongs_to :bank
 
-  validates :bank_id, :agency, :account,
-    :owner_name, :owner_document, :account_digit, presence: true
+  # validates :bank_id, :agency, :account,
+  #   :owner_name, :owner_document, :account_digit, presence: true
 
   attr_accessor :input_bank_number
-  validate :input_bank_number_validation
+  # validate :input_bank_number_validation
 
   # before validate bank account we inject the founded
   # bank account via input_bank_number
-  before_validation :load_bank_from_input_bank_number
+  #before_validation :load_bank_from_input_bank_number
 
   # if input_bank_number as present, we
   # should validate if the number matchs with any

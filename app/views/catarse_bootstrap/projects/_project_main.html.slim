@@ -74,7 +74,7 @@ section.section[itemtype="http://schema.org/CreativeWork"]
             .btn.btn-medium.btn-fb.btn-tweet
               = render_twitter_mobile(url: project_by_slug_url(permalink: @project.permalink, ref: 'twitter'), title: @project.name)
               = t('.tweet')
-        #rewards.u-marginbottom-30[data-index_path=project_rewards_path(@project)]
+        #jobs.u-marginbottom-30[data-index_path=project_jobs_path(@project)]
           .u-text-center = image_tag 'catarse_bootstrap/loader.gif'
         - if @project.published?
           .fontsize-small.fontweight-semibold.u-text-center-small-only = t('.funding_period')

@@ -20,23 +20,23 @@
       .w-row.u-marginbottom-30
         .w-col.w-col-10.w-col-push-1
           .w-row.card-terciary.card
-            .w-col.w-col-7
+            .w-col.w-col-6
               label.fontsize-smaller="Start Date"
               label.hint.fontsize-smallest.fontcolor-secondary Choose the start date of your project.
-            .w-col.w-col-5
+            .w-col.w-col-6
               .w-row
                 .w-col.w-col-12
                   .w-row
-                    = form.input_field :created_at, required: true, as: :date, discard_day: true, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-6 positive'
+                    = form.input_field :created_at, required: true, as: :date, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-4 positive'
           .w-row.card-terciary.card
-            .w-col.w-col-7
+            .w-col.w-col-6
               label.fontsize-smaller= "End Date"
               label.hint.fontsize-smallest.fontcolor-secondary Choose the expected end date of your project.
-            .w-col.w-col-5
+            .w-col.w-col-6
               .w-row
                 .w-col.w-col-12
                   .w-row
-                    = form.input_field :expires_at, required: true, as: :date, discard_day: true, start_year: Time.current.year, use_long_month: true, discard_day: true, required: true, class: 'w-col-6 positive'
+                    = form.input_field :expires_at, required: true, as: :date, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-4 positive'
 
       .w-row
         .w-col.w-col-4.w-col-push-4

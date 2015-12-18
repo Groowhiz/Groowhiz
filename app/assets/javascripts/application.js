@@ -20,6 +20,7 @@
 // *********************************
 //  Rails GEMs front-end dependencies
 // *********************************
+//= require select2
 //= require best_in_place
 //= require cocoon
 // *********************************

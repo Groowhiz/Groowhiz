@@ -3,28 +3,15 @@
 puts 'Seeding the database...'
 
 [
-  { pt: 'Art', en: 'Art', fr: 'Art'},
-  { pt: 'Visual Arts', en: 'Visual Arts', fr: 'Visual Arts' },
-  { pt: 'Circus', en: 'Circus', fr: 'Circus' },
-  { pt: 'Humor', en: 'Humor', fr: 'Humor' },
-  { pt: 'Quadrinhos', en: 'Comicbooks', fr: 'bd' },
-  { pt: 'Dance', en: 'Dance', fr: 'Dance' },
-  { pt: 'Design', en: 'Design', fr: 'Design' },
-  { pt: 'Events', en: 'Events', fr: 'Events' },
-  { pt: 'Fashion', en: 'Fashion', fr: 'Fashion' },
-  { pt: 'Cooking', en: 'Cooking', fr: 'Cooking' },
-  { pt: 'Film & Video', en: 'Film & Video', fr: 'Film & Video' },
-  { pt: 'Games', en: 'Games', fr: 'Games' },
-  { pt: 'Journalism', en: 'Journalism', fr: 'Journalism' },
-  { pt: 'Music', en: 'Music', fr: 'Music' },
-  { pt: 'Photography', en: 'Photography', fr: 'Photography' },
-  { pt: 'Theatre', en: 'Theatre', fr: 'Theatre' },
-  { pt: 'Sport', en: 'Sport', fr: 'Sport' },
-  { pt: 'Carnival', en: 'Carnival', fr: 'Carnival' },
-  { pt: 'Architecture & Urbanism', en: 'Architecture & Urbanism', fr: 'Architecture & Urbanism' },
-  { pt: 'Literature', en: 'Literature', fr: 'Literature' },
-  { pt: 'Documentary Films', en: 'Documentary Films', fr: 'Documentary Films' },
-  { pt: 'Fiction Films', en: 'Fiction Films' , fr: 'Fiction Films'},
+  { pt: 'Singing', en: 'Singing', fr: 'Singing'},
+  { pt: 'Song Writing', en: 'Song Writing', fr: 'Song Writing' },
+  { pt: 'Instrumental', en: 'Instrumental', fr: 'Instrumental' },
+  { pt: 'Music Composition', en: 'Music Composition', fr: 'Music Composition' },
+  { pt: 'Rock Band/Collaboration', en: 'Rock Band/Collaboration', fr: 'Rock Band/Collaboration' },
+  { pt: 'Music teaching', en: 'Music teaching', fr: 'Music teaching' },
+  { pt: 'Music Production', en: 'Music Production', fr: 'Music Production' },
+  { pt: 'Music Technology', en: 'Music Technology', fr: 'Music Technology' },
+  { pt: 'Music Management', en: 'Music Management', fr: 'Music Management' },
 ].each do |name|
    category = Category.find_or_initialize_by(name_pt: name[:pt])
    category.update_attributes({
@@ -35,6 +22,71 @@ puts 'Seeding the database...'
    })
  end
 
+[
+  { pt: 'Classical(Indian/western)', en: 'Classical(Indian/western)', fr: 'Classical(Indian/western)'},
+  { pt: 'Rock', en: 'Rock', fr: 'Rock' },
+  { pt: 'Pop', en: 'Pop', fr: 'Pop' },
+  { pt: 'Jazz', en: 'Jazz', fr: 'Jazz' },
+  { pt: 'R&B/Soul', en: 'R&B/Soul', fr: 'R&B/Soul' },
+  { pt: 'Traditional/Folk', en: 'Traditional/Folk', fr: 'Traditional/Folk' },
+  { pt: 'Hip-Hop/Rap', en: 'Hip-Hop/Rap', fr: 'Hip-Hop/Rap' },
+  { pt: 'EDM(Electronic Dance Music)', en: 'EDM(Electronic Dance Music)', fr: 'EDM(Electronic Dance Music)' },
+  { pt: 'Religious', en: 'Religious', fr: 'Religious' },
+  { pt: 'Fusion', en: 'Fusion', fr: 'Fusion' },
+  { pt: 'Film & television', en: 'Film & television', fr: 'Film & television' },
+  { pt: 'Anime/Children’s Music', en: 'Anime/Children’s Music', fr: 'Anime/Children’s Music' },
+  { pt: 'Soundtrack', en: 'Soundtrack', fr: 'Soundtrack' },
+  { pt: 'New Age', en: 'New Age', fr: 'New Age' },
+  { pt: 'World Music', en: 'World Music', fr: 'World Music' },
+].each do |name|
+   genre = Genre.find_or_initialize_by(name_pt: name[:pt])
+   genre.update_attributes({
+     name_en: name[:en]
+   })
+   genre.update_attributes({
+     name_fr: name[:fr]
+   })
+ end
+
+ [
+  { pt: 'Andhra Pradesh', en: 'Andhra Pradesh', fr: 'Andhra Pradesh'},
+  { pt: 'Arunachal Pradesh', en: 'Arunachal Pradesh', fr: 'Arunachal Pradesh' },
+  { pt: 'Assam', en: 'Assam', fr: 'Assam' },
+  { pt: 'Bihar', en: 'Bihar', fr: 'Bihar' },
+  { pt: 'Chhattisgarh', en: 'Chhattisgarh', fr: 'Chhattisgarh' },
+  { pt: 'Goa', en: 'Goa', fr: 'Goa' },
+  { pt: 'Gujarat', en: 'Gujarat', fr: 'Gujarat' },
+  { pt: 'Haryana', en: 'Haryana', fr: 'Haryana' },
+  { pt: 'Himachal Pradesh', en: 'Himachal Pradesh', fr: 'Himachal Pradesh' },
+  { pt: 'Jammu & Kashmir', en: 'Jammu & Kashmir', fr: 'Jammu & Kashmir' },
+  { pt: 'Jharkhand', en: 'Jharkhand', fr: 'Jharkhand' },
+  { pt: 'Karnataka', en: 'Karnataka', fr: 'Karnataka' },
+  { pt: 'Kerala', en: 'Kerala', fr: 'Kerala' },
+  { pt: 'Madhya Pradesh', en: 'Madhya Pradesh', fr: 'Madhya Pradesh' },
+  { pt: 'Maharashtra', en: 'Maharashtra', fr: 'Maharashtra' },
+  { pt: 'Manipur', en: 'Manipur', fr: 'Manipur'},
+  { pt: 'Meghalaya', en: 'Meghalaya', fr: 'Meghalaya' },
+  { pt: 'Mizoram', en: 'Mizoram', fr: 'Mizoram' },
+  { pt: 'Nagaland', en: 'Nagaland', fr: 'Nagaland' },
+  { pt: 'Odisha(Orissa)', en: 'Odisha(Orissa)', fr: 'Odisha(Orissa)' },
+  { pt: 'Punjab', en: 'Punjab', fr: 'Punjab' },
+  { pt: 'Rajasthan', en: 'Rajasthan', fr: 'Rajasthan' },
+  { pt: 'Sikkim', en: 'Sikkim', fr: 'Sikkim' },
+  { pt: 'Tamil Nadu', en: 'Tamil Nadu', fr: 'Tamil Nadu' },
+  { pt: 'Telangana', en: 'Telangana', fr: 'Telangana' },
+  { pt: 'Tripura', en: 'Tripura', fr: 'Tripura' },
+  { pt: 'Uttar Pradesh', en: 'Uttar Pradesh', fr: 'Uttar Pradesh' },
+  { pt: 'Uttarakhand', en: 'Uttarakhand', fr: 'Uttarakhand' },
+  { pt: 'West Bengal', en: 'West Bengal', fr: 'West Bengal' },
+ ].each do |name|
+   state = State.find_or_initialize_by(name: name[:pt])
+#   state.update_attributes({
+ #    name_en: name[:en]
+ #  })
+  # state.update_attributes({
+  #   name_fr: name[:fr]
+  # })
+ end
 
 {
   company_name: 'TalentOxide',

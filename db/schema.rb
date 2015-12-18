@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213114928) do
+ActiveRecord::Schema.define(version: 20151216194826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -233,6 +233,33 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_channel_post_notifications_user_id"
   end
 
+  create_table "cities", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "acronym",    null: false
+    t.datetime "created_at", :default => { :expr => "now()" }
+    t.datetime "updated_at"
+    t.index ["acronym"], :name => "cities_acronym_unique", :unique => true
+    t.index ["name"], :name => "cities_name_unique", :unique => true
+  end
+
+  create_table "genres", force: true do |t|
+    t.text     "name_pt",    null: false
+    t.datetime "created_at", :default => { :expr => "now()" }
+    t.datetime "updated_at"
+    t.string   "name_en"
+    t.string   "name_fr"
+    t.index ["name_pt"], :name => "index_genres_on_name_pt"
+  end
+
+  create_table "states", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "acronym",    null: false
+    t.datetime "created_at", :default => { :expr => "now()" }
+    t.datetime "updated_at"
+    t.index ["acronym"], :name => "states_acronym_unique", :unique => true
+    t.index ["name"], :name => "states_name_unique", :unique => true
+  end
+
   create_table "projects", force: true do |t|
     t.text     "name",                                      null: false
     t.integer  "user_id",                                   null: false
@@ -268,12 +295,27 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.tsvector "full_text_index"
     t.text     "budget_html"
     t.datetime "expires_at"
+    t.text     "tagline"
+    t.datetime "project_start_date"
+    t.datetime "project_end_date"
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.integer  "state_id"
+    t.integer  "genre_id"
     t.index ["category_id"], :name => "index_projects_on_category_id"
+    t.index ["city_id"], :name => "fk__projects_city_id"
+    t.index ["country_id"], :name => "fk__projects_country_id"
     t.index ["full_text_index"], :name => "projects_full_text_index_ix", :kind => "gin"
+    t.index ["genre_id"], :name => "fk__projects_genre_id"
     t.index ["name"], :name => "index_projects_on_name"
     t.index ["permalink"], :name => "index_projects_on_permalink", :unique => true, :case_sensitive => false
+    t.index ["state_id"], :name => "fk__projects_state_id"
     t.index ["user_id"], :name => "index_projects_on_user_id"
     t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "projects_category_id_reference"
+    t.foreign_key ["city_id"], "cities", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_city_id"
+    t.foreign_key ["country_id"], "countries", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_country_id"
+    t.foreign_key ["genre_id"], "genres", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_genre_id"
+    t.foreign_key ["state_id"], "states", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_state_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "projects_user_id_reference"
   end
 
@@ -426,6 +468,42 @@ ActiveRecord::Schema.define(version: 20151213114928) do
   end
 
   create_view "financial_reports", " SELECT p.name,\n    u.moip_login,\n    p.goal,\n    p.expires_at,\n    p.state\n   FROM (projects p\n     JOIN users u ON ((u.id = p.user_id)))", :force => true
+  create_table "job_perks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "job_rewards", force: true do |t|
+    t.string   "job_reward_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.string   "job_name"
+    t.integer  "project_id"
+    t.integer  "category_id"
+    t.string   "job_description"
+    t.string   "gender"
+    t.integer  "job_count"
+    t.integer  "duration"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "permalink"
+    t.datetime "job_start_date"
+    t.datetime "job_end_date"
+    t.integer  "job_reward_id"
+    t.integer  "row_order"
+    t.index ["category_id"], :name => "fk__jobs_category_id"
+    t.index ["job_reward_id"], :name => "fk__jobs_job_reward_id"
+    t.index ["permalink"], :name => "index_jobs_on_permalink", :unique => true
+    t.index ["project_id"], :name => "fk__jobs_project_id"
+    t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_category_id"
+    t.foreign_key ["job_reward_id"], "job_rewards", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_job_reward_id"
+    t.foreign_key ["project_id"], "projects", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_project_id"
+  end
+
   create_table "payment_logs", force: true do |t|
     t.string   "gateway_id", null: false
     t.json     "data",       null: false
@@ -466,7 +544,7 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.text "tipo"
     t.text "status"
     t.text "moeda"
-    t.text "Valuebruto"
+    t.text "valorbruto"
     t.text "tarifa"
     t.text "liquido"
     t.text "doe_mail"
@@ -476,13 +554,13 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.text "statusdoendereco"
     t.text "titulodoitem"
     t.text "iddoitem"
-    t.text "Valuedoenvioemanuseio"
-    t.text "Valuedoseguro"
+    t.text "valordoenvioemanuseio"
+    t.text "valordoseguro"
     t.text "impostosobrevendas"
     t.text "opcao1nome"
-    t.text "opcao1Value"
+    t.text "opcao1valor"
     t.text "opcao2nome"
-    t.text "opcao2Value"
+    t.text "opcao2valor"
     t.text "sitedoleilao"
     t.text "iddocomprador"
     t.text "urldoitem"
@@ -613,15 +691,6 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_redactor_assets_user_id"
   end
 
-  create_table "states", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "acronym",    null: false
-    t.datetime "created_at", :default => { :expr => "now()" }
-    t.datetime "updated_at"
-    t.index ["acronym"], :name => "states_acronym_unique", :unique => true
-    t.index ["name"], :name => "states_name_unique", :unique => true
-  end
-
   create_view "subscriber_reports", " SELECT u.id,\n    cs.channel_id,\n    u.name,\n    u.email\n   FROM (users u\n     JOIN channels_subscribers cs ON ((cs.user_id = u.id)))", :force => true
   create_table "talents", force: true do |t|
     t.string   "title"
@@ -629,13 +698,16 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.boolean  "recommended", default: false
-    t.string   "state"
+    t.string   "state",       default: "published"
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "genre_id"
     t.index ["category_id"], :name => "fk__talents_category_id"
+    t.index ["genre_id"], :name => "fk__talents_genre_id"
     t.index ["user_id"], :name => "fk__talents_user_id"
     t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_talents_category_id"
+    t.foreign_key ["genre_id"], "genres", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_talents_genre_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_talents_user_id"
   end
 
@@ -665,6 +737,7 @@ ActiveRecord::Schema.define(version: 20151213114928) do
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_talent_videos_user_id"
   end
 
+  create_view "talents_for_home", " WITH recommended_talents AS (\n         SELECT 'recommended'::text AS origin,\n            recommends.id,\n            recommends.title,\n            recommends.description,\n            recommends.category_id,\n            recommends.user_id,\n            recommends.recommended,\n            recommends.state,\n            recommends.permalink,\n            recommends.created_at,\n            recommends.updated_at\n           FROM talents recommends\n          WHERE (recommends.recommended AND ((recommends.state)::text = 'published'::text))\n          ORDER BY random()\n         LIMIT 3\n        ), recents_talents AS (\n         SELECT 'recents'::text AS origin,\n            recents.id,\n            recents.title,\n            recents.description,\n            recents.category_id,\n            recents.user_id,\n            recents.recommended,\n            recents.state,\n            recents.permalink,\n            recents.created_at,\n            recents.updated_at\n           FROM talents recents\n          WHERE ((((recents.state)::text = 'published'::text) AND ((now() - (recents.created_at)::timestamp with time zone) <= '5 days'::interval)) AND (NOT (recents.id IN ( SELECT recommends.id\n                   FROM recommended_talents recommends))))\n          ORDER BY random()\n         LIMIT 3\n        )\n SELECT recommended_talents.origin,\n    recommended_talents.id,\n    recommended_talents.title,\n    recommended_talents.description,\n    recommended_talents.category_id,\n    recommended_talents.user_id,\n    recommended_talents.recommended,\n    recommended_talents.state,\n    recommended_talents.permalink,\n    recommended_talents.created_at,\n    recommended_talents.updated_at\n   FROM recommended_talents\nUNION\n SELECT recents_talents.origin,\n    recents_talents.id,\n    recents_talents.title,\n    recents_talents.description,\n    recents_talents.category_id,\n    recents_talents.user_id,\n    recents_talents.recommended,\n    recents_talents.state,\n    recents_talents.permalink,\n    recents_talents.created_at,\n    recents_talents.updated_at\n   FROM recents_talents", :force => true
   create_table "total_backed_ranges", primary_key: "name", force: true do |t|
     t.decimal "lower"
     t.decimal "upper"
