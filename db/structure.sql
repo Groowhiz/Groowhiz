@@ -4602,7 +4602,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public, "1";
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -5253,8 +5253,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151004042229');
 INSERT INTO schema_migrations (version) VALUES ('20151213114928');
 
 INSERT INTO schema_migrations (version) VALUES ('20151213183607');
-
-INSERT INTO schema_migrations (version) VALUES ('20151213205552');
 
 INSERT INTO schema_migrations (version) VALUES ('20151215134713');
 
