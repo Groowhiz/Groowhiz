@@ -83,6 +83,15 @@ class Project < ActiveRecord::Base
   scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
+  scope :singing, -> {where("EXISTS(select * from projects where projects.category_id=1)")}
+  scope :song_writing, -> {where("EXISTS(select * from projects where projects.category_id=2)")}
+  scope :instrumental, -> {where("EXISTS(select * from projects where projects.category_id=3)")}
+  scope :music_composition, -> {where("EXISTS(select * from projects where projects.category_id=4)")}
+  scope :music_teaching, -> {where("EXISTS(select * from projects where projects.category_id=6)")}
+  scope :music_production, -> {where("EXISTS(select * from projects where projects.category_id=7)")}
+  scope :music_technology, -> {where("EXISTS(select * from projects where projects.category_id=8)")}
+  scope :music_management, -> {where("EXISTS(select * from projects where projects.category_id=9)")}
+  scope :band, -> {where("EXISTS(select * from projects where projects.category_id=10)")}
   scope :in_funding, -> { not_expired.with_states(['online']) }
   scope :name_contains, ->(term) { where("unaccent(upper(name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }

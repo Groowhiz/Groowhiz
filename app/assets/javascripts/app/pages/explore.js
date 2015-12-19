@@ -12,7 +12,17 @@ App.addChild('Explore', _.extend({
     in_funding: { in_funding: true },
     expiring: { expiring: true },
     recommended: { recommended: true },
-    successful: { successful: true }
+    successful: { successful: true },
+    singing : {singing: true},
+    song_writing: {song_writing: true},
+    instrumental: {instrumental: true},
+    music_composition: {music_composition: true},
+    music_teaching: {music_teaching: true},
+    music_production: {music_production: true},
+    music_technology: {music_technology: true},
+    music_management: {music_management: true},
+    band: {band: true}
+
   },
 
   activate: function(){
@@ -20,6 +30,15 @@ App.addChild('Explore', _.extend({
     this.route('recommended');
     this.route('expiring');
     this.route('recent');
+    this.route('singing');
+    this.route('song_writing');
+    this.route('instrumental');
+    this.route('music_composition');
+    this.route('music_teaching');
+    this.route('music_production');
+    this.route('music_technology');
+    this.route('music_management');
+    this.route('band');
     this.route('in_funding');
     this.route('successful');
     this.route('by_category_id/:id');

@@ -20,6 +20,10 @@ class Category < ActiveRecord::Base
     where("exists(select true from projects p where p.category_id = categories.id and p.state not in('draft', 'rejected'))")
   end
 
+  def self.with_talents
+    where("exists(select true from talents t where t.category_id = categories.id)")
+  end
+
   def self.array
     order('name_'+ I18n.locale.to_s + ' ASC').collect { |c| [c.send('name_' + I18n.locale.to_s), c.id] }
   end

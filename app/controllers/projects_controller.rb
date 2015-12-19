@@ -5,7 +5,9 @@ class ProjectsController < ApplicationController
   before_action :authorize_and_build_resources, only: %i[edit show]
 
   has_scope :pg_search, :by_category_id, :near_of, :by_country_id, :by_costate_id, :by_city_id, :by_genre_id
-  has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
+  has_scope :recent, :expiring, :successful, :in_funding, :singing,  :song_writing, :instrumental, :music_compostion, :music_teaching, :music_production, :music_technology,
+            :music_management, :band,:recommended, :not_expired, type: :boolean
+
 
   helper_method :project_comments_canonical_url, :resource, :collection
 
@@ -170,7 +172,7 @@ class ProjectsController < ApplicationController
     page = params[:page] || 1
     @projects ||= apply_scopes(Project.visible.order_status).
       most_recent_first.
-      includes(:project_total, :user, :category, :genre, :country, :city, :state).
+      includes(:project_total, :user, :category, :genre, :country, :city, :costate).
       page(page).per(18)
   end
 

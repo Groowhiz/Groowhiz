@@ -18,6 +18,11 @@ class TalentPolicy < ApplicationPolicy
     create?
   end
 
+
+  # def new?
+  #   done_by_owner_or_admin?
+  # end
+
   # def update_account?
   #   record.account.invalid? ||
   #     ['online', 'waiting_funds', 'successful', 'failed'].exclude?(record.state) || is_admin?
@@ -89,7 +94,7 @@ class TalentPolicy < ApplicationPolicy
 
   def talent_attributes
     {
-        talent: [:title, :description, :category_id,
+        talent: [:title, :description, :category_id ,:id, :genre_id,
         talent_videos_attributes]
     }
   end

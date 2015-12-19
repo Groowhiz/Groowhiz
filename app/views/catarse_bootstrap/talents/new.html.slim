@@ -61,7 +61,9 @@
             = form.label :category, class: 'fontsize-large', required: false
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
             = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.talent.category'), class: 'medium', label: '', required: false, hint: ''
-
+            = form.label :genre, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :genre
+            = form.association :genre, as: :select, collection: Genre.order(:name_pt), prompt: t('simple_form.prompts.talent.genre'), class: 'medium', label: '', required: false, hint: ''
             /= form.input :uploaded_image, as: :file,
             /             wrapper_class: 'w-row u-marginbottom-30 card card-terciary',
             /             text_field_wrapper_html: {class: 'w-col w-col-6 w-sub-col'},

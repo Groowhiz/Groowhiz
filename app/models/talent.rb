@@ -54,14 +54,24 @@ class Talent < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
 
   scope :by_category_id, ->(id) { where(category_id: id) }
+  scope :by_genre_id, ->(id) { where(genre_id: id) }
   scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
+  scope :singing, -> {where("EXISTS(select * from talents where talents)")}
+  scope :song_writing, -> {where("EXISTS(select * from talents where talents.category_id=2)")}
+  scope :instrumental, -> {where("EXISTS(select * from talents where talents.category_id=3)")}
+  scope :music_composition, -> {where("EXISTS(select * from talents where talents.category_id=4)")}
+  scope :music_teaching, -> {where("EXISTS(select * from talents where talents.category_id=6)")}
+  scope :music_production, -> {where("EXISTS(select * from talents where talents.category_id=7)")}
+  scope :music_technology, -> {where("EXISTS(select * from talents where talents.category_id=8)")}
+  scope :music_management, -> {where("EXISTS(select * from talents where talents.category_id=9)")}
+  scope :band, -> {where("EXISTS(select * from talents where talents.category_id=10)")}
   scope :title_contains, ->(term) { where("unaccent(upper(title)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
 
-  scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = talents.user_id AND lower(u.address_state) = lower(?))", address_state) }
-  scope :visible, -> { without_states(['draft', 'rejected', 'deleted']) }
+  #scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = talents.user_id AND lower(u.address_state) = lower(?))", address_state) }
+  scope :visible, -> { without_states([]) }
 
   scope :ordered, -> { order(created_at: :desc)}
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
@@ -72,7 +82,7 @@ class Talent < ActiveRecord::Base
   validates_acceptance_of :accepted_terms, on: :create
 
   ##validation for all states
-  validates_presence_of :title, :user_id, :category_id, :permalink, :description
+  validates_presence_of :title, :user_id, :category_id, :permalink, :description, :genre_id
 
   validates_length_of :description, :minimum=>5, :maximum=>150, :allow_blank=>false
 
@@ -118,6 +128,7 @@ class Talent < ActiveRecord::Base
         permalink: self.permalink,
         talent_state: self.state,
         category: self.category.name_pt,
+        genre: self.genre.name_pt,
         talent_created_date: self.created_at
     }
   end

@@ -1,15 +1,17 @@
 
 class TalentsController < ApplicationController
-  has_scope :pg_search, :by_category_id, :near_of
-  has_scope :recent, :recommended, type: :boolean
+  has_scope :pg_search, :by_category_id, :near_of, :by_genre_id
+  has_scope :recent, :successful, :in_funding, :singing,  :song_writing, :instrumental, :music_compostion, :music_teaching, :music_production, :music_technology,
+            :music_management, :band,:recommended, type: :boolean
   # after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
+  after_filter :verify_authorized, except: %i[index video video_embed embed embed_panel about_mobile]
+  after_filter :redirect_user_back_after_login, only: %i[index show]
   after_filter :redirect_user_back_after_login, only: %i[index show]
 
   respond_to :html
-   respond_to :json, only: [:index, :show, :update]
+  respond_to :json, only: [:index, :show, :update]
 
   def index
-=begin
     respond_to do |format|
       format.html do
         return render_index_for_xhr_request if request.xhr?
@@ -20,9 +22,30 @@ class TalentsController < ApplicationController
       end
       format.rss { redirect_to talents_path(format: :atom), :status => :moved_permanently }
     end
-=end
   end
 
+
+
+  def video
+    talent = Talent.new(video_url: params[:url])
+    render json: talent.video.to_json
+  rescue VideoInfo::UrlError
+    render json: nil
+  end
+
+  def embed
+    resource
+    render partial: 'card', layout: 'embed', locals: {embed_link: true, ref: (params[:ref] || 'embed')}
+  end
+
+  def embed_panel
+    resource
+    render partial: 'talent_embed'
+  end
+
+  def about_mobile
+    resource
+  end
 
   def render_index_for_xhr_request
     render partial: 'talents/card',
@@ -36,7 +59,7 @@ class TalentsController < ApplicationController
     @talents_recommends = TalentsForHome.recommends.includes(:user)
     @talents_near = Talent.with_state('online','published').near_of(current_user.address_state).order("random()").limit(3).includes(:user) if current_user
     @talents_recent   = TalentsForHome.recents.includes(:user)
-    return @talents_recommends,@talents_near,@talents_expiring,@talents_recent
+    return @talents_recommends,@talents_near,@talents_recent
   end
 
 
@@ -53,9 +76,9 @@ class TalentsController < ApplicationController
     p "Talents Controller => Current User is: #{current_user.inspect}"
     @talent = Talent.new user: current_user
     p "Talents Controller =>   Talent is: #{@talent.inspect}"
-    # authorize @talent
+    authorize @talent
 
-    # @talent.talent_images.build
+    #@talent.talent_images.build
     # p "Talents Controller => Talent image is: #{@talent}"
 
     @talent.talent_videos.build
@@ -85,7 +108,7 @@ class TalentsController < ApplicationController
     #   talent_video.update_thumbnail
     #   p "Parsed each video #{talent_video.inspect}"
     # end
-    # authorize @talent
+    authorize @talent
     if @talent.save
       p "Talents Controller create  save =>   Talent is: #{@talent.inspect}"
       redirect_to edit_user_path(current_user, anchor: 'talents')

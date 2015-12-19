@@ -39,6 +39,7 @@ Catarse::Application.routes.draw do
       get :unsubscribe, to: 'categories/subscriptions#destroy'
     end
   end
+  resources :genres
   resources :auto_complete_projects, only: [:index]
   resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
     resources :metrics, only: [:index], controller: "projects/metrics"
@@ -119,6 +120,7 @@ Catarse::Application.routes.draw do
     end
   end
 
+
   get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
   get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
   get "/start" => 'high_voltage/pages#show', id: 'start'
@@ -130,6 +132,7 @@ Catarse::Application.routes.draw do
   get "/new-admin" => 'high_voltage/pages#show', id: 'new_admin'
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
   get "/talent" => 'high_voltage/pages#show', id: 'new_talent'
+  get "/explore_talents"=> 'high_voltage/pages#show', id: 'explore_talents'
 
 
   # User permalink profile

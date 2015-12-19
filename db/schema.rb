@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218060043) do
+ActiveRecord::Schema.define(version: 20151218171230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -248,6 +248,15 @@ ActiveRecord::Schema.define(version: 20151218060043) do
     t.index ["name"], :name => "cities_name_unique", :unique => true
   end
 
+  create_table "costates", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "acronym",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["acronym"], :name => "costates_acronym_unique", :unique => true
+    t.index ["name"], :name => "costates_name_unique", :unique => true
+  end
+
   create_table "genres", force: true do |t|
     t.text     "name_pt",    null: false
     t.datetime "created_at", :default => { :expr => "now()" }
@@ -255,15 +264,6 @@ ActiveRecord::Schema.define(version: 20151218060043) do
     t.string   "name_en"
     t.string   "name_fr"
     t.index ["name_pt"], :name => "index_genres_on_name_pt"
-  end
-
-  create_table "states", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "acronym",    null: false
-    t.datetime "created_at", :default => { :expr => "now()" }
-    t.datetime "updated_at"
-    t.index ["acronym"], :name => "states_acronym_unique", :unique => true
-    t.index ["name"], :name => "states_name_unique", :unique => true
   end
 
   create_table "projects", force: true do |t|
@@ -306,22 +306,24 @@ ActiveRecord::Schema.define(version: 20151218060043) do
     t.datetime "project_end_date"
     t.integer  "city_id"
     t.integer  "country_id"
-    t.integer  "state_id"
+    t.integer  "costate_id"
+    t.string   "other_country"
+    t.string   "other_city"
     t.integer  "genre_id"
     t.index ["category_id"], :name => "index_projects_on_category_id"
     t.index ["city_id"], :name => "fk__projects_city_id"
+    t.index ["costate_id"], :name => "fk__projects_costate_id"
     t.index ["country_id"], :name => "fk__projects_country_id"
     t.index ["full_text_index"], :name => "projects_full_text_index_ix", :kind => "gin"
     t.index ["genre_id"], :name => "fk__projects_genre_id"
     t.index ["name"], :name => "index_projects_on_name"
     t.index ["permalink"], :name => "index_projects_on_permalink", :unique => true, :case_sensitive => false
-    t.index ["state_id"], :name => "fk__projects_state_id"
     t.index ["user_id"], :name => "index_projects_on_user_id"
     t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "projects_category_id_reference"
     t.foreign_key ["city_id"], "cities", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_city_id"
+    t.foreign_key ["costate_id"], "costates", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_costate_id"
     t.foreign_key ["country_id"], "countries", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_country_id"
     t.foreign_key ["genre_id"], "genres", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_genre_id"
-    t.foreign_key ["state_id"], "states", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_projects_state_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "projects_user_id_reference"
   end
 
@@ -519,6 +521,7 @@ ActiveRecord::Schema.define(version: 20151218060043) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "application_type_id"
+    t.text     "description"
     t.index ["application_type_id"], :name => "fk__job_applications_application_type_id"
     t.index ["job_id"], :name => "fk__job_applications_job_id"
     t.foreign_key ["application_type_id"], "application_types", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_job_applications_application_type_id"
@@ -715,6 +718,15 @@ ActiveRecord::Schema.define(version: 20151218060043) do
     t.index ["assetable_type", "type", "assetable_id"], :name => "idx_redactor_assetable_type"
     t.index ["user_id"], :name => "fk__redactor_assets_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_redactor_assets_user_id"
+  end
+
+  create_table "states", force: true do |t|
+    t.string   "name",       null: false
+    t.string   "acronym",    null: false
+    t.datetime "created_at", :default => { :expr => "now()" }
+    t.datetime "updated_at"
+    t.index ["acronym"], :name => "states_acronym_unique", :unique => true
+    t.index ["name"], :name => "states_name_unique", :unique => true
   end
 
   create_view "subscriber_reports", " SELECT u.id,\n    cs.channel_id,\n    u.name,\n    u.email\n   FROM (users u\n     JOIN channels_subscribers cs ON ((cs.user_id = u.id)))", :force => true

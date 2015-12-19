@@ -8,6 +8,15 @@ pt:
       unfollow: Deixar de seguir
       following: seguidores
       categories: Categories
+      singing: Singing
+      song_writing: Song Writing
+      instrumental: Instrumental
+      music_composition: Music Composition
+      music_teaching: Music Teaching
+      music_production: Music Production
+      music_technology: Music Technology
+      music_management: Music Management
+      band: Band
       expiring: In the end stretch
       in_funding: No ar
       near: Near Mes
@@ -18,4 +27,31 @@ pt:
         faça acontecer!
       successful: Successful
       title: Encontre projects incríveis
+    explore_talents:
+      header_html: " Explore amazing talents &nbsp;"
+      success_follow: "Agora you segue a categoria e vai receber semanalmente uma lista com os novos projects de %{name}"
+      success_unfollow: "You deixou de seguir essa categoria %{name}"
+      follow: Seguir
+      unfollow: Deixar de seguir
+      following: seguidores
+      categories: Categories
+      singing: Singing
+      song_writing: Song Writing
+      instrumental: Instrumental
+      music_composition: Music Composition
+      music_teaching: Music Teaching
+      music_production: Music Production
+      music_technology: Music Technology
+      music_management: Music Management
+      band: Band
+      expiring: In the end stretch
+      in_funding: No ar
+      near: Near Mes
+      quick_explore: Busca rápida
+      recent: Recents
+      recommended: Recommendations
+      subtitle: Explore os projects, encontre aqueles que mexem com seu coração, e
+        faça acontecer!
+      successful: Successful
+      title: Explore Talents
 
