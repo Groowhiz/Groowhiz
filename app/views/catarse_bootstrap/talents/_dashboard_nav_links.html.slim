@@ -20,6 +20,9 @@
   //= link_to (edit ? '#reward' : edit_project_path(@project, anchor: 'reward')), id: 'dashboard_reward_link', class: link_class , data: {target: '#dashboard_reward', tab_group: 'edit'} do
   //  = @project.decorate.status_icon_for('reward', params[:action])
   //  = t('.rewards_tab')
+  /= link_to (edit ? '#job' : edit_project_path(@project, anchor: 'job')), id: 'job_link', class: link_class , data: {target: '#dashboard_job', tab_group: 'edit'} do
+  /  = @talent.decorate.status_icon_for('job', params[:action])
+  /  = t('.job_tab')
   /= link_to (edit ? '#user_about' : edit_talent_path(@talent, anchor: 'user_about')), id: 'dashboard_user_about_link', class: link_class , data: {target: '#dashboard_user_about', tab_group: 'edit'} do
   /  = @talent.decorate.status_icon_for('user_about', params[:action])
   /  = t('.about_you_tab')

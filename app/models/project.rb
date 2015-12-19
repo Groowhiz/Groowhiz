@@ -22,11 +22,16 @@ class Project < ActiveRecord::Base
             :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
 
+  # belongs_to :country
+  # belongs_to :city
+  # belongs_to :state
+  # belongs_to :genre
   belongs_to :user
   belongs_to :category
   has_one :project_total
   has_one :account, class_name: "ProjectAccount", inverse_of: :project
   has_many :rewards
+  has_many :jobs
   has_many :contributions
   has_many :contribution_details
   has_many :payments, through: :contributions
@@ -35,25 +40,26 @@ class Project < ActiveRecord::Base
   has_many :unsubscribes
 
   accepts_nested_attributes_for :rewards, allow_destroy: true
+  accepts_nested_attributes_for :jobs, allow_destroy: true
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :account
   accepts_nested_attributes_for :posts, allow_destroy: true, reject_if: ->(x) { x[:title].blank? || x[:comment_html].blank? }
   accepts_nested_attributes_for :budgets, allow_destroy: true, reject_if: ->(x) { x[:name].blank? || x[:value].blank? }
 
   pg_search_scope :search_tsearch,
-    against: "full_text_index",
-    using: {
-      tsearch: {
-        dictionary: "portuguese",
-        tsvector_column: "full_text_index"
-      }
-    },
-    ignoring: :accents
+                  against: "full_text_index",
+                  using: {
+                      tsearch: {
+                          dictionary: "portuguese",
+                          tsvector_column: "full_text_index"
+                      }
+                  },
+                  ignoring: :accents
 
   pg_search_scope :search_trm,
-    against: "name",
-    using: :trigram,
-    ignoring: :accents
+                  against: "name",
+                  using: :trigram,
+                  ignoring: :accents
 
   def self.pg_search term
     search_tsearch(term).presence || search_trm(term)
@@ -114,10 +120,11 @@ class Project < ActiveRecord::Base
 
   validates_acceptance_of :accepted_terms, on: :create
   ##validation for all states
-  validates_presence_of :name, :user, :category, :permalink
+  validates_presence_of :name, :user, :category, :permalink #, :tagline
+  #validates_length_of :tagline, :minimum => 5, :maximum => 100, :allow_blank => false
   validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
   validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0,
-    if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
+                            if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
   validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
@@ -142,6 +149,10 @@ class Project < ActiveRecord::Base
 
   def user_already_in_reminder?(user_id)
     notifications.where(template_name: 'reminder', user_id: user_id).present?
+  end
+
+  def send_to_analysis
+
   end
 
   def has_blank_service_fee?
@@ -209,20 +220,20 @@ class Project < ActiveRecord::Base
 
   def notify_owner(template_name, params = {})
     notify_once(
-      template_name,
-      self.user,
-      self,
-      params
+        template_name,
+        self.user,
+        self,
+        params
     )
   end
 
   def notify_to_backoffice(template_name, options = {}, backoffice_user = User.find_by(email: CatarseSettings[:email_payments]))
     if backoffice_user
       notify_once(
-        template_name,
-        backoffice_user,
-        self,
-        options
+          template_name,
+          backoffice_user,
+          self,
+          options
       )
     end
   end
@@ -240,18 +251,18 @@ class Project < ActiveRecord::Base
 
   def to_analytics
     {
-      id: self.id,
-      permalink: self.permalink,
-      total_contributions: self.total_contributions,
-      pledged: self.pledged,
-      project_state: self.state,
-      category: self.category.name_pt,
-      project_goal: self.goal,
-      project_online_date: self.online_date,
-      project_expires_at: self.expires_at,
-      project_address_city: self.account.try(:address_city),
-      project_address_state: self.account.try(:address_state),
-      account_entity_type: self.account.try(:entity_type)
+        id: self.id,
+        permalink: self.permalink,
+        total_contributions: self.total_contributions,
+        pledged: self.pledged,
+        project_state: self.state,
+        category: self.category.name_pt,
+        project_goal: self.goal,
+        project_online_date: self.online_date,
+        project_expires_at: self.expires_at,
+        project_address_city: self.account.try(:address_city),
+        project_address_state: self.account.try(:address_state),
+        account_entity_type: self.account.try(:entity_type)
     }
   end
 

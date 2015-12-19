@@ -124,6 +124,7 @@ section#blog.section-large.bg-gray.before-footer
         = image_tag "icon-blog.png", class: "u-marginbottom-10"
       .fontsize-large.u-marginbottom-60.text-success
         = link_to t('.blog'), CatarseSettings[:blog_url], target: '__blank', class: 'link-hidden-success'
+
     .w-row
       - (Blog.fetch_last_posts rescue [])[0..2].each do |post|
         .w-col.w-col-4.col-blog-post
@@ -134,6 +135,7 @@ section#blog.section-large.bg-gray.before-footer
             /= link_to post.url, target: '__blank', class: 'fontsize-smaller fontcolor-secondary ' do
             /span.fontsize-smaller.fontcolor-secondary
           = truncate(post.summary, length: 130).html_safe    
+
 
 
 = render 'shared/footer_big'

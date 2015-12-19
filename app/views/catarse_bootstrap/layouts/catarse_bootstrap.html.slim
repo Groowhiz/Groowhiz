@@ -7,6 +7,8 @@ html
     = stylesheet_link_tag 'catarse_bootstrap/fonts'
     = stylesheet_link_tag 'catarse_bootstrap/catarse'
     = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'
+    = stylesheet_link_tag 'select2.css'
+
     = content_for(:stylesheets)
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tag
@@ -36,6 +38,8 @@ html
       = render 'layouts/vwo'
       = render_mixpanel_script
 
+
+
   body#catarse_bootstrap[data-controller-name=controller_name data-action=action_name data-user="#{current_user.try(:to_analytics_json)}" data-referral="#{session[:referral_link]}" data-id=params[:id] data-mobile=browser.mobile?.to_s itemscope itemtype="http://schema.org/WebPage" class="#{'body-alert' if can_display_pending_refund_alert?} #{content_for :body_class}"] 
     /= render 'layouts/global_alert'
     = render 'layouts/pending_refund_top_alert' if can_display_pending_refund_alert?
@@ -55,3 +59,4 @@ html
   - if Rails.env.production?
     = render 'layouts/hotjar'
     = render_google_analytics_script
+

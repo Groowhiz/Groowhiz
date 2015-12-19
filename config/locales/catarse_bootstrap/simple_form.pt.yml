@@ -14,8 +14,8 @@ pt:
           nine: "Other"
     validation_texts:
       reward:
-        minimum_value: "Informe um valor mínimo maior ou igual a 10"
-        description: "Informe uma descrição para a recompensa"
+        minimum_value: "Informe um Value mínimo maior ou igual a 10"
+        description: "Informe uma Description para a recompensa"
       bank_account:
         input_bank_number: "Número do banco inválido"
         bank_id: "Selecione um banco"
@@ -23,16 +23,16 @@ pt:
         account: "Qual o número da conta?"
         account_digit: "Qual o dígito verificador?"
         agency_digit: "Qual o dígito da agência?"
-        owner_name: "Informe um nome com no mínimo 5 e no máximo 30 letras"
+        owner_name: "Informe um Name com no mínimo 5 e no máximo 30 letras"
         owner_document: "Informe um CPF ou CNPJ válido para o correntista"
       contribution:
-        payer_name: "Por favor digite o nome do apoiador"
+        payer_name: "Por favor digite o Name do apoiador"
         payer_email: "Por favor digite um email válido"
         payer_document: "Por favor digite um CPF ou CNPJ válido"
         address_state: "Selecione um estado"
-        address_street: "Digite o nome da rua"
+        address_street: "Digite o Name da rua"
         address_number: "Digite o número do endereço"
-        address_city: "Digite o nome da cidade"
+        address_city: "Digite o Name da cidade"
         address_zip_code: "Digite o CEP"
         address_phone_number: "Digite o número de telefone"
     prompts:
@@ -47,10 +47,13 @@ pt:
         name: "Give a name that people can remember easily. Do not exceed 50 characters."
         permalink: "I prefer something simple, straightforward and well identify your project. Try not to use hyphen, underscore etc."
         category: "Choose the most appropriate to your project."
+        country: "Choose the country where project is located. If not found, select as others and specify the name in the next field"
+        city: "Choose the city where project is located.  If not found, select as others and specify the name in the next field"
+        state: "Choose the state where project is located"
         goal: "Planeje uma meta coerente com o que seu projeto propõe. Revise seu orçamento e não esqueça de incluir a taxa de 13% cobrada pelo Catarse caso seu projeto seja bem-sucedido."
         online_days: "You pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
         video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."
-        about_html: "Fale com paixão e clareza sobre o que será realizado. Esclareça possíveis dúvidas sobre como o dinheiro será utilizado, quem está por trás do projeto, como e quando o projeto será entregue. Transparência atrai mais apoiadores. Lembre-se: seu projeto será acessado por pessoas comuns que decidirão se querem ou não apoiar seu projeto. Capriche! "
-        headline: "Frase no card do projeto para chamar apoiadores. Deve ter no máximo 100 caracteres e resumir bem o projeto."
-        uploaded_image: "Essa imagem será utilizada como a miniatura de seu projeto (PNG, JPG tamanho 600 x 340)"
+        about_html: "Contact Project Description with passion and clarity about what will be done. Possible answers about how the money will be used, who is behind the project, as and when the project will be delivered. Transparency attracts more supporters. Remember, your project will be accessed by ordinary people who decide whether or not to support your project."
+        headline: "Phrase in the project card to call supporters. Must have no more than 100 characters, well summarize the project."
+        uploaded_image: "This image will be used as the thumbnail of your project (PNG, JPG size 600 x 340)"
 

@@ -39,11 +39,12 @@ class ProjectPolicy < ApplicationPolicy
       p_attr << posts_attributes
       p_attr << reward_attributes
       p_attr << account_attributes
+      p_attr << job_attributes
 
       p_attr.flatten
     else
       [:about_html, :video_url, :uploaded_image, :headline, :budget,
-                 user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes]
+                 user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes, job_attributes]
     end
   end
 
@@ -68,6 +69,10 @@ class ProjectPolicy < ApplicationPolicy
   def reward_attributes
     { rewards_attributes: [:_destroy, :id, :maximum_contributions,
                           :description, :deliver_at, :minimum_value] }
+  end
+
+  def job_attributes
+    { jobs_attributes: [:_destroy,:id, :job_description, :job_start_date, :job_end_date] }
   end
 
   def account_attributes

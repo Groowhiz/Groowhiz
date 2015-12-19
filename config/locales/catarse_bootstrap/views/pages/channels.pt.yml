@@ -38,13 +38,13 @@ pt:
         edit_title: Editar parceiro
       form:
         hint_image: Tamanho da imagem 370x320
-        save_submit: Salvar
+        save_submit: Save
       index:
         new_button: Adicionar parceiro
         table:
           created_at: Criado em
           image: Imagem
-          name: Nome
+          name: Name
           url: Site
           actions: Ações
         title: Gerenciar parceiros
@@ -63,7 +63,7 @@ pt:
           title: Título da novidade
         title: Gerenciar novidades
       form:
-        save_submit: Salvar e visualizar
+        save_submit: Save e visualizar
       update:
         published_message: Sua novidade foi publicada e enviada por email aos seguidores
           do canal.
@@ -86,12 +86,12 @@ pt:
       publish_action: Publicar
       recommended: Recomendar
       reject: Rejeitar
-      send_to_draft: Enviar para rascunho
+      send_to_draft: Submit para rascunho
       put_online: Colocar no ar
       send_to_trash: DELETAR PROJETO
       show_action: Visualizar
       state: Estado
-      total_contributions: Apoios
+      total_contributions: support
       unpublish_action: Despublicar
       user: Usuário
       user_id: Usuário

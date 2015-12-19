@@ -1,8 +1,10 @@
 class Category < ActiveRecord::Base
   has_notifications
   has_many :projects
+  has_many :talents
   has_many :category_followers
   has_many :users, through: :category_followers
+  has_many :jobs
 
   delegate :display_name, to: :decorator
 

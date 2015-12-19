@@ -4,13 +4,13 @@
     .w-row
       .w-col.w-col-8.u-marginbottom-30
         .fontsize-base.u-marginbottom-40
-          p.fontweight-bold Total de apoios confirmados por dia
+          p.fontweight-bold Total de support confirmados por dia
           = line_chart @metrics[:confirmed]
         .fontsize-base.u-marginbottom-60
           p.fontweight-bold Total arrecadado por dia
           = line_chart @metrics[:confirmed_amount_by_day]
         .fontsize-base.u-marginbottom-40
-          p.fontweight-bold Total de apoios confirmado por Estado
+          p.fontweight-bold Total de support confirmado por Estado
         .w-row.card.fontsize-base.fontweight-semibold.card-secondary
           .w-col.w-col-6.w-col-small-6.w-col-tiny-6
             div Estado
@@ -80,7 +80,7 @@
       thead
         tr
           th= 'Estado'
-          th= 'Total de apoios confirmados'
+          th= 'Total de support confirmados'
       tbody
         - @metrics[:address_state].sort{|a,b| b[1] <=> a[1]}.each do |metric|
           tr

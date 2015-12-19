@@ -19,11 +19,11 @@ pt:
         cpf: 'CPF / CNPJ '
         state_inscription: 'Inscrição Estadual'
         email: Email
-        full_name: "Nome completo / Razão Social"
+        full_name: "Name completo / Razão Social"
         phone_number: "Telefone"
         bank: 'Banco'
         bank_id: 'Banco'
-        owner_name: 'Nome do titular'
+        owner_name: 'Name do titular'
         owner_document: 'CPF do titular da conta bancária'
         agency: 'Agência'
         agency_digit: 'Dígito agência'
@@ -34,7 +34,7 @@ pt:
         input_bank_number: "Número do banco"
         bank: 'Banco'
         bank_id: 'Banco'
-        owner_name: 'Nome do titular'
+        owner_name: 'Name do titular'
         owner_document: 'CPF / CNPJ do titular'
         agency: 'Agência'
         agency_digit: 'Dígito agência'
@@ -43,7 +43,7 @@ pt:
       payment:
         state: 'Status'
       contribution:
-        payer_name: "Nome Completo"
+        payer_name: "Name Completo"
         payer_email: "Email"
         payer_document: "CPF ou CNPJ"
         country: "País"
@@ -55,8 +55,8 @@ pt:
         address_city: "Cidade"
         address_zip_code: "CEP"
         address_phone_number: "Telefone"
-        value: Valor do apoio
-        payer_name: "Nome Completo"
+        value: Value do apoio
+        payer_name: "Name Completo"
         payer_email: "Email"
         country: "País"
         address_street: "Rua"
@@ -67,20 +67,20 @@ pt:
         address_city: "Cidade"
         address_zip_code: "CEP"
         address_phone_number: "Telefone"
-        reward: Recompensa
+        reward: Reward
         project: projeto
       reward:
-        deliver_at: Previsão de entrega
+        deliver_at: Delivery forecast
       project:
         channels: Canais
         category: Category
         expires_at: Prazo
         online_days: "Prazo para arrecadação"
-        headline: "Frase de efeito"
+        headline: "Catch phrase"
         image_url: "URL da imagem"
         name: "Project Name"
-        goal: "Valor a ser arrecadado"
-        about_html: "Descrição do projeto"
+        goal: "Value a ser arrecadado"
+        about_html: "Project description"
         user_id: "Id do usuário"
         video_url: "URL do vídeo"
         permalink: 'Link your project'
@@ -88,7 +88,7 @@ pt:
         traffic_sources: 'How did you know about TalentOxide?'
         first_contributions: "Quem são as primeiras pessoas que you vai pedir para apoiar o seu projeto?"
         budget: 'Orçamento do projeto'
-        uploaded_image: 'Imagem do projeto'
+        uploaded_image: 'Design Image'
       user:
         address_city: city
         address_complement: Complemento
@@ -102,7 +102,7 @@ pt:
         state_inscription: 'Inscrição Estadual'
         current_password: "Senha atual"
         email: Email
-        full_name: "Nome completo / Razão Social"
+        full_name: "Name completo / Razão Social"
         bio: 'Mini Bio'
         name: "Apelido"
         newsletter: 'Quero receber novidades do Catarse'
@@ -136,14 +136,14 @@ pt:
       models:
         payment:
           duplicate: "O seu pagamento já está sendo processado"
-        contribution: "Erro ao salvar apoio"
+        contribution: "Erro ao Save apoio"
         bank_account:
           attributes:
             bank:
               blank: 'Banco não pode ficar em branco'
             owner_name:
-              blank: 'Nome do titular não pode ficar em branco'
-              invalid: 'Informe um nome com no mínimo 5 e no máximo 30 letras'
+              blank: 'Name do titular não pode ficar em branco'
+              invalid: 'Informe um Name com no mínimo 5 e no máximo 30 letras'
             owner_document:
               blank: 'CPF / CNPJ do titular não pode ficar em branco'
               invalid: 'CPF / CNPJ inválido'
@@ -189,7 +189,7 @@ pt:
             account_digit:
               blank: "Dígito conta do usuário não pode ficar em branco"
             owner_name:
-              blank: "Nome do titular do usuário não pode ficar em branco"
+              blank: "Name do titular do usuário não pode ficar em branco"
             owner_document:
               blank: "CPF / CNPJ do titular do usuário não pode ficar em branco"
               not_same: "CPF/CNPJ dos dados cadastrais e bancários preenchidos não estão iguais."
@@ -212,7 +212,7 @@ pt:
             category:
               blank: "You deve escolher uma categoria para seu projeto"
             goal:
-              blank: "O valor da meta não pode ficar em branco"
+              blank: "O Value da meta não pode ficar em branco"
               greater_than: "A meta deve ser maior que 9"
               not_a_number: "Meta de arrecadação aceita somente números"
             online_days:
@@ -221,7 +221,7 @@ pt:
               less_than_or_equal_to: "O prazo para arrecadação deve ser menor ou igual a 60 dias"
               not_a_number: "O prazo para arrecadação deve ser um número de dias"
             about_html:
-              blank: "A descrição do projeto não pode ficar em branco"
+              blank: "A Description do projeto não pode ficar em branco"
             headline:
               blank: "A frase de efeito do projeto não pode ficar em branco"
               too_long: "A frase de efeito é muito longa. You pode usar um máximo de 140 caracteres."
@@ -278,12 +278,12 @@ pt:
     value_must_be_at_least_rewards_value: deve ser pelo menos %{minimum_value} para
       a recompensa selecionada
   contribution_report_to_project_owner:
-    reward_description: Descrição da recompensa
+    reward_description: Description da recompensa
     deliver_at: Data de entrega da recompensa
     confirmed_at: Data da confirmação do pagamento
-    contribution_value: Valor do apoio
+    contribution_value: Value do apoio
     service_fee: Taxa do Catarse
-    user_name: Nome do apoiador
+    user_name: Name do apoiador
     user_email: Email perfil Catarse
     cpf: Cpf do apoiador
     payer_email: Email do meio de pagamento

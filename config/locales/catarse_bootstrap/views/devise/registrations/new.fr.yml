@@ -11,7 +11,7 @@ fr:
             form:
               labels:
                 show_password: 'Show Password'
-                name: 'Nome completo'
+                name: 'Name completo'
                 password: 'Password'
                 newsletter: 'I want to subscribe to TalentOxide'
                 accept: 'When you register , you are accepting our <a href="%{terms_url}" class="alt-link" target="_blank">terms of use</a> e <a class="alt-link" href="%{privacy_url}" target="_blank">privacy policy</a>'

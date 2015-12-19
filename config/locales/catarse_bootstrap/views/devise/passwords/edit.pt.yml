@@ -12,5 +12,5 @@ pt:
             password: 'Nova senha'
             password_confirmation: 'Confirmação de senha'
           inputs:
-            submit: 'Salvar e entrar'
+            submit: 'Save e entrar'
 
