@@ -843,6 +843,37 @@ CREATE TABLE auth (
 SET search_path = public, pg_catalog;
 
 --
+-- Name: application_types; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE application_types (
+    id integer NOT NULL,
+    type character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: application_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE application_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: application_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE application_types_id_seq OWNED BY application_types.id;
+
+
+--
 -- Name: authorizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1518,6 +1549,46 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
+-- Name: job_applications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE job_applications (
+    id integer NOT NULL,
+    job_id integer,
+    video_url character varying(255),
+    link_ref1 character varying(255),
+    link_ref2 character varying(255),
+    creator integer,
+    artist integer,
+    status character varying(255),
+    reason text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    application_type_id integer,
+    description text
+);
+
+
+--
+-- Name: job_applications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE job_applications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_applications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE job_applications_id_seq OWNED BY job_applications.id;
+
+
+--
 -- Name: job_perks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1599,7 +1670,8 @@ CREATE TABLE jobs (
     job_end_date timestamp without time zone,
     job_reward_id integer,
     row_order integer,
-    last_changes text
+    last_changes text,
+    screening_rounds integer
 );
 
 
@@ -2713,6 +2785,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY application_types ALTER COLUMN id SET DEFAULT nextval('application_types_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY authorizations ALTER COLUMN id SET DEFAULT nextval('authorizations_id_seq'::regclass);
 
 
@@ -2840,6 +2919,13 @@ ALTER TABLE ONLY dbhero_dataclips ALTER COLUMN id SET DEFAULT nextval('dbhero_da
 --
 
 ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_applications ALTER COLUMN id SET DEFAULT nextval('job_applications_id_seq'::regclass);
 
 
 --
@@ -3030,6 +3116,14 @@ ALTER TABLE ONLY auth
 SET search_path = public, pg_catalog;
 
 --
+-- Name: application_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY application_types
+    ADD CONSTRAINT application_types_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: authorizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3195,6 +3289,14 @@ ALTER TABLE ONLY dbhero_dataclips
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: job_applications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY job_applications
+    ADD CONSTRAINT job_applications_pkey PRIMARY KEY (id);
 
 
 --
@@ -3524,6 +3626,20 @@ CREATE INDEX fk__contribution_notifications_user_id ON contribution_notification
 --
 
 CREATE INDEX fk__contributions_country_id ON contributions USING btree (country_id);
+
+
+--
+-- Name: fk__job_applications_application_type_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__job_applications_application_type_id ON job_applications USING btree (application_type_id);
+
+
+--
+-- Name: fk__job_applications_job_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__job_applications_job_id ON job_applications USING btree (job_id);
 
 
 --
@@ -4292,6 +4408,22 @@ ALTER TABLE ONLY contributions
 
 ALTER TABLE ONLY credit_cards
     ADD CONSTRAINT fk_credit_cards_user_id FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_job_applications_application_type_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_applications
+    ADD CONSTRAINT fk_job_applications_application_type_id FOREIGN KEY (application_type_id) REFERENCES application_types(id);
+
+
+--
+-- Name: fk_job_applications_job_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_applications
+    ADD CONSTRAINT fk_job_applications_job_id FOREIGN KEY (job_id) REFERENCES jobs(id);
 
 
 --
@@ -5285,4 +5417,16 @@ INSERT INTO schema_migrations (version) VALUES ('20151216194826');
 INSERT INTO schema_migrations (version) VALUES ('20151217070609');
 
 INSERT INTO schema_migrations (version) VALUES ('20151217070642');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218052200');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218052249');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218054608');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218055525');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218060043');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218112042');
 

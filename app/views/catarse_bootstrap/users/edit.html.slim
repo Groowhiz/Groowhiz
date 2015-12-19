@@ -41,6 +41,8 @@
 
       /= link_to '#billing', id: 'dashboard_billing_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_billing' } do
         | Bank cards
+      = link_to jobshow_user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
+        | Job profile
 
       = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Skip to public profile

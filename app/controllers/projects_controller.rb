@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
+
     @project = Project.new user: current_user
     authorize @project
     @project.rewards.build

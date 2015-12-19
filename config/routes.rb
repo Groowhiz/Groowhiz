@@ -1,5 +1,6 @@
 Catarse::Application.routes.draw do
 
+
   mount RedactorRails::Engine => '/redactor_rails'
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for(
@@ -99,6 +100,7 @@ Catarse::Application.routes.draw do
   end
 
   resources :users do
+    get 'jobshow', on: :member
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
       get :unsubscribe_notifications

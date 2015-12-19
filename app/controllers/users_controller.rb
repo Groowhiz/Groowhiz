@@ -33,6 +33,10 @@ class UsersController < ApplicationController
     redirect_to edit_user_path(current_user, anchor: 'billing')
   end
 
+  def jobshow
+    authorize resource
+  end
+
   def show
     authorize resource
     show!{
