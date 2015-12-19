@@ -35,12 +35,17 @@
 
       = link_to '#settings', id: 'dashboard_settings_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_settings' } do
         | Data and address
-      
+
+      = link_to '#jobs', id: 'dashboard_jobs_link', class: 'dashboard-nav-link ', data: {target: '#dashboard_jobs'} do
+        |Jobs
+
       /= link_to '#notifications', id: 'dashboard_notifications_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_notifications' } do
         | Notifications
 
       /= link_to '#billing', id: 'dashboard_billing_link', class: 'dashboard-nav-link ' , data: {target: '#dashboard_billing' } do
         | Bank cards
+      = link_to jobs_show_user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
+        | Skip to Job profile
 
       = link_to user_path(resource), class: 'dashboard-nav-link u-right-big-only' do
         | Skip to public profile
@@ -83,6 +88,8 @@
             = render 'dashboard_billing'
           #dashboard_talents.content.w-hidden
             = render 'dashboard_talents'
+          #dashboard_jobs.content.w-hidden
+            = render 'dashboard_jobs'
 
 
 = render 'shared/footer_big'

@@ -23,6 +23,10 @@ class UserPolicy < ApplicationPolicy
     done_by_owner_or_admin?
   end
 
+  def jobs_show?
+    done_by_owner_or_admin?
+  end
+
   def update_reminders?
     done_by_owner_or_admin?
   end

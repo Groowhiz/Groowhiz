@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     }
   end
 
+  def jobs_show
+    authorize resource
+  end
+
   def reactivate
     user = params[:token].present? && User.find_by(reactivate_token: params[:token])
     if user
@@ -126,6 +130,7 @@ class UsersController < ApplicationController
   end
 
   def resource
+    p "Came to Test Resource"
     @user ||= params[:id].present? ? User.find_active!(params[:id]) : User.with_permalink.find_by_permalink(request.subdomain)
   end
 

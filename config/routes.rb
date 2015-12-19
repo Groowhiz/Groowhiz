@@ -99,6 +99,9 @@ Catarse::Application.routes.draw do
   end
 
   resources :users do
+    member do
+      get :jobs_show
+    end
     resources :credit_cards, controller: 'users/credit_cards', only: [ :destroy ]
     member do
       get :unsubscribe_notifications
