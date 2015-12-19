@@ -27,7 +27,7 @@
               .w-row
                 .w-col.w-col-12
                   .w-row
-                    = form.input_field :created_at, required: true, as: :date, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-4 positive'
+                    = form.input_field :project_start_date, required: true, as: :date, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-4 positive'
           .w-row.card-terciary.card
             .w-col.w-col-6
               label.fontsize-smaller= "End Date"
@@ -36,7 +36,7 @@
               .w-row
                 .w-col.w-col-12
                   .w-row
-                    = form.input_field :expires_at, required: true, as: :date, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-4 positive'
+                    = form.input_field :project_end_date, required: true, as: :date, start_year: Time.current.year, use_long_month: true, start_day: Time.current.day, required: true, class: 'w-col-4 positive'
 
       .w-row
         .w-col.w-col-4.w-col-push-4

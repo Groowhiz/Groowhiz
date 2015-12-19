@@ -16,8 +16,8 @@ pt:
       ok: 'Ok! Vamos te mandar um lembrete por e-mail 48 horas antes do fim da campanha'
       active_btn: 'Lembre-me deste projeto'
       deactive_btn: 'Não quero mais ser lembrado'
-    send_to_analysis: Seu projeto foi enviado para nossa equipe.
-    send_to_analysis_error: Erro ao Submit projeto para análise. Preencha todos os campos obrigatórios.
+    send_to_analysis: Your Project was successfully send to analysis to our team.
+    send_to_analysis_error: Error while submiting the project. Fill in all the required details
     push_to_online: Seu projeto está online!
     push_to_online_error: Erro ao colocar o projeto online. Preencha todos os campos obrigatórios.
     twitter:
