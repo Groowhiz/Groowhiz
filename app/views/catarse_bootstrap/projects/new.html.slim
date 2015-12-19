@@ -17,13 +17,29 @@
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
               = form.input :name, as: :string
             .u-marginbottom-40
-              = form.label :project_tagline, class: 'fontsize-large', required: false, as: :string
-              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :project_tagline
-              = form.input :name, as: :string
+              = form.label :tagline, class: 'fontsize-large', required: false, as: :string
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :tagline
+              = form.input :tagline, as: :string
             .u-marginbottom-40
               = form.label :category, class: 'fontsize-large', required: false
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :category
               = form.association :category, as: :select, collection: Category.order(:name_pt), prompt: t('simple_form.prompts.project.category'), class: 'medium', label: '', required: false, hint: ''
+            .u-marginbottom-40
+              = form.label :genre, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :genre
+              = form.association :genre, as: :select, collection: Genre.order(:name_pt), prompt: t('simple_form.prompts.project.genre'), class: 'medium', label: '', required: false, hint: ''
+            .u-marginbottom-40
+              = form.label :country, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :country
+              = form.association :country, as: :select, collection: Country.order(:name), prompt: t('simple_form.prompts.project.country'), class: 'medium', label: '', required: false, hint: ''
+            .u-marginbottom-40
+              = form.label :state, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :state
+              = form.association :costate, as: :select, collection: Costate.order(:name), prompt: t('simple_form.prompts.project.state'), class: 'medium', label: '', required: false, hint: ''
+            .u-marginbottom-40
+              = form.label :city, class: 'fontsize-large', required: false
+              .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :city
+              = form.association :city, as: :select, collection: City.order(:name), prompt: t('simple_form.prompts.project.city'), class: 'medium', label: '', required: false, hint: ''
             .u-marginbottom-40
               = form.label :permalink, class: 'fontsize-large', required: false, as: :string
               .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :permalink

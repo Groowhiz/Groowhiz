@@ -37,9 +37,9 @@ pt:
         address_phone_number: "Digite o número de telefone"
     prompts:
       project:
-        category: "Selecione uma categoria"
+        category: "Select a Category"
         select: "Select an option"
-        traffic_sources: "How did you know about TalentOxide?"
+        traffic_sources: "How did you know about TalentoArtista?"
     hints:
       project:
         select: "Select an option"

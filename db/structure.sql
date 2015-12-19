@@ -271,7 +271,9 @@ CREATE TABLE projects (
     project_end_date timestamp without time zone,
     city_id integer,
     country_id integer,
-    state_id integer,
+    costate_id integer,
+    other_country character varying(255),
+    other_city character varying(255),
     genre_id integer
 );
 
@@ -1367,6 +1369,38 @@ CREATE SEQUENCE contributions_id_seq
 --
 
 ALTER SEQUENCE contributions_id_seq OWNED BY contributions.id;
+
+
+--
+-- Name: costates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE costates (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    acronym character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: costates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE costates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: costates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE costates_id_seq OWNED BY costates.id;
 
 
 --
@@ -2818,6 +2852,13 @@ ALTER TABLE ONLY contributions ALTER COLUMN id SET DEFAULT nextval('contribution
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY costates ALTER COLUMN id SET DEFAULT nextval('costates_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq'::regclass);
 
 
@@ -3166,6 +3207,14 @@ ALTER TABLE ONLY contributions
 
 
 --
+-- Name: costates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY costates
+    ADD CONSTRAINT costates_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3436,6 +3485,20 @@ CREATE UNIQUE INDEX cities_name_unique ON cities USING btree (name);
 
 
 --
+-- Name: costates_acronym_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX costates_acronym_unique ON costates USING btree (acronym);
+
+
+--
+-- Name: costates_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX costates_name_unique ON costates USING btree (name);
+
+
+--
 -- Name: fk__authorizations_oauth_provider_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3625,6 +3688,13 @@ CREATE INDEX fk__projects_city_id ON projects USING btree (city_id);
 
 
 --
+-- Name: fk__projects_costate_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_costate_id ON projects USING btree (costate_id);
+
+
+--
 -- Name: fk__projects_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3636,13 +3706,6 @@ CREATE INDEX fk__projects_country_id ON projects USING btree (country_id);
 --
 
 CREATE INDEX fk__projects_genre_id ON projects USING btree (genre_id);
-
-
---
--- Name: fk__projects_state_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__projects_state_id ON projects USING btree (state_id);
 
 
 --
@@ -4415,6 +4478,14 @@ ALTER TABLE ONLY projects
 
 
 --
+-- Name: fk_projects_costate_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_costate_id FOREIGN KEY (costate_id) REFERENCES costates(id);
+
+
+--
 -- Name: fk_projects_country_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4428,14 +4499,6 @@ ALTER TABLE ONLY projects
 
 ALTER TABLE ONLY projects
     ADD CONSTRAINT fk_projects_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id);
-
-
---
--- Name: fk_projects_state_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY projects
-    ADD CONSTRAINT fk_projects_state_id FOREIGN KEY (state_id) REFERENCES states(id);
 
 
 --
@@ -4602,7 +4665,7 @@ ALTER TABLE ONLY project_posts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public, "1";
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20121226120921');
 
@@ -5254,8 +5317,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151213114928');
 
 INSERT INTO schema_migrations (version) VALUES ('20151213183607');
 
-INSERT INTO schema_migrations (version) VALUES ('20151213205552');
-
 INSERT INTO schema_migrations (version) VALUES ('20151215134713');
 
 INSERT INTO schema_migrations (version) VALUES ('20151215145045');
@@ -5285,4 +5346,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151216194826');
 INSERT INTO schema_migrations (version) VALUES ('20151217070609');
 
 INSERT INTO schema_migrations (version) VALUES ('20151217070642');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218171230');
 

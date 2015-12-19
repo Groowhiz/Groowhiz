@@ -11,7 +11,7 @@
               #jobs
                 = f.simple_fields_for :jobs, @jobs do |form|
                   = render 'job_fields', f: form
-              = link_to_add_association "+ #{t('.add_job')}", f, :jobs, :'data-association-insertion-node' => '#jobs', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_reward_form new_reward_button'
+              = link_to_add_association "+ #{t('.add_job')}", f, :jobs, :'data-association-insertion-node' => '#jobs', :'data-association-insertion-method' => :append, class: 'btn btn-large btn-message show_job_form new_job_button'
 
             .w-col.w-col-4.w-col-push-4.u-margintop-40
               = f.button :submit, t('.submit'),  class:'btn btn-large'

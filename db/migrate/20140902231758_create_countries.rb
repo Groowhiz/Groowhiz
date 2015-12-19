@@ -4,11 +4,6 @@ class CreateCountries < ActiveRecord::Migration
       t.text :name, null: false
       t.timestamps
     end
-    execute <<-SQL
-      INSERT INTO countries (name) VALUES
-      ('India'), ('Others');
-      UPDATE countries SET created_at = now(), updated_at = now();
-    SQL
   end
 
   def down

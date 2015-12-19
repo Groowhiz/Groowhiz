@@ -33,6 +33,7 @@ class ProjectPolicy < ApplicationPolicy
 
   def permitted_attributes
     if user.present? && (user.admin? || (record.draft? || record.rejected? || record.in_analysis?))
+      p "am i herenkenrekl?"
       p_attr = record.attribute_names.map(&:to_sym)
       p_attr << user_attributes
       p_attr << budget_attributes
@@ -43,7 +44,9 @@ class ProjectPolicy < ApplicationPolicy
 
       p_attr.flatten
     else
-      [:about_html, :video_url, :uploaded_image, :headline, :budget,
+      p "am i here?"
+      [:about_html, :video_url, :uploaded_image, :headline, :budget, :name, :tagline, :category_id, :genre_id,
+       :country_id, :costate_id, :city_id, :permalink, :traffic_sources,
                  user_attributes, posts_attributes, budget_attributes, reward_attributes, account_attributes, job_attributes]
     end
   end

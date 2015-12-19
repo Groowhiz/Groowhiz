@@ -17,6 +17,7 @@ pt:
       user_settings_subtitle: 'Com os dados abaixo completos, seu projeto estará pronto para ir ao ar. Após concluir o preenchimento, clique em Save. Revise. Se tudo estiver ok, basta apertar o botão Publicar e começar sua campanha!'
       user_about: "Tell me more about you!"
       reward: "Create and edit your here Rewards"
+      job: "Create and edit your Job requirements"
       reward_subtitle: "This is your show of gratitude to the supporters. Remember to include the cost of rewards in your budget. "
       user_about_subtitle: "Supporters want to learn more about the projects of filmmakers. Links that help tell their story are always welcome. "
       description: 'Tell the story of your project!'
@@ -161,6 +162,10 @@ pt:
       submit: "Save"
       add_reward: "Add reward"
       reward: "Rewards"
+    dashboard_job:
+      submit: "Save"
+      add_job: "Add Job"
+      job: "Jobs"
     dashboard_preview:
       header_subtitle: "It's time for feedback"
       header_text: "Share the link below with your friends and enjoy the time to make fine adjustments to help in your campaign."

@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   after_filter :redirect_user_back_after_login, only: %i[index show]
   before_action :authorize_and_build_resources, only: %i[edit show]
 
-  has_scope :pg_search, :by_category_id, :near_of
+  has_scope :pg_search, :by_category_id, :near_of, :by_country_id, :by_costate_id, :by_city_id, :by_genre_id
   has_scope :recent, :expiring, :successful, :in_funding, :recommended, :not_expired, type: :boolean
 
   helper_method :project_comments_canonical_url, :resource, :collection
@@ -37,12 +37,18 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    p "Project0: #{@project.inspect}"
     @project = Project.new
+    p "Project1: #{@project.inspect}"
     @project.attributes = permitted_params.merge(user: current_user, referral_link: referral_link)
+    p "Project2: #{@project.inspect}"
     authorize @project
+    p "Project: #{@project.inspect}"
     if @project.save
+      p "did i come here?"
       redirect_to edit_project_path(@project, anchor: 'home')
     else
+      p "I came to else"
       render :new
     end
   end
@@ -160,7 +166,7 @@ class ProjectsController < ApplicationController
     page = params[:page] || 1
     @projects ||= apply_scopes(Project.visible.order_status).
       most_recent_first.
-      includes(:project_total, :user, :category).
+      includes(:project_total, :user, :category, :genre, :country, :city, :state).
       page(page).per(18)
   end
 
