@@ -10,6 +10,7 @@ class Job < ActiveRecord::Base
   belongs_to :project
   #belongs_to :category
   #belongs_to :job_reward
+  has_many :job_applications
 
   scope :sort_asc, -> { order('id ASC') }
 

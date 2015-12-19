@@ -1,5 +1,6 @@
 Catarse::Application.routes.draw do
 
+
   mount RedactorRails::Engine => '/redactor_rails'
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for(

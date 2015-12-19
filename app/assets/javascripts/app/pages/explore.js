@@ -24,8 +24,9 @@ App.addChild('Explore', _.extend({
     this.route('successful');
     this.route('by_category_id/:id');
     this.route('near_of/:state');
+    this.route('by_genre_id/:id');
 
-    this.setInitialFilter();
+      this.setInitialFilter();
     
     this.setupPagination(
       this.$("#loading img"), 

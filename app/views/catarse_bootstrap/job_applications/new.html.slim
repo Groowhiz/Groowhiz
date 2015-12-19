@@ -1,0 +1,43 @@
+= render 'shared/header_big'
+
+
+=@job_application
+.w-container
+  .w-row
+    = simple_form_for @job_application, defaults: { wrapper: :input_with_error}, html: { id: 'job_form', class: 'w-form' } do |form|
+      .w-col.w-col-9.bg-gray
+        .w-row
+          .u-marginbottom-40
+            = form.label :name, class: 'fontsize-large', required: false, as: :string
+            .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
+            = form.button :name, class: 'btn btn-medium btn-edit', href: '#link'
+
+
+        .w-row
+          .u-marginbottom-40
+            = form.label :name, class: 'fontsize-large', required: false, as: :string
+            .fontsize-small.fontcolor-secondary.u-marginbottom-10= form.hint :name
+            = form.textarea :name, class: 'w-input text-field big', as: :string
+
+        .w-row
+          = form.button :submit, t('.submit'),  class:'btn btn-medium'
+
+
+      .w-col.w-col-3.bg-gray.whr-title
+        .w-row
+          .w-col.w-col-5
+            .div.text-field.prefix.no-hover
+              p Category :
+          .w-col.w-col-7
+            .div.text-field.postfix.no-hover
+              p Your Category Variable
+
+        .w-row
+          .w-col.w-col-5
+            .div.text-field.prefix.no-hover
+              p Location :
+          .w-col.w-col-7
+            .div.text-field.postfix.no-hover
+              p Nee location variable peru
+
+= render 'shared/footer_big'

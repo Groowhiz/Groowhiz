@@ -46,7 +46,17 @@ puts 'Seeding the database...'
    genre.update_attributes({
      name_fr: name[:fr]
    })
- end
+end
+
+  [
+      { pt: 'India', en: 'India', fr: 'India'},
+      { pt: 'Other', en: 'Other', fr: 'Other' },
+  ].each do |name|
+    country = Country.find_or_initialize_by(name: name[:pt])
+    country.update_attributes({
+                                name: name[:en]
+                            })
+  end
 
  [
   { pt: 'Andhra Pradesh', en: 'Andhra Pradesh', fr: 'Andhra Pradesh'},
@@ -78,15 +88,39 @@ puts 'Seeding the database...'
   { pt: 'Uttar Pradesh', en: 'Uttar Pradesh', fr: 'Uttar Pradesh' },
   { pt: 'Uttarakhand', en: 'Uttarakhand', fr: 'Uttarakhand' },
   { pt: 'West Bengal', en: 'West Bengal', fr: 'West Bengal' },
+  { pt: 'Other', en: 'Other', fr: 'Other' }
  ].each do |name|
-   state = State.find_or_initialize_by(name: name[:pt])
-#   state.update_attributes({
- #    name_en: name[:en]
- #  })
-  # state.update_attributes({
-  #   name_fr: name[:fr]
-  # })
+   country_state = Costate.find_or_initialize_by(name: name[:pt])
+   country_state.update_attributes({
+      name: name[:en]
+    })
+   country_state.update_attributes({
+    acronym: name[:fr]
+  })
  end
+
+[
+    { pt: 'Bangalore', en: 'Bengaluru', fr: 'Bangalore'},
+    { pt: 'Delhi', en: 'Delhi', fr: 'Delhi' },
+    { pt: 'Hyderabad', en: 'Hyderabad', fr: 'Hyderabad' },
+    { pt: 'Vishakapatnam', en: 'Vishakapatnam', fr: 'Vishakapatnam' },
+    { pt: 'Madras', en: 'Chennai', fr: 'Madras' },
+    { pt: 'Goa', en: 'Goa', fr: 'Goa' },
+    { pt: 'Mumbai', en: 'Mumbai', fr: 'Bombay' },
+    { pt: 'Kolkata', en: 'Kolkata', fr: 'Calcutta' },
+    { pt: 'Pune', en: 'Pune', fr: 'Pune' },
+    { pt: 'Cochin', en: 'Cochin', fr: 'Kochi' },
+    { pt: 'Other', en: 'Other', fr: 'Other' },
+    { pt: 'Amaravati', en: 'Amaravati', fr: 'Amaravati' },
+].each do |name|
+  city = City.find_or_initialize_by(name: name[:pt])
+  city.update_attributes({
+                              name: name[:en]
+                          })
+  city.update_attributes({
+                              acronym: name[:fr]
+                          })
+end
 
 {
   company_name: 'TalentOxide',

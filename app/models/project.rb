@@ -22,10 +22,10 @@ class Project < ActiveRecord::Base
             :display_pledged, :display_pledged_with_cents, :display_goal, :remaining_days, :progress_bar,
             :status_flag, :state_warning_template, :display_card_class, :display_errors, to: :decorator
 
-  # belongs_to :country
-  # belongs_to :city
-  # belongs_to :state
-  # belongs_to :genre
+  belongs_to :country
+  belongs_to :city
+  belongs_to :costate
+  belongs_to :genre
   belongs_to :user
   belongs_to :category
   has_one :project_total
@@ -74,6 +74,10 @@ class Project < ActiveRecord::Base
   scope :by_id, ->(id) { where(id: id) }
   scope :by_goal, ->(goal) { where(goal: goal) }
   scope :by_category_id, ->(id) { where(category_id: id) }
+  scope :by_country_id, ->(id) { where(country_id: id) }
+  scope :by_costate_id, ->(id) { where(costate_id: id) }
+  scope :by_city_id, ->(id) { where(city_id: id) }
+  scope :by_genre_id, ->(id) { where(genre_id: id) }
   scope :by_online_date, ->(online_date) { where(online_date: Time.zone.parse( online_date ).. Time.zone.parse( online_date ).end_of_day) }
   scope :by_expires_at, ->(expires_at) { where(expires_at: Time.zone.parse( expires_at ).. Time.zone.parse( expires_at ).end_of_day) }
   scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
@@ -118,14 +122,14 @@ class Project < ActiveRecord::Base
 
   attr_accessor :accepted_terms
 
-  validates_acceptance_of :accepted_terms, on: :create
+  # validates_acceptance_of :accepted_terms, on: :create
   ##validation for all states
-  validates_presence_of :name, :user, :category, :permalink #, :tagline
-  #validates_length_of :tagline, :minimum => 5, :maximum => 100, :allow_blank => false
-  validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
-  validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0,
-                            if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
-  validates_numericality_of :goal, greater_than: 9, allow_blank: true
+  validates_presence_of :name, :user, :category, :permalink, :genre, :country, :city, :costate, :tagline
+  validates_length_of :tagline, :minimum => 5, :maximum => 100, :allow_blank => false
+  # validates_length_of :headline, maximum: HEADLINE_MAXLENGTH
+  # validates_numericality_of :online_days, less_than_or_equal_to: 60, greater_than: 0,
+  #                           if: ->(p){ p.online_days.present? && ( p.online_days_was.nil? || p.online_days_was <= 60 ) }
+  # validates_numericality_of :goal, greater_than: 9, allow_blank: true
   validates_uniqueness_of :permalink, case_sensitive: false
   validates_format_of :permalink, with: /\A(\w|-)*\Z/
 
@@ -152,7 +156,8 @@ class Project < ActiveRecord::Base
   end
 
   def send_to_analysis
-
+    p "did i come to send to analysis"
+    self.state = 'in_analysis'
   end
 
   def has_blank_service_fee?
@@ -257,6 +262,10 @@ class Project < ActiveRecord::Base
         pledged: self.pledged,
         project_state: self.state,
         category: self.category.name_pt,
+        genre: self.genre.name_pt,
+        country: self.country.name,
+        costate: self.costate.name,
+        city: self.city.name,
         project_goal: self.goal,
         project_online_date: self.online_date,
         project_expires_at: self.expires_at,

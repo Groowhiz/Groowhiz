@@ -37,16 +37,19 @@ pt:
         address_phone_number: "Digite o número de telefone"
     prompts:
       project:
-        category: "Selecione uma categoria"
+        category: "Select a Category"
+        genre: "Select a Genre"
         select: "Select an option"
-        traffic_sources: "How did you know about TalentOxide?"
+        traffic_sources: "How did you know about TalentoArtista?"
     hints:
       project:
         select: "Select an option"
         traffic_sources: "How did you know about TalentOxide?"
         name: "Give a name that people can remember easily. Do not exceed 50 characters."
+        project_tagline: "Give a tagline that people can remember easily. Do not exceed 50 characters."
         permalink: "I prefer something simple, straightforward and well identify your project. Try not to use hyphen, underscore etc."
-        category: "Choose the most appropriate to your project."
+        category: "Choose your profession."
+        genre: "Choose the most appropriate to your project."
         country: "Choose the country where project is located. If not found, select as others and specify the name in the next field"
         city: "Choose the city where project is located.  If not found, select as others and specify the name in the next field"
         state: "Choose the state where project is located"
@@ -54,6 +57,6 @@ pt:
         online_days: "You pode escolher entre 1 e 60 dias para a sua campanha. Confira o guia dos realizadores para dicas sobre prazos."
         video_url: "Link do seu vídeo no Vimeo ou <br/> Youtube."
         about_html: "Contact Project Description with passion and clarity about what will be done. Possible answers about how the money will be used, who is behind the project, as and when the project will be delivered. Transparency attracts more supporters. Remember, your project will be accessed by ordinary people who decide whether or not to support your project."
-        headline: "Phrase in the project card to call supporters. Must have no more than 100 characters, well summarize the project."
+        #headline: "Phrase in the project card to call supporters. Must have no more than 100 characters, well summarize the project."
         uploaded_image: "This image will be used as the thumbnail of your project (PNG, JPG size 600 x 340)"
 

@@ -271,7 +271,9 @@ CREATE TABLE projects (
     project_end_date timestamp without time zone,
     city_id integer,
     country_id integer,
-    state_id integer,
+    costate_id integer,
+    other_country character varying(255),
+    other_city character varying(255),
     genre_id integer
 );
 
@@ -843,6 +845,37 @@ CREATE TABLE auth (
 SET search_path = public, pg_catalog;
 
 --
+-- Name: application_types; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE application_types (
+    id integer NOT NULL,
+    type character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: application_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE application_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: application_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE application_types_id_seq OWNED BY application_types.id;
+
+
+--
 -- Name: authorizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1370,6 +1403,38 @@ ALTER SEQUENCE contributions_id_seq OWNED BY contributions.id;
 
 
 --
+-- Name: costates; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE costates (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    acronym character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: costates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE costates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: costates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE costates_id_seq OWNED BY costates.id;
+
+
+--
 -- Name: countries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1518,6 +1583,46 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
+-- Name: job_applications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE job_applications (
+    id integer NOT NULL,
+    job_id integer,
+    video_url character varying(255),
+    link_ref1 character varying(255),
+    link_ref2 character varying(255),
+    creator integer,
+    artist integer,
+    status character varying(255),
+    reason text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    application_type_id integer,
+    description text
+);
+
+
+--
+-- Name: job_applications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE job_applications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_applications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE job_applications_id_seq OWNED BY job_applications.id;
+
+
+--
 -- Name: job_perks; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1599,7 +1704,8 @@ CREATE TABLE jobs (
     job_end_date timestamp without time zone,
     job_reward_id integer,
     row_order integer,
-    last_changes text
+    last_changes text,
+    screening_rounds integer
 );
 
 
@@ -2713,6 +2819,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY application_types ALTER COLUMN id SET DEFAULT nextval('application_types_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY authorizations ALTER COLUMN id SET DEFAULT nextval('authorizations_id_seq'::regclass);
 
 
@@ -2818,6 +2931,13 @@ ALTER TABLE ONLY contributions ALTER COLUMN id SET DEFAULT nextval('contribution
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY costates ALTER COLUMN id SET DEFAULT nextval('costates_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY countries ALTER COLUMN id SET DEFAULT nextval('countries_id_seq'::regclass);
 
 
@@ -2840,6 +2960,13 @@ ALTER TABLE ONLY dbhero_dataclips ALTER COLUMN id SET DEFAULT nextval('dbhero_da
 --
 
 ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_applications ALTER COLUMN id SET DEFAULT nextval('job_applications_id_seq'::regclass);
 
 
 --
@@ -3030,6 +3157,14 @@ ALTER TABLE ONLY auth
 SET search_path = public, pg_catalog;
 
 --
+-- Name: application_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY application_types
+    ADD CONSTRAINT application_types_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: authorizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3166,6 +3301,14 @@ ALTER TABLE ONLY contributions
 
 
 --
+-- Name: costates_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY costates
+    ADD CONSTRAINT costates_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: countries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3195,6 +3338,14 @@ ALTER TABLE ONLY dbhero_dataclips
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: job_applications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY job_applications
+    ADD CONSTRAINT job_applications_pkey PRIMARY KEY (id);
 
 
 --
@@ -3436,6 +3587,20 @@ CREATE UNIQUE INDEX cities_name_unique ON cities USING btree (name);
 
 
 --
+-- Name: costates_acronym_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX costates_acronym_unique ON costates USING btree (acronym);
+
+
+--
+-- Name: costates_name_unique; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX costates_name_unique ON costates USING btree (name);
+
+
+--
 -- Name: fk__authorizations_oauth_provider_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3524,6 +3689,20 @@ CREATE INDEX fk__contribution_notifications_user_id ON contribution_notification
 --
 
 CREATE INDEX fk__contributions_country_id ON contributions USING btree (country_id);
+
+
+--
+-- Name: fk__job_applications_application_type_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__job_applications_application_type_id ON job_applications USING btree (application_type_id);
+
+
+--
+-- Name: fk__job_applications_job_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__job_applications_job_id ON job_applications USING btree (job_id);
 
 
 --
@@ -3625,6 +3804,13 @@ CREATE INDEX fk__projects_city_id ON projects USING btree (city_id);
 
 
 --
+-- Name: fk__projects_costate_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX fk__projects_costate_id ON projects USING btree (costate_id);
+
+
+--
 -- Name: fk__projects_country_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3636,13 +3822,6 @@ CREATE INDEX fk__projects_country_id ON projects USING btree (country_id);
 --
 
 CREATE INDEX fk__projects_genre_id ON projects USING btree (genre_id);
-
-
---
--- Name: fk__projects_state_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__projects_state_id ON projects USING btree (state_id);
 
 
 --
@@ -4295,6 +4474,22 @@ ALTER TABLE ONLY credit_cards
 
 
 --
+-- Name: fk_job_applications_application_type_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_applications
+    ADD CONSTRAINT fk_job_applications_application_type_id FOREIGN KEY (application_type_id) REFERENCES application_types(id);
+
+
+--
+-- Name: fk_job_applications_job_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY job_applications
+    ADD CONSTRAINT fk_job_applications_job_id FOREIGN KEY (job_id) REFERENCES jobs(id);
+
+
+--
 -- Name: fk_jobs_category_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4415,6 +4610,14 @@ ALTER TABLE ONLY projects
 
 
 --
+-- Name: fk_projects_costate_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT fk_projects_costate_id FOREIGN KEY (costate_id) REFERENCES costates(id);
+
+
+--
 -- Name: fk_projects_country_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -4428,14 +4631,6 @@ ALTER TABLE ONLY projects
 
 ALTER TABLE ONLY projects
     ADD CONSTRAINT fk_projects_genre_id FOREIGN KEY (genre_id) REFERENCES genres(id);
-
-
---
--- Name: fk_projects_state_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY projects
-    ADD CONSTRAINT fk_projects_state_id FOREIGN KEY (state_id) REFERENCES states(id);
 
 
 --
@@ -5283,4 +5478,19 @@ INSERT INTO schema_migrations (version) VALUES ('20151216194826');
 INSERT INTO schema_migrations (version) VALUES ('20151217070609');
 
 INSERT INTO schema_migrations (version) VALUES ('20151217070642');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218052200');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218052249');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218054608');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218055525');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218060043');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218112042');
+
+INSERT INTO schema_migrations (version) VALUES ('20151218171230');
+
 

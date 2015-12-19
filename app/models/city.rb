@@ -1,4 +1,6 @@
 class City < ActiveRecord::Base
+  has_many :projects
+
   validates_presence_of :name, :acronym
   validates_uniqueness_of :name, :acronym
 

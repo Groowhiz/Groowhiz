@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151216194826) do
+ActiveRecord::Schema.define(version: 20151218060043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 20151216194826) do
   enable_extension "unaccent"
   enable_extension "pgcrypto"
   enable_extension "uuid-ossp"
+
+  create_table "application_types", force: true do |t|
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "oauth_providers", force: true do |t|
     t.text     "name",       null: false
@@ -468,11 +474,6 @@ ActiveRecord::Schema.define(version: 20151216194826) do
   end
 
   create_view "financial_reports", " SELECT p.name,\n    u.moip_login,\n    p.goal,\n    p.expires_at,\n    p.state\n   FROM (projects p\n     JOIN users u ON ((u.id = p.user_id)))", :force => true
-  create_table "job_perks", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "job_rewards", force: true do |t|
     t.string   "job_reward_name"
     t.datetime "created_at"
@@ -495,6 +496,8 @@ ActiveRecord::Schema.define(version: 20151216194826) do
     t.datetime "job_end_date"
     t.integer  "job_reward_id"
     t.integer  "row_order"
+    t.text     "last_changes"
+    t.integer  "screening_rounds"
     t.index ["category_id"], :name => "fk__jobs_category_id"
     t.index ["job_reward_id"], :name => "fk__jobs_job_reward_id"
     t.index ["permalink"], :name => "index_jobs_on_permalink", :unique => true
@@ -502,6 +505,29 @@ ActiveRecord::Schema.define(version: 20151216194826) do
     t.foreign_key ["category_id"], "categories", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_category_id"
     t.foreign_key ["job_reward_id"], "job_rewards", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_job_reward_id"
     t.foreign_key ["project_id"], "projects", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_jobs_project_id"
+  end
+
+  create_table "job_applications", force: true do |t|
+    t.integer  "job_id"
+    t.string   "video_url"
+    t.string   "link_ref1"
+    t.string   "link_ref2"
+    t.integer  "creator"
+    t.integer  "artist"
+    t.string   "status"
+    t.text     "reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "application_type_id"
+    t.index ["application_type_id"], :name => "fk__job_applications_application_type_id"
+    t.index ["job_id"], :name => "fk__job_applications_job_id"
+    t.foreign_key ["application_type_id"], "application_types", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_job_applications_application_type_id"
+    t.foreign_key ["job_id"], "jobs", ["id"], :on_update => :no_action, :on_delete => :no_action, :name => "fk_job_applications_job_id"
+  end
+
+  create_table "job_perks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "payment_logs", force: true do |t|

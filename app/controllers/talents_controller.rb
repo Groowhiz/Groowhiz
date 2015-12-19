@@ -112,6 +112,12 @@ class TalentsController < ApplicationController
     end
   end
 
+
+  def modal_url
+    @talents=Talent.all
+    @talents
+  end
+
   def talents
     p "Did i come to talents() in controller?"
     page = params[:page] || 1
