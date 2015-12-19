@@ -156,7 +156,8 @@ class Project < ActiveRecord::Base
   end
 
   def send_to_analysis
-
+    p "did i come to send to analysis"
+    self.state = 'in_analysis'
   end
 
   def has_blank_service_fee?

@@ -31,14 +31,14 @@
           /- if !@project.published? || (current_user && current_user.admin?)
           /  #dashboard_analysis_success.content.w-hidden data-page_title="" data-page_subtitle=""
           /    = render 'dashboard_analysis_success'
-            #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
-              = render 'dashboard_basics'
+          #dashboard_basics.content.w-hidden data-page_title="#{t('.basics')}" data-page_subtitle="#{t('.basics_subtitle')}"
+            = render 'dashboard_basics'
           /- if @project.published?
           /  #dashboard_posts.content.w-hidden data-page_title="#{t('.posts')}" data-page_subtitle=""
           /    = render 'dashboard_posts'
           /#dashboard_reward.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_reward'
-          #dashboard_job.content.w-hidden data-page_title="#{t('.job')}" data-page_subtitle="#{t('.job_subtitle')}"
+          #dashboard_job.content.w-hidden data-page_title="#{t('.reward')}" data-page_subtitle="#{t('.reward_subtitle')}"
             = render 'dashboard_job'
           /- if @project.published?
           /  #dashboard_reports.content.w-hidden data-path=project_metrics_path(@project) data-page_title="#{t('.reports')}" data-page_subtitle=""

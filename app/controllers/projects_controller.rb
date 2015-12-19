@@ -137,18 +137,21 @@ class ProjectsController < ApplicationController
   end
 
   def resource_action action_name, success_redirect=nil
+    p "Came to resource Analysis #{action_name.inspect} #{success_redirect.inspect} #{resource.inspect}"
     if resource.send(action_name)
+      p "Yeah yeah came inside.. #{referral_link.inspect}"
       if referral_link.present?
         resource.update_attribute :referral_link, referral_link
       end
-
+      p "success inside"
       flash[:notice] = t("projects.#{action_name.to_s}")
       if success_redirect
-        redirect_to edit_project_path(@project, anchor: success_redirect)
+        redirect_to  project_path(@project, anchor: success_redirect)
       else
         redirect_to edit_project_path(@project, anchor: 'home')
       end
     else
+      p "came to else :( "
       flash.now[:notice] = t("projects.#{action_name.to_s}_error")
       build_dependencies
       render :edit
