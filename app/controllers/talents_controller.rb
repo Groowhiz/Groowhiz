@@ -47,11 +47,17 @@ class TalentsController < ApplicationController
     resource
   end
 
+
+  def by_category_id
+    authorize resource
+
+  end
+
   def render_index_for_xhr_request
     render partial: 'talents/card',
            collection: talents,
            layout: false,
-           locals: {ref: "explore", wrapper_class: 'w-col w-col-4 u-marginbottom-20'}
+           locals: {ref: "explore_talents", wrapper_class: 'w-col w-col-4 u-marginbottom-20'}
   end
 
   def talents_for_home

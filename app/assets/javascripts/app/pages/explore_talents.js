@@ -2,8 +2,8 @@ App.addChild('ExploreTalents', _.extend({
     el: 'body[data-action="show"][data-controller-name="pages"][data-id="explore_talents"]',
 
     events: {
-        'click .explore-toggle':'toggleCategoryList',
-        'click .explore-link' : 'toggleCategoryList',
+        'click .explore-talents-toggle':'toggleCategoryList',
+        'click .explore-talents-link' : 'toggleCategoryList',
         'click #load-more' : 'loadMore'
     },
 
@@ -47,7 +47,7 @@ App.addChild('ExploreTalents', _.extend({
             this.$("#loading img"),
             this.$('#load-more'),
             this.$(".results"),
-            this.$("#explore_results").data('talents-path')
+            this.$("#explore_talents_results").data('talents-path')
         );
 
         if(window.location.hash === ''){

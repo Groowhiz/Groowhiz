@@ -135,6 +135,7 @@ Catarse::Application.routes.draw do
   get "/explore_talents"=> 'high_voltage/pages#show', id: 'explore_talents'
 
 
+
   # User permalink profile
   constraints SubdomainConstraint do
     get "/", to: 'users#show'

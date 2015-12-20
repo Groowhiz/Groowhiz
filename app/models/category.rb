@@ -21,7 +21,7 @@ class Category < ActiveRecord::Base
   end
 
   def self.with_talents
-    where("exists(select true from talents t where t.category_id = categories.id)")
+    where("exists(select true from talents t where t.category_id = categories.id and t.state not in('deleted'))")
   end
 
   def self.array

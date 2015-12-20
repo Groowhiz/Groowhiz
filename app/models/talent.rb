@@ -58,7 +58,7 @@ class Talent < ActiveRecord::Base
   scope :by_updated_at, ->(updated_at) { where(updated_at: Time.zone.parse( updated_at ).. Time.zone.parse( updated_at ).end_of_day) }
   scope :by_permalink, ->(p) { without_state('deleted').where("lower(permalink) = lower(?)", p) }
   scope :recommended, -> { where(recommended: true) }
-  scope :singing, -> {where("EXISTS(select * from talents where talents)")}
+  scope :singing, -> {where("select * from talents where talents.category_id=1")}
   scope :song_writing, -> {where("EXISTS(select * from talents where talents.category_id=2)")}
   scope :instrumental, -> {where("EXISTS(select * from talents where talents.category_id=3)")}
   scope :music_composition, -> {where("EXISTS(select * from talents where talents.category_id=4)")}
@@ -71,7 +71,7 @@ class Talent < ActiveRecord::Base
   scope :user_name_contains, ->(term) { joins(:user).where("unaccent(upper(users.name)) LIKE ('%'||unaccent(upper(?))||'%')", term) }
 
   #scope :near_of, ->(address_state) { where("EXISTS(SELECT true FROM users u WHERE u.id = talents.user_id AND lower(u.address_state) = lower(?))", address_state) }
-  scope :visible, -> { without_states([]) }
+  scope :visible, -> { without_states(['deleted']) }
 
   scope :ordered, -> { order(created_at: :desc)}
   scope :recent, -> { where(online_date: 5.days.ago.. Time.current) }
