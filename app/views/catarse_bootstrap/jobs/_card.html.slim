@@ -1,0 +1,50 @@
+- target = defined?(embed_link) ? '__blank' : ''
+- @job = card if defined?(card)
+- ref = defined?(ref) ? ref : nil
+
+div[itemtype="http://schema.org/CreativeWork" class="#{defined?(wrapper_class) ? wrapper_class : ''}"]
+  .card-project.card.u-radius
+    meta[itemprop="dateCreated" content=@job.created_at.to_date]
+    .w-clearfix.card-project-author.w-hidden-small.w-hidden-tiny[itemprop="author" itemscope itemtype="http://schema.org/Person"]
+<!--Here the following code creates project creator link and project link with two thumbnails and the address links-->
+      .w-row
+        .w-col.w.col-2
+          .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
+            .u-left
+              = image_tag(@project.user.display_image, class: 'u-round thumb small')
+        .w-col.w.col-4
+            p.card-author-name.fontsize-smaller[itemprop="name" content="#{@project.user.display_name}"]
+              = link_to @project.user.display_name, user_path(@project.user), class: 'link-hidden'
+        .w-col.w.col-2
+          .w-hidden-small.w-hidden-tiny.thumb.small.u-round.u-left
+            .u-left
+              = image_tag(@job.project_id.uploaded_image, class: 'u-round thumb small')
+        .w-col.w.col-4
+          p.card-author-name.fontsize-smaller[itemprop="name" content="#{@job.project_id.name}"]
+              = link_to @job.project_id.name, user_path(@project.user), class: 'link-hidden'1
+<!--adding job title and job description which shouldnt exceed 200 character-->
+      .card-talent-description
+        .fontweight-semibold.fontsize-base.u-marginbottom-10.u-text-center-small-only.lineheight-tight
+          = truncate(@job.job_name, length: 50, separator: '')
+        .fontweight-thin.fontsize-smaller
+          = truncate(@job.job_description, length: 200, separator: '')
+<!--adding job category-->
+      .w-row
+        .w-col.w.col-6
+          .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
+            = link_to @job.category_id.category, explore_path(anchor: "by_category_id/#{@job.category_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
+            = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: '22'
+        .w-col.w.col-6
+          .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
+            = link_to @job.job_reward.job_reward_name, explore_path(anchor: "by_category_id/#{@job.job_reward_id}"), class: 'link-hidden-light u-right', itemprop: 'genre'
+            = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: '22'
+      .w-row
+        .w-col.w-col-6
+          .w-hidden-small.w-hidden-tiny.fontcolor-secondary.fontsize-smaller
+              = link_to @job.status, explore_path(anchor: "by_category_id/#{@job.status}"), class: 'link-hidden-light u-right', itemprop: 'genre'
+              = image_tag 'catarse_bootstrap/tag-icon.png', class: 'project-nav-category-icon', width: '22'
+<!--adding apply button-->
+        .w-col.w-col-6.w-col-push-4
+          = hidden_field_tag 'anchor', 'card'
+          = form.hidden_field :job_id, value: @job.id
+          = form.button :submit, t('.submit'), class: 'btn btn-large', id: 'budget-save'
