@@ -59,6 +59,47 @@
                     = f.input_field :minimum_value, as: :tel, class: 'postfix positive', required: true
                 .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_minimum_value"] = t('simple_form.validation_texts.reward.minimum_value')
             .w-row
+              .w-col.w-col-10.w-col-push-1
+                .w-form
+                /  = form.input :name, as: :string,
+                    wrapper: :two_columns,
+                    wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+                    label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                    text_field_wrapper_html: { class: 'w-col w-col-7 w-sub-col' },
+                    input_html: { class: 'positive medium', required: true },
+                    validation_text: false
+
+                  = form.association :category, as: :select,
+                    collection: Category.order(:name_pt),
+                    prompt: t('simple_form.prompts.project.category'),
+                    wrapper: :two_columns,
+                    wrapper_class: 'w-row u-marginbottom-30 card card-terciary medium',
+                    label_wrapper_html: { class: 'w-col w-col-5 w-subcol' },
+                    text_field_wrapper_html: { class: 'w-col w-col-7' },
+                    input_html: { class: 'w-select text-field positive medium', required: true },
+                    validation_text: false
+            .w-row
+              .w-col.w-col-3
+                label.fontsize-smaller= t('.gender')
+              .w-col.w-col-1
+                = radio_button_tag(:gender, "male")
+              .w-col.w-col-2
+                = label_tag(:male, t('.male'))
+              .w-col.w-col-1
+                = radio_button_tag(:gender, "female")
+              .w-col.w-col-2
+                = label_tag(:female, t('.female'))
+              .w-col.w-col-1
+                = radio_button_tag(:gender, "other")
+              .w-col.w-col-2
+                = label_tag(:other, t('.other'))
+            .w-row
+              .w-col.w-col-5
+                label.fontsize-smaller= t('.description')
+              .w-col.w-col-7
+                = f.input_field :job_description, as: :text, class: 'positive', placeholder: "Describe your job offer", required: true
+                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_description"] = t('simple_form.validation_texts.reward.description')
+            .w-row
               .w-col.w-col-5
                 label.fontsize-smaller= t('.job_start_date')
               .w-col.w-col-7
@@ -74,12 +115,6 @@
                   .w-col.w-col-12
                     .w-row
                       = f.input_field :job_end_date, required: true, as: :date, discard_day: true, start_year: Time.current.year, use_short_month: true, discard_day: true, required: true, class: 'w-col-6 positive'
-            .w-row
-              .w-col.w-col-5
-                label.fontsize-smaller= t('.description')
-              .w-col.w-col-7
-                = f.input_field :job_description, as: :text,  class: 'positive', placeholder: "Describe your job offer", required: true
-                .fontsize-smaller.text-error.u-marginbottom-20.fa.fa-exclamation-triangle.w-hidden[data-error-for="reward_description"] = t('simple_form.validation_texts.reward.description')
             /.w-row
               .w-col.w-col-5
                 .w-checkbox
