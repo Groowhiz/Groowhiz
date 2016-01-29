@@ -6,5 +6,6 @@ class ExploreController < ApplicationController
     @categories = Category.with_talents.order(:name_pt).all
     @genres=Genre.with_projects.order(:name_pt).all
   end
+
 end
 

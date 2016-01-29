@@ -15,41 +15,39 @@ nav#user-menu-dropdown.w-dropdown-list.dropdown-list.user-menu
       li.lineheight-looser
           = link_to t('shared.menus.user.talents'), edit_user_path(current_user, anchor: :talents), class: 'alt-link fontsize-smaller'
       li.lineheight-looser
-          = link_to t('shared.menus.user.projects'), edit_user_path(current_user, anchor: :projects), class: 'alt-link fontsize-smaller'
-      li.lineheight-looser
           = link_to t('shared.menus.user.access_address'), edit_user_path(current_user, anchor: :settings), class: 'alt-link fontsize-smaller'
-    .w-col.w-col-4.w-hidden-small.w-hidden-tiny
-      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.talents_created')
+    /.w-col.w-col-4.w-hidden-small.w-hidden-tiny
+    /  .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.talents_created')
     /- if current_user.created_talents.present?
-        ul.w-list-unstyled.u-marginbottom-20
-          - current_user.created_talents.limit(3).each do |talent|
-            li.u-marginbottom-10
-              .w-row
-                .w-col.w-col-3
-                  = image_tag talent.decorate.display_image, class: 'thumb small u-radius'
-                .w-col.w-col-9
-                  = link_to truncate(talent.name), project_by_slug_path(project.permalink, ref: 'user_menu_my_contributions'), class: 'alt-link fontsize-smaller'
-          li.u-margintop-20
-            .w-row
-              .w-col.w-col-6
-                = link_to t('talents.index.see_all'), edit_user_path(current_user, anchor: :talents), class: 'btn btn-terciary'
-              .w-col.w-col-6
-    .w-col.w-col-4.w-hidden-small.w-hidden-tiny
-      .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.projects_created')
-      - if current_user.projects.present?
-        ul.w-list-unstyled.u-marginbottom-20
-          - current_user.projects.without_state('rejected').ordered.limit(3).each do |project|
-            li.u-marginbottom-10
-              .w-row
-                .w-col.w-col-3
-                  = image_tag project.decorate.display_image, class: 'thumb small u-radius'
-                .w-col.w-col-9
-                  = link_to truncate(project.name), edit_project_path(project, ref: 'user_menu_my_projects', anchor: 'home'), class: 'alt-link fontsize-smaller'
-          li.u-margintop-20
-            .w-row
-              .w-col.w-col-6
-                = link_to t('projects.index.see_all'), edit_user_path(current_user, anchor: 'projects'), class: 'btn btn-terciary'
-              .w-col.w-col-6
+    /    ul.w-list-unstyled.u-marginbottom-20
+    /      - current_user.created_talents.limit(3).each do |talent|
+    /        li.u-marginbottom-10
+    /          .w-row
+    /            .w-col.w-col-3
+    /              = image_tag talent.display_image, class: 'thumb small u-radius'
+    /            .w-col.w-col-9
+    /              = link_to truncate(talent.title), talent_by_slug_path(talent.permalink, ref: 'user_menu_my_contributions'), class: 'alt-link fontsize-smaller'
+    /      li.u-margintop-20
+    /        .w-row
+    /          .w-col.w-col-6
+    /            = link_to t('talents.index.see_all'), edit_user_path(current_user, anchor: :talents), class: 'btn btn-terciary'
+    /          .w-col.w-col-6
+    /.w-col.w-col-4.w-hidden-small.w-hidden-tiny
+    /  .fontweight-semibold.fontsize-smaller.u-marginbottom-10 = t('shared.menus.user.projects_created')
+    /  - if current_user.projects.present?
+    /    ul.w-list-unstyled.u-marginbottom-20
+    /      - current_user.projects.without_state('rejected').ordered.limit(3).each do |project|
+    /        li.u-marginbottom-10
+    /          .w-row
+    /            .w-col.w-col-3
+    /              = image_tag project.decorate.display_image, class: 'thumb small u-radius'
+    /            .w-col.w-col-9
+    /              = link_to truncate(project.name), edit_project_path(project, ref: 'user_menu_my_projects', anchor: 'home'), class: 'alt-link fontsize-smaller'
+    /      li.u-margintop-20
+    /        .w-row
+    /          .w-col.w-col-6
+    /            = link_to t('projects.index.see_all'), edit_user_path(current_user, anchor: 'projects'), class: 'btn btn-terciary'
+    /          .w-col.w-col-6
   - if current_user.admin?
     .divider.u-marginbottom-20
     .fontweight-semibold.fontsize-smaller.u-marginbottom-10 Admin

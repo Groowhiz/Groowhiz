@@ -1,0 +1,12 @@
+.w-row.u-marginbottom-10
+  .w-col.w-col-3.w-hidden-small.w-hidden-tiny
+    = link_to talent_by_slug_path(talent.permalink), title: talent.name do
+      = image_tag(talent.display_image, size: '50x50', class: 'thumb small u-radius')
+  .w-col.w-col-9
+    = link_to talent_by_slug_path(talent.permalink), title: talent.name, class: 'fontsize-smallest fontweight-semibold lineheight-tighter u-marginbottom-10 link-hidden' do
+      = truncate(project.name, length: 34)
+    .w-row
+      .w-col.w-col-6
+        .fontsize-small.fontweight-semibold.lineheight-tightest
+          | #{talent.progress}%
+.divider.u-marginbottom-10

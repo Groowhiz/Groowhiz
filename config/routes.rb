@@ -1,6 +1,8 @@
 Catarse::Application.routes.draw do
 
 
+  get 'explore_projects/index'
+
   mount RedactorRails::Engine => '/redactor_rails'
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for(
@@ -41,6 +43,7 @@ Catarse::Application.routes.draw do
   end
   resources :genres
   resources :auto_complete_projects, only: [:index]
+  resources :auto_complete_talents, only: [:index]
   resources :projects, only: [:index, :create, :update, :edit, :new, :show] do
     resources :metrics, only: [:index], controller: "projects/metrics"
     resources :accounts, only: [:create, :update]
@@ -120,6 +123,7 @@ Catarse::Application.routes.draw do
     end
   end
 
+  resources :explore_projects
 
   get "/terms-of-use" => 'high_voltage/pages#show', id: 'terms_of_use'
   get "/privacy-policy" => 'high_voltage/pages#show', id: 'privacy_policy'
@@ -133,6 +137,7 @@ Catarse::Application.routes.draw do
   get "/explore" => 'high_voltage/pages#show', id: 'explore'
   get "/talent" => 'high_voltage/pages#show', id: 'new_talent'
   get "/explore_talents"=> 'high_voltage/pages#show', id: 'explore_talents'
+  get "/explore_projects"=> 'high_voltage/pages#show', id: 'explore_projects'
 
 
 

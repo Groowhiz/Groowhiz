@@ -2,15 +2,15 @@
   /= link_to t('layouts.header.hello'), hello_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
   = link_to t('layouts.header.discover_talents'),  explore_talents_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
 
-  = link_to t('layouts.header.discover_projects'), explore_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
+  = link_to t('layouts.header.discover_projects'), explore_projects_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
 
-  = link_to t('layouts.header.submit'), start_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
+  /= link_to t('layouts.header.submit'), start_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
 
   .w-form.w-hidden-small.w-hidden-tiny.header-search
     = form_tag explore_path, method: 'GET', class: 'discover-form', id: 'search-form' do
       = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field negative prefix search-input", placeholder: t('layouts.header.search')
 
-    .search-pre-result.w-hidden data-searchpath=auto_complete_projects_path
+    .search-pre-result.w-hidden data-searchpath=auto_complete_talents_path
       .result
         .u-text-center= image_tag "catarse_bootstrap/loader.gif"
       a.btn.btn-small.btn-terciary.see-more-projects href="javascript:void(0);"  See All
@@ -25,8 +25,9 @@
     / #---Know More Link ---# = link_to t('layouts.header.hello'), hello_path, class: 'header-link w-nav-link'
     / # ---- Explore link ---#
     /= link_to t('layouts.header.discover_talents'), explore_path_talents, class: 'header-link w-nav-link'
-    = link_to t('layouts.header.discover_talents'), explore_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
+    = link_to t('layouts.header.discover_talents'), explore_talents_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
+    = link_to t('layouts.header.discover_projects'), explore_projects_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
     / #---Start project link ----# /
-    = link_to t('layouts.header.submit'), start_path, class: 'header-link w-nav-link'
+    /= link_to t('layouts.header.submit'), start_path, class: 'header-link w-nav-link'
 
 = render 'shared/header', overlayer: (defined?(overlayer) && overlayer ? true : false)

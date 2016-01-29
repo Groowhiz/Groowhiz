@@ -13,7 +13,7 @@ pt:
       signin: Login
       signup: Register
       submit: Start your project
-      search: Search projects
+      search: Search talents
     login:
       login_with_facebook: Sign in with your facebook account
     user:
