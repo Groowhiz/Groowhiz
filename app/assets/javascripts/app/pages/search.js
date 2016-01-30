@@ -3,7 +3,8 @@ App.addChild('Search', {
 
   events: {
     'click a.see-more-projects': 'goToExplore',
-    'input .search-input': 'clearPreResult'
+    'click a.see-more-talents': 'goToExploreTalents',
+      'input .search-input': 'clearPreResult'
   },
 
   activate: function() {
@@ -32,6 +33,9 @@ App.addChild('Search', {
     this.$el.find('form.discover-form').submit();
   },
 
+  goToExploreTalents: function() {
+      this.$el.find('form.discover-form').submit();
+  },
   onTypeWatch: function(value) {
     var that = this;
 

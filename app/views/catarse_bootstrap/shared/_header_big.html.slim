@@ -7,15 +7,15 @@
   /= link_to t('layouts.header.submit'), start_path, class: 'w-hidden-small w-hidden-tiny header-link w-nav-link'
 
   .w-form.w-hidden-small.w-hidden-tiny.header-search
-    = form_tag explore_path, method: 'GET', class: 'discover-form', id: 'search-form' do
+    = form_tag explore_talents_path, method: 'GET', class: 'discover-form', id: 'search-form' do
       = text_field_tag :pg_search, nil, autocomplete: "off", value: params[:pg_search], class: "w-input text-field negative prefix search-input", placeholder: t('layouts.header.search')
 
     .search-pre-result.w-hidden data-searchpath=auto_complete_talents_path
       .result
         .u-text-center= image_tag "catarse_bootstrap/loader.gif"
-      a.btn.btn-small.btn-terciary.see-more-projects href="javascript:void(0);"  See All
+      a.btn.btn-small.btn-terciary.see-more-talents href="javascript:void(0);"  See All
 
-  = link_to '#', id: 'pg_search_submit', class: "w-inline-block w-hidden-small w-hidden-tiny btn btn-attached postfix " do
+  = link_to '#', id: 'pg_search_talent_submit', class: "w-inline-block w-hidden-small w-hidden-tiny btn btn-attached postfix " do
     = image_tag "catarse_bootstrap/lupa.png", class: "header-lupa"
 
 //image_tag "catarse_bootstrap/lupa.png", class: "header-lupa"

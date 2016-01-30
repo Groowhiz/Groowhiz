@@ -32,7 +32,7 @@ class Talent < ActiveRecord::Base
                   against: "full_text_index",
                   using: {
                       tsearch: {
-                          dictionary: "portuguese",
+                          dictionary: "english",
                           tsvector_column: "full_text_index"
                       }
                   },

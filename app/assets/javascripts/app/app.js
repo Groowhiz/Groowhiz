@@ -7,6 +7,7 @@ var App = window.App = Skull.View.extend({
     "click a.mobile-menu-link" : "mobileMenu",
     "click .zendesk_widget" : "showWidget",
     "click #pg_search_submit" : "searchProject",
+    "click #pg_search_talent_submit" : "searchTalent"
   },
 
   openAlert: function(){
@@ -33,6 +34,11 @@ var App = window.App = Skull.View.extend({
   searchProject: function(){
     this.$('.discover-form:visible').submit();
     return false;
+  },
+
+  searchTalent: function(){
+      this.$('.discover-form:visible').submit();
+      return false;
   },
 
   beforeActivate: function(){
