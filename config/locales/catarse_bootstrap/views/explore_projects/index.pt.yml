@@ -1,0 +1,33 @@
+pt:
+  explore_projects:
+    index:
+        page-title: "Project Info"
+        title: "How To Make Your project Work!"
+        submit: "Start your project"
+
+        header:
+          people: "Supporters"
+          success: "Completeness"
+          collaboration: "Collaboration"
+          people_action: "Supporter to your project helps you to increase your visibility"
+          success_action: "Number of projects completed successfully"
+          collaboration_action: "Collaborating with others increases your network"
+        start:
+          title: "Start your project"
+          content: "It is important to start somewhere . A great first step to turning your idea into a crowdfunding project is sign a draft in catharsis . We are here to help."
+          link: "Know more about the first steps of a project"
+        people:
+          title: "Study and plan"
+          content: "Produce your project with care and on time. Planning a good campaign is a decisive factor for the success of your crowdfunding . We offer a number of materials to assist you!"
+          link: 'Learn how many supporters you have to mobilize'
+        work:
+          title: "It's all or nothing"
+          content: "Who sets the goal of fundraising and campaign time is you . Choose between 1 and 60 days to conduct his campaign in search of supporters. If you reach your financial goal, gets the Value collected . Otherwise everyone who supported receive the money back . We charge a fee of 13 % of the total collected only projects that have reached or exceeded the goal. "
+          link: 'Receive successful campaigns advice on Catarse'
+        time:
+          title: "mobilize supporters"
+          content: "Communicate well during his campaign and well treat your supporters ! They are the strength of your project and are who will really determine the success or failure of the campaign ! The Catharsis is a form you get close to people who like their work, expand this network and form public."
+          link: 'Learn how our app helps keep Catharsis'
+
+
+

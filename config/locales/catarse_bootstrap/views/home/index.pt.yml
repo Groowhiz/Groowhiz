@@ -1,9 +1,8 @@
 pt:
   home:
     index_header:
-      subtitle: Projects collaboratively become part of something
-                        greater. You are the missing piece in this story.
-      title: Make it happen in the projects that you believe
+      subtitle: "Projects collaboratively become part of something greater. You are the missing piece in this story."
+      title: "Make it happen in the projects that you believe"
     index:
       title: 'TalentOxide'
       back_a_project: 'Support a project'
@@ -82,4 +81,5 @@ pt:
           title: "Recents"
         channels:
           title: 'channel Wings'
+
 

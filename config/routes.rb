@@ -1,7 +1,7 @@
 Catarse::Application.routes.draw do
 
 
-  get 'explore_projects/index'
+  #get 'explore_projects/index'
 
   mount RedactorRails::Engine => '/redactor_rails'
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
